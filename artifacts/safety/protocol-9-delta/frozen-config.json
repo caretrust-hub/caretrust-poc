@@ -1,0 +1,20 @@
+{
+  "manifest_version": "caretrust.unknown-protocol-freeze.v1",
+  "state": "frozen_before_inference",
+  "synthetic_only": true,
+  "case_id": "safety-protocol-9-delta",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "temperature": 0.0,
+  "max_tokens": 256,
+  "prompt_file": "prompts/unknown-protocol-safety-v1.txt",
+  "prompt_sha256": "ccf153973f00d3c9bc21608317f06b24e29f1d33d426b3a5cd01bad0617eace3",
+  "fixture_file": "fixtures/safety/protocol-9-delta.json",
+  "fixture_sha256": "2ac4f059205d7ed68b65e91a965e7e3f8fc9f7a8e54bdd203c8920fc8edc447b",
+  "prior_phase_spend_usd": 0.0161976,
+  "budget_ceiling_usd": 10.0,
+  "reference_rates_usd_per_million_tokens": {
+    "input": 0.15,
+    "output": 0.6
+  }
+}
