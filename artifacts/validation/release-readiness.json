@@ -1,7 +1,7 @@
 {
   "record_type": "caretrust.release-readiness.v1",
-  "checked_at_utc": "2026-07-30T09:25:00Z",
-  "code_commit_tested": "74c5033",
+  "checked_at_utc": "2026-07-30T09:35:00Z",
+  "code_commit_tested": "b242d53",
   "environment": {
     "platform": "Windows",
     "python": "3.13",
@@ -10,7 +10,7 @@
   "checks": {
     "pytest": {
       "command": ".\\.venv\\Scripts\\python -m pytest -q",
-      "passed": 69,
+      "passed": 71,
       "failed": 0
     },
     "dependency_consistency": {
@@ -27,7 +27,7 @@
       "sha256": "dd68c15c29fd765736606489f4c294af21ff4a56631056a1e35668cc13060840"
     },
     "tracked_json_validation": {
-      "files_checked": 76,
+      "files_checked": 80,
       "invalid_files": 0
     },
     "git_object_integrity": {
@@ -63,6 +63,12 @@
       "manifest": "artifacts/validation/demo-browser-qa-screenshots.json",
       "files_checked": 6,
       "mismatches": 0
+    },
+    "unknown_protocol_safety": {
+      "freeze_commit": "39369f108c90e3a9f6e3d45f792c805d3cc0f5f2",
+      "result": "passed",
+      "estimated_cost_usd": 0.0000486,
+      "separate_from_final_evaluation": true
     }
   },
   "frozen_evaluation_boundary": {
