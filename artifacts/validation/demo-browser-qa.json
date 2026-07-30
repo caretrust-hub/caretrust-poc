@@ -1,0 +1,53 @@
+{
+  "validation_version": "1.0",
+  "validated_at": "2026-07-30T08:49:46Z",
+  "target": "demo/index.html",
+  "browser_target": "http://127.0.0.1:8765/",
+  "synthetic_only": true,
+  "visual_result": {
+    "desktop_layout": "pass",
+    "overlap_or_clipping_observed": false,
+    "status_visible_without_color": true,
+    "synthetic_boundary_visible": true
+  },
+  "interaction_results": [
+    {
+      "scenario": "clean",
+      "observed_sequence": [
+        "Ready for request",
+        "PERMIT: Active CNA claim - credentialing purpose",
+        "DENY: TOKEN_REVOKED - Subsequent request blocked"
+      ],
+      "result": "pass"
+    },
+    {
+      "scenario": "ambiguous dates",
+      "observed": "DENY: REVIEW_DEFERRED - Better evidence required",
+      "result": "pass"
+    },
+    {
+      "scenario": "registry mismatch",
+      "observed": "DENY: SOURCE_MISMATCH - No claim created",
+      "result": "pass"
+    },
+    {
+      "scenario": "embedded instruction",
+      "observed": "Embedded instructions treated as untrusted document text; draft contract held",
+      "result": "pass"
+    }
+  ],
+  "accessibility_contracts": [
+    "skip link",
+    "semantic landmarks and heading hierarchy",
+    "programmatic scenario label",
+    "ARIA live status regions",
+    "visible keyboard focus",
+    "text and symbol status independent of color",
+    "responsive single-column layout"
+  ],
+  "limitations": [
+    "This is a static design prototype backed by synthetic scenarios.",
+    "Browser QA does not establish WCAG conformance or usability with assistive-technology users.",
+    "The published public URL and judge screenshots remain a submission packaging task."
+  ]
+}
