@@ -1,0 +1,45 @@
+{
+  "validation_version": "1.0",
+  "validated_at": "2026-07-30T08:42:08.4447854Z",
+  "synthetic_only": true,
+  "implementation_commit": "d76a38f1e397a1cde944d9e85aa3e3c03e964c26",
+  "python_version": "3.13.5",
+  "test_command": ".\\.venv\\Scripts\\python -m pytest -q",
+  "test_result": {
+    "passed": 45,
+    "failed": 0,
+    "duration_seconds": 0.24
+  },
+  "demo_command": ".\\.venv\\Scripts\\python scripts\\demo_vertical_slice.py",
+  "demo_results": [
+    {
+      "scenario": "review + source match + policy",
+      "decision": "permit",
+      "reason_codes": ["POLICY_REQUIREMENTS_SATISFIED"]
+    },
+    {
+      "scenario": "source/registry mismatch",
+      "decision": "deny",
+      "reason_codes": ["SOURCE_MISMATCH"]
+    },
+    {
+      "scenario": "human review deferred",
+      "decision": "deny",
+      "reason_codes": ["REVIEW_DEFERRED"]
+    },
+    {
+      "scenario": "post-revocation request",
+      "decision": "deny",
+      "reason_codes": ["TOKEN_REVOKED"]
+    }
+  ],
+  "audit_event_count": 9,
+  "live_registry_calls": 0,
+  "private_key_files": 0,
+  "limitations": [
+    "This is a controlled synthetic proof of concept, not a production deployment.",
+    "The registry is an in-memory simulator and never calls Hawaii's live registry.",
+    "JWT keys and revocation state are ephemeral and not a production key or status service.",
+    "Protocol conformance and cross-organization interoperability are not established by this test."
+  ]
+}

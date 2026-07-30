@@ -28,29 +28,29 @@ validation record.
 - [x] **T008 [Codex]** Freeze Qwen or perform the single allowed Claude 3 Haiku
   fallback test. **Done when:** one model and configuration are recorded for final
   validation; models will not be mixed.
-- [ ] **T009 [Codex]** Implement evidence intake, schema validation, forbidden-state
+- [x] **T009 [Codex]** Implement evidence intake, schema validation, forbidden-state
   rejection, evidence references, uncertainty, extraction records, and JSONL
   logging. **Done when:** clean, malformed, ambiguous, and forbidden-state unit
   tests pass.
-- [ ] **T010 [Codex]** Implement reviewer correct, approve, reject, and defer
+- [x] **T010 [Codex]** Implement reviewer correct, approve, reject, and defer
   actions with immutable original output and recorded corrections. **Done when:**
   reviewer tests pass and one correction is visible in an audit record.
-- [ ] **T011 [Codex]** Implement the synthetic registry simulator for match,
+- [x] **T011 [Codex]** Implement the synthetic registry simulator for match,
   mismatch, not-found, and unavailable. **Done when:** it never calls the live
   registry and all four states have tests.
-- [ ] **T012 [Codex]** Implement the deterministic activation gate. **Done when:**
+- [x] **T012 [Codex]** Implement the deterministic activation gate. **Done when:**
   approval plus match can activate and every missing prerequisite fails closed
   with a reason code.
-- [ ] **T013 [Codex]** Implement signed CareTrust JWT issuance, validation, expiry,
+- [x] **T013 [Codex]** Implement signed CareTrust JWT issuance, validation, expiry,
   status, and revocation using a local test key excluded from Git. **Done when:**
   valid, expired, tampered, and revoked tests pass.
-- [ ] **T014 [Codex]** Implement deterministic authorization for claim, audience,
+- [x] **T014 [Codex]** Implement deterministic authorization for claim, audience,
   purpose, validity, and status. **Done when:** drafts and revoked claims produce
   zero permits in automated tests.
-- [ ] **T015 [Codex]** Complete the smallest end-to-end API or CLI vertical slice.
+- [x] **T015 [Codex]** Complete the smallest end-to-end API or CLI vertical slice.
   **Done when:** one command or documented sequence demonstrates clean permit,
   mismatch denial, review deferral, revocation, and post-revocation denial.
-- [ ] **T016 [Codex]** Commit the vertical-slice milestone. **Done when:** the commit
+- [x] **T016 [Codex]** Commit the vertical-slice milestone. **Done when:** the commit
   hash is recorded in the validation manifest.
 - [ ] **T017 [Codex]** Expand and freeze the final controlled fixture set.
   **Done when:** at least 20 predeclared cases meet the distribution in `spec.md`
