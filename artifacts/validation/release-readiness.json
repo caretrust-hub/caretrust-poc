@@ -1,6 +1,6 @@
 {
   "record_type": "caretrust.release-readiness.v1",
-  "checked_at_utc": "2026-07-30T10:31:01Z",
+  "checked_at_utc": "2026-07-30T10:32:59Z",
   "code_commit_tested": "d5c4480b3cd81cfa7420a1631bb9fc654bc00e2c",
   "environment": {
     "platform": "Windows",
@@ -82,7 +82,7 @@
       "url": "https://caretrust-hub.github.io/caretrust-poc/",
       "anonymous_http_status": 200,
       "github_pages_build_status": "built",
-      "source_commit": "ec09aa1da6fbd4cfd21c2193cc5d819de59c3848"
+      "source_commit": "f69b6dc2d25455102b617e575893f69c8014d8d2"
     }
   },
   "frozen_evaluation_boundary": {
