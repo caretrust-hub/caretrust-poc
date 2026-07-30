@@ -1,0 +1,28 @@
+{
+  "record_type": "caretrust.post-evaluation-regression.v1",
+  "disposition": "fixed_without_replacing_frozen_results",
+  "frozen_evaluation_run": "20260730T085655.959974Z",
+  "frozen_evaluation_commit": "19c37d3b808434332cb0ed1d71bc92302204c48c",
+  "finding": "The frozen activation policy did not explicitly require the extracted or human-corrected credential_status value to equal active.",
+  "observed_run_impact": {
+    "metrics_changed": false,
+    "explanation": "The final unreadable-status fixture was already denied by an independent blocking-uncertainty gate."
+  },
+  "remediation": {
+    "commit": "a38e295e91f0481d76c38c6694a85f3d443a091d",
+    "workflow_gate": "credential_status must equal active",
+    "future_evaluation_proxy_updated": true,
+    "reason_code": "CREDENTIAL_STATUS_NOT_ACTIVE",
+    "regression_test": "tests/test_workflow.py::test_non_active_credential_status_is_denied_with_reason_code"
+  },
+  "verification": {
+    "test_command": ".\\.venv\\Scripts\\python -m pytest -q",
+    "tests_passed": 69,
+    "tests_failed": 0
+  },
+  "limitations": [
+    "The frozen run was not rerun or replaced.",
+    "The frozen manifest did not hash the evaluator or Bedrock adapter source.",
+    "The final-run authorization metric is a Boolean proxy, not signed AuthorizationPolicy execution."
+  ]
+}

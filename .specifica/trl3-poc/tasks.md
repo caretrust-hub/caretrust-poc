@@ -69,7 +69,7 @@ validation record.
 - [x] **T021 [Codex]** Verify TRL 3 safety assertions. **Done when:** there are zero
   draft-based permits, zero activations without approval plus match, zero
   post-revocation permits, and detected signature tampering.
-- [ ] **T022 [Codex]** Generate the readable data-output-log report and limitations
+- [x] **T022 [Codex]** Generate the readable data-output-log report and limitations
   summary from actual results. **Done when:** every narrative metric traces to a
   raw run record.
 - [x] **T023 [Codex]** Publish CareTrust schemas, reason codes, example requests,
