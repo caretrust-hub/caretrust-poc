@@ -8,12 +8,19 @@ production interface. The interactions demonstrate:
 
 - evidence-linked draft extraction;
 - visible uncertainty and human deferral;
-- separate synthetic source match/mismatch;
+- a human action followed by a separately recorded synthetic source match/mismatch;
 - deterministic application authorization; and
-- revocation followed by denial.
+- revocation followed by denial on a subsequent request.
+
+Each scenario exposes its own synthetic supporting text. Workflow stages are
+noninteractive progress indicators; only the labeled trust-gate actions change
+state.
 
 For local review:
 
 ```powershell
 python -m http.server 8000 --directory demo
 ```
+
+The login-free published copy is available at
+https://caretrust-hub.github.io/caretrust-poc/.

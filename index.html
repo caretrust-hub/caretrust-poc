@@ -46,12 +46,12 @@
 
     <nav class="steps" aria-label="CareTrust workflow">
       <ol>
-        <li><button type="button" data-step="evidence" aria-current="step"><span>1</span>Evidence</button></li>
-        <li><button type="button" data-step="draft"><span>2</span>AI draft</button></li>
-        <li><button type="button" data-step="review"><span>3</span>Human review</button></li>
-        <li><button type="button" data-step="source"><span>4</span>Source check</button></li>
-        <li><button type="button" data-step="claim"><span>5</span>Active claim</button></li>
-        <li><button type="button" data-step="decision"><span>6</span>App decision</button></li>
+        <li data-step="evidence" aria-current="step"><span>1</span>Evidence</li>
+        <li data-step="draft"><span>2</span>AI draft</li>
+        <li data-step="review"><span>3</span>Human review</li>
+        <li data-step="source"><span>4</span>Source check</li>
+        <li data-step="claim"><span>5</span>Active claim</li>
+        <li data-step="decision"><span>6</span>App decision</li>
       </ol>
     </nav>
 
@@ -93,11 +93,11 @@
           AI linked each value to synthetic source text. A human decision and source match are still required.
         </div>
         <ul class="claim-fields" aria-label="Extracted claim fields">
-          <li><span>Holder name</span><strong id="claim-name">Leilani Kealoha</strong><button type="button" class="evidence-link" data-evidence="Name: Leilani Kealoha">Evidence: clean-name</button></li>
-          <li><span>Registry ID</span><strong id="claim-id">HI-CNA-SYN-1001</strong><button type="button" class="evidence-link" data-evidence="Registry ID: HI-CNA-SYN-1001">Evidence: clean-id</button></li>
-          <li><span>Credential type</span><strong>Certified Nurse Aide</strong><button type="button" class="evidence-link" data-evidence="Credential: Certified Nurse Aide">Evidence: clean-type</button></li>
-          <li><span>Jurisdiction</span><strong>HI</strong><button type="button" class="evidence-link" data-evidence="Jurisdiction: Hawaii">Evidence: clean-jurisdiction</button></li>
-          <li><span>Valid until</span><strong id="claim-end">2028-04-15</strong><button type="button" class="evidence-link" data-evidence="Expiration date: 04/15/2028">Evidence: clean-expiration</button></li>
+          <li><span>Holder name</span><strong id="claim-name">Leilani Kealoha</strong><button type="button" class="evidence-link" data-evidence-field="name">Evidence: clean-name</button></li>
+          <li><span>Registry ID</span><strong id="claim-id">HI-CNA-SYN-1001</strong><button type="button" class="evidence-link" data-evidence-field="id">Evidence: clean-id</button></li>
+          <li><span>Credential type</span><strong>Certified Nurse Aide</strong><button type="button" class="evidence-link" data-evidence-field="credential">Evidence: clean-credential</button></li>
+          <li><span>Jurisdiction</span><strong>HI</strong><button type="button" class="evidence-link" data-evidence-field="jurisdiction">Evidence: clean-jurisdiction</button></li>
+          <li><span>Valid until</span><strong id="claim-end">2028-04-15</strong><button type="button" class="evidence-link" data-evidence-field="expiration">Evidence: clean-expiration</button></li>
         </ul>
         <div id="uncertainty" class="uncertainty" hidden>
           <strong>Review required: AMBIGUOUS_DATE</strong>
@@ -122,7 +122,8 @@
           <li id="gate-policy" data-status="pending"><span aria-hidden="true">○</span><div><strong>Application policy</strong><small>Audience + purpose + status</small></div></li>
         </ul>
         <div class="actions">
-          <button id="review-action" class="button primary" type="button">Approve &amp; check source</button>
+          <p id="source-transition" class="action-note">After the human action, this static prototype automatically runs a separately recorded synthetic source check.</p>
+          <button id="review-action" class="button primary" type="button" aria-describedby="source-transition">Approve human review</button>
           <button id="request-action" class="button primary" type="button" disabled>Request credential claim</button>
           <button id="revoke-action" class="button danger" type="button" disabled>Revoke active claim</button>
         </div>
@@ -160,6 +161,11 @@
 
   <footer>
     <p><strong>CareTrust Phase 1 design prototype.</strong> Synthetic data only. No live registry, identity proofing, PHI, legal determination, or production access.</p>
+    <nav aria-label="Prototype resources">
+      <a href="https://github.com/caretrust-hub/caretrust-poc">Source repository</a>
+      <a href="https://github.com/caretrust-hub/caretrust-poc/blob/main/artifacts/evaluation/20260730T085655.959974Z/REPORT.md">Evaluation report</a>
+      <a href="https://github.com/caretrust-hub/caretrust-poc#project-controls-and-limitations">Scope and limitations</a>
+    </nav>
   </footer>
 
   <script src="app.js"></script>

@@ -8,7 +8,11 @@ const notice = document.querySelector("#notice");
 const uncertainty = document.querySelector("#uncertainty");
 const instruction = document.querySelector("#embedded-instruction");
 const audit = document.querySelector("#audit-events");
-const stepButtons = [...document.querySelectorAll("[data-step]")];
+const evidencePopover = document.querySelector("#evidence-popover");
+const evidenceButtons = [...document.querySelectorAll(".evidence-link")];
+const stepIndicators = [...document.querySelectorAll(".steps [data-step]")];
+let claimStatus = "draft";
+let permitRecorded = false;
 
 const scenarios = {
   clean: {
@@ -71,11 +75,11 @@ const scenarios = {
 };
 
 function setStep(name) {
-  stepButtons.forEach((button) => {
-    if (button.dataset.step === name) {
-      button.setAttribute("aria-current", "step");
+  stepIndicators.forEach((indicator) => {
+    if (indicator.dataset.step === name) {
+      indicator.setAttribute("aria-current", "step");
     } else {
-      button.removeAttribute("aria-current");
+      indicator.removeAttribute("aria-current");
     }
   });
 }
@@ -105,8 +109,26 @@ function showDecision(kind, title, detail) {
   decision.querySelector("small").textContent = detail;
 }
 
+function updateEvidence(item) {
+  const evidence = {
+    name: `Name: ${item.name}`,
+    id: `Registry ID: ${item.id}`,
+    credential: "Credential: Certified Nurse Aide",
+    jurisdiction: "Jurisdiction: Hawaii",
+    expiration: `Expiration date: ${item.end}`
+  };
+  evidenceButtons.forEach((button) => {
+    const field = button.dataset.evidenceField;
+    button.dataset.evidence = evidence[field];
+    button.textContent = `Evidence: ${scenario.value}-${field}`;
+  });
+  evidencePopover.textContent = "Select an evidence link to reveal the supporting source text.";
+}
+
 function loadScenario() {
   const item = scenarios[scenario.value];
+  claimStatus = "draft";
+  permitRecorded = false;
   document.querySelector("#doc-name").textContent = item.name;
   document.querySelector("#doc-id").textContent = item.id;
   document.querySelector("#doc-start").textContent = item.start;
@@ -115,6 +137,7 @@ function loadScenario() {
   document.querySelector("#claim-name").textContent = item.name;
   document.querySelector("#claim-id").textContent = item.id;
   document.querySelector("#claim-end").textContent = item.normalizedEnd;
+  updateEvidence(item);
   uncertainty.hidden = !item.uncertainty;
   instruction.hidden = !item.injection;
   notice.textContent = item.injection
@@ -138,11 +161,12 @@ function loadScenario() {
   setGate("gate-policy", "pending", "Audience + purpose + status");
   reviewAction.disabled = false;
   reviewAction.textContent = item.uncertainty
-    ? "Defer for better evidence"
+    ? "Defer human review"
     : item.correction
-      ? "Correct date & check source"
-      : "Approve & check source";
+      ? "Correct & approve review"
+      : "Approve human review";
   requestAction.disabled = true;
+  requestAction.textContent = "Request credential claim";
   revokeAction.disabled = true;
   showDecision("pending", "Not evaluated", "Waiting for trust gates");
   setStep("draft");
@@ -156,6 +180,7 @@ reviewAction.addEventListener("click", () => {
   reviewAction.disabled = true;
   setStep("review");
   if (item.uncertainty) {
+    claimStatus = "deferred";
     setGate("gate-review", "fail", "REVIEW_DEFERRED");
     setGate("gate-source", "pending", "Not used to override uncertainty");
     showDecision("deny", "DENY", "REVIEW_DEFERRED · Better evidence required");
@@ -180,6 +205,7 @@ reviewAction.addEventListener("click", () => {
   }
   setStep("source");
   if (item.sourceResult === "mismatch") {
+    claimStatus = "blocked";
     setGate("gate-source", "fail", "SOURCE_MISMATCH");
     showDecision("deny", "DENY", "SOURCE_MISMATCH · No claim created");
     addAudit("Step 4", "Source mismatch", "Activation failed closed");
@@ -187,6 +213,7 @@ reviewAction.addEventListener("click", () => {
   }
 
   setGate("gate-source", "pass", "Synthetic source match");
+  claimStatus = "active";
   document.querySelector("#draft-state").className = "state success";
   document.querySelector("#draft-state").textContent = "Active signed claim";
   requestAction.disabled = false;
@@ -198,6 +225,21 @@ reviewAction.addEventListener("click", () => {
 });
 
 requestAction.addEventListener("click", () => {
+  if (claimStatus === "revoked") {
+    requestAction.disabled = true;
+    setGate("gate-policy", "fail", "TOKEN_REVOKED");
+    showDecision("deny", "DENY", "TOKEN_REVOKED · Revoked claim cannot be reused");
+    addAudit(
+      permitRecorded ? "Subsequent request" : "Step 6",
+      "Application request denied",
+      "TOKEN_REVOKED; audience and purpose cannot override status"
+    );
+    setStep("decision");
+    return;
+  }
+  if (claimStatus !== "active" || permitRecorded) return;
+  permitRecorded = true;
+  requestAction.disabled = true;
   setGate("gate-policy", "pass", "POLICY_REQUIREMENTS_SATISFIED");
   showDecision("permit", "PERMIT", "Active CNA claim · credentialing purpose");
   addAudit("Step 6", "Application request permitted", "Audience, purpose, status, and signature passed");
@@ -205,23 +247,29 @@ requestAction.addEventListener("click", () => {
 });
 
 revokeAction.addEventListener("click", () => {
+  if (claimStatus !== "active") return;
+  claimStatus = "revoked";
   revokeAction.disabled = true;
-  requestAction.disabled = true;
-  setGate("gate-policy", "fail", "TOKEN_REVOKED");
+  requestAction.disabled = false;
+  requestAction.textContent = "Request revoked claim";
+  setGate("gate-policy", "pending", "Claim revoked; next request not yet evaluated");
   document.querySelector("#draft-state").className = "state warning";
   document.querySelector("#draft-state").textContent = "Revoked claim";
-  showDecision("deny", "DENY", "TOKEN_REVOKED · Subsequent request blocked");
-  addAudit("After Step 6", "Claim revoked", "Next application request denied");
-  setStep("decision");
+  showDecision("pending", "Claim revoked", "Request again to demonstrate fail-closed denial");
+  addAudit(
+    permitRecorded ? "After Step 6" : "After Step 5",
+    "Claim revoked",
+    "Status changed; no application request evaluated yet"
+  );
+  setStep("claim");
 });
 
-document.querySelectorAll(".evidence-link").forEach((button) => {
+evidenceButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelector("#evidence-popover").textContent = `Supporting text — “${button.dataset.evidence}”`;
+    evidencePopover.textContent = `Supporting text — “${button.dataset.evidence}”`;
   });
 });
 
-stepButtons.forEach((button) => button.addEventListener("click", () => setStep(button.dataset.step)));
 scenario.addEventListener("change", loadScenario);
 reset.addEventListener("click", loadScenario);
 loadScenario();
