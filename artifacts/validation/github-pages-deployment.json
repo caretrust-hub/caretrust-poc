@@ -1,0 +1,30 @@
+{
+  "record_type": "caretrust.public-demo-deployment.v1",
+  "url": "https://caretrust-hub.github.io/caretrust-poc/",
+  "public": true,
+  "https_enforced": true,
+  "source": {
+    "branch": "gh-pages",
+    "path": "/",
+    "commit": "ec09aa1da6fbd4cfd21c2193cc5d819de59c3848",
+    "derived_from": "demo/"
+  },
+  "github_pages_build": {
+    "id": 1122841093,
+    "status": "built",
+    "duration_ms": 42053,
+    "created_at": "2026-07-30T09:23:23Z",
+    "updated_at": "2026-07-30T09:24:05Z",
+    "error": null
+  },
+  "anonymous_http_check": {
+    "status": 200,
+    "title_contains_caretrust": true,
+    "synthetic_data_label_present": true
+  },
+  "limitations": [
+    "The hosted page is a static design and interaction prototype.",
+    "It does not call Bedrock, a live registry, an identity-proofing service, or a production authorization service.",
+    "Deployment availability is subject to GitHub Pages."
+  ]
+}

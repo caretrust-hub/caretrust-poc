@@ -57,7 +57,8 @@ The current post-evaluation code state passes **69 tests**.
 ### Interactive browser demonstration
 
 The dependency-free [demonstration surface](demo/index.html) is keyboard
-accessible and does not call a live service:
+accessible and does not call a live service. A login-free copy is available at
+**https://caretrust-hub.github.io/caretrust-poc/**.
 
 ```powershell
 .\.venv\Scripts\python -m http.server 8000
