@@ -1,0 +1,1824 @@
+{
+  "evidence_artifact": {
+    "artifact_id": "artifact:final-01-clean-standard",
+    "content_sha256": "f400137cb2e8e895d637072c5f4c2858d11941f8dc6081b2cb474e52d6f74ceb",
+    "content_type": "image/png",
+    "document_type": "hawaii_cna_status_record",
+    "fixture_id": "ocr-synthetic-hawaii-cna-v1",
+    "ocr_text": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL\nCARETRUST HAWAII CNA DEMONSTRATION\nNAME: LEILANI TESTPERSON\nREGISTRY ID: SYN-CNA-FINAL-2001\nCREDENTIAL: CERTIFIED NURSE AIDE\nJURISDICTION: Hl\nISSUE DATE: 04/15/2024\nEXPIRATION DATE: 04/15/2028\nSTATUS: ACTIVE\nRESTRICTIONS/NOTES: NONE REPORTED\nVERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR",
+    "source_filename": "synthetic-hawaii-cna.png",
+    "spans": [
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 45,
+        "quote": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.72,
+          "x": 0.04,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:001",
+        "start_char": 0
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "SYNTHETIC",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.144,
+          "x": 0.04,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:001",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "TEST",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.064,
+          "x": 0.2,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:002",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "RECORD",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.096,
+          "x": 0.28,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:003",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "-",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.016,
+          "x": 0.392,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:004",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "NOT",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.048,
+          "x": 0.424,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:005",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "A",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.016,
+          "x": 0.488,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:006",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "REAL",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.064,
+          "x": 0.52,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:007",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CREDENTIAL",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.16,
+          "x": 0.6,
+          "y": 0.08857142857142856
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:008",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 80,
+        "quote": "CARETRUST HAWAII CNA DEMONSTRATION",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.544,
+          "x": 0.04,
+          "y": 0.15142857142857144
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:002",
+        "start_char": 46
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CARETRUST",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.144,
+          "x": 0.04,
+          "y": 0.15142857142857144
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:009",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "HAWAII",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.096,
+          "x": 0.2,
+          "y": 0.15142857142857144
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:010",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CNA",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.048,
+          "x": 0.312,
+          "y": 0.15142857142857144
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:011",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "DEMONSTRATION",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.208,
+          "x": 0.376,
+          "y": 0.15142857142857144
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:012",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 105,
+        "quote": "NAME: LEILANI TESTPERSON",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.384,
+          "x": 0.04,
+          "y": 0.21428571428571427
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:003",
+        "start_char": 81
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "NAME:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.08,
+          "x": 0.04,
+          "y": 0.21428571428571427
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:013",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "LEILANI",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.112,
+          "x": 0.136,
+          "y": 0.21428571428571427
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:014",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "TESTPERSON",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.16,
+          "x": 0.264,
+          "y": 0.21428571428571427
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:015",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 137,
+        "quote": "REGISTRY ID: SYN-CNA-FINAL-2001",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.496,
+          "x": 0.04,
+          "y": 0.27714285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:004",
+        "start_char": 106
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "REGISTRY",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.128,
+          "x": 0.04,
+          "y": 0.27714285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:016",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "ID:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.048,
+          "x": 0.184,
+          "y": 0.27714285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:017",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "SYN-CNA-FINAL-2001",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.288,
+          "x": 0.248,
+          "y": 0.27714285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:018",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 170,
+        "quote": "CREDENTIAL: CERTIFIED NURSE AIDE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.512,
+          "x": 0.04,
+          "y": 0.34
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:005",
+        "start_char": 138
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CREDENTIAL:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.176,
+          "x": 0.04,
+          "y": 0.34
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:019",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CERTIFIED",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.144,
+          "x": 0.232,
+          "y": 0.34
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:020",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "NURSE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.08,
+          "x": 0.392,
+          "y": 0.34
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:021",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "AIDE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.064,
+          "x": 0.488,
+          "y": 0.34
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:022",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 187,
+        "quote": "JURISDICTION: Hl",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.256,
+          "x": 0.04,
+          "y": 0.40285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:006",
+        "start_char": 171
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "JURISDICTION:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.208,
+          "x": 0.04,
+          "y": 0.40285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:023",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "Hl",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.032,
+          "x": 0.264,
+          "y": 0.40285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:024",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 210,
+        "quote": "ISSUE DATE: 04/15/2024",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.352,
+          "x": 0.04,
+          "y": 0.4657142857142857
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:007",
+        "start_char": 188
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "ISSUE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.08,
+          "x": 0.04,
+          "y": 0.4657142857142857
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:025",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "DATE:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.08,
+          "x": 0.136,
+          "y": 0.4657142857142857
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:026",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "04/15/2024",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.16,
+          "x": 0.232,
+          "y": 0.4657142857142857
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:027",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 238,
+        "quote": "EXPIRATION DATE: 04/15/2028",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.432,
+          "x": 0.04,
+          "y": 0.5285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:008",
+        "start_char": 211
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "EXPIRATION",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.16,
+          "x": 0.04,
+          "y": 0.5285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:028",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "DATE:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.08,
+          "x": 0.216,
+          "y": 0.5285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:029",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "04/15/2028",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.16,
+          "x": 0.312,
+          "y": 0.5285714285714286
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:030",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 253,
+        "quote": "STATUS: ACTIVE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.224,
+          "x": 0.04,
+          "y": 0.5914285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:009",
+        "start_char": 239
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "STATUS:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.112,
+          "x": 0.04,
+          "y": 0.5914285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:031",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "ACTIVE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.096,
+          "x": 0.168,
+          "y": 0.5914285714285714
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:032",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 287,
+        "quote": "RESTRICTIONS/NOTES: NONE REPORTED",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.528,
+          "x": 0.04,
+          "y": 0.6542857142857142
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:010",
+        "start_char": 254
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "RESTRICTIONS/NOTES:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.304,
+          "x": 0.04,
+          "y": 0.6542857142857142
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:033",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "NONE",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.064,
+          "x": 0.36,
+          "y": 0.6542857142857142
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:034",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "REPORTED",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.128,
+          "x": 0.44,
+          "y": 0.6542857142857142
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:035",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 341,
+        "quote": "VERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.848,
+          "x": 0.04,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:line:011",
+        "start_char": 288
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "VERIFICATION",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.192,
+          "x": 0.04,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:036",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "SOURCE:",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.112,
+          "x": 0.248,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:037",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "PROMETRIC",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.144,
+          "x": 0.376,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:038",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "CNA",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.048,
+          "x": 0.536,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:039",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "REGISTRY",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.128,
+          "x": 0.6,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:040",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": null,
+        "quote": "SIMULATOR",
+        "region": {
+          "height": 0.04,
+          "page": 1,
+          "width": 0.144,
+          "x": 0.744,
+          "y": 0.7171428571428572
+        },
+        "span_id": "artifact:final-01-clean-standard:ocr:word:041",
+        "start_char": null
+      },
+      {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "end_char": 341,
+        "quote": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL\nCARETRUST HAWAII CNA DEMONSTRATION\nNAME: LEILANI TESTPERSON\nREGISTRY ID: SYN-CNA-FINAL-2001\nCREDENTIAL: CERTIFIED NURSE AIDE\nJURISDICTION: Hl\nISSUE DATE: 04/15/2024\nEXPIRATION DATE: 04/15/2028\nSTATUS: ACTIVE\nRESTRICTIONS/NOTES: NONE REPORTED\nVERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR",
+        "region": null,
+        "span_id": "final-01-evidence",
+        "start_char": 0
+      }
+    ],
+    "synthetic": true
+  },
+  "extraction": {
+    "draft": {
+      "blocking_issues": [],
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "draft_id": "draft:final-01-clean-standard",
+      "evidence_id": "artifact:final-01-clean-standard",
+      "fields": {
+        "credential_status": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "active",
+          "value": "Active"
+        },
+        "credential_type": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "certified nurse aide",
+          "value": "Certified Nurse Aide"
+        },
+        "expiration_date": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "2028-04-15",
+          "value": "04/15/2028"
+        },
+        "holder_name": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "Leilani Testperson",
+          "value": "Leilani Testperson"
+        },
+        "issuer_or_source": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "Prometric CNA Registry simulator",
+          "value": "Prometric CNA Registry simulator"
+        },
+        "jurisdiction": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "HI",
+          "value": "HI"
+        },
+        "original_or_issue_date": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "2024-04-15",
+          "value": "04/15/2024"
+        },
+        "registry_id": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "SYN-CNA-FINAL-2001",
+          "value": "SYN-CNA-FINAL-2001"
+        },
+        "restrictions_or_notes": {
+          "confidence": 0.9,
+          "evidence_refs": [
+            "final-01-evidence"
+          ],
+          "normalized_value": "none",
+          "value": "None reported"
+        }
+      },
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "status": "draft",
+      "subject_ref": "person:synthetic-leilani-testperson",
+      "uncertainties": []
+    },
+    "metadata": {
+      "case_id": "final-01-clean-standard",
+      "completed_at": "2026-07-30T08:56:58.503305+00:00",
+      "estimated_cost_usd": 0.00049095,
+      "input_tokens": 761,
+      "latency_ms": 2535,
+      "model_id": "qwen.qwen3-32b-v1:0",
+      "output_tokens": 628,
+      "raw_response_sha256": "78e28bfdf0e2faad76dc20710a69b8f692c5083f2dd9cf259ef8124572c37ffe",
+      "region": "us-west-2",
+      "request_id": "cced7b4b-46f2-4908-8fcb-e16e6aed9da6",
+      "run_id": "20260730T085655.959974Z",
+      "started_at": "2026-07-30T08:56:55.968036+00:00",
+      "total_tokens": 1389
+    },
+    "mode": "retained-real-bedrock-response",
+    "prompt_sha256": "eb846ddba87a19fa2bd8ee47380568d10466008eaf219d147b2ea73d06df00ab",
+    "raw_response_sha256": "78e28bfdf0e2faad76dc20710a69b8f692c5083f2dd9cf259ef8124572c37ffe",
+    "schema_sha256": "3ae2b95fdf2eca88223be8c621a27d31733816a1c545bb923670331a4ce56819",
+    "user_payload_sha256": "92eb93bbf527eb9b3331cf4186a9b58d0c318ee7210248a6548acd0083b39e05"
+  },
+  "gates": {
+    "draft_only_no_activation": true,
+    "draft_schema_valid": true,
+    "evidence_references_valid": true,
+    "ocr_succeeded_before_model_extraction": true
+  },
+  "input": {
+    "content_sha256": "f400137cb2e8e895d637072c5f4c2858d11941f8dc6081b2cb474e52d6f74ceb",
+    "content_type": "image/png",
+    "source_file": "fixtures/documents/synthetic-hawaii-cna.png"
+  },
+  "limitations": [
+    "The Textract response is a retained synthetic response shape; offline mode makes no Textract API call.",
+    "The Bedrock/Qwen response was retained from a prior real-model evaluation with equivalent synthetic CNA facts, not generated from this image during the offline replay.",
+    "Offline replay proves orchestration, normalization, hashing, schema validation, and fail-closed gates; use live mode to produce same-run AWS evidence."
+  ],
+  "mode": "offline-retained-replay",
+  "ocr": {
+    "content_sha256": "f400137cb2e8e895d637072c5f4c2858d11941f8dc6081b2cb474e52d6f74ceb",
+    "content_type": "image/png",
+    "ocr_output_sha256": "51f9d0ce62c6edd8eaa0f65f2d427679f3c34d830736db4bc37dda2897cc8bb3",
+    "operation": "DetectDocumentText",
+    "provider": "amazon-textract",
+    "request_id": "retained-synthetic-no-aws-call",
+    "source_filename": "synthetic-hawaii-cna.png",
+    "spans": [
+      {
+        "block_type": "LINE",
+        "confidence": 0.998,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 45,
+          "quote": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.72,
+            "x": 0.04,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:001",
+          "start_char": 0
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "SYNTHETIC",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.144,
+            "x": 0.04,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:001",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "TEST",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.064,
+            "x": 0.2,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:002",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "RECORD",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.096,
+            "x": 0.28,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:003",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "-",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.016,
+            "x": 0.392,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:004",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "NOT",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.048,
+            "x": 0.424,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:005",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "A",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.016,
+            "x": 0.488,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:006",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "REAL",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.064,
+            "x": 0.52,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:007",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CREDENTIAL",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.16,
+            "x": 0.6,
+            "y": 0.08857142857142856
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:008",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.994,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 80,
+          "quote": "CARETRUST HAWAII CNA DEMONSTRATION",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.544,
+            "x": 0.04,
+            "y": 0.15142857142857144
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:002",
+          "start_char": 46
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CARETRUST",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.144,
+            "x": 0.04,
+            "y": 0.15142857142857144
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:009",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "HAWAII",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.096,
+            "x": 0.2,
+            "y": 0.15142857142857144
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:010",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CNA",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.048,
+            "x": 0.312,
+            "y": 0.15142857142857144
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:011",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "DEMONSTRATION",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.208,
+            "x": 0.376,
+            "y": 0.15142857142857144
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:012",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.997,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 105,
+          "quote": "NAME: LEILANI TESTPERSON",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.384,
+            "x": 0.04,
+            "y": 0.21428571428571427
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:003",
+          "start_char": 81
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.995,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "NAME:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.08,
+            "x": 0.04,
+            "y": 0.21428571428571427
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:013",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.995,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "LEILANI",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.112,
+            "x": 0.136,
+            "y": 0.21428571428571427
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:014",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.995,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "TESTPERSON",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.16,
+            "x": 0.264,
+            "y": 0.21428571428571427
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:015",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 137,
+          "quote": "REGISTRY ID: SYN-CNA-FINAL-2001",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.496,
+            "x": 0.04,
+            "y": 0.27714285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:004",
+          "start_char": 106
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.994,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "REGISTRY",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.128,
+            "x": 0.04,
+            "y": 0.27714285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:016",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.994,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "ID:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.048,
+            "x": 0.184,
+            "y": 0.27714285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:017",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.994,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "SYN-CNA-FINAL-2001",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.288,
+            "x": 0.248,
+            "y": 0.27714285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:018",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.995,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 170,
+          "quote": "CREDENTIAL: CERTIFIED NURSE AIDE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.512,
+            "x": 0.04,
+            "y": 0.34
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:005",
+          "start_char": 138
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CREDENTIAL:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.176,
+            "x": 0.04,
+            "y": 0.34
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:019",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CERTIFIED",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.144,
+            "x": 0.232,
+            "y": 0.34
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:020",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "NURSE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.08,
+            "x": 0.392,
+            "y": 0.34
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:021",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "AIDE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.064,
+            "x": 0.488,
+            "y": 0.34
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:022",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.873,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 187,
+          "quote": "JURISDICTION: Hl",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.256,
+            "x": 0.04,
+            "y": 0.40285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:006",
+          "start_char": 171
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.871,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "JURISDICTION:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.208,
+            "x": 0.04,
+            "y": 0.40285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:023",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.871,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "Hl",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.032,
+            "x": 0.264,
+            "y": 0.40285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:024",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.995,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 210,
+          "quote": "ISSUE DATE: 04/15/2024",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.352,
+            "x": 0.04,
+            "y": 0.4657142857142857
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:007",
+          "start_char": 188
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "ISSUE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.08,
+            "x": 0.04,
+            "y": 0.4657142857142857
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:025",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "DATE:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.08,
+            "x": 0.136,
+            "y": 0.4657142857142857
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:026",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.993,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "04/15/2024",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.16,
+            "x": 0.232,
+            "y": 0.4657142857142857
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:027",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.994,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 238,
+          "quote": "EXPIRATION DATE: 04/15/2028",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.432,
+            "x": 0.04,
+            "y": 0.5285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:008",
+          "start_char": 211
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "EXPIRATION",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.16,
+            "x": 0.04,
+            "y": 0.5285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:028",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "DATE:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.08,
+            "x": 0.216,
+            "y": 0.5285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:029",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "04/15/2028",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.16,
+            "x": 0.312,
+            "y": 0.5285714285714286
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:030",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.998,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 253,
+          "quote": "STATUS: ACTIVE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.224,
+            "x": 0.04,
+            "y": 0.5914285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:009",
+          "start_char": 239
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "STATUS:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.112,
+            "x": 0.04,
+            "y": 0.5914285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:031",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.996,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "ACTIVE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.096,
+            "x": 0.168,
+            "y": 0.5914285714285714
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:032",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.992,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 287,
+          "quote": "RESTRICTIONS/NOTES: NONE REPORTED",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.528,
+            "x": 0.04,
+            "y": 0.6542857142857142
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:010",
+          "start_char": 254
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.99,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "RESTRICTIONS/NOTES:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.304,
+            "x": 0.04,
+            "y": 0.6542857142857142
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:033",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.99,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "NONE",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.064,
+            "x": 0.36,
+            "y": 0.6542857142857142
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:034",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.99,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "REPORTED",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.128,
+            "x": 0.44,
+            "y": 0.6542857142857142
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:035",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "LINE",
+        "confidence": 0.989,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": 341,
+          "quote": "VERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.848,
+            "x": 0.04,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:line:011",
+          "start_char": 288
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "VERIFICATION",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.192,
+            "x": 0.04,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:036",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "SOURCE:",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.112,
+            "x": 0.248,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:037",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "PROMETRIC",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.144,
+            "x": 0.376,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:038",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "CNA",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.048,
+            "x": 0.536,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:039",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "REGISTRY",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.128,
+            "x": 0.6,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:040",
+          "start_char": null
+        }
+      },
+      {
+        "block_type": "WORD",
+        "confidence": 0.987,
+        "span": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "end_char": null,
+          "quote": "SIMULATOR",
+          "region": {
+            "height": 0.04,
+            "page": 1,
+            "width": 0.144,
+            "x": 0.744,
+            "y": 0.7171428571428572
+          },
+          "span_id": "artifact:final-01-clean-standard:ocr:word:041",
+          "start_char": null
+        }
+      }
+    ],
+    "text": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL\nCARETRUST HAWAII CNA DEMONSTRATION\nNAME: LEILANI TESTPERSON\nREGISTRY ID: SYN-CNA-FINAL-2001\nCREDENTIAL: CERTIFIED NURSE AIDE\nJURISDICTION: Hl\nISSUE DATE: 04/15/2024\nEXPIRATION DATE: 04/15/2028\nSTATUS: ACTIVE\nRESTRICTIONS/NOTES: NONE REPORTED\nVERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR"
+  },
+  "record_type": "caretrust.ocr-bedrock-vertical-slice.v1",
+  "synthetic_only": true
+}

@@ -1,0 +1,76 @@
+{
+  "caretrust_request_context": {
+    "audience": "app:synthetic-credentialing",
+    "purpose": "credentialing",
+    "request_id": "request:oid4vp:synthetic-001"
+  },
+  "client_id": "https://verifier.caretrust.example",
+  "dcql_query": {
+    "credentials": [
+      {
+        "claims": [
+          {
+            "path": [
+              "credentialSubject",
+              "claimId"
+            ],
+            "values": [
+              "claim:synthetic-hi-cna-1001"
+            ]
+          },
+          {
+            "path": [
+              "credentialSubject",
+              "credentialProfile"
+            ],
+            "values": [
+              "hawaii_cna_smoke_v1"
+            ]
+          },
+          {
+            "path": [
+              "credentialSubject",
+              "credentialType"
+            ],
+            "values": [
+              "Certified Nurse Aide"
+            ]
+          },
+          {
+            "path": [
+              "credentialSubject",
+              "jurisdiction"
+            ],
+            "values": [
+              "HI"
+            ]
+          },
+          {
+            "path": [
+              "credentialSubject",
+              "status"
+            ],
+            "values": [
+              "active"
+            ]
+          }
+        ],
+        "format": "jwt_vc_json",
+        "id": "caretrust_cna",
+        "meta": {
+          "type_values": [
+            [
+              "https://www.w3.org/2018/credentials#VerifiableCredential",
+              "https://credentials.caretrust.example/types/ProfessionalCredential"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "nonce": "nonce:synthetic-caretrust-oid4vp-001",
+  "response_mode": "direct_post",
+  "response_type": "vp_token",
+  "response_uri": "https://verifier.caretrust.example/oid4vp/response",
+  "state": "state:synthetic-caretrust-oid4vp-001"
+}

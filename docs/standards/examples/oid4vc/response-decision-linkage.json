@@ -1,0 +1,29 @@
+{
+  "caretrust_authorization_decision": {
+    "decided_at": "2026-07-30T11:00:01Z",
+    "decision": "permit",
+    "decision_id": "decision:synthetic-policy-oid4vp-001",
+    "policy_version": "caretrust.authorization.v1",
+    "reason_codes": [
+      "POLICY_REQUIREMENTS_SATISFIED"
+    ],
+    "request_id": "request:authorization:synthetic-oid4vp-001",
+    "supporting_claim_ids": [
+      "claim:synthetic-hi-cna-1001"
+    ]
+  },
+  "caretrust_authorization_request": {
+    "audience": "app:synthetic-credentialing",
+    "claim_id": "claim:synthetic-hi-cna-1001",
+    "purpose": "credentialing",
+    "request_id": "request:authorization:synthetic-oid4vp-001",
+    "requested_at": "2026-07-30T11:00:00Z",
+    "requested_claim_type": "professional_credential",
+    "subject_ref": "subject:synthetic-worker-001"
+  },
+  "dcql_credential_query_id": "caretrust_cna",
+  "illustrative_only": true,
+  "presentation_request_id": "request:oid4vp:synthetic-001",
+  "record_type": "caretrust.oid4vc-response-decision-linkage.v1",
+  "state": "state:synthetic-caretrust-oid4vp-001"
+}

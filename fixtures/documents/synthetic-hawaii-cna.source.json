@@ -1,0 +1,47 @@
+{
+  "fixture_id": "ocr-synthetic-hawaii-cna-v1",
+  "synthetic": true,
+  "purpose": "Deterministic synthetic OCR fixture; not a real credential or registry result.",
+  "width": 1500,
+  "height": 700,
+  "scale": 4,
+  "rendered_lines": [
+    "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL",
+    "CARETRUST HAWAII CNA DEMONSTRATION",
+    "NAME: LEILANI TESTPERSON",
+    "REGISTRY ID: SYN-CNA-FINAL-2001",
+    "CREDENTIAL: CERTIFIED NURSE AIDE",
+    "JURISDICTION: HI",
+    "ISSUE DATE: 04/15/2024",
+    "EXPIRATION DATE: 04/15/2028",
+    "STATUS: ACTIVE",
+    "RESTRICTIONS/NOTES: NONE REPORTED",
+    "VERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR"
+  ],
+  "retained_ocr_lines": [
+    "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL",
+    "CARETRUST HAWAII CNA DEMONSTRATION",
+    "NAME: LEILANI TESTPERSON",
+    "REGISTRY ID: SYN-CNA-FINAL-2001",
+    "CREDENTIAL: CERTIFIED NURSE AIDE",
+    "JURISDICTION: Hl",
+    "ISSUE DATE: 04/15/2024",
+    "EXPIRATION DATE: 04/15/2028",
+    "STATUS: ACTIVE",
+    "RESTRICTIONS/NOTES: NONE REPORTED",
+    "VERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR"
+  ],
+  "line_confidence": [
+    99.8,
+    99.4,
+    99.7,
+    99.6,
+    99.5,
+    87.3,
+    99.5,
+    99.4,
+    99.8,
+    99.2,
+    98.9
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "care_organizations": [
+    {
+      "entity_configuration_jwt": "eyJhbGciOiJFZERTQSIsImtpZCI6ImNhcmUtYS1leGFtcGxlLTIwMjYtMDEiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJhdXRob3JpdHlfaGludHMiOlsiaHR0cHM6Ly90cnVzdC5zeW50aGV0aWMuaW52YWxpZCJdLCJleHAiOjIxMDA3NzI4MDAsImlhdCI6MTc4NTQxMjgwMCwiaXNzIjoiaHR0cHM6Ly9jYXJlLWEuc3ludGhldGljLmludmFsaWQiLCJqd2tzIjp7ImtleXMiOlt7ImFsZyI6IkVkRFNBIiwiY3J2IjoiRWQyNTUxOSIsImtpZCI6ImNhcmUtYS1leGFtcGxlLTIwMjYtMDEiLCJrdHkiOiJPS1AiLCJ1c2UiOiJzaWciLCJ4Ijoid3Vrb3VWSkY1UTBjQjVIVmlLMkhsVl9lZHFzUC1wM2NKYThiSWJfZHowVSJ9XX0sIm1ldGFkYXRhIjp7ImNhcmV0cnVzdF9jYXJlX29yZ2FuaXphdGlvbiI6eyJkaXNwbGF5X25hbWUiOiJTeW50aGV0aWMgQ2FyZSBPcmdhbml6YXRpb24gQSIsInJvbGUiOiJjcmVkZW50aWFsLWlzc3VlciIsInN5bnRoZXRpYyI6dHJ1ZX19LCJzdWIiOiJodHRwczovL2NhcmUtYS5zeW50aGV0aWMuaW52YWxpZCJ9.wuN9VFxulCICfdXotVLvKYtiyfR7BQOESS_ws6WKVP1EXVRKUxBnPzs01MwbBZaMGje3wzf6n65DPAxhqMJdDw",
+      "entity_id": "https://care-a.synthetic.invalid",
+      "expected_chain_sha256": "e9465617fd96cf205f7d679bb2a49262545f5da04f2152d4b6bdcf44f3f2975c",
+      "jwks": {
+        "keys": [
+          {
+            "alg": "EdDSA",
+            "crv": "Ed25519",
+            "kid": "care-a-example-2026-01",
+            "kty": "OKP",
+            "use": "sig",
+            "x": "wukouVJF5Q0cB5HViK2HlV_edqsP-p3cJa8bIb_dz0U"
+          }
+        ]
+      },
+      "subordinate_statement_jwt": "eyJhbGciOiJFZERTQSIsImtpZCI6ImFuY2hvci1leGFtcGxlLTIwMjYtMDEiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjIxMDA3NzI4MDAsImlhdCI6MTc4NTQxMjgwMCwiaXNzIjoiaHR0cHM6Ly90cnVzdC5zeW50aGV0aWMuaW52YWxpZCIsImp3a3MiOnsia2V5cyI6W3siYWxnIjoiRWREU0EiLCJjcnYiOiJFZDI1NTE5Iiwia2lkIjoiY2FyZS1hLWV4YW1wbGUtMjAyNi0wMSIsImt0eSI6Ik9LUCIsInVzZSI6InNpZyIsIngiOiJ3dWtvdVZKRjVRMGNCNUhWaUsySGxWX2VkcXNQLXAzY0phOGJJYl9kejBVIn1dfSwibWV0YWRhdGEiOnsiY2FyZXRydXN0X2NhcmVfb3JnYW5pemF0aW9uIjp7ImRpc3BsYXlfbmFtZSI6IlN5bnRoZXRpYyBDYXJlIE9yZ2FuaXphdGlvbiBBIiwicm9sZSI6ImNyZWRlbnRpYWwtaXNzdWVyIiwic3ludGhldGljIjp0cnVlfX0sInN1YiI6Imh0dHBzOi8vY2FyZS1hLnN5bnRoZXRpYy5pbnZhbGlkIn0.PV_qPD5npm4vlAG6eBo5EgAP0x5v_m68HROBM8CoLYVmm6hTO04mtLOHrr8rq7pO-5Py6wGtL2gzXTpe1xL3Cw"
+    },
+    {
+      "entity_configuration_jwt": "eyJhbGciOiJFZERTQSIsImtpZCI6ImNhcmUtYi1leGFtcGxlLTIwMjYtMDEiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJhdXRob3JpdHlfaGludHMiOlsiaHR0cHM6Ly90cnVzdC5zeW50aGV0aWMuaW52YWxpZCJdLCJleHAiOjIxMDA3NzI4MDAsImlhdCI6MTc4NTQxMjgwMCwiaXNzIjoiaHR0cHM6Ly9jYXJlLWIuc3ludGhldGljLmludmFsaWQiLCJqd2tzIjp7ImtleXMiOlt7ImFsZyI6IkVkRFNBIiwiY3J2IjoiRWQyNTUxOSIsImtpZCI6ImNhcmUtYi1leGFtcGxlLTIwMjYtMDEiLCJrdHkiOiJPS1AiLCJ1c2UiOiJzaWciLCJ4IjoiOVRfZy1GYjFMaWZyNHZvUHpJZTZ0SjdKOTRRQ2FBMXhHdUhvbF9fNFhOdyJ9XX0sIm1ldGFkYXRhIjp7ImNhcmV0cnVzdF9jYXJlX29yZ2FuaXphdGlvbiI6eyJkaXNwbGF5X25hbWUiOiJTeW50aGV0aWMgQ2FyZSBPcmdhbml6YXRpb24gQiIsInJvbGUiOiJjYXJlLWFwcGxpY2F0aW9uIiwic3ludGhldGljIjp0cnVlfX0sInN1YiI6Imh0dHBzOi8vY2FyZS1iLnN5bnRoZXRpYy5pbnZhbGlkIn0.LAL20XdEJRCnCd115JZgmM9y72nrIBRjtypW2kSGxKYsdpRLj-zp_UpaT2-UL0AxTNMY3MxmNCNWIR-m2HgdBw",
+      "entity_id": "https://care-b.synthetic.invalid",
+      "expected_chain_sha256": "1c677feaed5cfe745c567a458d2c120dc0965665ea6d77ffe166526954f542d1",
+      "jwks": {
+        "keys": [
+          {
+            "alg": "EdDSA",
+            "crv": "Ed25519",
+            "kid": "care-b-example-2026-01",
+            "kty": "OKP",
+            "use": "sig",
+            "x": "9T_g-Fb1Lifr4voPzIe6tJ7J94QCaA1xGuHol__4XNw"
+          }
+        ]
+      },
+      "subordinate_statement_jwt": "eyJhbGciOiJFZERTQSIsImtpZCI6ImFuY2hvci1leGFtcGxlLTIwMjYtMDEiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjIxMDA3NzI4MDAsImlhdCI6MTc4NTQxMjgwMCwiaXNzIjoiaHR0cHM6Ly90cnVzdC5zeW50aGV0aWMuaW52YWxpZCIsImp3a3MiOnsia2V5cyI6W3siYWxnIjoiRWREU0EiLCJjcnYiOiJFZDI1NTE5Iiwia2lkIjoiY2FyZS1iLWV4YW1wbGUtMjAyNi0wMSIsImt0eSI6Ik9LUCIsInVzZSI6InNpZyIsIngiOiI5VF9nLUZiMUxpZnI0dm9QekllNnRKN0o5NFFDYUExeEd1SG9sX180WE53In1dfSwibWV0YWRhdGEiOnsiY2FyZXRydXN0X2NhcmVfb3JnYW5pemF0aW9uIjp7ImRpc3BsYXlfbmFtZSI6IlN5bnRoZXRpYyBDYXJlIE9yZ2FuaXphdGlvbiBCIiwicm9sZSI6ImNhcmUtYXBwbGljYXRpb24iLCJzeW50aGV0aWMiOnRydWV9fSwic3ViIjoiaHR0cHM6Ly9jYXJlLWIuc3ludGhldGljLmludmFsaWQifQ.BK7gfoKHccZFOfPswl1nX_7asCVjVUs7ihSufwitpHwawzXEc8oKfDPHqhknM_HjH83K3Z0RaFebMu8e-d7HBA"
+    }
+  ],
+  "description": "Offline one-hop synthetic trust example; not OpenID Federation conformance.",
+  "network_calls": false,
+  "private_key_material_in_artifact": false,
+  "profile": "caretrust.synthetic-federation.v1",
+  "synthetic_only": true,
+  "trust_anchor": {
+    "entity_configuration_jwt": "eyJhbGciOiJFZERTQSIsImtpZCI6ImFuY2hvci1leGFtcGxlLTIwMjYtMDEiLCJ0eXAiOiJlbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjIxMDA3NzI4MDAsImlhdCI6MTc4NTQxMjgwMCwiaXNzIjoiaHR0cHM6Ly90cnVzdC5zeW50aGV0aWMuaW52YWxpZCIsImp3a3MiOnsia2V5cyI6W3siYWxnIjoiRWREU0EiLCJjcnYiOiJFZDI1NTE5Iiwia2lkIjoiYW5jaG9yLWV4YW1wbGUtMjAyNi0wMSIsImt0eSI6Ik9LUCIsInVzZSI6InNpZyIsIngiOiI3M2VHSEFJaENRbUZwdEZKbE1Kc2lxdThWUDlqU2szYW5xWThTSGxHYUlrIn1dfSwibWV0YWRhdGEiOnsiY2FyZXRydXN0X2NhcmVfb3JnYW5pemF0aW9uIjp7ImRpc3BsYXlfbmFtZSI6IlN5bnRoZXRpYyBDYXJlVHJ1c3QgVHJ1c3QgQW5jaG9yIiwicm9sZSI6ImxvY2FsLXRydXN0LWFuY2hvciIsInN5bnRoZXRpYyI6dHJ1ZX19LCJzdWIiOiJodHRwczovL3RydXN0LnN5bnRoZXRpYy5pbnZhbGlkIn0.LFE0haQpxQEeGlrcYGF5YQxQ3BvtU8CNVz9boU3taAp8Fom0Dy3W-I71mWZGzhS4r_6D7sdE6veRhAawMZxsCQ",
+    "entity_id": "https://trust.synthetic.invalid",
+    "jwks": {
+      "keys": [
+        {
+          "alg": "EdDSA",
+          "crv": "Ed25519",
+          "kid": "anchor-example-2026-01",
+          "kty": "OKP",
+          "use": "sig",
+          "x": "73eGHAIhCQmFptFJlMJsiqu8VP9jSk3anqY8SHlGaIk"
+        }
+      ]
+    }
+  }
+}
