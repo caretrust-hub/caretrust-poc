@@ -16,6 +16,7 @@ def test_demo_has_accessible_structure_and_status_text() -> None:
         "<nav",
         'aria-label="CareTrust workflow"',
         '<label id="scenario-label" for="scenario">',
+        '<option value="corrected">Human-corrected expiration date</option>',
         'role="status"',
         'aria-live="polite"',
         "Draft · not verified",

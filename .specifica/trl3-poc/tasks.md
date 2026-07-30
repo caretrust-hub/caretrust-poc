@@ -75,11 +75,11 @@ validation record.
 - [x] **T023 [Codex]** Publish CareTrust schemas, reason codes, example requests,
   example decisions, and standards-status table. **Done when:** each artifact is
   labeled implemented, tested artifact, mapped, or planned.
-- [ ] **T024 [Codex]** Add a minimal accessible demonstration surface and capture
+- [x] **T024 [Codex]** Add a minimal accessible demonstration surface and capture
   judge-readable screenshots. **Done when:** uncertainty, human correction,
   activation status, authorization reason, and revocation are understandable
   without color alone.
-- [ ] **T025 [Codex]** Replace the placeholder README with setup, architecture,
+- [x] **T025 [Codex]** Replace the placeholder README with setup, architecture,
   safety boundary, evaluation command, measured results, limitations, license,
   and submission-demo links. **Done when:** a reviewer can reproduce the tested
   path from a clean clone.

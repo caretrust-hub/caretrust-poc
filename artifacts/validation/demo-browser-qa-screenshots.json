@@ -1,0 +1,60 @@
+{
+  "record_type": "caretrust.demo-browser-evidence.v1",
+  "captured_at_utc": "2026-07-30T09:15:00Z",
+  "target": "http://127.0.0.1:8000/demo/",
+  "synthetic_only": true,
+  "browser": "Chrome",
+  "observations": {
+    "page_loaded": true,
+    "page_title": "CareTrust — Interoperable Care Trust Hub",
+    "page_script_errors": 0,
+    "extension_warnings_excluded": true,
+    "clean_workflow": "draft -> human approval -> synthetic source match -> active claim -> permit -> revocation -> deny",
+    "ambiguous_workflow": "AMBIGUOUS_DATE visibly requires review and cannot request a claim",
+    "correction_workflow": "human correction visibly changes 2828-04-15 to 2028-04-15 while stating that the original AI draft is preserved",
+    "non_color_cues": "status names, reason codes, gate labels, and timeline text accompany visual color"
+  },
+  "screenshots": [
+    {
+      "file": "screenshots/demo-initial-draft.png",
+      "sha256": "a7ae3cb829aaf940ee8c57b286fb37cd99d6ceea991bbf28306b5244f8ca7a7a",
+      "width": 1999,
+      "height": 2064
+    },
+    {
+      "file": "screenshots/demo-human-correction.png",
+      "sha256": "e81dea3241a5626cec39f7127c66f73e0f2dfe3253ec78aef05f44c500be5a90",
+      "width": 1706,
+      "height": 780
+    },
+    {
+      "file": "screenshots/demo-ambiguous-review.png",
+      "sha256": "3a7ec868635a6b6b142ba803ea68b8225f9342586984bd54b881804c8c04565b",
+      "width": 1999,
+      "height": 2064
+    },
+    {
+      "file": "screenshots/demo-active-claim.png",
+      "sha256": "c8271bea680f6ec065818067322b06095fdf534c7719a06d60f5db4c0f67d8b3",
+      "width": 1999,
+      "height": 2064
+    },
+    {
+      "file": "screenshots/demo-policy-permit.png",
+      "sha256": "fb684087347b72404f9e3031f325264419d17079157828f20b12d0bea7109aa6",
+      "width": 1999,
+      "height": 2064
+    },
+    {
+      "file": "screenshots/demo-revoked-deny.png",
+      "sha256": "f15cdce6b65bda8df8e1e35f87ad4f3e072e9470bdf812350ab69df8175996c6",
+      "width": 1999,
+      "height": 2064
+    }
+  ],
+  "limitations": [
+    "This is a static interaction prototype, not a deployed production service.",
+    "Browser QA does not establish WCAG conformance or usability with caregivers.",
+    "The browser surface simulates the deterministic outcomes tested in Python; it does not call the Bedrock model or live registries."
+  ]
+}
