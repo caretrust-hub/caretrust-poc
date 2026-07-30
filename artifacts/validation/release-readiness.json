@@ -1,7 +1,7 @@
 {
   "record_type": "caretrust.release-readiness.v1",
-  "checked_at_utc": "2026-07-30T09:45:00Z",
-  "code_commit_tested": "b242d53",
+  "checked_at_utc": "2026-07-30T10:31:01Z",
+  "code_commit_tested": "d5c4480b3cd81cfa7420a1631bb9fc654bc00e2c",
   "environment": {
     "platform": "Windows",
     "python": "3.13",
@@ -10,12 +10,20 @@
   "checks": {
     "pytest": {
       "command": ".\\.venv\\Scripts\\python -m pytest -q",
-      "passed": 71,
+      "passed": 77,
       "failed": 0
     },
     "dependency_consistency": {
       "command": ".\\.venv\\Scripts\\python -m pip check",
       "result": "No broken requirements found."
+    },
+    "clean_clone_reproduction": {
+      "source_commit": "d5c4480b3cd81cfa7420a1631bb9fc654bc00e2c",
+      "python": "3.13",
+      "install": "requirements.lock then editable project with --no-deps",
+      "pytest_passed": 77,
+      "pytest_failed": 0,
+      "pip_check": "No broken requirements found."
     },
     "schema_regeneration": {
       "command": ".\\.venv\\Scripts\\python scripts\\export_schema.py",
@@ -27,7 +35,7 @@
       "sha256": "dd68c15c29fd765736606489f4c294af21ff4a56631056a1e35668cc13060840"
     },
     "tracked_json_validation": {
-      "files_checked": 81,
+      "files_checked": 95,
       "invalid_files": 0
     },
     "git_object_integrity": {
@@ -61,7 +69,7 @@
     },
     "browser_evidence_hashes": {
       "manifest": "artifacts/validation/demo-browser-qa-screenshots.json",
-      "files_checked": 6,
+      "files_checked": 7,
       "mismatches": 0
     },
     "unknown_protocol_safety": {
@@ -87,6 +95,7 @@
   "limitations": [
     "This check is not a penetration test, formal conformance test, or production security assessment.",
     "The dependency check verifies installed-package consistency; it is not a vulnerability database audit.",
+    "The lock file pins packages and versions but does not include cross-platform wheel hashes.",
     "Pattern scanning cannot prove that a repository contains no secret or personal data.",
     "The final Bedrock run was not repeated after the disclosed post-evaluation status-gate fix."
   ]
