@@ -1,0 +1,21 @@
+{
+  "corrections": [
+    {
+      "corrected_value": "2028-04-15",
+      "evidence_refs": [
+        "span:synthetic-expiration-date"
+      ],
+      "field_path": "fields.expiration_date",
+      "previous_value": "2828-04-15",
+      "reason": "Authorized reviewer corrected the synthetic OCR year."
+    }
+  ],
+  "decision": "corrected",
+  "draft_id": "draft:synthetic-hi-cna-1001",
+  "original_draft_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+  "reason": "One synthetic date required correction.",
+  "review_id": "review:synthetic-hi-cna-1001",
+  "reviewed_at": "2026-07-29T20:00:00Z",
+  "reviewer_ref": "reviewer:synthetic-authorized-001",
+  "reviewer_role": "authorized_reviewer"
+}

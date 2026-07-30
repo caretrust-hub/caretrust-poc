@@ -1,0 +1,76 @@
+{
+  "audit": {
+    "authorization_events": 2,
+    "event_count": 14,
+    "event_types": [
+      "evidence_received",
+      "extraction_completed",
+      "review_recorded",
+      "registry_checked",
+      "activation_decided",
+      "claim_issued",
+      "review_recorded",
+      "registry_checked",
+      "activation_decided",
+      "review_recorded",
+      "activation_decided",
+      "authorization_decided",
+      "claim_revoked",
+      "authorization_decided"
+    ],
+    "revocation_events": 1
+  },
+  "implementation_sha256": {
+    "scripts/demo_vertical_slice.py": "5f850ddc89e7257e1afa4955a21ef5697d77f8d465c42613efb526c1fba18519",
+    "src/caretrust/authorization.py": "2f31f7c998e0c0b61a2a4b58dd8023e23e0753e5bb4a72e08236c784e5e1464f",
+    "src/caretrust/models.py": "252453bfab520ff32ca65249c075139d359289ae4a9645269617139bb1a5f09d",
+    "src/caretrust/security.py": "23e73a9fc4ed2dc032f6f8a320a1d6c0a42e9f3683f5c96f2e5b5a3343d8eae9",
+    "src/caretrust/workflow.py": "f9593d08eaaec21c17d2c0a7da3a160e6653774a317cc2e674bd98849380c231"
+  },
+  "limitations": [
+    "The Bedrock draft is replayed from a retained real-model response; this command does not incur a new model call.",
+    "Registry, reviewer identity, keys, and revocation state are synthetic local controls, not production services.",
+    "The signed claim is a CareTrust prototype JWT profile, not a W3C Verifiable Credential or protocol-conformance claim."
+  ],
+  "record_type": "caretrust.connected-vertical-slice.v2",
+  "results": {
+    "post_revocation": {
+      "decision": "deny",
+      "reason_codes": [
+        "TOKEN_REVOKED"
+      ]
+    },
+    "review_deferred": {
+      "permitted": false,
+      "reason_codes": [
+        "REVIEW_DEFERRED",
+        "CREDENTIAL_TYPE_UNSUPPORTED"
+      ]
+    },
+    "review_source_policy": {
+      "decision": "permit",
+      "reason_codes": [
+        "POLICY_REQUIREMENTS_SATISFIED"
+      ]
+    },
+    "source_mismatch": {
+      "permitted": false,
+      "reason_codes": [
+        "SOURCE_MISMATCH"
+      ]
+    }
+  },
+  "retained_bedrock_evidence": {
+    "case_id": "final-01-clean-standard",
+    "raw_response_sha256": "78e28bfdf0e2faad76dc20710a69b8f692c5083f2dd9cf259ef8124572c37ffe",
+    "run_id": "20260730T085655.959974Z"
+  },
+  "signed_claim": {
+    "claim_id": "claim:synthetic-hi-cna-1001",
+    "complete_active_claim_bound": true,
+    "evidence_ref_count": 1,
+    "jurisdiction": "HI",
+    "signature_profile": "EdDSA compact JWS/JWT"
+  },
+  "synthetic_only": true
+}

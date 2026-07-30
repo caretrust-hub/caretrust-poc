@@ -1,0 +1,195 @@
+{
+  "$defs": {
+    "EvidenceSpan": {
+      "additionalProperties": false,
+      "description": "A synthetic source excerpt that supports one or more extracted values.",
+      "properties": {
+        "artifact_id": {
+          "title": "Artifact Id",
+          "type": "string"
+        },
+        "end_char": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Char"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceRegion"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "span_id": {
+          "title": "Span Id",
+          "type": "string"
+        },
+        "start_char": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Char"
+        }
+      },
+      "required": [
+        "span_id",
+        "artifact_id",
+        "quote"
+      ],
+      "title": "EvidenceSpan",
+      "type": "object"
+    },
+    "SourceRegion": {
+      "additionalProperties": false,
+      "description": "Optional document-space coordinates for an evidence span.",
+      "properties": {
+        "height": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "width": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width"
+        },
+        "x": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "X"
+        },
+        "y": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Y"
+        }
+      },
+      "title": "SourceRegion",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Synthetic evidence accepted by the intake boundary.",
+  "properties": {
+    "artifact_id": {
+      "title": "Artifact Id",
+      "type": "string"
+    },
+    "content_sha256": {
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "content_type": {
+      "enum": [
+        "text/plain",
+        "application/pdf",
+        "image/png"
+      ],
+      "title": "Content Type",
+      "type": "string"
+    },
+    "document_type": {
+      "const": "hawaii_cna_status_record",
+      "title": "Document Type",
+      "type": "string"
+    },
+    "fixture_id": {
+      "title": "Fixture Id",
+      "type": "string"
+    },
+    "ocr_text": {
+      "title": "Ocr Text",
+      "type": "string"
+    },
+    "source_filename": {
+      "title": "Source Filename",
+      "type": "string"
+    },
+    "spans": {
+      "items": {
+        "$ref": "#/$defs/EvidenceSpan"
+      },
+      "title": "Spans",
+      "type": "array"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "fixture_id",
+    "synthetic",
+    "document_type",
+    "content_type",
+    "source_filename",
+    "content_sha256",
+    "ocr_text",
+    "spans"
+  ],
+  "title": "EvidenceArtifact",
+  "type": "object"
+}

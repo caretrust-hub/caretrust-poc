@@ -48,11 +48,14 @@ git clone https://github.com/caretrust-hub/caretrust-poc.git
 cd caretrust-poc
 py -3.13 -m venv .venv
 .\.venv\Scripts\python -m pip install --upgrade pip==26.2
-.\.venv\Scripts\python -m pip install -e ".[aws,dev]"
+.\.venv\Scripts\python -m pip install -r requirements.lock
+.\.venv\Scripts\python -m pip install -e . --no-deps
 .\.venv\Scripts\python -m pytest -q
 ```
 
-The current post-evaluation code state passes **69 tests**.
+Release `trl3-poc-v0.1.3` passes 77 tests, including post-audit contract,
+complete signed-claim, reviewer-authorization, audit, connected-flow, and
+browser-demo corrections.
 
 ### Interactive browser demonstration
 
@@ -77,8 +80,13 @@ links to judge-readable screenshots of each key state.
 .\.venv\Scripts\python scripts\demo_vertical_slice.py
 ```
 
-This exercises review, registry simulation, activation, signing, authorization,
-and revocation. The recorded validation artifact is
+This replays the retained clean Bedrock result through evidence intake,
+schema validation, authorized human correction, registry simulation,
+activation, complete-claim signing, authorization, revocation, and the
+subsequent denial. It does not make a new model call. The current
+machine-readable record is
+[connected-vertical-slice.json](artifacts/validation/connected-vertical-slice.json);
+the earlier milestone record remains
 [vertical-slice.json](artifacts/validation/vertical-slice.json).
 
 ## Controlled Bedrock evaluation
@@ -143,6 +151,7 @@ incur model charges.
 
 - [Standards implementation status](docs/standards/standards-status.md)
 - [Claim lifecycle and reason codes](docs/standards/lifecycle-and-reason-codes.md)
+- [OpenAPI 3.1 contract-only Phase 2 surface](docs/standards/caretrust-openapi-3.1.json)
 - [W3C Verifiable Credentials 2.0 mapping](docs/standards/w3c-vc-2.0-mapping.md)
 - [FHIR R4 mapping](docs/standards/fhir-r4-practitioner-qualification-mapping.md)
 - [JSON Schemas](schemas/)

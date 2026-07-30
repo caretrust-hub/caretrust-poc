@@ -28,72 +28,72 @@ revoked, and then denied on the next authorization request.
 
 ## Functional requirements
 
-- [ ] **REQ-001 - Synthetic intake:** Accept a synthetic Hawaii CNA document or
+- [x] **REQ-001 - Synthetic intake:** Accept a synthetic Hawaii CNA document or
   frozen OCR text plus document metadata.
-- [ ] **REQ-002 - Provider-neutral inference:** Invoke the selected Bedrock model
+- [x] **REQ-002 - Provider-neutral inference:** Invoke the selected Bedrock model
   through a replaceable `ModelAdapter` contract.
-- [ ] **REQ-003 - Structured draft:** Require model output to validate against the
+- [x] **REQ-003 - Structured draft:** Require model output to validate against the
   published draft-claim JSON Schema.
-- [ ] **REQ-004 - Evidence linkage:** Associate each material extracted field with
+- [x] **REQ-004 - Evidence linkage:** Associate each material extracted field with
   source text or a source-region reference.
-- [ ] **REQ-005 - Uncertainty:** Represent confidence, missing fields,
+- [x] **REQ-005 - Uncertainty:** Represent confidence, missing fields,
   contradictions, unsupported issuers, ambiguous dates, and unreadable evidence
   explicitly.
-- [ ] **REQ-006 - No model activation:** Reject or ignore any model attempt to set
+- [x] **REQ-006 - No model activation:** Reject or ignore any model attempt to set
   verified, active, registry-matched, or authorized state.
-- [ ] **REQ-007 - Human review:** Allow an authorized reviewer to correct, approve,
+- [x] **REQ-007 - Human review:** Allow an authorized reviewer to correct, approve,
   reject, or defer a draft while preserving the original output and changes.
-- [ ] **REQ-008 - Source verification:** Simulate source responses of `match`,
+- [x] **REQ-008 - Source verification:** Simulate source responses of `match`,
   `mismatch`, `not_found`, and `unavailable` without accessing the live Hawaii
   registry.
-- [ ] **REQ-009 - Safe activation:** Activate only a schema-valid, human-approved,
+- [x] **REQ-009 - Safe activation:** Activate only a schema-valid, human-approved,
   unexpired draft with an authoritative simulated match.
-- [ ] **REQ-010 - Signed claim:** Create a tamper-evident, signed CareTrust claim
+- [x] **REQ-010 - Signed claim:** Create a tamper-evident, signed CareTrust claim
   with issuer, subject, credential type, jurisdiction, validity, status, and
   evidence references.
-- [ ] **REQ-011 - Deterministic authorization:** Evaluate active status, requested
+- [x] **REQ-011 - Deterministic authorization:** Evaluate active status, requested
   claim, audience, purpose, time bounds, and revocation without an LLM decision.
-- [ ] **REQ-012 - Revocation:** Change claim status and deny subsequent requests
+- [x] **REQ-012 - Revocation:** Change claim status and deny subsequent requests
   with a stable reason code.
-- [ ] **REQ-013 - Auditability:** Record model configuration, prompt/schema
+- [x] **REQ-013 - Auditability:** Record model configuration, prompt/schema
   versions, evidence, review action, source result, activation, authorization, and
   revocation in structured logs.
-- [ ] **REQ-014 - Evaluation:** Run a frozen consecutive evaluation set and retain
+- [x] **REQ-014 - Evaluation:** Run a frozen consecutive evaluation set and retain
   every result, including failures.
-- [ ] **REQ-015 - Interoperability artifacts:** Publish the CareTrust JSON schemas,
+- [x] **REQ-015 - Interoperability artifacts:** Publish the CareTrust JSON schemas,
   API contracts, reason codes, claim-status semantics, and a documented mapping to
   relevant healthcare and credential standards.
-- [ ] **REQ-016 - Minimal demonstration:** Provide a reproducible API, CLI, or
+- [x] **REQ-016 - Minimal demonstration:** Provide a reproducible API, CLI, or
   minimal accessible interface that exposes the end-to-end workflow.
 
 ## Safety requirements
 
-- [ ] **SAFE-001:** A draft can never satisfy authorization policy.
-- [ ] **SAFE-002:** Human approval without a source match cannot activate a claim.
-- [ ] **SAFE-003:** A source match without human approval cannot activate a claim.
-- [ ] **SAFE-004:** Expired, rejected, mismatched, unavailable, revoked, or
+- [x] **SAFE-001:** A draft can never satisfy authorization policy.
+- [x] **SAFE-002:** Human approval without a source match cannot activate a claim.
+- [x] **SAFE-003:** A source match without human approval cannot activate a claim.
+- [x] **SAFE-004:** Expired, rejected, mismatched, unavailable, revoked, or
   signature-invalid claims cannot authorize access.
-- [ ] **SAFE-005:** Model output cannot overwrite source-verification or reviewer
+- [x] **SAFE-005:** Model output cannot overwrite source-verification or reviewer
   records.
-- [ ] **SAFE-006:** Prompt injection or text embedded in evidence cannot change the
+- [x] **SAFE-006:** Prompt injection or text embedded in evidence cannot change the
   system contract or produce active state.
-- [ ] **SAFE-007:** Logs and fixtures contain no real credentials, PHI, secrets, or
+- [x] **SAFE-007:** Logs and fixtures contain no real credentials, PHI, secrets, or
   production identifiers.
 
 ## Non-functional requirements
 
-- [ ] **NFR-001 - Reproducibility:** Pin runtime and dependency versions and record
+- [x] **NFR-001 - Reproducibility:** Pin runtime and dependency versions and record
   model ID, region, inference settings, prompt hash, schema hash, fixture hash,
   token usage, latency, and estimated cost.
-- [ ] **NFR-002 - Inspectability:** Keep schemas, policy, reason codes, fixtures,
+- [x] **NFR-002 - Inspectability:** Keep schemas, policy, reason codes, fixtures,
   evaluation logic, and model-adapter interface public and readable.
-- [ ] **NFR-003 - Portability:** No downstream component may depend on
+- [x] **NFR-003 - Portability:** No downstream component may depend on
   provider-specific model output outside the adapter boundary.
-- [ ] **NFR-004 - Accessibility:** Critical status, uncertainty, corrections, and
+- [x] **NFR-004 - Accessibility:** Critical status, uncertainty, corrections, and
   denial reasons must be available as text and usable without color alone.
-- [ ] **NFR-005 - Failure handling:** Provider errors, malformed output, schema
+- [x] **NFR-005 - Failure handling:** Provider errors, malformed output, schema
   failures, and unavailable verification must fail closed and remain visible.
-- [ ] **NFR-006 - Cost observability:** Report actual Bedrock use and estimated cost
+- [x] **NFR-006 - Cost observability:** Report actual Bedrock use and estimated cost
   for the smoke and final evaluation runs. Stop before estimated cumulative
   Phase 1 inference spend exceeds $10 unless the team leader explicitly approves a
   higher ceiling.
@@ -103,19 +103,39 @@ revoked, and then denied on the next authorization request.
 The prototype is acceptable for a TRL 3 claim only when all of the following are
 true:
 
-- [ ] A real Bedrock inference produces a saved, schema-validated draft from
+- [x] A real Bedrock inference produces a saved, schema-validated draft from
   synthetic evidence.
-- [ ] One clean case completes intake through signed claim and permitted request.
-- [ ] At least one ambiguous or incomplete case is routed to human review.
-- [ ] At least one registry mismatch is blocked.
-- [ ] Automated tests prove zero permits from drafts.
-- [ ] Automated tests prove zero permits after revocation.
-- [ ] Signature tampering is detected.
-- [ ] The final run uses one frozen model, prompt, schema, policy, and fixture set.
-- [ ] The final run contains a target of 40 cases and no fewer than 20 predeclared
+- [x] One clean case completes intake through signed claim and permitted request.
+- [x] At least one ambiguous or incomplete case is routed to human review.
+- [x] At least one registry mismatch is blocked.
+- [x] Automated tests prove zero permits from drafts.
+- [x] Automated tests prove zero permits after revocation.
+- [x] Signature tampering is detected.
+- [x] The final run uses one frozen model, prompt, schema, policy, and fixture set.
+- [x] The final run contains a target of 40 cases and no fewer than 20 predeclared
   controlled cases.
-- [ ] Raw JSONL logs and calculated summary metrics are retained.
-- [ ] Results distinguish observations from targets and disclose limitations.
+- [x] Raw JSONL logs and calculated summary metrics are retained.
+- [x] Results distinguish observations from targets and disclose limitations.
+
+## Completion evidence
+
+Checked items above are supported by executable or retained evidence, not by
+design intent alone:
+
+| Requirement group | Primary evidence |
+|---|---|
+| Intake, draft schema, evidence links, uncertainty, and forbidden state | `src/caretrust/models.py`, `src/caretrust/workflow.py`, `tests/test_models.py`, `tests/test_workflow.py` |
+| Provider-neutral inference and failure retention | `src/caretrust/adapters/bedrock.py`, `src/caretrust/evaluation.py`, `tests/test_bedrock_adapter.py`, `tests/test_evaluation.py` |
+| Human review, source simulation, and activation | `src/caretrust/workflow.py`, `tests/test_workflow.py`, `artifacts/validation/vertical-slice.json` |
+| Signing, deterministic authorization, tamper detection, and revocation | `src/caretrust/security.py`, `src/caretrust/authorization.py`, `tests/test_security_authorization.py` |
+| Frozen model evaluation, raw logs, metrics, cost, and limitations | `artifacts/evaluation/20260730T085655.959974Z/`, `artifacts/validation/release-readiness.json` |
+| Interoperability contracts and precise standards boundary | `schemas/`, `docs/standards/`, `tests/test_interoperability_artifacts.py` |
+| Accessible text-first demonstration and browser record | `demo/`, `tests/test_demo.py`, `artifacts/validation/demo-browser-qa-screenshots.json` |
+| Synthetic-only data and public-repository checks | `tests/test_final_fixtures.py`, `tests/test_interoperability_artifacts.py`, `artifacts/validation/release-readiness.json` |
+
+The checked accessibility item means the critical prototype states are
+keyboard-operable and conveyed in text without color alone. It is not a claim of
+formal WCAG conformance or usability validation with caregivers.
 
 ## Evaluation scenarios
 

@@ -136,8 +136,12 @@ class DraftField(StrictModel):
 
     @model_validator(mode="after")
     def require_evidence_for_values(self) -> DraftField:
-        if self.value is not None and not self.evidence_refs:
-            raise ValueError("a populated draft field must cite source evidence")
+        if (
+            self.value is not None or self.normalized_value is not None
+        ) and not self.evidence_refs:
+            raise ValueError(
+                "a populated or normalized draft field must cite source evidence"
+            )
         return self
 
 
@@ -272,6 +276,50 @@ class RegistryResult(StrictModel):
     _response_hash = field_validator("response_sha256")(_validate_sha256)
 
 
+class RevocationTargetType(StrEnum):
+    CLAIM = "claim"
+    TOKEN = "token"
+
+
+class RevocationRecord(StrictModel):
+    """Portable record shape for a local synthetic revocation decision.
+
+    Phase 1 exports and validates this contract but does not persist it through a
+    durable or federated status service.
+    """
+
+    schema_version: Literal["caretrust.revocation-record.v1"]
+    revocation_id: str
+    target_type: RevocationTargetType
+    target_id: str
+    claim_id: str
+    reason_code: Literal["CLAIM_REVOKED", "TOKEN_REVOKED"]
+    reason: str
+    actor_ref: str
+    revoked_at: AwareDatetime
+    synthetic: Literal[True]
+
+    _revocation_id_nonblank = field_validator("revocation_id")(_require_nonblank)
+    _target_id_nonblank = field_validator("target_id")(_require_nonblank)
+    _claim_id_nonblank = field_validator("claim_id")(_require_nonblank)
+    _reason_nonblank = field_validator("reason")(_require_nonblank)
+    _actor_ref_nonblank = field_validator("actor_ref")(_require_nonblank)
+
+    @model_validator(mode="after")
+    def validate_target_reason(self) -> RevocationRecord:
+        expected = {
+            RevocationTargetType.CLAIM: "CLAIM_REVOKED",
+            RevocationTargetType.TOKEN: "TOKEN_REVOKED",
+        }[self.target_type]
+        if self.reason_code != expected:
+            raise ValueError(
+                f"{self.target_type.value} revocation requires reason_code {expected}"
+            )
+        if self.target_type is RevocationTargetType.CLAIM and self.target_id != self.claim_id:
+            raise ValueError("claim revocation target_id must equal claim_id")
+        return self
+
+
 class ClaimStatus(StrEnum):
     ACTIVE = "active"
     REVOKED = "revoked"
@@ -325,6 +373,16 @@ class AuthorizationDecision(StrictModel):
     supporting_claim_ids: tuple[str, ...]
     policy_version: str
     decided_at: AwareDatetime
+
+    @model_validator(mode="after")
+    def validate_decision_evidence(self) -> AuthorizationDecision:
+        if not self.reason_codes:
+            raise ValueError("authorization decisions require reason codes")
+        if self.decision is DecisionValue.PERMIT and not self.supporting_claim_ids:
+            raise ValueError("permit decisions require a supporting claim")
+        if self.decision is DecisionValue.DENY and self.supporting_claim_ids:
+            raise ValueError("deny decisions cannot carry supporting claims")
+        return self
 
 
 class AuditEventType(StrEnum):

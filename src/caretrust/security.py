@@ -12,7 +12,7 @@ import json
 from dataclasses import dataclass
 from datetime import UTC, date, datetime, time, timedelta
 from enum import StrEnum
-from typing import Any, Mapping
+from typing import Any, Mapping, Protocol
 from uuid import uuid4
 
 from cryptography.exceptions import InvalidSignature
@@ -21,8 +21,14 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (
     Ed25519PrivateKey,
     Ed25519PublicKey,
 )
+from pydantic import ValidationError
 
-from caretrust.models import ActiveCredentialClaim, ClaimStatus
+from caretrust.models import (
+    ActiveCredentialClaim,
+    AuditEvent,
+    AuditEventType,
+    ClaimStatus,
+)
 
 
 class TokenErrorCode(StrEnum):
@@ -142,6 +148,20 @@ def _claim_expiry(value: str) -> datetime:
     return datetime.combine(parsed_date + timedelta(days=1), time.min, UTC)
 
 
+def _claim_start(value: str) -> datetime:
+    """Interpret a date as starting at UTC midnight, or accept an ISO datetime."""
+
+    try:
+        parsed_date = date.fromisoformat(value)
+    except ValueError:
+        try:
+            parsed_datetime = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ValueError("claim valid_from must be an ISO date or datetime") from exc
+        return _require_aware(parsed_datetime, "claim valid_from")
+    return datetime.combine(parsed_date, time.min, UTC)
+
+
 @dataclass(frozen=True)
 class SigningKeyPair:
     """An Ed25519 key pair intended to be injected from a real key service later."""
@@ -179,6 +199,51 @@ class SigningKeyPair:
         }
 
 
+class AuditEventSink(Protocol):
+    """Minimal append-only boundary accepted by revocation operations."""
+
+    def append(self, event: AuditEvent) -> None:
+        """Retain one validated audit event."""
+
+
+def _revocation_event(
+    *,
+    target_ref: str,
+    target_type: str,
+    audit_log: AuditEventSink | None,
+    actor_ref: str | None,
+    trace_id: str | None,
+    event_id: str | None,
+    occurred_at: datetime | None,
+) -> AuditEvent | None:
+    if audit_log is None:
+        return None
+    required = {
+        "actor_ref": actor_ref,
+        "trace_id": trace_id,
+        "event_id": event_id,
+        "occurred_at": occurred_at,
+    }
+    missing = tuple(name for name, value in required.items() if value is None or value == "")
+    if missing:
+        raise ValueError(
+            "revocation audit metadata is required when audit_log is supplied: "
+            + ", ".join(missing)
+        )
+    return AuditEvent(
+        event_id=event_id,
+        event_type=AuditEventType.CLAIM_REVOKED,
+        actor_ref=actor_ref,
+        object_ref=target_ref,
+        occurred_at=occurred_at,
+        trace_id=trace_id,
+        details={
+            "revocation_target": target_type,
+            "reason_code": TokenErrorCode.REVOKED.value,
+        },
+    )
+
+
 class RevocationRegistry:
     """In-memory revocation seam; replaceable by a durable status service."""
 
@@ -186,14 +251,54 @@ class RevocationRegistry:
         self._claim_ids: set[str] = set()
         self._token_ids: set[str] = set()
 
-    def revoke_claim(self, claim_id: str) -> None:
+    def revoke_claim(
+        self,
+        claim_id: str,
+        *,
+        audit_log: AuditEventSink | None = None,
+        actor_ref: str | None = None,
+        trace_id: str | None = None,
+        event_id: str | None = None,
+        occurred_at: datetime | None = None,
+    ) -> None:
         if not claim_id:
             raise ValueError("claim_id must not be blank")
+        event = _revocation_event(
+            target_ref=claim_id,
+            target_type="claim",
+            audit_log=audit_log,
+            actor_ref=actor_ref,
+            trace_id=trace_id,
+            event_id=event_id,
+            occurred_at=occurred_at,
+        )
+        if event is not None:
+            audit_log.append(event)
         self._claim_ids.add(claim_id)
 
-    def revoke_token(self, token_id: str) -> None:
+    def revoke_token(
+        self,
+        token_id: str,
+        *,
+        audit_log: AuditEventSink | None = None,
+        actor_ref: str | None = None,
+        trace_id: str | None = None,
+        event_id: str | None = None,
+        occurred_at: datetime | None = None,
+    ) -> None:
         if not token_id:
             raise ValueError("token_id must not be blank")
+        event = _revocation_event(
+            target_ref=token_id,
+            target_type="token",
+            audit_log=audit_log,
+            actor_ref=actor_ref,
+            trace_id=trace_id,
+            event_id=event_id,
+            occurred_at=occurred_at,
+        )
+        if event is not None:
+            audit_log.append(event)
         self._token_ids.add(token_id)
 
     def is_revoked(self, *, claim_id: str, token_id: str) -> bool:
@@ -213,6 +318,7 @@ class VerifiedCareTrustToken:
     issued_at: datetime
     not_before: datetime
     expires_at: datetime
+    active_claim: ActiveCredentialClaim
     raw_claims: Mapping[str, Any]
 
 
@@ -236,6 +342,8 @@ class CareTrustTokenIssuer:
         now = _require_aware(now, "now")
         if claim.status is not ClaimStatus.ACTIVE:
             raise ValueError("only active claims may be represented by a token")
+        if not claim.evidence_refs:
+            raise ValueError("active claims must retain at least one evidence reference")
         if ttl <= timedelta(0):
             raise ValueError("ttl must be positive")
         expires_at = min(now + ttl, _claim_expiry(claim.valid_until))
@@ -255,6 +363,12 @@ class CareTrustTokenIssuer:
             "ct_claim_id": claim.claim_id,
             "ct_claim_type": claim.claim_type,
             "ct_status": claim.status.value,
+            "ct_claim_issuer": claim.issuer_ref,
+            "ct_jurisdiction": claim.jurisdiction,
+            "ct_valid_from": claim.valid_from,
+            "ct_valid_until": claim.valid_until,
+            "ct_evidence_refs": list(claim.evidence_refs),
+            "ct_active_claim": claim.model_dump(mode="json"),
         }
         signing_input = f"{_json_segment(header)}.{_json_segment(payload)}"
         signature = self.signing_key.private_key.sign(signing_input.encode("ascii"))
@@ -323,6 +437,9 @@ class CareTrustTokenVerifier:
             "ct_claim_id",
             "ct_claim_type",
             "ct_status",
+            "ct_claim_issuer",
+            "ct_jurisdiction",
+            "ct_valid_until",
         )
         if any(
             not isinstance(claims.get(name), str) or not claims[name]
@@ -337,6 +454,49 @@ class CareTrustTokenVerifier:
         expires_at = _parse_numeric_date(claims, "exp")
         audiences = _string_set(claims, "aud")
         purposes = _string_set(claims, "purpose")
+        evidence_refs = _string_set(claims, "ct_evidence_refs")
+        try:
+            active_claim = ActiveCredentialClaim.model_validate(
+                claims.get("ct_active_claim")
+            )
+        except ValidationError as exc:
+            raise TokenVerificationError(
+                TokenErrorCode.CLAIMS_INVALID,
+                "JWT embedded active claim does not match the published contract",
+            ) from exc
+
+        bindings = {
+            "claim identifier": (
+                active_claim.claim_id,
+                claims["ct_claim_id"],
+            ),
+            "subject": (active_claim.subject_ref, claims["sub"]),
+            "claim type": (active_claim.claim_type, claims["ct_claim_type"]),
+            "status": (active_claim.status.value, claims["ct_status"]),
+            "claim issuer": (active_claim.issuer_ref, claims["ct_claim_issuer"]),
+            "jurisdiction": (
+                active_claim.jurisdiction,
+                claims["ct_jurisdiction"],
+            ),
+            "valid from": (active_claim.valid_from, claims.get("ct_valid_from")),
+            "valid until": (active_claim.valid_until, claims["ct_valid_until"]),
+            "evidence references": (
+                active_claim.evidence_refs,
+                evidence_refs,
+            ),
+            "audiences": (active_claim.allowed_audiences, audiences),
+            "purposes": (active_claim.allowed_purposes, purposes),
+        }
+        mismatched = tuple(
+            name for name, (embedded, top_level) in bindings.items()
+            if embedded != top_level
+        )
+        if mismatched:
+            raise TokenVerificationError(
+                TokenErrorCode.CLAIMS_INVALID,
+                "JWT embedded active claim does not match top-level claims: "
+                + ", ".join(mismatched),
+            )
 
         if claims["iss"] != self.issuer:
             raise TokenVerificationError(
@@ -351,6 +511,18 @@ class CareTrustTokenVerifier:
         if claims["ct_status"] != ClaimStatus.ACTIVE.value:
             raise TokenVerificationError(
                 TokenErrorCode.STATUS_INVALID, "JWT does not represent an active claim"
+            )
+        if active_claim.valid_from is not None and now < _claim_start(
+            active_claim.valid_from
+        ):
+            raise TokenVerificationError(
+                TokenErrorCode.NOT_YET_VALID,
+                "embedded active claim is not yet valid",
+            )
+        if now >= _claim_expiry(active_claim.valid_until):
+            raise TokenVerificationError(
+                TokenErrorCode.EXPIRED,
+                "embedded active claim has expired",
             )
         if self.revocations.is_revoked(
             claim_id=claims["ct_claim_id"], token_id=claims["jti"]
@@ -394,5 +566,6 @@ class CareTrustTokenVerifier:
             issued_at=issued_at,
             not_before=not_before,
             expires_at=expires_at,
+            active_claim=active_claim,
             raw_claims=claims,
         )

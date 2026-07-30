@@ -116,18 +116,15 @@ select {
 }
 .steps { margin: 22px 0; overflow-x: auto; }
 .steps ol { display: grid; grid-template-columns: repeat(6, minmax(130px, 1fr)); min-width: 820px; margin: 0; padding: 0; list-style: none; }
-.steps li { position: relative; }
-.steps li:not(:last-child)::after { content: ""; position: absolute; top: 17px; left: 58%; right: -42%; border-top: 2px solid #b8c9cf; z-index: -1; }
-.steps button {
-  width: 100%;
-  border: 0;
-  background: transparent;
+.steps li {
+  position: relative;
   color: var(--muted);
   font-size: 12px;
   font-weight: 750;
-  cursor: pointer;
+  text-align: center;
 }
-.steps button span {
+.steps li:not(:last-child)::after { content: ""; position: absolute; top: 17px; left: 58%; right: -42%; border-top: 2px solid #b8c9cf; z-index: -1; }
+.steps li > span {
   display: grid;
   place-items: center;
   width: 34px;
@@ -137,8 +134,8 @@ select {
   border-radius: 50%;
   background: var(--canvas);
 }
-.steps button[aria-current="step"] { color: var(--teal-dark); }
-.steps button[aria-current="step"] span { border-color: var(--teal); background: var(--teal); color: white; }
+.steps li[aria-current="step"] { color: var(--teal-dark); }
+.steps li[aria-current="step"] > span { border-color: var(--teal); background: var(--teal); color: white; }
 .layout { display: grid; grid-template-columns: 1.02fr 1.14fr .84fr; gap: 18px; align-items: start; }
 .panel {
   min-width: 0;
@@ -180,6 +177,7 @@ select {
 .gates li[data-status="pass"] > span { color: white; border-color: var(--green); background: var(--green); }
 .gates li[data-status="fail"] > span { color: white; border-color: var(--red); background: var(--red); }
 .actions { display: grid; gap: 8px; margin: 18px 0; }
+.action-note { margin: 0 0 4px; color: var(--muted); font-size: 11px; }
 .button { padding: 10px 13px; border-radius: 8px; font-weight: 800; cursor: pointer; }
 .button.primary { border: 1px solid var(--teal-dark); background: var(--teal); color: white; }
 .button.secondary { border: 1px solid #8ca8b1; background: white; color: var(--ink); }
@@ -206,6 +204,8 @@ select {
 .standards-strip span { color: #d6e3e9; }
 footer { padding: 22px; color: var(--muted); background: white; border-top: 1px solid var(--line); text-align: center; font-size: 12px; }
 footer p { margin: 0; }
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 10px; }
+footer a { color: #0868a4; }
 
 @media (max-width: 1050px) {
   .layout { grid-template-columns: 1fr 1fr; }

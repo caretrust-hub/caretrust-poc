@@ -28,15 +28,15 @@ synthetic CNA evidence
 
 | Layer | Decision |
 |---|---|
-| Runtime | Python 3.12 or the installed supported Python version |
-| API | FastAPI with a minimal CLI or server-rendered interface |
+| Runtime | Python 3.13, pinned to the declared project range |
+| Interface | Dependency-free static demonstration plus CLI vertical slice |
 | Schemas | Pydantic models with exported JSON Schema |
 | Inference | Amazon Bedrock Converse through `ModelAdapter` |
 | Primary model | `qwen.qwen3-32b-v1:0` in `us-west-2` |
 | One-time fallback | `anthropic.claude-3-haiku-20240307-v1:0` |
 | OCR | Fixed synthetic OCR text first; PaddleOCR only if it does not threaten gates |
-| Storage | SQLite for workflow state; JSONL for evaluation evidence |
-| Signing | JOSE signed JWT with a local test key excluded from Git |
+| Storage | JSONL audit/evaluation records; in-memory synthetic registry and revocation seams |
+| Signing | Compact EdDSA JWS/JWT profile with ephemeral local test keys |
 | Policy | Deterministic Python functions with stable reason codes |
 | Tests | pytest plus a consecutive batch-evaluation runner |
 
@@ -81,9 +81,10 @@ timestamp without altering the original model response.
 
 ### Registry simulator
 
-Returns a signed or internally authenticated synthetic result of `match`,
-`mismatch`, `not_found`, or `unavailable`. It models the public verification
-workflow without contacting the live registry.
+Returns a content-hashed synthetic result of `match`, `mismatch`, `not_found`,
+or `unavailable`. It models the public verification workflow without contacting
+the live registry. The hash supports local trace comparison; it is not a source
+signature or production authentication claim.
 
 ### Activation service
 
@@ -128,7 +129,7 @@ evidence_received
 Only `active` can be considered by authorization. Revoked and expired are terminal
 for new requests.
 
-## Minimum API surface
+## Future service API surface
 
 ```text
 POST /api/evidence
@@ -144,29 +145,27 @@ POST /api/evaluation/run
 GET  /api/evaluation/runs/{run_id}
 ```
 
-The CLI may call the same service functions directly if a complete HTTP surface
-would delay evidence collection.
+This HTTP surface is a Phase 2 integration target, not an implemented Phase 1
+claim. The tested Phase 1 CLI calls the same domain functions directly, and the
+browser demonstration is a dependency-free communication surface with no live
+backend.
 
 ## Proposed repository layout
 
 ```text
 src/caretrust/
-  api.py
-  config.py
   models.py
-  reason_codes.py
   adapters/bedrock.py
-  services/extraction.py
-  services/review.py
-  services/registry.py
-  services/claims.py
-  services/authorization.py
-  services/evaluation.py
+  workflow.py
+  security.py
+  authorization.py
+  evaluation.py
 schemas/
 fixtures/cna/
 tests/
+demo/
 scripts/run_evaluation.py
-artifacts/examples/
+artifacts/
 .specifica/
 ```
 

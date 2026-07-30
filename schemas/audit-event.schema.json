@@ -1,0 +1,79 @@
+{
+  "$defs": {
+    "AuditEventType": {
+      "enum": [
+        "evidence_received",
+        "extraction_completed",
+        "review_recorded",
+        "registry_checked",
+        "activation_decided",
+        "claim_issued",
+        "authorization_decided",
+        "claim_revoked"
+      ],
+      "title": "AuditEventType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "actor_ref": {
+      "title": "Actor Ref",
+      "type": "string"
+    },
+    "details": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Details",
+      "type": "object"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "event_type": {
+      "$ref": "#/$defs/AuditEventType"
+    },
+    "object_ref": {
+      "title": "Object Ref",
+      "type": "string"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "event_type",
+    "actor_ref",
+    "object_ref",
+    "occurred_at",
+    "trace_id",
+    "details"
+  ],
+  "title": "AuditEvent",
+  "type": "object"
+}

@@ -4,9 +4,12 @@ from __future__ import annotations
 
 import hashlib
 from datetime import UTC, date, datetime, time, timedelta
+from typing import Protocol
 
 from caretrust.models import (
     ActiveCredentialClaim,
+    AuditEvent,
+    AuditEventType,
     AuthorizationDecision,
     AuthorizationRequest,
     ClaimStatus,
@@ -17,6 +20,12 @@ from caretrust.security import (
     TokenErrorCode,
     TokenVerificationError,
 )
+
+
+class AuditEventSink(Protocol):
+    """Append-only audit boundary used without coupling policy to storage."""
+
+    def append(self, event: AuditEvent) -> None: ...
 
 
 def _claim_boundary(value: str, *, end: bool) -> datetime:
@@ -65,6 +74,10 @@ class AuthorizationPolicy:
         token: str,
         *,
         now: datetime,
+        audit_log: AuditEventSink | None = None,
+        actor_ref: str = "system:authorization-policy",
+        trace_id: str | None = None,
+        event_id: str | None = None,
     ) -> AuthorizationDecision:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("now must be timezone-aware")
@@ -73,11 +86,20 @@ class AuthorizationPolicy:
         # This is intentionally first. A DraftCredentialClaim can never reach a
         # permit branch even when a dynamic caller ignores the function type.
         if not isinstance(claim, ActiveCredentialClaim):
-            return self._deny(
+            decision = self._deny(
                 request,
                 ("REVIEW_REQUIRED", "CLAIM_NOT_ACTIVE_TYPE"),
                 now,
             )
+            self._record_decision(
+                decision,
+                token,
+                audit_log=audit_log,
+                actor_ref=actor_ref,
+                trace_id=trace_id,
+                event_id=event_id,
+            )
+            return decision
 
         reasons: list[str] = []
         if request.claim_id != claim.claim_id:
@@ -116,6 +138,8 @@ class AuthorizationPolicy:
         except TokenVerificationError as exc:
             reasons.append(exc.code.value)
         else:
+            if verified.active_claim != claim:
+                reasons.append("TOKEN_ACTIVE_CLAIM_MISMATCH")
             if verified.claim_type != request.requested_claim_type:
                 reasons.append("TOKEN_CLAIM_TYPE_MISMATCH")
             if verified.status != ClaimStatus.ACTIVE.value:
@@ -123,13 +147,60 @@ class AuthorizationPolicy:
 
         unique_reasons = tuple(dict.fromkeys(reasons))
         if unique_reasons:
-            return self._deny(request, unique_reasons, now)
-        return self._build_decision(
-            request=request,
-            value=DecisionValue.PERMIT,
-            reasons=("POLICY_REQUIREMENTS_SATISFIED",),
-            supporting_claim_ids=(claim.claim_id,),
-            now=now,
+            decision = self._deny(request, unique_reasons, now)
+        else:
+            decision = self._build_decision(
+                request=request,
+                value=DecisionValue.PERMIT,
+                reasons=("POLICY_REQUIREMENTS_SATISFIED",),
+                supporting_claim_ids=(claim.claim_id,),
+                now=now,
+            )
+        self._record_decision(
+            decision,
+            token,
+            audit_log=audit_log,
+            actor_ref=actor_ref,
+            trace_id=trace_id,
+            event_id=event_id,
+        )
+        return decision
+
+    def _record_decision(
+        self,
+        decision: AuthorizationDecision,
+        token: str,
+        *,
+        audit_log: AuditEventSink | None,
+        actor_ref: str,
+        trace_id: str | None,
+        event_id: str | None,
+    ) -> None:
+        if audit_log is None:
+            return
+        if not actor_ref or not trace_id or not event_id:
+            raise ValueError(
+                "actor_ref, trace_id, and event_id are required when audit_log is supplied"
+            )
+        audit_log.append(
+            AuditEvent(
+                event_id=event_id,
+                event_type=AuditEventType.AUTHORIZATION_DECIDED,
+                actor_ref=actor_ref,
+                object_ref=decision.request_id,
+                occurred_at=decision.decided_at,
+                trace_id=trace_id,
+                details={
+                    "decision_id": decision.decision_id,
+                    "decision": decision.decision.value,
+                    "reason_codes": ",".join(decision.reason_codes),
+                    "supporting_claim_ids": ",".join(
+                        decision.supporting_claim_ids
+                    ),
+                    "policy_version": decision.policy_version,
+                    "token_sha256": hashlib.sha256(token.encode("utf-8")).hexdigest(),
+                },
+            )
         )
 
     def _deny(

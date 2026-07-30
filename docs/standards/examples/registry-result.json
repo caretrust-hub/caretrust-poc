@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-07-29T20:00:01Z",
+  "draft_id": "draft:synthetic-hi-cna-1001",
+  "query_registry_id": "HI-CNA-SYN-1001",
+  "reason_code": "SYNTHETIC_REGISTRY_MATCH",
+  "registry_result_id": "registry:synthetic-hi-cna-1001",
+  "response_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "simulator": true,
+  "source_name": "Prometric CNA Registry simulator",
+  "status": "match"
+}

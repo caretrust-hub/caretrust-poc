@@ -1,0 +1,12 @@
+{
+  "actor_ref": "reviewer:synthetic-authorized-001",
+  "details": {
+    "reason_code": "CLAIM_REVOKED",
+    "synthetic": true
+  },
+  "event_id": "event:synthetic-revocation-001",
+  "event_type": "claim_revoked",
+  "object_ref": "claim:synthetic-hi-cna-1001",
+  "occurred_at": "2026-07-29T20:05:00Z",
+  "trace_id": "trace:synthetic-interoperability-example"
+}

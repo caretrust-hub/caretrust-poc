@@ -1,0 +1,719 @@
+{
+  "openapi": "3.1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "CareTrust Interoperability Trust Hub",
+    "version": "0.1.0-contract",
+    "description": "Contract-only OpenAPI 3.1 surface for a possible Phase 2 CareTrust service. No HTTP server is deployed in Phase 1. Operations are bounded to synthetic evidence, human review, synthetic registry checks, deterministic activation and authorization, local revocation records, and evaluation evidence represented by the published CareTrust JSON contracts. This contract does not claim a production service, live registry integration, FHIR conformance, Verifiable Credential conformance, or an operational federation."
+  },
+  "tags": [
+    {
+      "name": "Evidence",
+      "description": "Synthetic evidence intake and retrieval."
+    },
+    {
+      "name": "Review",
+      "description": "Authorized human review records bound to immutable drafts."
+    },
+    {
+      "name": "Registry",
+      "description": "Synthetic Hawaii CNA registry checks only."
+    },
+    {
+      "name": "Claims",
+      "description": "Deterministic activation, retrieval, and local revocation."
+    },
+    {
+      "name": "Authorization",
+      "description": "Deterministic audience, purpose, validity, status, and revocation decisions."
+    },
+    {
+      "name": "Evaluation",
+      "description": "Read-only access to retained synthetic extraction and audit records."
+    }
+  ],
+  "paths": {
+    "/evidence": {
+      "post": {
+        "tags": [
+          "Evidence"
+        ],
+        "operationId": "intakeEvidence",
+        "summary": "Accept one synthetic evidence artifact",
+        "description": "Planned transport wrapper around the published EvidenceArtifact contract. Phase 1 performs this intake through local code, not HTTP.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../schemas/evidence-artifact.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Synthetic evidence accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/evidence-artifact.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/evidence/{artifact_id}": {
+      "get": {
+        "tags": [
+          "Evidence"
+        ],
+        "operationId": "getEvidence",
+        "summary": "Retrieve one synthetic evidence artifact",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ArtifactId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Synthetic evidence artifact",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/evidence-artifact.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/drafts/{draft_id}": {
+      "get": {
+        "tags": [
+          "Review"
+        ],
+        "operationId": "getDraft",
+        "summary": "Retrieve one unverified draft",
+        "description": "A draft is never an active or authorization-bearing claim.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DraftId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unverified draft credential claim",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/draft-credential-claim.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/drafts/{draft_id}/reviews": {
+      "post": {
+        "tags": [
+          "Review"
+        ],
+        "operationId": "recordDraftReview",
+        "summary": "Record an authorized human review",
+        "description": "The supplied ReviewRecord must bind to the immutable draft identified by the path.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DraftId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../schemas/review-record.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Review recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/review-record.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/drafts/{draft_id}/registry-checks": {
+      "post": {
+        "tags": [
+          "Registry"
+        ],
+        "operationId": "runSyntheticRegistryCheck",
+        "summary": "Run the deterministic synthetic registry simulator",
+        "description": "This operation never contacts or represents a response from the live Hawaii registry.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DraftId"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Synthetic registry result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/registry-result.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/drafts/{draft_id}/activations": {
+      "post": {
+        "tags": [
+          "Claims"
+        ],
+        "operationId": "activateReviewedDraft",
+        "summary": "Apply the deterministic activation gate",
+        "description": "Activation succeeds only after an accepting human review, a matching synthetic registry result, and all bounded Hawaii CNA checks. The extraction model cannot invoke or override this decision.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DraftId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Active claim created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/active-credential-claim.schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Activation denied with one or more stable reason codes",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContractProblem"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}": {
+      "get": {
+        "tags": [
+          "Claims"
+        ],
+        "operationId": "getActiveCredentialClaim",
+        "summary": "Retrieve one credential claim representation",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ClaimId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Credential claim, including its current represented status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/active-credential-claim.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/claims/{claim_id}/revocations": {
+      "post": {
+        "tags": [
+          "Claims"
+        ],
+        "operationId": "recordClaimRevocation",
+        "summary": "Record a local claim or token revocation",
+        "description": "The response uses the published revocation-record contract. Durable distribution or federation of status is not implemented in Phase 1.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ClaimId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../schemas/revocation-record.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Local revocation record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/revocation-record.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/authorization-decisions": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "operationId": "decideAuthorization",
+        "summary": "Evaluate a deterministic authorization request",
+        "description": "Permit or deny is determined by inspectable policy, never by an extraction model. The bearer value carries the short-lived CareTrust JWT evaluated with the request; it does not imply production identity or OAuth support.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "security": [
+          {
+            "careTrustBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../schemas/authorization-request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deterministic permit or deny decision",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/authorization-decision.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/authorization-decisions/{decision_id}": {
+      "get": {
+        "tags": [
+          "Authorization"
+        ],
+        "operationId": "getAuthorizationDecision",
+        "summary": "Retrieve one authorization decision",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/DecisionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recorded authorization decision",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/authorization-decision.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/evaluation/extractions/{extraction_id}": {
+      "get": {
+        "tags": [
+          "Evaluation"
+        ],
+        "operationId": "getEvaluationExtraction",
+        "summary": "Retrieve one retained extraction result",
+        "description": "Read-only synthetic evaluation evidence, including retained failures.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ExtractionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Extraction record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/extraction-record.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    },
+    "/evaluation/audit-events/{event_id}": {
+      "get": {
+        "tags": [
+          "Evaluation"
+        ],
+        "operationId": "getEvaluationAuditEvent",
+        "summary": "Retrieve one structured audit event",
+        "description": "Read-only synthetic evaluation evidence; this is not a production audit service.",
+        "x-caretrust-runtime-status": "contract-only-planned-phase-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EventId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Structured audit event",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../schemas/audit-event.schema.json"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/ContractProblem"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "careTrustBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Short-lived EdDSA CareTrust JWT using local Phase 1 trust semantics. This is not an OAuth, SMART, or production identity-proofing claim."
+      }
+    },
+    "parameters": {
+      "ArtifactId": {
+        "name": "artifact_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "DraftId": {
+        "name": "draft_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "ClaimId": {
+        "name": "claim_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "DecisionId": {
+        "name": "decision_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "ExtractionId": {
+        "name": "extraction_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "EventId": {
+        "name": "event_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "schemas": {
+      "ActivationRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "review_id",
+          "registry_result_id",
+          "issuer_ref",
+          "allowed_audiences",
+          "allowed_purposes"
+        ],
+        "properties": {
+          "review_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "registry_result_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "issuer_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "allowed_audiences": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "allowed_purposes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      "LifecycleStatus": {
+        "type": "string",
+        "enum": [
+          "draft",
+          "active",
+          "revoked",
+          "expired"
+        ],
+        "description": "CareTrust prototype lifecycle vocabulary. Draft is unverified; only active claims can support authorization."
+      },
+      "ReviewStatus": {
+        "type": "string",
+        "enum": [
+          "approved",
+          "corrected",
+          "rejected",
+          "deferred"
+        ]
+      },
+      "RegistryStatus": {
+        "type": "string",
+        "enum": [
+          "match",
+          "mismatch",
+          "not_found",
+          "unavailable"
+        ],
+        "description": "Synthetic registry simulator states, not live registry assertions."
+      },
+      "AuthorizationDecisionStatus": {
+        "type": "string",
+        "enum": [
+          "permit",
+          "deny"
+        ]
+      },
+      "ReasonCode": {
+        "type": "string",
+        "description": "Stable CareTrust prototype reason code; not an HL7, W3C, OpenID Foundation, or government registry code.",
+        "enum": [
+          "REVIEW_REQUIRED",
+          "REVIEW_DRAFT_MISMATCH",
+          "REVIEW_REJECTED",
+          "REVIEW_DEFERRED",
+          "REGISTRY_RESULT_REQUIRED",
+          "REGISTRY_DRAFT_MISMATCH",
+          "SOURCE_MISMATCH",
+          "SOURCE_NOT_FOUND",
+          "SOURCE_UNAVAILABLE",
+          "BLOCKING_UNCERTAINTY",
+          "UNRESOLVED_BLOCKING_ISSUE",
+          "REGISTRY_ID_REQUIRED",
+          "CREDENTIAL_TYPE_UNSUPPORTED",
+          "JURISDICTION_UNSUPPORTED",
+          "CREDENTIAL_STATUS_NOT_ACTIVE",
+          "EXPIRATION_DATE_REQUIRED",
+          "EXPIRATION_DATE_INVALID",
+          "CREDENTIAL_EXPIRED",
+          "REGISTRY_ID_MISMATCH",
+          "SYNTHETIC_REGISTRY_MATCH",
+          "SYNTHETIC_REGISTRY_MISMATCH",
+          "SYNTHETIC_REGISTRY_NOT_FOUND",
+          "SYNTHETIC_REGISTRY_UNAVAILABLE",
+          "CLAIM_NOT_ACTIVE_TYPE",
+          "CLAIM_ID_MISMATCH",
+          "SUBJECT_MISMATCH",
+          "CLAIM_TYPE_MISMATCH",
+          "CLAIM_REVOKED",
+          "CLAIM_EXPIRED",
+          "CLAIM_STATUS_NOT_ACTIVE",
+          "AUDIENCE_NOT_ALLOWED",
+          "PURPOSE_NOT_ALLOWED",
+          "CLAIM_NOT_YET_VALID",
+          "TOKEN_CLAIM_TYPE_MISMATCH",
+          "TOKEN_ACTIVE_CLAIM_MISMATCH",
+          "TOKEN_STATUS_NOT_ACTIVE",
+          "POLICY_REQUIREMENTS_SATISFIED",
+          "TOKEN_MALFORMED",
+          "TOKEN_UNSUPPORTED_ALGORITHM",
+          "TOKEN_UNKNOWN_KEY",
+          "TOKEN_SIGNATURE_INVALID",
+          "TOKEN_CLAIMS_INVALID",
+          "TOKEN_ISSUER_MISMATCH",
+          "TOKEN_NOT_YET_VALID",
+          "TOKEN_EXPIRED",
+          "TOKEN_REVOKED",
+          "TOKEN_AUDIENCE_MISMATCH",
+          "TOKEN_PURPOSE_MISMATCH",
+          "TOKEN_SUBJECT_MISMATCH",
+          "TOKEN_CLAIM_MISMATCH",
+          "TOKEN_STATUS_INVALID"
+        ]
+      },
+      "ContractProblem": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "status",
+          "detail",
+          "reason_codes",
+          "trace_id"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 599
+          },
+          "detail": {
+            "type": "string"
+          },
+          "reason_codes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/components/schemas/ReasonCode"
+            }
+          },
+          "trace_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "responses": {
+      "ContractProblem": {
+        "description": "Request rejected with stable CareTrust prototype reason codes",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/ContractProblem"
+            }
+          }
+        }
+      }
+    }
+  },
+  "x-caretrust-implementation-status": {
+    "phase1_transport": "not-deployed",
+    "phase2_surface": "contract-only",
+    "production_ready": false,
+    "synthetic_only": true
+  }
+}

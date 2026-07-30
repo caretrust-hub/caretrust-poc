@@ -32,7 +32,10 @@ and validity checks succeed.
 
 The model never decides whether an application receives access. Inspectable policy
 code evaluates active status, scope, audience, purpose, time bounds, recipient
-permission, and revocation state.
+permission when access concerns a care recipient, and revocation state. The
+Phase 1 credentialing profile does not access a care recipient's data, so it
+tests audience, purpose, validity, claim binding, and revocation rather than a
+recipient-consent grant.
 
 ## 6. Interoperability is a contract, not a vendor
 
@@ -84,4 +87,3 @@ Critical workflows must remain understandable with plain language, keyboard
 navigation, visible status, and non-color-only cues. The implementation must
 measure model usage, latency, and estimated cost and must retain a provider-neutral
 model adapter.
-

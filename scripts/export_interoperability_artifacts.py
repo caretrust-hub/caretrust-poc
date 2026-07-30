@@ -9,12 +9,39 @@ from pydantic import BaseModel
 
 from caretrust.models import (
     ActiveCredentialClaim,
+    AuditEvent,
     AuthorizationDecision,
     AuthorizationRequest,
+    DraftCredentialClaim,
+    EvidenceArtifact,
+    ExtractionRecord,
+    RegistryResult,
+    ReviewRecord,
+    RevocationRecord,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPORTS: tuple[tuple[type[BaseModel], Path], ...] = (
+    (
+        EvidenceArtifact,
+        ROOT / "schemas" / "evidence-artifact.schema.json",
+    ),
+    (
+        DraftCredentialClaim,
+        ROOT / "schemas" / "draft-credential-claim.schema.json",
+    ),
+    (
+        ExtractionRecord,
+        ROOT / "schemas" / "extraction-record.schema.json",
+    ),
+    (
+        ReviewRecord,
+        ROOT / "schemas" / "review-record.schema.json",
+    ),
+    (
+        RegistryResult,
+        ROOT / "schemas" / "registry-result.schema.json",
+    ),
     (
         ActiveCredentialClaim,
         ROOT / "schemas" / "active-credential-claim.schema.json",
@@ -26,6 +53,14 @@ EXPORTS: tuple[tuple[type[BaseModel], Path], ...] = (
     (
         AuthorizationDecision,
         ROOT / "schemas" / "authorization-decision.schema.json",
+    ),
+    (
+        RevocationRecord,
+        ROOT / "schemas" / "revocation-record.schema.json",
+    ),
+    (
+        AuditEvent,
+        ROOT / "schemas" / "audit-event.schema.json",
     ),
 )
 

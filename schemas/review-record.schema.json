@@ -1,0 +1,121 @@
+{
+  "$defs": {
+    "FieldCorrection": {
+      "additionalProperties": false,
+      "properties": {
+        "corrected_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Corrected Value"
+        },
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "field_path": {
+          "title": "Field Path",
+          "type": "string"
+        },
+        "previous_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Previous Value"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_path",
+        "previous_value",
+        "corrected_value",
+        "reason",
+        "evidence_refs"
+      ],
+      "title": "FieldCorrection",
+      "type": "object"
+    },
+    "ReviewDecision": {
+      "enum": [
+        "approved",
+        "corrected",
+        "rejected",
+        "deferred"
+      ],
+      "title": "ReviewDecision",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "corrections": {
+      "items": {
+        "$ref": "#/$defs/FieldCorrection"
+      },
+      "title": "Corrections",
+      "type": "array"
+    },
+    "decision": {
+      "$ref": "#/$defs/ReviewDecision"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "original_draft_sha256": {
+      "title": "Original Draft Sha256",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "review_id": {
+      "title": "Review Id",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "title": "Reviewed At",
+      "type": "string"
+    },
+    "reviewer_ref": {
+      "title": "Reviewer Ref",
+      "type": "string"
+    },
+    "reviewer_role": {
+      "const": "authorized_reviewer",
+      "title": "Reviewer Role",
+      "type": "string"
+    }
+  },
+  "required": [
+    "review_id",
+    "draft_id",
+    "reviewer_ref",
+    "reviewer_role",
+    "decision",
+    "corrections",
+    "reason",
+    "reviewed_at",
+    "original_draft_sha256"
+  ],
+  "title": "ReviewRecord",
+  "type": "object"
+}

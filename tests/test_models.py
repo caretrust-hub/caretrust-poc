@@ -63,6 +63,15 @@ def test_populated_field_requires_evidence_reference() -> None:
     with pytest.raises(ValidationError):
         DraftCredentialClaim.model_validate(candidate)
 
+    normalized_only = copy.deepcopy(fixture["expected"]["draft"])
+    normalized_only["fields"]["holder_name"].update(
+        value=None,
+        normalized_value="Leilani Kealoha",
+        evidence_refs=[],
+    )
+    with pytest.raises(ValidationError):
+        DraftCredentialClaim.model_validate(normalized_only)
+
 
 def test_draft_schema_uses_closed_objects_and_avoids_bedrock_constraints() -> None:
     schema = DraftCredentialClaim.model_json_schema(mode="validation")

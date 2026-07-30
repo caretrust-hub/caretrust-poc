@@ -16,6 +16,7 @@ from caretrust.models import (
 )
 from caretrust.workflow import (
     JsonlAuditLog,
+    ReviewerAuthorizationPolicy,
     SyntheticRegistrySimulator,
     decide_activation,
     intake_evidence,
@@ -25,6 +26,9 @@ from caretrust.workflow import (
 
 
 NOW = datetime(2026, 7, 29, 12, 0, tzinfo=timezone.utc)
+REVIEWER_POLICY = ReviewerAuthorizationPolicy(
+    allowed_reviewer_refs=frozenset({"reviewer:synthetic"})
+)
 
 
 @pytest.fixture
@@ -78,6 +82,7 @@ def approve(draft, audit_log):
         actor_ref="reviewer:synthetic",
         trace_id="trace:1",
         event_id="event:review",
+        authorization_policy=REVIEWER_POLICY,
     )
 
 
@@ -276,6 +281,7 @@ def test_correction_is_visible_and_original_model_output_is_unchanged(
         actor_ref="reviewer:synthetic",
         trace_id="trace:1",
         event_id="event:review",
+        authorization_policy=REVIEWER_POLICY,
     )
 
     assert clean_draft.model_dump_json() == before
@@ -284,6 +290,45 @@ def test_correction_is_visible_and_original_model_output_is_unchanged(
     assert event.details["correction_1_field_path"] == "fields.expiration_date"
     assert event.details["correction_1_previous_value"] == "2028-04-15"
     assert event.details["correction_1_corrected_value"] == "2029-04-15"
+    assert (
+        event.details["reviewer_authorization_policy"]
+        == "caretrust.reviewer-authorization.v1"
+    )
+
+    unsupported_evidence = correction.model_copy(
+        update={"evidence_refs": ("span:not-in-reviewed-draft",)}
+    )
+    with pytest.raises(ValueError, match="outside the reviewed draft"):
+        record_review(
+            clean_draft,
+            review_id="review:unsupported-evidence",
+            reviewer_ref="reviewer:synthetic",
+            decision=ReviewDecision.CORRECTED,
+            corrections=(unsupported_evidence,),
+            reason="Invalid evidence binding.",
+            reviewed_at=NOW,
+            audit_log=audit_log,
+            actor_ref="reviewer:synthetic",
+            trace_id="trace:1",
+            event_id="event:unsupported-evidence",
+            authorization_policy=REVIEWER_POLICY,
+        )
+
+    with pytest.raises(PermissionError, match="not authorized"):
+        record_review(
+            clean_draft,
+            review_id="review:unauthorized",
+            reviewer_ref="reviewer:synthetic-intruder",
+            decision=ReviewDecision.APPROVED,
+            reason="Unauthorized attempt.",
+            reviewed_at=NOW,
+            audit_log=audit_log,
+            actor_ref="reviewer:synthetic-intruder",
+            trace_id="trace:1",
+            event_id="event:unauthorized-review",
+            authorization_policy=REVIEWER_POLICY,
+        )
+    assert len(audit_log.read()) == 1
 
 
 @pytest.mark.parametrize(
@@ -320,6 +365,7 @@ def test_forbidden_review_states_are_rejected(
             actor_ref="reviewer:synthetic",
             trace_id="trace:1",
             event_id="event:review",
+            authorization_policy=REVIEWER_POLICY,
         )
 
 
@@ -392,6 +438,7 @@ def test_corrected_review_value_is_used_only_after_matching_registry(
         actor_ref="reviewer:synthetic",
         trace_id="trace:1",
         event_id="event:review",
+        authorization_policy=REVIEWER_POLICY,
     )
     registry = registry_check(clean_draft, audit_log)
 
@@ -522,6 +569,7 @@ def test_non_accepting_review_denies_activation(
         actor_ref="reviewer:synthetic",
         trace_id="trace:1",
         event_id="event:review",
+        authorization_policy=REVIEWER_POLICY,
     )
     registry = registry_check(clean_draft, audit_log)
 

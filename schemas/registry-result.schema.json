@@ -1,0 +1,75 @@
+{
+  "$defs": {
+    "RegistryStatus": {
+      "enum": [
+        "match",
+        "mismatch",
+        "not_found",
+        "unavailable"
+      ],
+      "title": "RegistryStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "checked_at": {
+      "format": "date-time",
+      "title": "Checked At",
+      "type": "string"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "query_registry_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Query Registry Id"
+    },
+    "reason_code": {
+      "title": "Reason Code",
+      "type": "string"
+    },
+    "registry_result_id": {
+      "title": "Registry Result Id",
+      "type": "string"
+    },
+    "response_sha256": {
+      "title": "Response Sha256",
+      "type": "string"
+    },
+    "simulator": {
+      "const": true,
+      "title": "Simulator",
+      "type": "boolean"
+    },
+    "source_name": {
+      "const": "Prometric CNA Registry simulator",
+      "title": "Source Name",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/RegistryStatus"
+    }
+  },
+  "required": [
+    "registry_result_id",
+    "draft_id",
+    "simulator",
+    "source_name",
+    "query_registry_id",
+    "status",
+    "checked_at",
+    "reason_code",
+    "response_sha256"
+  ],
+  "title": "RegistryResult",
+  "type": "object"
+}

@@ -27,7 +27,9 @@ Hawaii CNA data checks. There is no transition directly from `draft` to
 An active claim can later be represented as `revoked` or `expired`. Only
 `active` claims may be signed or produce a permit. The prototype has an
 in-memory revocation seam; it does not implement a durable or federated status
-service.
+service. A `caretrust.revocation-record.v1` JSON contract and synthetic example
+make the proposed local revocation event portable, but the Phase 1 runtime does
+not emit or distribute that record.
 
 Status meanings:
 
@@ -92,6 +94,7 @@ query.
 | `PURPOSE_NOT_ALLOWED` | The purpose is outside the claim allow-list. |
 | `CLAIM_NOT_YET_VALID` | The claim validity period has not begun. |
 | `TOKEN_CLAIM_TYPE_MISMATCH` | Signed-token and request claim types differ. |
+| `TOKEN_ACTIVE_CLAIM_MISMATCH` | The complete signed active claim differs from the active claim supplied to policy. |
 | `TOKEN_STATUS_NOT_ACTIVE` | The signed token does not carry active status. |
 | `POLICY_REQUIREMENTS_SATISFIED` | All implemented checks passed; this is the permit reason. |
 

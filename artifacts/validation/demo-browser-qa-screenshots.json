@@ -1,7 +1,7 @@
 {
   "record_type": "caretrust.demo-browser-evidence.v1",
-  "captured_at_utc": "2026-07-30T09:15:00Z",
-  "target": "http://127.0.0.1:8000/demo/",
+  "captured_at_utc": "2026-07-30T10:27:20Z",
+  "target": "http://127.0.0.1:8765/demo/",
   "synthetic_only": true,
   "browser": "Chrome",
   "observations": {
@@ -9,7 +9,8 @@
     "page_title": "CareTrust — Interoperable Care Trust Hub",
     "page_script_errors": 0,
     "extension_warnings_excluded": true,
-    "clean_workflow": "draft -> human approval -> synthetic source match -> active claim -> permit -> revocation -> deny",
+    "clean_workflow": "draft -> authorized human approval -> separately recorded synthetic source match -> active claim -> permit -> revocation recorded -> subsequent request denied",
+    "revocation_transition": "revocation changes claim status but does not fabricate an application decision; a distinct subsequent request produces TOKEN_REVOKED",
     "ambiguous_workflow": "AMBIGUOUS_DATE visibly requires review and cannot request a claim",
     "correction_workflow": "human correction visibly changes 2828-04-15 to 2028-04-15 while stating that the original AI draft is preserved",
     "non_color_cues": "status names, reason codes, gate labels, and timeline text accompany visual color"
@@ -17,39 +18,45 @@
   "screenshots": [
     {
       "file": "screenshots/demo-initial-draft.png",
-      "sha256": "a7ae3cb829aaf940ee8c57b286fb37cd99d6ceea991bbf28306b5244f8ca7a7a",
-      "width": 1999,
-      "height": 2064
+      "sha256": "86b10297930d49dc45dd63621c93e4f2e11768d41004643a20ac51ccb2471fdc",
+      "width": 2248,
+      "height": 2413
     },
     {
       "file": "screenshots/demo-human-correction.png",
-      "sha256": "e81dea3241a5626cec39f7127c66f73e0f2dfe3253ec78aef05f44c500be5a90",
-      "width": 1706,
-      "height": 780
+      "sha256": "cbf261b7abd8088d1fbed50f1b648ccce7c330b6df25ea56ee63270b67511ab0",
+      "width": 2369,
+      "height": 2565
     },
     {
       "file": "screenshots/demo-ambiguous-review.png",
-      "sha256": "3a7ec868635a6b6b142ba803ea68b8225f9342586984bd54b881804c8c04565b",
-      "width": 1999,
-      "height": 2064
+      "sha256": "4b0fc0a2edf7f27f51af85c16428a80621f33cf05c7a22939e1f26a1b2ef415f",
+      "width": 2369,
+      "height": 2565
     },
     {
       "file": "screenshots/demo-active-claim.png",
-      "sha256": "c8271bea680f6ec065818067322b06095fdf534c7719a06d60f5db4c0f67d8b3",
-      "width": 1999,
-      "height": 2064
+      "sha256": "d8813b8ff716d76ffedb2d704c71ea7c7e674c2a416288c07e273aee09fa1904",
+      "width": 2248,
+      "height": 2436
     },
     {
       "file": "screenshots/demo-policy-permit.png",
-      "sha256": "fb684087347b72404f9e3031f325264419d17079157828f20b12d0bea7109aa6",
-      "width": 1999,
-      "height": 2064
+      "sha256": "238aaac4ad3461b1750974ec5c72cc8c16c4cf6805dec4f649de2d49ac8fcc4a",
+      "width": 2369,
+      "height": 2565
+    },
+    {
+      "file": "screenshots/demo-revocation-pending.png",
+      "sha256": "02738be0429f5a4a530eba6bd07f5feb7e15a7d9421ab91ea2934fb48cfcef22",
+      "width": 2369,
+      "height": 2565
     },
     {
       "file": "screenshots/demo-revoked-deny.png",
-      "sha256": "f15cdce6b65bda8df8e1e35f87ad4f3e072e9470bdf812350ab69df8175996c6",
-      "width": 1999,
-      "height": 2064
+      "sha256": "5cdfad035e2fd73a952143bda4d5c040cfcfe00fc0411552683820920bb9fb15",
+      "width": 2369,
+      "height": 2565
     }
   ],
   "limitations": [

@@ -7,8 +7,14 @@ future standards work.
 
 ## Implemented boundary
 
-- Strict CareTrust JSON contracts for an active professional-credential claim,
-  an authorization request, and an authorization decision.
+- Strict CareTrust JSON contracts for evidence, draft extraction, review,
+  synthetic registry results, active professional-credential claims,
+  authorization requests and decisions, and audit events.
+- An exported revocation-record contract and synthetic example. The Phase 1
+  runtime does not yet emit this record through a durable status service.
+- A bounded [OpenAPI 3.1 contract](caretrust-openapi-3.1.json) for a possible
+  Phase 2 HTTP surface. It reuses the published JSON contracts and stable
+  reason/status vocabularies; Phase 1 does not deploy an HTTP server.
 - Deterministic, default-deny activation and authorization policy with stable
   machine-readable reason codes.
 - Short-lived JWTs signed and verified as EdDSA JSON Web Signatures (JWS), with
@@ -27,11 +33,14 @@ The JSON examples in [`examples`](examples) validate against those models.
 CareTrust does **not** claim FHIR conformance, Verifiable Credential
 conformance, OID4VC support, SMART authorization, OpenID Federation,
 identity proofing, live registry access, production security, or an operational
-federation. The FHIR and VC documents are field-level design mappings only.
+federation. The OpenAPI document is a contract-only Phase 2 service design, not
+evidence of a deployed Phase 1 transport. The FHIR and VC documents are
+field-level design mappings only.
 
 See:
 
 - [Lifecycle and reason codes](lifecycle-and-reason-codes.md)
+- [OpenAPI 3.1 contract](caretrust-openapi-3.1.json)
 - [Standards status](standards-status.md)
 - [FHIR R4 mapping](fhir-r4-practitioner-qualification-mapping.md)
 - [W3C Verifiable Credentials 2.0 mapping](w3c-vc-2.0-mapping.md)

@@ -24,6 +24,7 @@ from caretrust.security import (
     TokenErrorCode,
     TokenVerificationError,
 )
+from caretrust.workflow import JsonlAuditLog
 
 NOW = datetime(2026, 7, 29, 20, 0, tzinfo=UTC)
 
@@ -117,7 +118,8 @@ def trust() -> tuple[
 
 def test_valid_signed_token_round_trip(trust: tuple) -> None:
     issuer, verifier, _ = trust
-    token = issuer.issue(_claim(), now=NOW, token_id="token:valid")
+    claim = _claim()
+    token = issuer.issue(claim, now=NOW, token_id="token:valid")
 
     verified = verifier.verify(
         token,
@@ -129,8 +131,21 @@ def test_valid_signed_token_round_trip(trust: tuple) -> None:
     )
 
     assert verified.token_id == "token:valid"
-    assert verified.claim_id == _claim().claim_id
+    assert verified.claim_id == claim.claim_id
     assert verified.status == "active"
+    assert verified.active_claim == claim
+    assert verified.active_claim.issuer_ref == "org:caretrust-demo"
+    assert verified.active_claim.subject_ref == "person:synthetic-leilani-kealoha"
+    assert verified.active_claim.claim_type == "professional_credential"
+    assert verified.active_claim.jurisdiction == "HI"
+    assert verified.active_claim.valid_from == "2024-04-15"
+    assert verified.active_claim.valid_until == "2028-04-15"
+    assert verified.active_claim.status is ClaimStatus.ACTIVE
+    assert verified.active_claim.evidence_refs == ("artifact:smoke-clean",)
+    assert verified.raw_claims["ct_claim_issuer"] == claim.issuer_ref
+    assert verified.raw_claims["ct_jurisdiction"] == claim.jurisdiction
+    assert verified.raw_claims["ct_valid_until"] == claim.valid_until
+    assert verified.raw_claims["ct_evidence_refs"] == list(claim.evidence_refs)
 
 
 def test_expired_token_is_rejected(trust: tuple) -> None:
@@ -150,8 +165,21 @@ def test_payload_tampering_invalidates_signature(trust: tuple) -> None:
     token = issuer.issue(_claim(), now=NOW, token_id="token:tamper")
     header, payload, signature = token.split(".")
     padding = "=" * (-len(payload) % 4)
+
+    def resign(payload_data: dict) -> str:
+        encoded = base64.urlsafe_b64encode(
+            json.dumps(
+                payload_data, separators=(",", ":"), sort_keys=True
+            ).encode()
+        ).rstrip(b"=").decode()
+        signing_input = f"{header}.{encoded}"
+        changed_signature = base64.urlsafe_b64encode(
+            issuer.signing_key.private_key.sign(signing_input.encode("ascii"))
+        ).rstrip(b"=").decode()
+        return f"{signing_input}.{changed_signature}"
+
     data = json.loads(base64.urlsafe_b64decode(payload + padding))
-    data["sub"] = "person:attacker"
+    data["ct_active_claim"]["jurisdiction"] = "CA"
     changed = base64.urlsafe_b64encode(
         json.dumps(data, separators=(",", ":"), sort_keys=True).encode()
     ).rstrip(b"=").decode()
@@ -160,6 +188,23 @@ def test_payload_tampering_invalidates_signature(trust: tuple) -> None:
         verifier.verify(f"{header}.{changed}.{signature}", now=NOW)
 
     assert error.value.code is TokenErrorCode.SIGNATURE_INVALID
+
+    # Even a trusted signature cannot make an internally inconsistent token
+    # valid: duplicated top-level bindings must match the complete signed claim.
+    original = json.loads(base64.urlsafe_b64decode(payload + padding))
+    original["ct_jurisdiction"] = "CA"
+
+    with pytest.raises(TokenVerificationError) as error:
+        verifier.verify(resign(original), now=NOW)
+
+    assert error.value.code is TokenErrorCode.CLAIMS_INVALID
+
+    malformed = json.loads(base64.urlsafe_b64decode(payload + padding))
+    del malformed["ct_active_claim"]["evidence_refs"]
+    with pytest.raises(TokenVerificationError) as error:
+        verifier.verify(resign(malformed), now=NOW)
+
+    assert error.value.code is TokenErrorCode.CLAIMS_INVALID
 
 
 def test_revoked_claim_invalidates_previously_issued_token(trust: tuple) -> None:
@@ -174,18 +219,50 @@ def test_revoked_claim_invalidates_previously_issued_token(trust: tuple) -> None
     assert error.value.code is TokenErrorCode.REVOKED
 
 
-def test_valid_claim_and_token_permit(trust: tuple) -> None:
+def test_valid_claim_and_token_permit(trust: tuple, tmp_path) -> None:
     issuer, verifier, _ = trust
     claim = _claim()
     request = _request()
     token = issuer.issue(claim, now=NOW, token_id="token:permit")
+    audit = JsonlAuditLog(tmp_path / "authorization-audit.jsonl")
+    policy = AuthorizationPolicy(verifier=verifier)
 
-    decision = AuthorizationPolicy(verifier=verifier).decide(
-        request, claim, token, now=NOW + timedelta(seconds=1)
+    decision = policy.decide(
+        request,
+        claim,
+        token,
+        now=NOW + timedelta(seconds=1),
+        audit_log=audit,
+        actor_ref="system:authorization-policy",
+        trace_id="trace:authorization",
+        event_id="event:authorization:permit",
     )
 
     assert decision.decision is DecisionValue.PERMIT
     assert decision.supporting_claim_ids == (claim.claim_id,)
+    event = audit.read()[0]
+    assert event.event_type.value == "authorization_decided"
+    assert event.details["decision"] == "permit"
+    assert event.details["reason_codes"] == "POLICY_REQUIREMENTS_SATISFIED"
+    assert len(event.details["token_sha256"]) == 64
+
+    # A valid token cannot accompany a mutated copy of the active claim. The
+    # complete signed object, not only claim ID/type/status, is policy-bound.
+    mutated = claim.model_copy(
+        update={"evidence_refs": ("artifact:synthetic-substitution",)}
+    )
+    mismatch = policy.decide(
+        request,
+        mutated,
+        token,
+        now=NOW + timedelta(seconds=2),
+        audit_log=audit,
+        actor_ref="system:authorization-policy",
+        trace_id="trace:authorization",
+        event_id="event:authorization:claim-mismatch",
+    )
+    assert mismatch.decision is DecisionValue.DENY
+    assert "TOKEN_ACTIVE_CLAIM_MISMATCH" in mismatch.reason_codes
 
 
 def test_a_draft_can_never_produce_a_permit(trust: tuple) -> None:
@@ -203,21 +280,50 @@ def test_a_draft_can_never_produce_a_permit(trust: tuple) -> None:
     assert decision.reason_codes == ("REVIEW_REQUIRED", "CLAIM_NOT_ACTIVE_TYPE")
 
 
-def test_revocation_changes_permit_to_deny(trust: tuple) -> None:
+def test_revocation_changes_permit_to_deny(trust: tuple, tmp_path) -> None:
     issuer, verifier, revocations = trust
     claim = _claim()
     request = _request()
     token = issuer.issue(claim, now=NOW, token_id="token:before-revocation")
     policy = AuthorizationPolicy(verifier=verifier)
+    audit = JsonlAuditLog(tmp_path / "audit.jsonl")
 
     before = policy.decide(request, claim, token, now=NOW + timedelta(seconds=1))
-    revocations.revoke_claim(claim.claim_id)
+    with pytest.raises(ValueError, match="revocation audit metadata is required"):
+        revocations.revoke_token("token:missing-audit-metadata", audit_log=audit)
+    revocations.revoke_claim(
+        claim.claim_id,
+        audit_log=audit,
+        actor_ref="reviewer:synthetic-authorized",
+        trace_id="trace:revocation",
+        event_id="event:revocation",
+        occurred_at=NOW + timedelta(seconds=2),
+    )
+    revocations.revoke_token(
+        "token:audit-only",
+        audit_log=audit,
+        actor_ref="reviewer:synthetic-authorized",
+        trace_id="trace:revocation",
+        event_id="event:token-revocation",
+        occurred_at=NOW + timedelta(seconds=2),
+    )
     after = policy.decide(request, claim, token, now=NOW + timedelta(seconds=2))
 
     assert before.decision is DecisionValue.PERMIT
     assert after.decision is DecisionValue.DENY
     assert after.supporting_claim_ids == ()
     assert TokenErrorCode.REVOKED.value in after.reason_codes
+    events = audit.read()
+    assert len(events) == 2
+    assert events[0].event_type.value == "claim_revoked"
+    assert events[0].object_ref == claim.claim_id
+    assert events[0].details == {
+        "revocation_target": "claim",
+        "reason_code": "TOKEN_REVOKED",
+    }
+    assert events[1].event_type.value == "claim_revoked"
+    assert events[1].object_ref == "token:audit-only"
+    assert events[1].details["revocation_target"] == "token"
 
 
 def test_revoked_status_cannot_be_issued_or_permitted(trust: tuple) -> None:

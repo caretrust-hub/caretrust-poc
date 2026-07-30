@@ -1,0 +1,344 @@
+{
+  "$defs": {
+    "DraftCredentialClaim": {
+      "additionalProperties": false,
+      "description": "The only structured object that an extraction model may propose.",
+      "properties": {
+        "blocking_issues": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocking Issues",
+          "type": "array"
+        },
+        "claim_type": {
+          "const": "professional_credential",
+          "title": "Claim Type",
+          "type": "string"
+        },
+        "credential_profile": {
+          "const": "hawaii_cna_smoke_v1",
+          "title": "Credential Profile",
+          "type": "string"
+        },
+        "draft_id": {
+          "title": "Draft Id",
+          "type": "string"
+        },
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "fields": {
+          "$ref": "#/$defs/DraftCredentialFields"
+        },
+        "schema_version": {
+          "const": "caretrust.draft-credential-claim.v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "const": "draft",
+          "title": "Status",
+          "type": "string"
+        },
+        "subject_ref": {
+          "title": "Subject Ref",
+          "type": "string"
+        },
+        "uncertainties": {
+          "items": {
+            "$ref": "#/$defs/Uncertainty"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "draft_id",
+        "evidence_id",
+        "subject_ref",
+        "claim_type",
+        "credential_profile",
+        "status",
+        "fields",
+        "uncertainties",
+        "blocking_issues"
+      ],
+      "title": "DraftCredentialClaim",
+      "type": "object"
+    },
+    "DraftCredentialFields": {
+      "additionalProperties": false,
+      "description": "Gold fields for the deliberately narrow Hawaii CNA smoke profile.",
+      "properties": {
+        "credential_status": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "credential_type": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "expiration_date": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "holder_name": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "issuer_or_source": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "jurisdiction": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "original_or_issue_date": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "registry_id": {
+          "$ref": "#/$defs/DraftField"
+        },
+        "restrictions_or_notes": {
+          "$ref": "#/$defs/DraftField"
+        }
+      },
+      "required": [
+        "holder_name",
+        "registry_id",
+        "credential_type",
+        "jurisdiction",
+        "original_or_issue_date",
+        "expiration_date",
+        "credential_status",
+        "restrictions_or_notes",
+        "issuer_or_source"
+      ],
+      "title": "DraftCredentialFields",
+      "type": "object"
+    },
+    "DraftField": {
+      "additionalProperties": false,
+      "description": "One unverified extracted field with explicit evidence linkage.",
+      "properties": {
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "normalized_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Value"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "value",
+        "confidence",
+        "evidence_refs"
+      ],
+      "title": "DraftField",
+      "type": "object"
+    },
+    "ExtractionStatus": {
+      "enum": [
+        "extraction_succeeded",
+        "extraction_failed"
+      ],
+      "title": "ExtractionStatus",
+      "type": "string"
+    },
+    "Uncertainty": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking": {
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "code": {
+          "$ref": "#/$defs/UncertaintyCode"
+        },
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "field_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Field Paths",
+          "type": "array"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "field_paths",
+        "message",
+        "evidence_refs",
+        "blocking"
+      ],
+      "title": "Uncertainty",
+      "type": "object"
+    },
+    "UncertaintyCode": {
+      "enum": [
+        "AMBIGUOUS_DATE",
+        "MISSING_IDENTIFIER",
+        "CROPPED_RESTRICTION",
+        "UNSUPPORTED_ISSUER",
+        "UNREADABLE_EVIDENCE",
+        "CONTRADICTORY_VALUE"
+      ],
+      "title": "UncertaintyCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Immutable record of one schema-validation attempt.",
+  "properties": {
+    "aws_region": {
+      "title": "Aws Region",
+      "type": "string"
+    },
+    "completed_at": {
+      "format": "date-time",
+      "title": "Completed At",
+      "type": "string"
+    },
+    "draft": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DraftCredentialClaim"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "estimated_cost_usd": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Estimated Cost Usd"
+    },
+    "evidence_id": {
+      "title": "Evidence Id",
+      "type": "string"
+    },
+    "extraction_id": {
+      "title": "Extraction Id",
+      "type": "string"
+    },
+    "input_tokens": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Input Tokens"
+    },
+    "latency_ms": {
+      "title": "Latency Ms",
+      "type": "integer"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "output_tokens": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Output Tokens"
+    },
+    "prompt_sha256": {
+      "title": "Prompt Sha256",
+      "type": "string"
+    },
+    "raw_response_sha256": {
+      "title": "Raw Response Sha256",
+      "type": "string"
+    },
+    "schema_sha256": {
+      "title": "Schema Sha256",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/ExtractionStatus"
+    },
+    "validation_errors": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Validation Errors",
+      "type": "array"
+    }
+  },
+  "required": [
+    "extraction_id",
+    "evidence_id",
+    "status",
+    "model_id",
+    "aws_region",
+    "prompt_sha256",
+    "schema_sha256",
+    "raw_response_sha256",
+    "started_at",
+    "completed_at",
+    "latency_ms"
+  ],
+  "title": "ExtractionRecord",
+  "type": "object"
+}

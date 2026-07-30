@@ -1,0 +1,20 @@
+{
+  "aws_region": "us-west-2",
+  "completed_at": "2026-07-29T20:00:00.007Z",
+  "draft": null,
+  "estimated_cost_usd": 0.0,
+  "extraction_id": "extraction:synthetic-invalid-001",
+  "evidence_id": "artifact:synthetic-hi-cna-1001",
+  "input_tokens": 12,
+  "latency_ms": 7,
+  "model_id": "synthetic-validator-example",
+  "output_tokens": 3,
+  "prompt_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "raw_response_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+  "schema_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+  "started_at": "2026-07-29T20:00:00Z",
+  "status": "extraction_failed",
+  "validation_errors": [
+    "Synthetic example: malformed model output was rejected."
+  ]
+}

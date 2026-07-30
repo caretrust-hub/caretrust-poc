@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Mapping
@@ -236,6 +237,20 @@ _CORRECTABLE_FIELDS = frozenset(
 )
 
 
+@dataclass(frozen=True)
+class ReviewerAuthorizationPolicy:
+    """Deterministic synthetic reviewer allow-list for the Phase 1 boundary."""
+
+    allowed_reviewer_refs: frozenset[str]
+    policy_version: str = "caretrust.reviewer-authorization.v1"
+
+    def require_authorized(self, reviewer_ref: str) -> None:
+        if not reviewer_ref or reviewer_ref not in self.allowed_reviewer_refs:
+            raise PermissionError(
+                f"reviewer is not authorized by {self.policy_version}"
+            )
+
+
 def _draft_field_value(draft: DraftCredentialClaim, field_path: str) -> str | None:
     if field_path not in _CORRECTABLE_FIELDS:
         raise ValueError(f"field is not review-correctable: {field_path}")
@@ -258,9 +273,13 @@ def record_review(
     actor_ref: str,
     trace_id: str,
     event_id: str,
+    authorization_policy: ReviewerAuthorizationPolicy,
 ) -> ReviewBundle:
     """Record a constrained human decision without modifying model output."""
 
+    authorization_policy.require_authorized(reviewer_ref)
+    if actor_ref != reviewer_ref:
+        raise PermissionError("review actor must match the authorized reviewer")
     if decision is ReviewDecision.APPROVED and corrections:
         raise ValueError("approved review cannot contain corrections")
     if decision is ReviewDecision.CORRECTED and not corrections:
@@ -268,6 +287,14 @@ def record_review(
     if decision in {ReviewDecision.REJECTED, ReviewDecision.DEFERRED} and corrections:
         raise ValueError("rejected or deferred review cannot contain corrections")
 
+    valid_evidence_refs = {
+        ref
+        for field_name in type(draft.fields).model_fields
+        for ref in getattr(draft.fields, field_name).evidence_refs
+    }
+    valid_evidence_refs.update(
+        ref for uncertainty in draft.uncertainties for ref in uncertainty.evidence_refs
+    )
     seen_paths: set[str] = set()
     for correction in corrections:
         if correction.field_path in seen_paths:
@@ -282,6 +309,12 @@ def record_review(
             raise ValueError("correction reason must not be blank")
         if not correction.evidence_refs:
             raise ValueError("correction must retain visible evidence references")
+        unknown_refs = set(correction.evidence_refs) - valid_evidence_refs
+        if unknown_refs:
+            raise ValueError(
+                "correction cites evidence outside the reviewed draft: "
+                f"{sorted(unknown_refs)}"
+            )
 
     review = ReviewRecord(
         review_id=review_id,
@@ -298,6 +331,7 @@ def record_review(
         "decision": review.decision.value,
         "correction_count": len(corrections),
         "original_draft_sha256": review.original_draft_sha256,
+        "reviewer_authorization_policy": authorization_policy.policy_version,
     }
     for index, correction in enumerate(corrections, start=1):
         prefix = f"correction_{index}"
@@ -510,13 +544,17 @@ def decide_activation(
     reason_codes = tuple(dict.fromkeys(reasons))
     claim: ActiveCredentialClaim | None = None
     if not reason_codes:
-        evidence_refs = tuple(
-            dict.fromkeys(
-                reference
-                for field_name in type(draft.fields).model_fields
-                for reference in getattr(draft.fields, field_name).evidence_refs
-            )
+        all_evidence_refs = [
+            reference
+            for field_name in type(draft.fields).model_fields
+            for reference in getattr(draft.fields, field_name).evidence_refs
+        ]
+        all_evidence_refs.extend(
+            reference
+            for correction in review.corrections
+            for reference in correction.evidence_refs
         )
+        evidence_refs = tuple(dict.fromkeys(all_evidence_refs))
         claim = ActiveCredentialClaim(
             schema_version="caretrust.active-credential-claim.v1",
             claim_id=claim_id,

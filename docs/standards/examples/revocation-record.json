@@ -1,0 +1,12 @@
+{
+  "actor_ref": "reviewer:synthetic-authorized-001",
+  "claim_id": "claim:synthetic-hi-cna-1001",
+  "reason": "Synthetic claim withdrawn for the revocation demonstration.",
+  "reason_code": "CLAIM_REVOKED",
+  "revocation_id": "revocation:synthetic-hi-cna-1001",
+  "revoked_at": "2026-07-29T20:05:00Z",
+  "schema_version": "caretrust.revocation-record.v1",
+  "synthetic": true,
+  "target_id": "claim:synthetic-hi-cna-1001",
+  "target_type": "claim"
+}

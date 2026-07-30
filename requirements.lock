@@ -1,0 +1,26 @@
+# CareTrust Phase 1 tested dependency set for CPython 3.13 on Windows.
+# Install with: python -m pip install -r requirements.lock
+# Then install the local package without resolving again:
+# python -m pip install -e . --no-deps
+
+annotated-types==0.8.0
+boto3==1.43.59
+botocore==1.43.59
+cffi==2.1.0
+colorama==0.4.6
+cryptography==49.0.0
+iniconfig==2.3.0
+jmespath==1.1.0
+packaging==26.2
+pluggy==1.6.0
+pycparser==3.0
+pydantic==2.13.4
+pydantic_core==2.46.4
+Pygments==2.20.0
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+s3transfer==0.19.2
+six==1.17.0
+typing_extensions==4.16.0
+typing-inspection==0.4.2
+urllib3==2.7.0

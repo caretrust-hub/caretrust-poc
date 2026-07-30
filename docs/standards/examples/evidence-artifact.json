@@ -1,0 +1,20 @@
+{
+  "artifact_id": "artifact:synthetic-hi-cna-1001",
+  "content_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "content_type": "text/plain",
+  "document_type": "hawaii_cna_status_record",
+  "fixture_id": "synthetic-interoperability-example",
+  "ocr_text": "Synthetic registry identifier: HI-CNA-SYN-1001",
+  "source_filename": "synthetic-hi-cna-1001.txt",
+  "spans": [
+    {
+      "artifact_id": "artifact:synthetic-hi-cna-1001",
+      "end_char": 46,
+      "quote": "HI-CNA-SYN-1001",
+      "region": null,
+      "span_id": "span:synthetic-registry-id",
+      "start_char": 31
+    }
+  ],
+  "synthetic": true
+}
