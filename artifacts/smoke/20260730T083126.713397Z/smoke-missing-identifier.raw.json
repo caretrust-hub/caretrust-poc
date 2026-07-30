@@ -1,0 +1,100 @@
+{
+  "blocking_issues": [
+    "missing_registry_identifier"
+  ],
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "draft_id": "draft:smoke-missing-identifier",
+  "evidence_id": "artifact:smoke-missing-identifier",
+  "fields": {
+    "credential_status": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-status"
+      ],
+      "normalized_value": "active",
+      "value": "Active"
+    },
+    "credential_type": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-type"
+      ],
+      "normalized_value": "certified_nurse_aide",
+      "value": "Certified Nurse Aide"
+    },
+    "expiration_date": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-expiration-date"
+      ],
+      "normalized_value": "2028-05-09",
+      "value": "05/09/2028"
+    },
+    "holder_name": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-name"
+      ],
+      "normalized_value": "Jonah Akana",
+      "value": "Jonah Akana"
+    },
+    "issuer_or_source": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-source"
+      ],
+      "normalized_value": "Prometric CNA Registry simulator",
+      "value": "Prometric CNA Registry simulator"
+    },
+    "jurisdiction": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-jurisdiction"
+      ],
+      "normalized_value": "HI",
+      "value": "HI"
+    },
+    "original_or_issue_date": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-original-date"
+      ],
+      "normalized_value": "2024-05-09",
+      "value": "05/09/2024"
+    },
+    "registry_id": {
+      "confidence": 0.1,
+      "evidence_refs": [
+        "missing-id-area"
+      ],
+      "normalized_value": null,
+      "value": null
+    },
+    "restrictions_or_notes": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "missing-restrictions"
+      ],
+      "normalized_value": "None reported",
+      "value": "None reported"
+    }
+  },
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "status": "draft",
+  "subject_ref": "person:synthetic-jonah-akana",
+  "uncertainties": [
+    {
+      "blocking": true,
+      "code": "MISSING_IDENTIFIER",
+      "evidence_refs": [
+        "missing-id-area"
+      ],
+      "field_paths": [
+        "fields.registry_id"
+      ]
+    ,
+      "message": "Registry identifier is missing or blank."
+    }
+  ]
+}

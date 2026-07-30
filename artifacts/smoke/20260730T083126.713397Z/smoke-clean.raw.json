@@ -1,0 +1,67 @@
+{
+  "blocking_issues": [],
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "draft_id": "draft:smoke-clean",
+  "evidence_id": "artifact:smoke-clean",
+  "fields": {
+    "credential_status": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-status"],
+      "normalized_value": "active",
+      "value": "Active"
+    },
+    "credential_type": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-type"],
+      "normalized_value": "Certified Nurse Aide (CNA)",
+      "value": "Certified Nurse Aide (CNA)"
+    },
+    "expiration_date": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-expiration-date"],
+      "normalized_value": "2028-04-15",
+      "value": "04/15/2028"
+    },
+    "holder_name": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-name"],
+      "normalized_value": "Leilani Kealoha",
+      "value": "Leilani Kealoha"
+    },
+    "issuer_or_source": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-source"],
+      "normalized_value": "Prometric CNA Registry simulator",
+      "value": "Prometric CNA Registry simulator"
+    },
+    "jurisdiction": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-jurisdiction"],
+      "normalized_value": "HI",
+      "value": "HI"
+    },
+    "original_or_issue_date": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-original-date"],
+      "normalized_value": "2024-04-15",
+      "value": "04/15/2024"
+    },
+    "registry_id": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-id"],
+      "normalized_value": "HI-CNA-SYN-1001",
+      "value": "HI-CNA-SYN-1001"
+    },
+    "restrictions_or_notes": {
+      "confidence": 0.9,
+      "evidence_refs": ["clean-restrictions"],
+      "normalized_value": "None reported",
+      "value": "None reported"
+    }
+  },
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "status": "draft",
+  "subject_ref": "person:synthetic-leilani-kealoha"
+  , "uncertainties": []
+}

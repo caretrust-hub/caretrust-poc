@@ -1,0 +1,85 @@
+{
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "draft_id": "draft:smoke-clean",
+  "evidence_id": "artifact:smoke-clean",
+  "subject_ref": "person:synthetic-leilani-kealoha",
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "status": "draft",
+  "fields": {
+    "holder_name": {
+      "value": "Leilani Kealoha",
+      "normalized_value": "Leilani Kealoha",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-name"
+      ]
+    },
+    "registry_id": {
+      "value": "HI-CNA-SYN-1001",
+      "normalized_value": "HI-CNA-SYN-1001",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-id"
+      ]
+    },
+    "credential_type": {
+      "value": "Certified Nurse Aide (CNA)",
+      "normalized_value": "Certified Nurse Aide (CNA)",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-type"
+      ]
+    },
+    "jurisdiction": {
+      "value": "HI",
+      "normalized_value": "HI",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-jurisdiction"
+      ]
+    },
+    "original_or_issue_date": {
+      "value": "04/15/2024",
+      "normalized_value": "2024-04-15",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-original-date"
+      ]
+    },
+    "expiration_date": {
+      "value": "04/15/2028",
+      "normalized_value": "2028-04-15",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-expiration-date"
+      ]
+    },
+    "credential_status": {
+      "value": "Active",
+      "normalized_value": "active",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-status"
+      ]
+    },
+    "restrictions_or_notes": {
+      "value": "None reported",
+      "normalized_value": "None reported",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-restrictions"
+      ]
+    },
+    "issuer_or_source": {
+      "value": "Prometric CNA Registry simulator",
+      "normalized_value": "Prometric CNA Registry simulator",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "clean-source"
+      ]
+    }
+  },
+  "uncertainties": [],
+  "blocking_issues": []
+}

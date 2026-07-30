@@ -21,11 +21,11 @@ validation record.
 - [x] **T006 [Codex]** Implement the provider-neutral `ModelAdapter` and Bedrock
   Converse adapter. **Done when:** no provider-specific response escapes the
   adapter and usage/latency metadata is captured.
-- [ ] **T007 [Codex]** Run the frozen five-case Qwen3 32B smoke test in `us-west-2`.
+- [x] **T007 [Codex]** Run the frozen five-case Qwen3 32B smoke test in `us-west-2`.
   **Done when:** raw responses, schema results, latency, token usage, estimated
   cost, and configuration hashes are saved without exceeding the $10 cumulative
   Phase 1 ceiling.
-- [ ] **T008 [Codex]** Freeze Qwen or perform the single allowed Claude 3 Haiku
+- [x] **T008 [Codex]** Freeze Qwen or perform the single allowed Claude 3 Haiku
   fallback test. **Done when:** one model and configuration are recorded for final
   validation; models will not be mixed.
 - [ ] **T009 [Codex]** Implement evidence intake, schema validation, forbidden-state

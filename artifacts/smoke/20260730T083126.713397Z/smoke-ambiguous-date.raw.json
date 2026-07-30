@@ -1,0 +1,78 @@
+{
+  "blocking_issues": [],
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "draft_id": "draft:smoke-ambiguous-date",
+  "evidence_id": "artifact:smoke-ambiguous-date",
+  "fields": {
+    "credential_status": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-status"],
+      "normalized_value": "active",
+      "value": "Active"
+    },
+    "credential_type": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-type"],
+      "normalized_value": "CNA",
+      "value": "CNA"
+    },
+    "expiration_date": {
+      "confidence": 0.7,
+      "evidence_refs": ["amb-dates"],
+      "normalized_value": "2027-04-03",
+      "value": "04/03/2027"
+    },
+    "holder_name": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-name"],
+      "normalized_value": "Malia Kanoa",
+      "value": "Malia Kanoa"
+    },
+    "issuer_or_source": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-source"],
+      "normalized_value": "Prometric CNA Registry simulator",
+      "value": "Prometric CNA Registry simulator"
+    },
+    "jurisdiction": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-jurisdiction"],
+      "normalized_value": "Hawaii",
+      "value": "Hawaii"
+    },
+    "original_or_issue_date": {
+      "confidence": 0.7,
+      "evidence_refs": ["amb-dates"],
+      "normalized_value": "2025-03-04",
+      "value": "03/04/2025"
+    },
+    "registry_id": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-id"],
+      "normalized_value": "HI-CNA-SYN-1002",
+      "value": "HI-CNA-SYN-1002"
+    },
+    "restrictions_or_notes": {
+      "confidence": 0.9,
+      "evidence_refs": ["amb-restrictions"],
+      "normalized_value": "None reported",
+      "value": "None reported"
+    }
+  },
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "status": "draft",
+  "subject_ref": "person:synthetic-malia-kanoa",
+  "uncertainties": [
+    {
+      "blocking": false,
+      "code": "AMBIGUOUS_DATE",
+      "evidence_refs": ["amb-dates"],
+      "field_paths": [
+        "fields.expiration_date",
+        "fields.original_or_issue_date"
+      ],
+      "message": "Date format is ambiguous (MM/DD/YYYY vs. DD/MM/YYYY)."
+    }
+  ]
+}

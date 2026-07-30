@@ -1,0 +1,21 @@
+{
+  "case_id": "smoke-missing-identifier",
+  "fixture_file": "missing-identifier.json",
+  "fixture_sha256": "115749e8bcf6c0521b9c388a5bf2fa7f8f7ba35ba3f2cc3a45dd16b79fb714af",
+  "status": "schema_valid",
+  "validation_errors": [],
+  "raw_response_file": "smoke-missing-identifier.raw.json",
+  "raw_response_sha256": "227eade69828a39a029aadba1aed1176ede278cb420b1f6bc083e09af575c882",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "started_at": "2026-07-30T08:31:56.310620+00:00",
+  "completed_at": "2026-07-30T08:31:58.602535+00:00",
+  "latency_ms": 2292,
+  "input_tokens": 642,
+  "output_tokens": 697,
+  "total_tokens": 1339,
+  "estimated_cost_usd": 0.0005145,
+  "stop_reason": "end_turn",
+  "request_id": "d0942096-e293-463c-aaf3-da4dbb86cf78",
+  "parsed_file": "smoke-missing-identifier.parsed.json"
+}

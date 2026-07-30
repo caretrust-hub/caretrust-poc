@@ -1,0 +1,21 @@
+{
+  "case_id": "smoke-clean",
+  "fixture_file": "clean.json",
+  "fixture_sha256": "a245cb9dc5c8a8e1ae4ec3aca35537d61801dae730d31f9e5980dd20462bac7f",
+  "status": "schema_valid",
+  "validation_errors": [],
+  "raw_response_file": "smoke-clean.raw.json",
+  "raw_response_sha256": "42469140aa029f2c82a32b43531ce1a8fd1090a3b5481905d7a7af890b352fe2",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "started_at": "2026-07-30T08:31:51.647969+00:00",
+  "completed_at": "2026-07-30T08:31:53.565012+00:00",
+  "latency_ms": 1917,
+  "input_tokens": 671,
+  "output_tokens": 607,
+  "total_tokens": 1278,
+  "estimated_cost_usd": 0.00046485,
+  "stop_reason": "end_turn",
+  "request_id": "9580c963-3ee7-4099-9550-be78861fedc4",
+  "parsed_file": "smoke-clean.parsed.json"
+}

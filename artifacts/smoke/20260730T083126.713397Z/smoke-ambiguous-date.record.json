@@ -1,0 +1,21 @@
+{
+  "case_id": "smoke-ambiguous-date",
+  "fixture_file": "ambiguous-date.json",
+  "fixture_sha256": "a313cff8f47e90b8b2db4f55e9a53204499032521d06df5c67f477dbef122ce5",
+  "status": "schema_valid",
+  "validation_errors": [],
+  "raw_response_file": "smoke-ambiguous-date.raw.json",
+  "raw_response_sha256": "8eb5f95a0eb77446fe1d56221c25196fecd4c2e34f28f5320105f4dea2ec8196",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "started_at": "2026-07-30T08:31:27.180259+00:00",
+  "completed_at": "2026-07-30T08:31:29.948928+00:00",
+  "latency_ms": 2769,
+  "input_tokens": 637,
+  "output_tokens": 671,
+  "total_tokens": 1308,
+  "estimated_cost_usd": 0.00049815,
+  "stop_reason": "end_turn",
+  "request_id": "b31b24a5-927c-44ca-8a0d-08f0264ec8aa",
+  "parsed_file": "smoke-ambiguous-date.parsed.json"
+}

@@ -1,0 +1,21 @@
+{
+  "case_id": "smoke-unsupported-issuer",
+  "fixture_file": "unsupported-issuer.json",
+  "fixture_sha256": "c086fb75e5d1904f10e255d1791c91a7fb00ddb7d8f6bef434331e437d6743df",
+  "status": "schema_valid",
+  "validation_errors": [],
+  "raw_response_file": "smoke-unsupported-issuer.raw.json",
+  "raw_response_sha256": "4db189c7ff0ca535bf053144260ff79d04b5d70e561e9bf1d7a204769f9504a1",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "started_at": "2026-07-30T08:31:37.002131+00:00",
+  "completed_at": "2026-07-30T08:31:39.929360+00:00",
+  "latency_ms": 2927,
+  "input_tokens": 686,
+  "output_tokens": 785,
+  "total_tokens": 1471,
+  "estimated_cost_usd": 0.0005739,
+  "stop_reason": "end_turn",
+  "request_id": "df14f916-ed6f-44c9-888e-515e34fcf4a9",
+  "parsed_file": "smoke-unsupported-issuer.parsed.json"
+}

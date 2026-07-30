@@ -1,0 +1,21 @@
+{
+  "case_id": "smoke-cropped-restriction",
+  "fixture_file": "cropped-restriction.json",
+  "fixture_sha256": "fc9b5991bbd1a2d268d06b1d4ebc37dfec9c5c5bbb3007cedf5e43cd66e39495",
+  "status": "schema_valid",
+  "validation_errors": [],
+  "raw_response_file": "smoke-cropped-restriction.raw.json",
+  "raw_response_sha256": "85860ae5db8ff453fe46c1e1391849f024aea220fd187281d592c965b0bb75d1",
+  "model_id": "qwen.qwen3-32b-v1:0",
+  "region": "us-west-2",
+  "started_at": "2026-07-30T08:31:31.868381+00:00",
+  "completed_at": "2026-07-30T08:31:34.255986+00:00",
+  "latency_ms": 2388,
+  "input_tokens": 678,
+  "output_tokens": 725,
+  "total_tokens": 1403,
+  "estimated_cost_usd": 0.0005367,
+  "stop_reason": "end_turn",
+  "request_id": "7089d4e2-36b6-49de-a196-28ebf548e1e7",
+  "parsed_file": "smoke-cropped-restriction.parsed.json"
+}

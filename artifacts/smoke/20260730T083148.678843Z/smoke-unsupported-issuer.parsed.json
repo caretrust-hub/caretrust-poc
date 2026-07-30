@@ -1,0 +1,110 @@
+{
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "draft_id": "draft:smoke-unsupported-issuer",
+  "evidence_id": "artifact:smoke-unsupported-issuer",
+  "subject_ref": "person:synthetic-kai-namaka",
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "status": "draft",
+  "fields": {
+    "holder_name": {
+      "value": "Kai Nāmaka",
+      "normalized_value": "Kai Nāmaka",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-name"
+      ]
+    },
+    "registry_id": {
+      "value": "PCSC-SYN-9005",
+      "normalized_value": "PCSC-SYN-9005",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-id"
+      ]
+    },
+    "credential_type": {
+      "value": "Certified Nurse Aide",
+      "normalized_value": "Certified Nurse Aide",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-type"
+      ]
+    },
+    "jurisdiction": {
+      "value": "HI",
+      "normalized_value": "HI",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-jurisdiction"
+      ]
+    },
+    "original_or_issue_date": {
+      "value": "06/10/2025",
+      "normalized_value": "2025-06-10",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-original-date"
+      ]
+    },
+    "expiration_date": {
+      "value": "06/10/2029",
+      "normalized_value": "2029-06-10",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-expiration-date"
+      ]
+    },
+    "credential_status": {
+      "value": "Active",
+      "normalized_value": "active",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-status"
+      ]
+    },
+    "restrictions_or_notes": {
+      "value": "None",
+      "normalized_value": "None",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-restrictions"
+      ]
+    },
+    "issuer_or_source": {
+      "value": "Pacific Care Skills Center",
+      "normalized_value": "Pacific Care Skills Center",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "issuer-source"
+      ]
+    }
+  },
+  "uncertainties": [
+    {
+      "code": "UNSUPPORTED_ISSUER",
+      "field_paths": [
+        "issuer_or_source"
+      ],
+      "message": "Issuer 'Pacific Care Skills Center' is not recognized in the CareTrust registry.",
+      "evidence_refs": [
+        "issuer-source"
+      ],
+      "blocking": true
+    },
+    {
+      "code": "MISSING_IDENTIFIER",
+      "field_paths": [
+        "registry_id"
+      ],
+      "message": "No Prometric simulator verification is attached.",
+      "evidence_refs": [
+        "issuer-no-registry"
+      ],
+      "blocking": false
+    }
+  ],
+  "blocking_issues": [
+    "unsupported_issuer"
+  ]
+}

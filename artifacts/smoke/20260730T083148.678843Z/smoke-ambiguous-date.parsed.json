@@ -1,0 +1,109 @@
+{
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "draft_id": "draft:smoke-ambiguous-date",
+  "evidence_id": "artifact:smoke-ambiguous-date",
+  "subject_ref": "person:synthetic-malia-kanoa",
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "status": "draft",
+  "fields": {
+    "holder_name": {
+      "value": "Malia Kanoa",
+      "normalized_value": "Malia Kanoa",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-name"
+      ]
+    },
+    "registry_id": {
+      "value": "HI-CNA-SYN-1002",
+      "normalized_value": "HI-CNA-SYN-1002",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-id"
+      ]
+    },
+    "credential_type": {
+      "value": "CNA",
+      "normalized_value": "CNA",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-type"
+      ]
+    },
+    "jurisdiction": {
+      "value": "Hawaii",
+      "normalized_value": "Hawaii",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-jurisdiction"
+      ]
+    },
+    "original_or_issue_date": {
+      "value": "03/04/2025",
+      "normalized_value": "2025-03-04",
+      "confidence": 0.7,
+      "evidence_refs": [
+        "amb-dates"
+      ]
+    },
+    "expiration_date": {
+      "value": "04/03/2027",
+      "normalized_value": "2027-04-03",
+      "confidence": 0.7,
+      "evidence_refs": [
+        "amb-dates"
+      ]
+    },
+    "credential_status": {
+      "value": "Active",
+      "normalized_value": "active",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-status"
+      ]
+    },
+    "restrictions_or_notes": {
+      "value": "None reported",
+      "normalized_value": "None reported",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-restrictions"
+      ]
+    },
+    "issuer_or_source": {
+      "value": "Prometric CNA Registry simulator",
+      "normalized_value": "Prometric CNA Registry simulator",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "amb-source"
+      ]
+    }
+  },
+  "uncertainties": [
+    {
+      "code": "UNSUPPORTED_ISSUER",
+      "field_paths": [
+        "fields.issuer_or_source"
+      ],
+      "message": "Verification source is a simulator and not a verified registry.",
+      "evidence_refs": [
+        "amb-source"
+      ],
+      "blocking": false
+    },
+    {
+      "code": "AMBIGUOUS_DATE",
+      "field_paths": [
+        "fields.original_or_issue_date",
+        "fields.expiration_date"
+      ],
+      "message": "Date format is ambiguous (MM/DD/YYYY vs. DD/MM/YYYY).",
+      "evidence_refs": [
+        "amb-dates"
+      ],
+      "blocking": false
+    }
+  ],
+  "blocking_issues": []
+}

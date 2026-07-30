@@ -1,0 +1,99 @@
+{
+  "blocking_issues": [
+    "cropped_restriction"
+  ],
+  "claim_type": "professional_credential",
+  "credential_profile": "hawaii_cna_smoke_v1",
+  "draft_id": "draft:smoke-cropped-restriction",
+  "evidence_id": "artifact:smoke-cropped-restriction",
+  "fields": {
+    "credential_status": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-status"
+      ],
+      "normalized_value": "active",
+      "value": "Active"
+    },
+    "credential_type": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-type"
+      ],
+      "normalized_value": "certified_nurse_aide",
+      "value": "Certified Nurse Aide"
+    },
+    "expiration_date": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-expiration-date"
+      ],
+      "normalized_value": "2027-07-21",
+      "value": "07/21/2027"
+    },
+    "holder_name": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-name"
+      ],
+      "normalized_value": "nohea silva",
+      "value": "Nohea Silva"
+    },
+    "issuer_or_source": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-source"
+      ],
+      "normalized_value": "prometric_cna_registry_simulator",
+      "value": "Prometric CNA Registry simulator"
+    },
+    "jurisdiction": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-jurisdiction"
+      ],
+      "normalized_value": "hi",
+      "value": "HI"
+    },
+    "original_or_issue_date": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-original-date"
+      ],
+      "normalized_value": "2023-07-21",
+      "value": "07/21/2023"
+    },
+    "registry_id": {
+      "confidence": 0.9,
+      "evidence_refs": [
+        "crop-id"
+      ],
+      "normalized_value": "hi-cna-syn-1004",
+      "value": "HI-CNA-SYN-1004"
+    },
+    "restrictions_or_notes": {
+      "confidence": 0.5,
+      "evidence_refs": [
+        "crop-restrictions"
+      ],
+      "normalized_value": null,
+      "value": "Must work under...\n[RIGHT EDGE CROPPED]"
+    }
+  },
+  "schema_version": "caretrust.draft-credential-claim.v1",
+  "status": "draft",
+  "subject_ref": "person:synthetic-nohea-silva"
+  , "uncertainties": [
+    {
+      "blocking": true,
+      "code": "CROPPED_RESTRICTION",
+      "evidence_refs": [
+        "crop-restrictions"
+      ],
+      "field_paths": [
+        "fields.restrictions_or_notes"
+      ],
+      "message": "Restrictions/Notes field is cropped and incomplete."
+    }
+  ]
+}

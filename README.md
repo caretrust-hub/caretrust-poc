@@ -38,3 +38,16 @@ Export the structured-output schema and run the focused contract tests:
 .\.venv\Scripts\python scripts\export_schema.py
 .\.venv\Scripts\python -m pytest
 ```
+
+Run the five-case synthetic Bedrock smoke suite:
+
+```powershell
+.\.venv\Scripts\python scripts\run_smoke.py
+```
+
+The frozen 2026-07-30 Qwen3 32B run produced schema-valid, evidence-linked
+drafts for all five cases. It used 6,858 total tokens, completed in 12.6 seconds
+wall-clock time, and had an estimated inference cost of $0.00262350 at the
+recorded reference rates. Raw responses and normalized records are retained in
+[`artifacts/smoke/20260730T083148.678843Z`](artifacts/smoke/20260730T083148.678843Z).
+This is a smoke result, not a final accuracy or safety evaluation.
