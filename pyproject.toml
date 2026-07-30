@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling==1.31.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caretrust-poc"
+version = "0.1.0"
+description = "Synthetic TRL 3 proof of concept for AI-assisted direct-care credential intake"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = { file = "LICENSE" }
+dependencies = [
+  "pydantic==2.13.4",
+]
+
+[project.optional-dependencies]
+aws = [
+  "boto3==1.43.59",
+]
+dev = [
+  "pytest==9.1.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/caretrust"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

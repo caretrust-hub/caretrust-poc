@@ -1,0 +1,49 @@
+# Python environments and caches
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+.aws/
+credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*.jwk
+*.jwks
+
+# Local workflow state
+*.db
+*.sqlite
+*.sqlite3
+var/
+tmp/
+
+# Private or generated submission material
+private/
+submission/
+submission-private/
+artifacts/private/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,33 @@
+{
+  "manifest_version": "1.0",
+  "profile": "hawaii_cna_smoke_v1",
+  "synthetic": true,
+  "registry_boundary": "Prometric CNA Registry simulator only; no live registry calls.",
+  "fixtures": [
+    {
+      "case_id": "smoke-ambiguous-date",
+      "file": "ambiguous-date.json",
+      "sha256": "a313cff8f47e90b8b2db4f55e9a53204499032521d06df5c67f477dbef122ce5"
+    },
+    {
+      "case_id": "smoke-clean",
+      "file": "clean.json",
+      "sha256": "a245cb9dc5c8a8e1ae4ec3aca35537d61801dae730d31f9e5980dd20462bac7f"
+    },
+    {
+      "case_id": "smoke-cropped-restriction",
+      "file": "cropped-restriction.json",
+      "sha256": "fc9b5991bbd1a2d268d06b1d4ebc37dfec9c5c5bbb3007cedf5e43cd66e39495"
+    },
+    {
+      "case_id": "smoke-missing-identifier",
+      "file": "missing-identifier.json",
+      "sha256": "115749e8bcf6c0521b9c388a5bf2fa7f8f7ba35ba3f2cc3a45dd16b79fb714af"
+    },
+    {
+      "case_id": "smoke-unsupported-issuer",
+      "file": "unsupported-issuer.json",
+      "sha256": "c086fb75e5d1904f10e255d1791c91a7fb00ddb7d8f6bef434331e437d6743df"
+    }
+  ]
+}

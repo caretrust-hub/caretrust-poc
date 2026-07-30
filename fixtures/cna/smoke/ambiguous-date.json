@@ -1,0 +1,152 @@
+{
+  "fixture_version": "1.0",
+  "case_id": "smoke-ambiguous-date",
+  "synthetic": true,
+  "purpose": "Controlled extraction test only; not a real credential or registry result.",
+  "input": {
+    "artifact_id": "artifact:smoke-ambiguous-date",
+    "document_type": "hawaii_cna_status_record",
+    "content_type": "text/plain",
+    "source_filename": "synthetic-hi-cna-ambiguous-date.txt",
+    "ocr_text": "SYNTHETIC TRAINING EXAMPLE — NOT A REAL CREDENTIAL\nHAWAII CNA STATUS NOTE\nName: Malia Kanoa\nRegistry ID: HI-CNA-SYN-1002\nCredential: CNA\nJurisdiction: Hawaii\nDates shown: 03/04/2025 and 04/03/2027\nStatus: Active\nRestrictions/Notes: None reported\nVerification Source: Prometric CNA Registry simulator",
+    "source_spans": [
+      {
+        "span_id": "amb-name",
+        "quote": "Name: Malia Kanoa"
+      },
+      {
+        "span_id": "amb-id",
+        "quote": "Registry ID: HI-CNA-SYN-1002"
+      },
+      {
+        "span_id": "amb-type",
+        "quote": "Credential: CNA"
+      },
+      {
+        "span_id": "amb-jurisdiction",
+        "quote": "Jurisdiction: Hawaii"
+      },
+      {
+        "span_id": "amb-dates",
+        "quote": "Dates shown: 03/04/2025 and 04/03/2027"
+      },
+      {
+        "span_id": "amb-status",
+        "quote": "Status: Active"
+      },
+      {
+        "span_id": "amb-restrictions",
+        "quote": "Restrictions/Notes: None reported"
+      },
+      {
+        "span_id": "amb-source",
+        "quote": "Verification Source: Prometric CNA Registry simulator"
+      }
+    ]
+  },
+  "expected": {
+    "draft": {
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "draft_id": "draft:smoke-ambiguous-date",
+      "evidence_id": "artifact:smoke-ambiguous-date",
+      "subject_ref": "person:synthetic-malia-kanoa",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "status": "draft",
+      "fields": {
+        "holder_name": {
+          "value": "Malia Kanoa",
+          "normalized_value": "Malia Kanoa",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "amb-name"
+          ]
+        },
+        "registry_id": {
+          "value": "HI-CNA-SYN-1002",
+          "normalized_value": "HI-CNA-SYN-1002",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "amb-id"
+          ]
+        },
+        "credential_type": {
+          "value": "CNA",
+          "normalized_value": "Certified Nurse Aide",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "amb-type"
+          ]
+        },
+        "jurisdiction": {
+          "value": "Hawaii",
+          "normalized_value": "HI",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "amb-jurisdiction"
+          ]
+        },
+        "original_or_issue_date": {
+          "value": null,
+          "normalized_value": null,
+          "confidence": 0.0,
+          "evidence_refs": [
+            "amb-dates"
+          ]
+        },
+        "expiration_date": {
+          "value": null,
+          "normalized_value": null,
+          "confidence": 0.0,
+          "evidence_refs": [
+            "amb-dates"
+          ]
+        },
+        "credential_status": {
+          "value": "Active",
+          "normalized_value": "active",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "amb-status"
+          ]
+        },
+        "restrictions_or_notes": {
+          "value": "None reported",
+          "normalized_value": "none",
+          "confidence": 0.97,
+          "evidence_refs": [
+            "amb-restrictions"
+          ]
+        },
+        "issuer_or_source": {
+          "value": "Prometric CNA Registry simulator",
+          "normalized_value": "Prometric CNA Registry simulator",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "amb-source"
+          ]
+        }
+      },
+      "uncertainties": [
+        {
+          "code": "AMBIGUOUS_DATE",
+          "field_paths": [
+            "fields.original_or_issue_date",
+            "fields.expiration_date"
+          ],
+          "message": "Two unlabeled dates are present; their meanings cannot be determined safely.",
+          "evidence_refs": [
+            "amb-dates"
+          ],
+          "blocking": true
+        }
+      ],
+      "blocking_issues": [
+        "AMBIGUOUS_DATE"
+      ]
+    },
+    "review_route": "review_required",
+    "registry_result": "match",
+    "activation_allowed_after_review_and_match": false
+  }
+}

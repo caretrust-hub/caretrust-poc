@@ -1,0 +1,155 @@
+{
+  "fixture_version": "1.0",
+  "case_id": "smoke-missing-identifier",
+  "synthetic": true,
+  "purpose": "Controlled extraction test only; not a real credential or registry result.",
+  "input": {
+    "artifact_id": "artifact:smoke-missing-identifier",
+    "document_type": "hawaii_cna_status_record",
+    "content_type": "text/plain",
+    "source_filename": "synthetic-hi-cna-missing-identifier.txt",
+    "ocr_text": "SYNTHETIC TRAINING EXAMPLE — NOT A REAL CREDENTIAL\nHAWAII CNA STATUS RECORD\nName: Jonah Akana\nCredential: Certified Nurse Aide\nJurisdiction: HI\nOriginal Date: 05/09/2024\nExpiration Date: 05/09/2028\nStatus: Active\nRestrictions/Notes: None reported\nVerification Source: Prometric CNA Registry simulator\nRegistry identifier area is blank.",
+    "source_spans": [
+      {
+        "span_id": "missing-name",
+        "quote": "Name: Jonah Akana"
+      },
+      {
+        "span_id": "missing-type",
+        "quote": "Credential: Certified Nurse Aide"
+      },
+      {
+        "span_id": "missing-jurisdiction",
+        "quote": "Jurisdiction: HI"
+      },
+      {
+        "span_id": "missing-original-date",
+        "quote": "Original Date: 05/09/2024"
+      },
+      {
+        "span_id": "missing-expiration-date",
+        "quote": "Expiration Date: 05/09/2028"
+      },
+      {
+        "span_id": "missing-status",
+        "quote": "Status: Active"
+      },
+      {
+        "span_id": "missing-restrictions",
+        "quote": "Restrictions/Notes: None reported"
+      },
+      {
+        "span_id": "missing-source",
+        "quote": "Verification Source: Prometric CNA Registry simulator"
+      },
+      {
+        "span_id": "missing-id-area",
+        "quote": "Registry identifier area is blank."
+      }
+    ]
+  },
+  "expected": {
+    "draft": {
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "draft_id": "draft:smoke-missing-identifier",
+      "evidence_id": "artifact:smoke-missing-identifier",
+      "subject_ref": "person:synthetic-jonah-akana",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "status": "draft",
+      "fields": {
+        "holder_name": {
+          "value": "Jonah Akana",
+          "normalized_value": "Jonah Akana",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "missing-name"
+          ]
+        },
+        "registry_id": {
+          "value": null,
+          "normalized_value": null,
+          "confidence": 0.0,
+          "evidence_refs": [
+            "missing-id-area"
+          ]
+        },
+        "credential_type": {
+          "value": "Certified Nurse Aide",
+          "normalized_value": "Certified Nurse Aide",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "missing-type"
+          ]
+        },
+        "jurisdiction": {
+          "value": "HI",
+          "normalized_value": "HI",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "missing-jurisdiction"
+          ]
+        },
+        "original_or_issue_date": {
+          "value": "05/09/2024",
+          "normalized_value": "2024-05-09",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "missing-original-date"
+          ]
+        },
+        "expiration_date": {
+          "value": "05/09/2028",
+          "normalized_value": "2028-05-09",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "missing-expiration-date"
+          ]
+        },
+        "credential_status": {
+          "value": "Active",
+          "normalized_value": "active",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "missing-status"
+          ]
+        },
+        "restrictions_or_notes": {
+          "value": "None reported",
+          "normalized_value": "none",
+          "confidence": 0.97,
+          "evidence_refs": [
+            "missing-restrictions"
+          ]
+        },
+        "issuer_or_source": {
+          "value": "Prometric CNA Registry simulator",
+          "normalized_value": "Prometric CNA Registry simulator",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "missing-source"
+          ]
+        }
+      },
+      "uncertainties": [
+        {
+          "code": "MISSING_IDENTIFIER",
+          "field_paths": [
+            "fields.registry_id"
+          ],
+          "message": "No registry identifier is available for source verification.",
+          "evidence_refs": [
+            "missing-id-area"
+          ],
+          "blocking": true
+        }
+      ],
+      "blocking_issues": [
+        "MISSING_IDENTIFIER"
+      ]
+    },
+    "review_route": "review_required",
+    "registry_result": "not_found",
+    "activation_allowed_after_review_and_match": false
+  }
+}

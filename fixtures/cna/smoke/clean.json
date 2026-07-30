@@ -1,0 +1,141 @@
+{
+  "fixture_version": "1.0",
+  "case_id": "smoke-clean",
+  "synthetic": true,
+  "purpose": "Controlled extraction test only; not a real credential or registry result.",
+  "input": {
+    "artifact_id": "artifact:smoke-clean",
+    "document_type": "hawaii_cna_status_record",
+    "content_type": "text/plain",
+    "source_filename": "synthetic-hi-cna-clean.txt",
+    "ocr_text": "SYNTHETIC TRAINING EXAMPLE — NOT A REAL CREDENTIAL\nHAWAII CERTIFIED NURSE AIDE STATUS RECORD\nName: Leilani Kealoha\nCertificate/Registry ID: HI-CNA-SYN-1001\nCredential: Certified Nurse Aide (CNA)\nJurisdiction: HI\nOriginal Date: 04/15/2024\nExpiration Date: 04/15/2028\nStatus: Active\nRestrictions/Notes: None reported\nVerification Source: Prometric CNA Registry simulator",
+    "source_spans": [
+      {
+        "span_id": "clean-name",
+        "quote": "Name: Leilani Kealoha"
+      },
+      {
+        "span_id": "clean-id",
+        "quote": "Certificate/Registry ID: HI-CNA-SYN-1001"
+      },
+      {
+        "span_id": "clean-type",
+        "quote": "Credential: Certified Nurse Aide (CNA)"
+      },
+      {
+        "span_id": "clean-jurisdiction",
+        "quote": "Jurisdiction: HI"
+      },
+      {
+        "span_id": "clean-original-date",
+        "quote": "Original Date: 04/15/2024"
+      },
+      {
+        "span_id": "clean-expiration-date",
+        "quote": "Expiration Date: 04/15/2028"
+      },
+      {
+        "span_id": "clean-status",
+        "quote": "Status: Active"
+      },
+      {
+        "span_id": "clean-restrictions",
+        "quote": "Restrictions/Notes: None reported"
+      },
+      {
+        "span_id": "clean-source",
+        "quote": "Verification Source: Prometric CNA Registry simulator"
+      }
+    ]
+  },
+  "expected": {
+    "draft": {
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "draft_id": "draft:smoke-clean",
+      "evidence_id": "artifact:smoke-clean",
+      "subject_ref": "person:synthetic-leilani-kealoha",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "status": "draft",
+      "fields": {
+        "holder_name": {
+          "value": "Leilani Kealoha",
+          "normalized_value": "Leilani Kealoha",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-name"
+          ]
+        },
+        "registry_id": {
+          "value": "HI-CNA-SYN-1001",
+          "normalized_value": "HI-CNA-SYN-1001",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-id"
+          ]
+        },
+        "credential_type": {
+          "value": "Certified Nurse Aide (CNA)",
+          "normalized_value": "Certified Nurse Aide",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-type"
+          ]
+        },
+        "jurisdiction": {
+          "value": "HI",
+          "normalized_value": "HI",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-jurisdiction"
+          ]
+        },
+        "original_or_issue_date": {
+          "value": "04/15/2024",
+          "normalized_value": "2024-04-15",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "clean-original-date"
+          ]
+        },
+        "expiration_date": {
+          "value": "04/15/2028",
+          "normalized_value": "2028-04-15",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "clean-expiration-date"
+          ]
+        },
+        "credential_status": {
+          "value": "Active",
+          "normalized_value": "active",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-status"
+          ]
+        },
+        "restrictions_or_notes": {
+          "value": "None reported",
+          "normalized_value": "none",
+          "confidence": 0.97,
+          "evidence_refs": [
+            "clean-restrictions"
+          ]
+        },
+        "issuer_or_source": {
+          "value": "Prometric CNA Registry simulator",
+          "normalized_value": "Prometric CNA Registry simulator",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "clean-source"
+          ]
+        }
+      },
+      "uncertainties": [],
+      "blocking_issues": []
+    },
+    "review_route": "approve",
+    "registry_result": "match",
+    "activation_allowed_after_review_and_match": true
+  }
+}

@@ -8,17 +8,17 @@ validation record.
   Apache-2.0 license. **Evidence:** repository root and `LICENSE`.
 - [x] **T002 [Codex]** Establish CareTrust principles, requirements, design, and
   this Specifica task list. **Evidence:** `.specifica/`.
-- [ ] **T003 [Codex]** Add a defensive `.gitignore`, `.env.example`, Python project
+- [x] **T003 [Codex]** Add a defensive `.gitignore`, `.env.example`, Python project
   metadata, pinned runtime assumptions, and a reproducible setup command.
   **Done when:** a clean clone can install the declared dependencies without
   receiving secrets.
-- [ ] **T004 [Codex]** Define Pydantic domain models and export the draft-claim JSON
+- [x] **T004 [Codex]** Define Pydantic domain models and export the draft-claim JSON
   Schema. **Done when:** schemas cover evidence, extraction, draft, review,
   registry result, active claim, authorization request/decision, and audit event.
-- [ ] **T005 [Codex]** Create five synthetic Hawaii CNA smoke fixtures and expected
+- [x] **T005 [Codex]** Create five synthetic Hawaii CNA smoke fixtures and expected
   outputs: clean, ambiguous date, missing identifier, cropped restriction, and
   unsupported issuer. **Done when:** fixture content and hashes are committed.
-- [ ] **T006 [Codex]** Implement the provider-neutral `ModelAdapter` and Bedrock
+- [x] **T006 [Codex]** Implement the provider-neutral `ModelAdapter` and Bedrock
   Converse adapter. **Done when:** no provider-specific response escapes the
   adapter and usage/latency metadata is captured.
 - [ ] **T007 [Codex]** Run the frozen five-case Qwen3 32B smoke test in `us-west-2`.

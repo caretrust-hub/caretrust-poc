@@ -1,0 +1,161 @@
+{
+  "fixture_version": "1.0",
+  "case_id": "smoke-unsupported-issuer",
+  "synthetic": true,
+  "purpose": "Controlled extraction test only; not a real credential or registry result.",
+  "input": {
+    "artifact_id": "artifact:smoke-unsupported-issuer",
+    "document_type": "hawaii_cna_status_record",
+    "content_type": "text/plain",
+    "source_filename": "synthetic-hi-cna-unsupported-issuer.txt",
+    "ocr_text": "SYNTHETIC TRAINING EXAMPLE — NOT A REAL CREDENTIAL\nPACIFIC CARE SKILLS CENTER\nHawaii CNA Credential Confirmation\nName: Kai Nāmaka\nRegistry ID: PCSC-SYN-9005\nCredential: Certified Nurse Aide\nJurisdiction: HI\nIssue Date: 06/10/2025\nExpiration Date: 06/10/2029\nStatus: Active\nRestrictions/Notes: None\nIssuer/Source: Pacific Care Skills Center\nNo Prometric simulator verification is attached.",
+    "source_spans": [
+      {
+        "span_id": "issuer-name",
+        "quote": "Name: Kai Nāmaka"
+      },
+      {
+        "span_id": "issuer-id",
+        "quote": "Registry ID: PCSC-SYN-9005"
+      },
+      {
+        "span_id": "issuer-type",
+        "quote": "Credential: Certified Nurse Aide"
+      },
+      {
+        "span_id": "issuer-jurisdiction",
+        "quote": "Jurisdiction: HI"
+      },
+      {
+        "span_id": "issuer-original-date",
+        "quote": "Issue Date: 06/10/2025"
+      },
+      {
+        "span_id": "issuer-expiration-date",
+        "quote": "Expiration Date: 06/10/2029"
+      },
+      {
+        "span_id": "issuer-status",
+        "quote": "Status: Active"
+      },
+      {
+        "span_id": "issuer-restrictions",
+        "quote": "Restrictions/Notes: None"
+      },
+      {
+        "span_id": "issuer-source",
+        "quote": "Issuer/Source: Pacific Care Skills Center"
+      },
+      {
+        "span_id": "issuer-no-registry",
+        "quote": "No Prometric simulator verification is attached."
+      }
+    ]
+  },
+  "expected": {
+    "draft": {
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "draft_id": "draft:smoke-unsupported-issuer",
+      "evidence_id": "artifact:smoke-unsupported-issuer",
+      "subject_ref": "person:synthetic-kai-namaka",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "status": "draft",
+      "fields": {
+        "holder_name": {
+          "value": "Kai Nāmaka",
+          "normalized_value": "Kai Nāmaka",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-name"
+          ]
+        },
+        "registry_id": {
+          "value": "PCSC-SYN-9005",
+          "normalized_value": "PCSC-SYN-9005",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-id"
+          ]
+        },
+        "credential_type": {
+          "value": "Certified Nurse Aide",
+          "normalized_value": "Certified Nurse Aide",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-type"
+          ]
+        },
+        "jurisdiction": {
+          "value": "HI",
+          "normalized_value": "HI",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-jurisdiction"
+          ]
+        },
+        "original_or_issue_date": {
+          "value": "06/10/2025",
+          "normalized_value": "2025-06-10",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "issuer-original-date"
+          ]
+        },
+        "expiration_date": {
+          "value": "06/10/2029",
+          "normalized_value": "2029-06-10",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "issuer-expiration-date"
+          ]
+        },
+        "credential_status": {
+          "value": "Active",
+          "normalized_value": "active",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-status"
+          ]
+        },
+        "restrictions_or_notes": {
+          "value": "None",
+          "normalized_value": "none",
+          "confidence": 0.97,
+          "evidence_refs": [
+            "issuer-restrictions"
+          ]
+        },
+        "issuer_or_source": {
+          "value": "Pacific Care Skills Center",
+          "normalized_value": "Pacific Care Skills Center",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "issuer-source"
+          ]
+        }
+      },
+      "uncertainties": [
+        {
+          "code": "UNSUPPORTED_ISSUER",
+          "field_paths": [
+            "fields.issuer_or_source",
+            "fields.registry_id"
+          ],
+          "message": "The stated source is not the configured Prometric registry simulator.",
+          "evidence_refs": [
+            "issuer-source",
+            "issuer-no-registry"
+          ],
+          "blocking": true
+        }
+      ],
+      "blocking_issues": [
+        "UNSUPPORTED_ISSUER"
+      ]
+    },
+    "review_route": "review_required",
+    "registry_result": "mismatch",
+    "activation_allowed_after_review_and_match": false
+  }
+}

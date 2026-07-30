@@ -1,0 +1,155 @@
+{
+  "fixture_version": "1.0",
+  "case_id": "smoke-cropped-restriction",
+  "synthetic": true,
+  "purpose": "Controlled extraction test only; not a real credential or registry result.",
+  "input": {
+    "artifact_id": "artifact:smoke-cropped-restriction",
+    "document_type": "hawaii_cna_status_record",
+    "content_type": "text/plain",
+    "source_filename": "synthetic-hi-cna-cropped-restriction.txt",
+    "ocr_text": "SYNTHETIC TRAINING EXAMPLE — NOT A REAL CREDENTIAL\nHAWAII CNA STATUS RECORD\nName: Nohea Silva\nRegistry ID: HI-CNA-SYN-1004\nCredential: Certified Nurse Aide\nJurisdiction: HI\nOriginal Date: 07/21/2023\nExpiration Date: 07/21/2027\nStatus: Active\nRestrictions/Notes: Must work under...\n[RIGHT EDGE CROPPED]\nVerification Source: Prometric CNA Registry simulator",
+    "source_spans": [
+      {
+        "span_id": "crop-name",
+        "quote": "Name: Nohea Silva"
+      },
+      {
+        "span_id": "crop-id",
+        "quote": "Registry ID: HI-CNA-SYN-1004"
+      },
+      {
+        "span_id": "crop-type",
+        "quote": "Credential: Certified Nurse Aide"
+      },
+      {
+        "span_id": "crop-jurisdiction",
+        "quote": "Jurisdiction: HI"
+      },
+      {
+        "span_id": "crop-original-date",
+        "quote": "Original Date: 07/21/2023"
+      },
+      {
+        "span_id": "crop-expiration-date",
+        "quote": "Expiration Date: 07/21/2027"
+      },
+      {
+        "span_id": "crop-status",
+        "quote": "Status: Active"
+      },
+      {
+        "span_id": "crop-restrictions",
+        "quote": "Restrictions/Notes: Must work under...\n[RIGHT EDGE CROPPED]"
+      },
+      {
+        "span_id": "crop-source",
+        "quote": "Verification Source: Prometric CNA Registry simulator"
+      }
+    ]
+  },
+  "expected": {
+    "draft": {
+      "schema_version": "caretrust.draft-credential-claim.v1",
+      "draft_id": "draft:smoke-cropped-restriction",
+      "evidence_id": "artifact:smoke-cropped-restriction",
+      "subject_ref": "person:synthetic-nohea-silva",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "status": "draft",
+      "fields": {
+        "holder_name": {
+          "value": "Nohea Silva",
+          "normalized_value": "Nohea Silva",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-name"
+          ]
+        },
+        "registry_id": {
+          "value": "HI-CNA-SYN-1004",
+          "normalized_value": "HI-CNA-SYN-1004",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-id"
+          ]
+        },
+        "credential_type": {
+          "value": "Certified Nurse Aide",
+          "normalized_value": "Certified Nurse Aide",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-type"
+          ]
+        },
+        "jurisdiction": {
+          "value": "HI",
+          "normalized_value": "HI",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-jurisdiction"
+          ]
+        },
+        "original_or_issue_date": {
+          "value": "07/21/2023",
+          "normalized_value": "2023-07-21",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "crop-original-date"
+          ]
+        },
+        "expiration_date": {
+          "value": "07/21/2027",
+          "normalized_value": "2027-07-21",
+          "confidence": 0.98,
+          "evidence_refs": [
+            "crop-expiration-date"
+          ]
+        },
+        "credential_status": {
+          "value": "Active",
+          "normalized_value": "active",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-status"
+          ]
+        },
+        "restrictions_or_notes": {
+          "value": null,
+          "normalized_value": null,
+          "confidence": 0.0,
+          "evidence_refs": [
+            "crop-restrictions"
+          ]
+        },
+        "issuer_or_source": {
+          "value": "Prometric CNA Registry simulator",
+          "normalized_value": "Prometric CNA Registry simulator",
+          "confidence": 0.99,
+          "evidence_refs": [
+            "crop-source"
+          ]
+        }
+      },
+      "uncertainties": [
+        {
+          "code": "CROPPED_RESTRICTION",
+          "field_paths": [
+            "fields.restrictions_or_notes"
+          ],
+          "message": "Restriction text is visibly cropped and must not be completed by inference.",
+          "evidence_refs": [
+            "crop-restrictions"
+          ],
+          "blocking": true
+        }
+      ],
+      "blocking_issues": [
+        "CROPPED_RESTRICTION"
+      ]
+    },
+    "review_route": "review_required",
+    "registry_result": "match",
+    "activation_allowed_after_review_and_match": false
+  }
+}
