@@ -86,7 +86,7 @@ validation record.
 - [x] **T026 [Codex]** Run secret, dependency, unit, workflow, and reproducibility
   checks. **Done when:** results are saved and no real personal or health data is
   present.
-- [ ] **T027 [Codex]** Tag the exact submission code and evidence state.
+- [x] **T027 [Codex]** Tag the exact submission code and evidence state.
   **Done when:** an immutable version tag resolves to the commit referenced in the
   application.
 
