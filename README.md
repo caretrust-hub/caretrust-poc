@@ -56,10 +56,10 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python -m pytest -q
 ```
 
-The v0.2 release candidate passes 144 tests covering OCR normalization and
-failure isolation, post-audit contracts, complete signed claims,
-reviewer authorization, app-specific decisions, revocation, standards
-artifacts, federation simulation, and the browser flow.
+Release `trl3-poc-v0.2.0` passes 144 tests covering OCR normalization and
+failure isolation, post-audit contracts, complete signed claims, reviewer
+authorization, app-specific decisions, revocation, standards artifacts,
+federation simulation, and the browser flow.
 
 ### Interactive browser demonstration
 
