@@ -1,0 +1,137 @@
+{
+  "resourceType": "Bundle",
+  "id": "ct-bundle-a550825cd53e76e25ee0",
+  "identifier": {
+    "system": "https://caretrust.example/fhir/identifier/caretrust-claim",
+    "value": "claim:synthetic-hi-cna-1001"
+  },
+  "type": "collection",
+  "timestamp": "2026-07-29T20:00:00Z",
+  "entry": [
+    {
+      "fullUrl": "https://synthetic.caretrust.example/fhir/Practitioner/ct-practitioner-c7e627d5dec6cb082579",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "ct-practitioner-c7e627d5dec6cb082579",
+        "identifier": [
+          {
+            "system": "https://caretrust.example/fhir/identifier/synthetic-subject",
+            "value": "person:synthetic-leilani-kealoha"
+          }
+        ],
+        "active": true,
+        "qualification": [
+          {
+            "extension": [
+              {
+                "url": "https://caretrust.example/fhir/StructureDefinition/caretrust-qualification-status",
+                "valueCode": "active"
+              },
+              {
+                "url": "https://caretrust.example/fhir/StructureDefinition/caretrust-qualification-jurisdiction",
+                "valueCode": "HI"
+              }
+            ],
+            "identifier": [
+              {
+                "system": "https://caretrust.example/fhir/identifier/hawaii-cna-registry-synthetic",
+                "value": "HI-CNA-SYN-1001"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "https://caretrust.example/fhir/CodeSystem/caregiver-credential-type",
+                  "code": "hawaii-cna",
+                  "display": "Certified Nurse Aide"
+                }
+              ],
+              "text": "Certified Nurse Aide"
+            },
+            "period": {
+              "start": "2024-04-15",
+              "end": "2028-04-15"
+            },
+            "issuer": {
+              "reference": "Organization/ct-organization-cafbd9c73924d6d9784b"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://synthetic.caretrust.example/fhir/Organization/ct-organization-cafbd9c73924d6d9784b",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "ct-organization-cafbd9c73924d6d9784b",
+        "identifier": [
+          {
+            "system": "https://caretrust.example/fhir/identifier/synthetic-issuer",
+            "value": "org:synthetic-caretrust-demo"
+          }
+        ],
+        "active": true,
+        "name": "Synthetic CareTrust credential issuer"
+      }
+    },
+    {
+      "fullUrl": "https://synthetic.caretrust.example/fhir/Provenance/ct-provenance-a550825cd53e76e25ee0",
+      "resource": {
+        "resourceType": "Provenance",
+        "id": "ct-provenance-a550825cd53e76e25ee0",
+        "target": [
+          {
+            "reference": "Practitioner/ct-practitioner-c7e627d5dec6cb082579"
+          }
+        ],
+        "occurredDateTime": "2026-07-29T20:00:00Z",
+        "recorded": "2026-07-29T20:00:00Z",
+        "activity": {
+          "coding": [
+            {
+              "system": "https://caretrust.example/fhir/CodeSystem/projection-activity",
+              "code": "caretrust-claim-projection",
+              "display": "CareTrust claim projected to synthetic FHIR R4"
+            }
+          ]
+        },
+        "agent": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://caretrust.example/fhir/CodeSystem/provenance-agent-role",
+                  "code": "projecting-issuer",
+                  "display": "Synthetic projecting issuer"
+                }
+              ]
+            },
+            "who": {
+              "reference": "Organization/ct-organization-cafbd9c73924d6d9784b"
+            }
+          }
+        ],
+        "entity": [
+          {
+            "role": "source",
+            "what": {
+              "identifier": {
+                "system": "https://caretrust.example/fhir/identifier/caretrust-claim",
+                "value": "claim:synthetic-hi-cna-1001"
+              }
+            }
+          },
+          {
+            "role": "source",
+            "what": {
+              "identifier": {
+                "system": "https://caretrust.example/fhir/identifier/caretrust-evidence",
+                "value": "artifact:synthetic-smoke-clean"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

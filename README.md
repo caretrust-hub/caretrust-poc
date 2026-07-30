@@ -15,23 +15,25 @@ it does not claim that the larger ecosystem already exists.
 ## What the prototype demonstrates
 
 ```text
-synthetic evidence
-  -> AI-extracted draft with evidence links and uncertainty
+synthetic Hawaii CNA credential image
+  -> Amazon Textract OCR evidence with text, confidence, and location
+  -> Bedrock/Qwen structured draft linked to that retained evidence
   -> authorized human approve / correct / reject / defer
   -> synthetic registry match / mismatch / not-found / unavailable
-  -> deterministic activation gate
   -> short-lived Ed25519-signed claim token
-  -> deterministic audience + purpose authorization
-  -> revocation and subsequent denial
+  -> independent App A + App B audience/purpose decisions
+  -> revocation and denial of a fresh request
 ```
 
-Only draft extraction uses a language model. A model cannot create an active
-claim, sign a token, override review, perform a source check, or return a permit.
-The registry is a network-free simulator and all identities and evidence are
+OCR extracts evidence; it does not establish truth or authority. Only draft
+structuring uses a language model. A model cannot create an active claim, sign
+a token, override review, perform a source check, or return a permit. The
+registry is a network-free simulator and all identities and evidence are
 synthetic.
 
 The implementation is deliberately provider-neutral:
 
+- `OcrAdapter` separates Textract from the evidence contract.
 - `ModelAdapter` separates Bedrock/Qwen from the domain workflow.
 - Pydantic contracts export implementation-neutral JSON Schemas.
 - Stable reason codes make every deny inspectable.
@@ -40,8 +42,9 @@ The implementation is deliberately provider-neutral:
 
 ## Run it locally
 
-Prerequisites: Python 3.13 and Git. AWS access is needed only to repeat a model
-run; the demo and automated tests run locally.
+Prerequisites: Python 3.13 and Git. AWS access is needed only to repeat the
+Textract and model calls; the demo, retained replay, and automated tests run
+locally.
 
 ```powershell
 git clone https://github.com/caretrust-hub/caretrust-poc.git
@@ -53,9 +56,10 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python -m pytest -q
 ```
 
-Release `trl3-poc-v0.1.3` passes 77 tests, including post-audit contract,
-complete signed-claim, reviewer-authorization, audit, connected-flow, and
-browser-demo corrections.
+The v0.2 release candidate passes 144 tests covering OCR normalization and
+failure isolation, post-audit contracts, complete signed claims,
+reviewer authorization, app-specific decisions, revocation, standards
+artifacts, federation simulation, and the browser flow.
 
 ### Interactive browser demonstration
 
@@ -67,12 +71,43 @@ accessible and does not call a live service. A login-free copy is available at
 .\.venv\Scripts\python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/demo/`. It presents clean permit and revocation,
-human correction with the original draft preserved, ambiguous-evidence
-deferral, registry-mismatch denial, and prompt-injection containment. Status
-and reasons are communicated in text, not color alone. The retained
-[browser QA record](artifacts/validation/demo-browser-qa-screenshots.json)
-links to judge-readable screenshots of each key state.
+Then open `http://localhost:8000/demo/`. The primary path visibly replays
+retained Textract evidence and a retained Bedrock/Qwen draft, requires separate
+human-review, source-check, and signing actions, then shows two applications
+making distinct decisions from the same stable claim. Revocation preserves the
+historical receipts and denies a fresh App B request. Human correction,
+ambiguous-evidence deferral, registry mismatch, and prompt-injection containment
+remain selectable scenarios. Status and reasons are communicated in text, not
+color alone. The retained
+[v0.2 browser QA manifest](artifacts/validation/screenshots-v0.2/manifest.json)
+hashes four judge-readable screenshots from OCR evidence through a fresh
+post-revocation denial.
+
+### OCR-to-draft vertical slice
+
+Credential bytes and normalized OCR output receive separate SHA-256 hashes.
+Textract lines and words retain confidence, page, geometry, and offsets so a
+reviewer can trace every proposed field to the extracted evidence. Invalid or
+failed OCR stops the workflow before any model call.
+
+Replay the retained provider response without AWS credentials:
+
+```powershell
+.\.venv\Scripts\python scripts\run_ocr_vertical_slice.py --offline
+```
+
+With configured AWS credentials, the same command without `--offline` calls
+Amazon Textract and Bedrock/Qwen using only the visibly synthetic fixture:
+
+```powershell
+.\.venv\Scripts\python scripts\run_ocr_vertical_slice.py
+```
+
+The successful live synthetic run is retained at
+[vertical-slice.json](artifacts/ocr/20260730T171807.004134Z/vertical-slice.json);
+the credential-free replay is
+[retained-offline-vertical-slice.json](artifacts/ocr/retained-offline-vertical-slice.json).
+Repeating the live path may incur AWS charges.
 
 ### Deterministic command-line demonstration
 
@@ -154,6 +189,10 @@ incur model charges.
 - [OpenAPI 3.1 contract-only Phase 2 surface](docs/standards/caretrust-openapi-3.1.json)
 - [W3C Verifiable Credentials 2.0 mapping](docs/standards/w3c-vc-2.0-mapping.md)
 - [FHIR R4 mapping](docs/standards/fhir-r4-practitioner-qualification-mapping.md)
+- [Executable local FHIR R4 projection profile](docs/standards/fhir-r4-projection-profile.md)
+- [OID4VC exchange profile and tested contract artifacts](docs/standards/oid4vc-exchange-profile.md)
+- [Local synthetic federation trust-resolution profile](docs/standards/openid-federation-trust-profile.md)
+- [Proof-of-concept evidence classification](docs/POC-EVIDENCE.md)
 - [JSON Schemas](schemas/)
 - [Example requests and decisions](docs/standards/examples/)
 

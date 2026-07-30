@@ -1,0 +1,85 @@
+{
+  "artifact_set": "CareTrust v0.2 judge-readable desktop workflow screenshots",
+  "generated_at": "2026-07-30T07:22:59.6204478-10:00",
+  "source_url": "http://127.0.0.1:8765/",
+  "capture_method": "Browser-controlled end-to-end interaction with the final local static demo",
+  "viewport": {
+    "reported_css_width": 1707,
+    "reported_css_height": 780,
+    "device_pixel_ratio": 1.125,
+    "captured_png_width": 1686,
+    "captured_png_height": 771
+  },
+  "scenario": "clean synthetic Hawaii CNA record",
+  "stable_claim_id": "urn:caretrust:claim:hi-cna-syn-1001:v1",
+  "screenshots": [
+    {
+      "filename": "01-initial-ocr-draft.png",
+      "bytes": 82987,
+      "sha256": "6e718ebed491469fd0c58ed7a14bfedf553e3b95a3a84458acbec2df5e471efe",
+      "observed_state": {
+        "workflow_stage": "AI draft",
+        "ocr": "Retained Amazon Textract replay shows highlighted synthetic document evidence, line confidence, and artifact metadata",
+        "model_boundary": "OCR evidence is visibly separated from the retained Bedrock/Qwen structured draft",
+        "claim_status": "Draft; not verified",
+        "trust_gates": "Draft schema passed; human review, source status, and signed claim pending"
+      }
+    },
+    {
+      "filename": "02-human-approved-source-pending.png",
+      "bytes": 76204,
+      "sha256": "cccfe39802b47bbf4cf8801442931252d3887319a275112b5e6d3ee841843899",
+      "observed_state": {
+        "workflow_stage": "Human review",
+        "human_review": "Authorized reviewer approved",
+        "source_status": "Pending; synthetic source check has not run",
+        "signed_claim": "Not created",
+        "next_enabled_action": "Run synthetic source check"
+      }
+    },
+    {
+      "filename": "03-two-app-permits.png",
+      "bytes": 73392,
+      "sha256": "e48aa6ce1acc0f9d3c2b8ba7674a6e8b19f4588fed0139cefc6f1b5428a26662",
+      "observed_state": {
+        "workflow_stage": "Independent application decisions",
+        "claim_status": "Active",
+        "app_a": {
+          "application": "Workforce onboarding",
+          "audience": "urn:caretrust:app:onboarding",
+          "purpose": "workforce-onboarding",
+          "local_policy": "HI-CNA-ACTIVE-v1",
+          "decision": "PERMIT"
+        },
+        "app_b": {
+          "application": "Scheduling",
+          "audience": "urn:caretrust:app:scheduling",
+          "purpose": "shift-assignment",
+          "local_policy": "SHIFT-CNA-ELIGIBLE-v2",
+          "decision": "PERMIT"
+        },
+        "revocation_action": "Enabled only after both independent permits"
+      }
+    },
+    {
+      "filename": "04-fresh-app-b-denied-after-revocation.png",
+      "bytes": 73816,
+      "sha256": "1593a0361496e2db6581aa346fa3647c1519e2bdbc18fba5d0b72e35775c264c",
+      "observed_state": {
+        "workflow_stage": "Post-revocation fresh request",
+        "claim_status": "Revoked",
+        "app_a_historical_receipt": "PERMIT",
+        "app_b_fresh_request": "DENY / TOKEN_REVOKED",
+        "status_semantics": "Fresh requests fail closed; prior receipts remain historical"
+      }
+    }
+  ],
+  "truthful_limitations": [
+    "All people, documents, identifiers, organizations, and decisions shown are synthetic.",
+    "The browser replays retained Amazon Textract and Bedrock/Qwen outputs; it makes no live cloud or model call.",
+    "The source check is a synthetic simulator, not a live Hawaii registry integration.",
+    "Application receipts demonstrate deterministic local prototype policies, not production authorization.",
+    "Revocation is evaluated on fresh requests; the prototype does not claim to terminate an already established application session.",
+    "The screenshots document prototype behavior and do not establish production accuracy, field outcomes, legal authority, or standards conformance."
+  ]
+}

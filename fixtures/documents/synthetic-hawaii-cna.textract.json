@@ -1,0 +1,909 @@
+{
+  "Blocks": [
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.08857142857142856,
+          "Width": 0.144
+        }
+      },
+      "Id": "word-01-01",
+      "Page": 1,
+      "Text": "SYNTHETIC"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.2,
+          "Top": 0.08857142857142856,
+          "Width": 0.064
+        }
+      },
+      "Id": "word-01-02",
+      "Page": 1,
+      "Text": "TEST"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.28,
+          "Top": 0.08857142857142856,
+          "Width": 0.096
+        }
+      },
+      "Id": "word-01-03",
+      "Page": 1,
+      "Text": "RECORD"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.392,
+          "Top": 0.08857142857142856,
+          "Width": 0.016
+        }
+      },
+      "Id": "word-01-04",
+      "Page": 1,
+      "Text": "-"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.424,
+          "Top": 0.08857142857142856,
+          "Width": 0.048
+        }
+      },
+      "Id": "word-01-05",
+      "Page": 1,
+      "Text": "NOT"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.488,
+          "Top": 0.08857142857142856,
+          "Width": 0.016
+        }
+      },
+      "Id": "word-01-06",
+      "Page": 1,
+      "Text": "A"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.52,
+          "Top": 0.08857142857142856,
+          "Width": 0.064
+        }
+      },
+      "Id": "word-01-07",
+      "Page": 1,
+      "Text": "REAL"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.6,
+          "Top": 0.08857142857142856,
+          "Width": 0.16
+        }
+      },
+      "Id": "word-01-08",
+      "Page": 1,
+      "Text": "CREDENTIAL"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.8,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.08857142857142856,
+          "Width": 0.72
+        }
+      },
+      "Id": "line-01",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-01-01",
+            "word-01-02",
+            "word-01-03",
+            "word-01-04",
+            "word-01-05",
+            "word-01-06",
+            "word-01-07",
+            "word-01-08"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "SYNTHETIC TEST RECORD - NOT A REAL CREDENTIAL"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.15142857142857144,
+          "Width": 0.144
+        }
+      },
+      "Id": "word-02-01",
+      "Page": 1,
+      "Text": "CARETRUST"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.2,
+          "Top": 0.15142857142857144,
+          "Width": 0.096
+        }
+      },
+      "Id": "word-02-02",
+      "Page": 1,
+      "Text": "HAWAII"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.312,
+          "Top": 0.15142857142857144,
+          "Width": 0.048
+        }
+      },
+      "Id": "word-02-03",
+      "Page": 1,
+      "Text": "CNA"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.376,
+          "Top": 0.15142857142857144,
+          "Width": 0.208
+        }
+      },
+      "Id": "word-02-04",
+      "Page": 1,
+      "Text": "DEMONSTRATION"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.4,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.15142857142857144,
+          "Width": 0.544
+        }
+      },
+      "Id": "line-02",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-02-01",
+            "word-02-02",
+            "word-02-03",
+            "word-02-04"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "CARETRUST HAWAII CNA DEMONSTRATION"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.5,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.21428571428571427,
+          "Width": 0.08
+        }
+      },
+      "Id": "word-03-01",
+      "Page": 1,
+      "Text": "NAME:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.5,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.136,
+          "Top": 0.21428571428571427,
+          "Width": 0.112
+        }
+      },
+      "Id": "word-03-02",
+      "Page": 1,
+      "Text": "LEILANI"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.5,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.264,
+          "Top": 0.21428571428571427,
+          "Width": 0.16
+        }
+      },
+      "Id": "word-03-03",
+      "Page": 1,
+      "Text": "TESTPERSON"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.21428571428571427,
+          "Width": 0.384
+        }
+      },
+      "Id": "line-03",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-03-01",
+            "word-03-02",
+            "word-03-03"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "NAME: LEILANI TESTPERSON"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.39999999999999,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.27714285714285714,
+          "Width": 0.128
+        }
+      },
+      "Id": "word-04-01",
+      "Page": 1,
+      "Text": "REGISTRY"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.39999999999999,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.184,
+          "Top": 0.27714285714285714,
+          "Width": 0.048
+        }
+      },
+      "Id": "word-04-02",
+      "Page": 1,
+      "Text": "ID:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.39999999999999,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.248,
+          "Top": 0.27714285714285714,
+          "Width": 0.288
+        }
+      },
+      "Id": "word-04-03",
+      "Page": 1,
+      "Text": "SYN-CNA-FINAL-2001"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.27714285714285714,
+          "Width": 0.496
+        }
+      },
+      "Id": "line-04",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-04-01",
+            "word-04-02",
+            "word-04-03"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "REGISTRY ID: SYN-CNA-FINAL-2001"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.34,
+          "Width": 0.176
+        }
+      },
+      "Id": "word-05-01",
+      "Page": 1,
+      "Text": "CREDENTIAL:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.232,
+          "Top": 0.34,
+          "Width": 0.144
+        }
+      },
+      "Id": "word-05-02",
+      "Page": 1,
+      "Text": "CERTIFIED"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.392,
+          "Top": 0.34,
+          "Width": 0.08
+        }
+      },
+      "Id": "word-05-03",
+      "Page": 1,
+      "Text": "NURSE"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.488,
+          "Top": 0.34,
+          "Width": 0.064
+        }
+      },
+      "Id": "word-05-04",
+      "Page": 1,
+      "Text": "AIDE"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.5,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.34,
+          "Width": 0.512
+        }
+      },
+      "Id": "line-05",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-05-01",
+            "word-05-02",
+            "word-05-03",
+            "word-05-04"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "CREDENTIAL: CERTIFIED NURSE AIDE"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 87.1,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.40285714285714286,
+          "Width": 0.208
+        }
+      },
+      "Id": "word-06-01",
+      "Page": 1,
+      "Text": "JURISDICTION:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 87.1,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.264,
+          "Top": 0.40285714285714286,
+          "Width": 0.032
+        }
+      },
+      "Id": "word-06-02",
+      "Page": 1,
+      "Text": "Hl"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 87.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.40285714285714286,
+          "Width": 0.256
+        }
+      },
+      "Id": "line-06",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-06-01",
+            "word-06-02"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "JURISDICTION: Hl"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.4657142857142857,
+          "Width": 0.08
+        }
+      },
+      "Id": "word-07-01",
+      "Page": 1,
+      "Text": "ISSUE"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.136,
+          "Top": 0.4657142857142857,
+          "Width": 0.08
+        }
+      },
+      "Id": "word-07-02",
+      "Page": 1,
+      "Text": "DATE:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.3,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.232,
+          "Top": 0.4657142857142857,
+          "Width": 0.16
+        }
+      },
+      "Id": "word-07-03",
+      "Page": 1,
+      "Text": "04/15/2024"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.5,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.4657142857142857,
+          "Width": 0.352
+        }
+      },
+      "Id": "line-07",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-07-01",
+            "word-07-02",
+            "word-07-03"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "ISSUE DATE: 04/15/2024"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.5285714285714286,
+          "Width": 0.16
+        }
+      },
+      "Id": "word-08-01",
+      "Page": 1,
+      "Text": "EXPIRATION"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.216,
+          "Top": 0.5285714285714286,
+          "Width": 0.08
+        }
+      },
+      "Id": "word-08-02",
+      "Page": 1,
+      "Text": "DATE:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.312,
+          "Top": 0.5285714285714286,
+          "Width": 0.16
+        }
+      },
+      "Id": "word-08-03",
+      "Page": 1,
+      "Text": "04/15/2028"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.4,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.5285714285714286,
+          "Width": 0.432
+        }
+      },
+      "Id": "line-08",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-08-01",
+            "word-08-02",
+            "word-08-03"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "EXPIRATION DATE: 04/15/2028"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.5914285714285714,
+          "Width": 0.112
+        }
+      },
+      "Id": "word-09-01",
+      "Page": 1,
+      "Text": "STATUS:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.6,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.168,
+          "Top": 0.5914285714285714,
+          "Width": 0.096
+        }
+      },
+      "Id": "word-09-02",
+      "Page": 1,
+      "Text": "ACTIVE"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.8,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.5914285714285714,
+          "Width": 0.224
+        }
+      },
+      "Id": "line-09",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-09-01",
+            "word-09-02"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "STATUS: ACTIVE"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.0,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.6542857142857142,
+          "Width": 0.304
+        }
+      },
+      "Id": "word-10-01",
+      "Page": 1,
+      "Text": "RESTRICTIONS/NOTES:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.0,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.36,
+          "Top": 0.6542857142857142,
+          "Width": 0.064
+        }
+      },
+      "Id": "word-10-02",
+      "Page": 1,
+      "Text": "NONE"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 99.0,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.44,
+          "Top": 0.6542857142857142,
+          "Width": 0.128
+        }
+      },
+      "Id": "word-10-03",
+      "Page": 1,
+      "Text": "REPORTED"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 99.2,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.6542857142857142,
+          "Width": 0.528
+        }
+      },
+      "Id": "line-10",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-10-01",
+            "word-10-02",
+            "word-10-03"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "RESTRICTIONS/NOTES: NONE REPORTED"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.7171428571428572,
+          "Width": 0.192
+        }
+      },
+      "Id": "word-11-01",
+      "Page": 1,
+      "Text": "VERIFICATION"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.248,
+          "Top": 0.7171428571428572,
+          "Width": 0.112
+        }
+      },
+      "Id": "word-11-02",
+      "Page": 1,
+      "Text": "SOURCE:"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.376,
+          "Top": 0.7171428571428572,
+          "Width": 0.144
+        }
+      },
+      "Id": "word-11-03",
+      "Page": 1,
+      "Text": "PROMETRIC"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.536,
+          "Top": 0.7171428571428572,
+          "Width": 0.048
+        }
+      },
+      "Id": "word-11-04",
+      "Page": 1,
+      "Text": "CNA"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.6,
+          "Top": 0.7171428571428572,
+          "Width": 0.128
+        }
+      },
+      "Id": "word-11-05",
+      "Page": 1,
+      "Text": "REGISTRY"
+    },
+    {
+      "BlockType": "WORD",
+      "Confidence": 98.7,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.744,
+          "Top": 0.7171428571428572,
+          "Width": 0.144
+        }
+      },
+      "Id": "word-11-06",
+      "Page": 1,
+      "Text": "SIMULATOR"
+    },
+    {
+      "BlockType": "LINE",
+      "Confidence": 98.9,
+      "Geometry": {
+        "BoundingBox": {
+          "Height": 0.04,
+          "Left": 0.04,
+          "Top": 0.7171428571428572,
+          "Width": 0.848
+        }
+      },
+      "Id": "line-11",
+      "Page": 1,
+      "Relationships": [
+        {
+          "Ids": [
+            "word-11-01",
+            "word-11-02",
+            "word-11-03",
+            "word-11-04",
+            "word-11-05",
+            "word-11-06"
+          ],
+          "Type": "CHILD"
+        }
+      ],
+      "Text": "VERIFICATION SOURCE: PROMETRIC CNA REGISTRY SIMULATOR"
+    }
+  ],
+  "DetectDocumentTextModelVersion": "retained-synthetic-shape-v1",
+  "DocumentMetadata": {
+    "Pages": 1
+  },
+  "ResponseMetadata": {
+    "RequestId": "retained-synthetic-no-aws-call"
+  }
+}

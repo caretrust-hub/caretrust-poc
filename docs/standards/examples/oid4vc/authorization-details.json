@@ -1,0 +1,55 @@
+{
+  "authorization_details": [
+    {
+      "claims": [
+        {
+          "path": [
+            "credentialSubject",
+            "claimId"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "credentialProfile"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "credentialType"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "jurisdiction"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "registryId"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "validUntil"
+          ]
+        },
+        {
+          "path": [
+            "credentialSubject",
+            "status"
+          ]
+        }
+      ],
+      "credential_configuration_id": "caretrust_hawaii_cna_v1",
+      "locations": [
+        "https://issuer.caretrust.example"
+      ],
+      "type": "openid_credential"
+    }
+  ]
+}
