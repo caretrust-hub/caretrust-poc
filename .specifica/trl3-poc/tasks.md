@@ -52,14 +52,14 @@ validation record.
   mismatch denial, review deferral, revocation, and post-revocation denial.
 - [x] **T016 [Codex]** Commit the vertical-slice milestone. **Done when:** the commit
   hash is recorded in the validation manifest.
-- [ ] **T017 [Codex]** Expand and freeze the final controlled fixture set.
+- [x] **T017 [Codex]** Expand and freeze the final controlled fixture set.
   **Done when:** at least 20 predeclared cases meet the distribution in `spec.md`
   and have gold fields, uncertainty, review, registry, activation, and
   authorization expectations.
-- [ ] **T018 [Codex]** Freeze prompt, schema, model, inference settings, policy, and
+- [x] **T018 [Codex]** Freeze prompt, schema, model, inference settings, policy, and
   fixture hashes. **Done when:** a machine-readable run manifest is committed
   before final evaluation.
-- [ ] **T019 [Codex]** Implement the consecutive evaluation runner and metric
+- [x] **T019 [Codex]** Implement the consecutive evaluation runner and metric
   calculator. **Done when:** it retains failures and calculates all metrics named
   in `spec.md` without manual result editing.
 - [ ] **T020 [Codex]** Run the final evaluation exactly once for the frozen
@@ -72,7 +72,7 @@ validation record.
 - [ ] **T022 [Codex]** Generate the readable data-output-log report and limitations
   summary from actual results. **Done when:** every narrative metric traces to a
   raw run record.
-- [ ] **T023 [Codex]** Publish CareTrust schemas, reason codes, example requests,
+- [x] **T023 [Codex]** Publish CareTrust schemas, reason codes, example requests,
   example decisions, and standards-status table. **Done when:** each artifact is
   labeled implemented, tested artifact, mapped, or planned.
 - [ ] **T024 [Codex]** Add a minimal accessible demonstration surface and capture
