@@ -1,0 +1,46 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "audience": {
+      "title": "Audience",
+      "type": "string"
+    },
+    "claim_id": {
+      "title": "Claim Id",
+      "type": "string"
+    },
+    "purpose": {
+      "title": "Purpose",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "requested_claim_type": {
+      "const": "professional_credential",
+      "title": "Requested Claim Type",
+      "type": "string"
+    },
+    "subject_ref": {
+      "title": "Subject Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "subject_ref",
+    "claim_id",
+    "requested_claim_type",
+    "audience",
+    "purpose",
+    "requested_at"
+  ],
+  "title": "AuthorizationRequest",
+  "type": "object"
+}

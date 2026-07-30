@@ -1,0 +1,13 @@
+{
+  "decided_at": "2026-07-29T20:00:02Z",
+  "decision": "permit",
+  "decision_id": "decision-52ea9d33155f8358625b",
+  "policy_version": "caretrust.authorization.v1",
+  "reason_codes": [
+    "POLICY_REQUIREMENTS_SATISFIED"
+  ],
+  "request_id": "request:synthetic-permit-001",
+  "supporting_claim_ids": [
+    "claim:synthetic-hi-cna-1001"
+  ]
+}

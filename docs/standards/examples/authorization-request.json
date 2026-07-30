@@ -1,0 +1,9 @@
+{
+  "audience": "org:synthetic-care-provider",
+  "claim_id": "claim:synthetic-hi-cna-1001",
+  "purpose": "credentialing",
+  "request_id": "request:synthetic-permit-001",
+  "requested_at": "2026-07-29T20:00:01Z",
+  "requested_claim_type": "professional_credential",
+  "subject_ref": "person:synthetic-001"
+}

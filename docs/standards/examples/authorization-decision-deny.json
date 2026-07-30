@@ -1,0 +1,12 @@
+{
+  "decided_at": "2026-07-29T20:00:02Z",
+  "decision": "deny",
+  "decision_id": "decision-b97bc6bc63710947b518",
+  "policy_version": "caretrust.authorization.v1",
+  "reason_codes": [
+    "AUDIENCE_NOT_ALLOWED",
+    "PURPOSE_NOT_ALLOWED"
+  ],
+  "request_id": "request:synthetic-deny-001",
+  "supporting_claim_ids": []
+}
