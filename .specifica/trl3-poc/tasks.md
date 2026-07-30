@@ -62,11 +62,11 @@ validation record.
 - [x] **T019 [Codex]** Implement the consecutive evaluation runner and metric
   calculator. **Done when:** it retains failures and calculates all metrics named
   in `spec.md` without manual result editing.
-- [ ] **T020 [Codex]** Run the final evaluation exactly once for the frozen
+- [x] **T020 [Codex]** Run the final evaluation exactly once for the frozen
   configuration, repeating only if a configuration change creates a separately
   labeled full run. **Done when:** raw JSONL, run manifest, and summary metrics are
   saved.
-- [ ] **T021 [Codex]** Verify TRL 3 safety assertions. **Done when:** there are zero
+- [x] **T021 [Codex]** Verify TRL 3 safety assertions. **Done when:** there are zero
   draft-based permits, zero activations without approval plus match, zero
   post-revocation permits, and detected signature tampering.
 - [ ] **T022 [Codex]** Generate the readable data-output-log report and limitations

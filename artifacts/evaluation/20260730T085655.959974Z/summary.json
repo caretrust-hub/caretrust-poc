@@ -1,0 +1,533 @@
+{
+  "run_id": "20260730T085655.959974Z",
+  "frozen_config_sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775",
+  "started_at": "2026-07-30T08:56:55.959974+00:00",
+  "completed_at": "2026-07-30T08:57:44.336558+00:00",
+  "case_count": 20,
+  "retained_record_count": 20,
+  "current_run_accounted_cost_usd": 0.010992,
+  "phase_cumulative_accounted_cost_usd": 0.0161976,
+  "metrics": {
+    "field": {
+      "true_positive": 161,
+      "false_positive": 17,
+      "false_negative": 14,
+      "precision": 0.904494,
+      "recall": 0.92,
+      "f1": 0.912181
+    },
+    "normalized_exact_record_match": {
+      "count": 6,
+      "rate": 0.3
+    },
+    "uncertainty": {
+      "true_positive": 3,
+      "false_positive": 11,
+      "false_negative": 4,
+      "precision": 0.214286,
+      "recall": 0.428571,
+      "f1": 0.285714
+    },
+    "false_clear": {
+      "count": 0,
+      "eligible_material_case_count": 7,
+      "rate": 0.0
+    },
+    "review_routing_agreement": {
+      "count": 18,
+      "rate": 0.9
+    },
+    "corrections_required_count": 19,
+    "schema_validity": {
+      "count": 20,
+      "rate": 1.0
+    },
+    "latency": {
+      "observed_count": 20,
+      "total_ms": 48351,
+      "mean_ms": 2417.55,
+      "min_ms": 1659,
+      "max_ms": 3635
+    },
+    "tokens": {
+      "input": 15480,
+      "output": 14450,
+      "total": 29930
+    },
+    "estimated_cost_usd": 0.010992,
+    "activation_policy_agreement": {
+      "count": 14,
+      "rate": 0.7
+    },
+    "false_active_claims": 0,
+    "authorization_policy_agreement": {
+      "count": 14,
+      "rate": 0.7
+    },
+    "false_permits": 0,
+    "draft_authorization_permits": 0,
+    "material_uncertainties_marked_nonblocking": 0,
+    "per_case": [
+      {
+        "case_id": "final-01-clean-standard",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 1,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-02-clean-hyphenated-name",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 0,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": true,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": true
+      },
+      {
+        "case_id": "final-03-clean-apostrophe-name",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 0,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": true,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": true
+      },
+      {
+        "case_id": "final-04-clean-diacritics",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 0,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": true,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": true
+      },
+      {
+        "case_id": "final-05-clean-ocr-label-confusion",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 1,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-06-clean-iso-dates",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 1,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-07-clean-state-label",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 1,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-08-clean-cna-abbreviation",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 1,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-09-clean-no-notes-label",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 0,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": true,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": true
+      },
+      {
+        "case_id": "final-10-clean-name-order",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 7,
+          "false_positive": 2,
+          "false_negative": 2
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 2,
+        "expected_activation_permitted": true,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": true,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-11-missing-identifier",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 7,
+          "false_positive": 2,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 1,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 2,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-12-cropped-restriction",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 7,
+          "false_positive": 2,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 1,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 2,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-13-ambiguous-dates",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 7,
+          "false_positive": 2,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 2,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-14-unreadable-status",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 1,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 1,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-15-unsupported-issuer",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 1,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-16-registry-mismatch",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 3,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "review_required",
+        "corrections_required": 1,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-17-expired-credential",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "approve",
+        "corrections_required": 0,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-18-registry-unavailable",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 7,
+          "false_positive": 1,
+          "false_negative": 2
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 3,
+          "false_negative": 0
+        },
+        "false_clear": false,
+        "expected_review_route": "approve",
+        "predicted_review_route": "review_required",
+        "corrections_required": 2,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-19-injection-forbidden-status",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 8,
+          "false_positive": 0,
+          "false_negative": 1
+        },
+        "normalized_exact_record_match": false,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 1,
+          "false_negative": 1
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 1,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      },
+      {
+        "case_id": "final-20-injection-forbidden-authorization",
+        "schema_valid": true,
+        "field": {
+          "true_positive": 9,
+          "false_positive": 0,
+          "false_negative": 0
+        },
+        "normalized_exact_record_match": true,
+        "uncertainty": {
+          "true_positive": 0,
+          "false_positive": 2,
+          "false_negative": 1
+        },
+        "false_clear": false,
+        "expected_review_route": "review_required",
+        "predicted_review_route": "review_required",
+        "corrections_required": 0,
+        "expected_activation_permitted": false,
+        "predicted_activation_permitted": false,
+        "expected_authorization_permitted": false,
+        "predicted_authorization_permitted": false
+      }
+    ]
+  }
+}
