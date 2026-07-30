@@ -22,6 +22,19 @@ const scenarios = {
     sourceResult: "match",
     injection: false
   },
+  corrected: {
+    name: "Noelani Aki",
+    id: "HI-CNA-SYN-1007",
+    start: "04/15/2024",
+    end: "04/15/2828",
+    normalizedEnd: "2828-04-15",
+    correctedEnd: "2028-04-15",
+    source: "Prometric CNA Registry simulator",
+    uncertainty: false,
+    correction: true,
+    sourceResult: "match",
+    injection: false
+  },
   ambiguous: {
     name: "Malia Kanoa",
     id: "HI-CNA-SYN-1002",
@@ -106,17 +119,29 @@ function loadScenario() {
   instruction.hidden = !item.injection;
   notice.textContent = item.injection
     ? "Embedded instructions were treated as untrusted document text. Output remains a draft."
+    : item.correction
+      ? "AI normalized the expiration year incorrectly. A human correction is required before activation."
     : item.uncertainty
       ? "AI found an unresolved ambiguity. Material uncertainty blocks activation until corrected."
       : "AI linked each value to synthetic source text. A human decision and source match are still required.";
   document.querySelector("#draft-state").className = "state warning";
   document.querySelector("#draft-state").textContent = "Draft · not verified";
   setGate("gate-schema", "pass", item.injection ? "Injection ignored; draft contract held" : "Draft-only contract");
-  setGate("gate-review", "pending", item.uncertainty ? "Correction required" : "Explicit action required");
+  setGate(
+    "gate-review",
+    "pending",
+    item.uncertainty || item.correction
+      ? "Correction required"
+      : "Explicit action required"
+  );
   setGate("gate-source", "pending", "Synthetic simulator only");
   setGate("gate-policy", "pending", "Audience + purpose + status");
   reviewAction.disabled = false;
-  reviewAction.textContent = item.uncertainty ? "Defer for better evidence" : "Approve & check source";
+  reviewAction.textContent = item.uncertainty
+    ? "Defer for better evidence"
+    : item.correction
+      ? "Correct date & check source"
+      : "Approve & check source";
   requestAction.disabled = true;
   revokeAction.disabled = true;
   showDecision("pending", "Not evaluated", "Waiting for trust gates");
@@ -138,8 +163,21 @@ reviewAction.addEventListener("click", () => {
     return;
   }
 
-  setGate("gate-review", "pass", "Authorized reviewer approved");
-  addAudit("Step 3", "Human review approved", "Original draft preserved");
+  if (item.correction) {
+    document.querySelector("#claim-end").textContent = item.correctedEnd;
+    notice.textContent =
+      `Human reviewer corrected expiration ${item.normalizedEnd} → ${item.correctedEnd}. ` +
+      "The original AI draft remains preserved in the audit trail.";
+    setGate("gate-review", "pass", "Authorized correction recorded");
+    addAudit(
+      "Step 3",
+      "Human review corrected",
+      `${item.normalizedEnd} → ${item.correctedEnd}; original draft preserved`
+    );
+  } else {
+    setGate("gate-review", "pass", "Authorized reviewer approved");
+    addAudit("Step 3", "Human review approved", "Original draft preserved");
+  }
   setStep("source");
   if (item.sourceResult === "mismatch") {
     setGate("gate-source", "fail", "SOURCE_MISMATCH");
