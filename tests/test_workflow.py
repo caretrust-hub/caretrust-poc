@@ -456,6 +456,27 @@ def test_expired_credential_is_denied_with_reason_code(
     assert "CREDENTIAL_EXPIRED" in outcome.reason_codes
 
 
+def test_non_active_credential_status_is_denied_with_reason_code(
+    clean_draft, audit_log
+):
+    unreadable_status = draft_with(
+        clean_draft,
+        **{
+            "fields.credential_status.value": "Unreadable",
+            "fields.credential_status.normalized_value": None,
+        },
+    )
+    review = approve(unreadable_status, audit_log)
+    registry = registry_check(unreadable_status, audit_log)
+
+    outcome = activation(
+        unreadable_status, audit_log, review=review, registry=registry
+    )
+
+    assert outcome.permitted is False
+    assert "CREDENTIAL_STATUS_NOT_ACTIVE" in outcome.reason_codes
+
+
 def test_ambiguous_blocking_draft_is_denied_even_after_approval_and_match(
     clean_draft, audit_log
 ):

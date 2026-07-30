@@ -477,6 +477,9 @@ def decide_activation(
     registry_id = _reviewed_value(draft, review, "fields.registry_id")
     credential_type = _reviewed_value(draft, review, "fields.credential_type")
     jurisdiction = _reviewed_value(draft, review, "fields.jurisdiction")
+    credential_status = _reviewed_value(
+        draft, review, "fields.credential_status"
+    )
     valid_from = _reviewed_value(draft, review, "fields.original_or_issue_date")
     valid_until = _reviewed_value(draft, review, "fields.expiration_date")
     if not registry_id:
@@ -485,6 +488,8 @@ def decide_activation(
         reasons.append("CREDENTIAL_TYPE_UNSUPPORTED")
     if jurisdiction != "HI":
         reasons.append("JURISDICTION_UNSUPPORTED")
+    if credential_status != "active":
+        reasons.append("CREDENTIAL_STATUS_NOT_ACTIVE")
     if not valid_until:
         reasons.append("EXPIRATION_DATE_REQUIRED")
     else:

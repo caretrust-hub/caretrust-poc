@@ -654,6 +654,7 @@ def _policy_predictions(
             "registry_id",
             "credential_type",
             "jurisdiction",
+            "credential_status",
             "expiration_date",
         )
     }
@@ -674,6 +675,7 @@ def _policy_predictions(
         and bool(required_values["registry_id"])
         and required_values["credential_type"] == "Certified Nurse Aide"
         and required_values["jurisdiction"] == "HI"
+        and required_values["credential_status"] == "active"
         and expiration_valid
     )
     controls = workflow.get("authorization_request")

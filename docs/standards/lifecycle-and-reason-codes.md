@@ -20,8 +20,9 @@ synthetic evidence
 
 The activation policy creates an `active` claim only after an accepting human
 review, a matching synthetic registry result, no unresolved blocking issue,
-and all bounded Hawaii CNA data checks. There is no transition directly from
-`draft` to `active` by the model.
+an extracted or human-corrected credential status of `active`, and all bounded
+Hawaii CNA data checks. There is no transition directly from `draft` to
+`active` by the model.
 
 An active claim can later be represented as `revoked` or `expired`. Only
 `active` claims may be signed or produce a permit. The prototype has an
@@ -64,6 +65,7 @@ codes, in deterministic evaluation order.
 | `REGISTRY_ID_REQUIRED` | A registry identifier is absent after review. |
 | `CREDENTIAL_TYPE_UNSUPPORTED` | The reviewed credential is not the bounded CNA type. |
 | `JURISDICTION_UNSUPPORTED` | The reviewed jurisdiction is outside the bounded Hawaii profile. |
+| `CREDENTIAL_STATUS_NOT_ACTIVE` | The reviewed source credential status is absent or is not `active`. |
 | `EXPIRATION_DATE_REQUIRED` | The reviewed expiration date is absent. |
 | `EXPIRATION_DATE_INVALID` | The reviewed expiration date is not an ISO date. |
 | `CREDENTIAL_EXPIRED` | The credential is past its validity boundary. |
