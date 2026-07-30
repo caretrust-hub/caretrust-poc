@@ -1,0 +1,81 @@
+{
+  "record_type": "caretrust.release-readiness.v1",
+  "checked_at_utc": "2026-07-30T09:25:00Z",
+  "code_commit_tested": "74c5033",
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13",
+    "synthetic_only": true
+  },
+  "checks": {
+    "pytest": {
+      "command": ".\\.venv\\Scripts\\python -m pytest -q",
+      "passed": 69,
+      "failed": 0
+    },
+    "dependency_consistency": {
+      "command": ".\\.venv\\Scripts\\python -m pip check",
+      "result": "No broken requirements found."
+    },
+    "schema_regeneration": {
+      "command": ".\\.venv\\Scripts\\python scripts\\export_schema.py",
+      "tracked_hashes_changed": false
+    },
+    "evaluation_report_regeneration": {
+      "command": ".\\.venv\\Scripts\\python scripts\\render_evaluation_report.py",
+      "hash_changed": false,
+      "sha256": "dd68c15c29fd765736606489f4c294af21ff4a56631056a1e35668cc13060840"
+    },
+    "tracked_json_validation": {
+      "files_checked": 76,
+      "invalid_files": 0
+    },
+    "git_object_integrity": {
+      "command": "git fsck --full --no-progress",
+      "result": "passed"
+    },
+    "public_secret_pattern_scan": {
+      "patterns": [
+        "AWS access key identifiers",
+        "non-placeholder aws_secret_access_key assignments"
+      ],
+      "matches": 0
+    },
+    "applicant_pii_scan": {
+      "patterns": [
+        "applicant name",
+        "applicant email",
+        "applicant phone"
+      ],
+      "matches": 0
+    },
+    "vertical_slice": {
+      "command": ".\\.venv\\Scripts\\python scripts\\demo_vertical_slice.py",
+      "result": "passed",
+      "observed": [
+        "review plus source match produced POLICY_REQUIREMENTS_SATISFIED",
+        "source mismatch produced SOURCE_MISMATCH",
+        "deferred review produced REVIEW_DEFERRED",
+        "revocation changed a prior permit to TOKEN_REVOKED denial"
+      ]
+    },
+    "browser_evidence_hashes": {
+      "manifest": "artifacts/validation/demo-browser-qa-screenshots.json",
+      "files_checked": 6,
+      "mismatches": 0
+    }
+  },
+  "frozen_evaluation_boundary": {
+    "run": "20260730T085655.959974Z",
+    "run_commit": "19c37d3b808434332cb0ed1d71bc92302204c48c",
+    "frozen_config_sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775",
+    "post_evaluation_fix_record": "artifacts/validation/post-evaluation-status-gate.json",
+    "run_replaced": false
+  },
+  "limitations": [
+    "This check is not a penetration test, formal conformance test, or production security assessment.",
+    "The dependency check verifies installed-package consistency; it is not a vulnerability database audit.",
+    "Pattern scanning cannot prove that a repository contains no secret or personal data.",
+    "The final Bedrock run was not repeated after the disclosed post-evaluation status-gate fix."
+  ]
+}
