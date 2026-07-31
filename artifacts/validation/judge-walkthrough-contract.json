@@ -478,7 +478,7 @@
         },
         {
           "artifact": "artifacts/validation/core-v0.1/core-runtime-bridge-validation.json",
-          "artifact_sha256": "fe9d693c05a189e68bf761c84ab4455b422b99c755cfad11afc5e863da2ee61c",
+          "artifact_sha256": "91624a246d475e0a5f60a8ebbe3b6c45a7f3b1e95900bfd7f0e837807e11cbe7",
           "canonical_ids": [
             "urn:caretrust:message:core-bridge:delegation_revocation_status"
           ]
@@ -624,5 +624,5 @@
   ],
   "suggested_total_seconds": 340,
   "synthetic": true,
-  "walkthrough_sha256": "25ea1f4764bef0910e674fcc23e0d5f846baed0d5d8d884aca8c415f0792f9d4"
+  "walkthrough_sha256": "c002d36749bc82d3260d6a2ffc2526ae18496d0a84d971dac39394c8f96c36b9"
 }

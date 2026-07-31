@@ -1147,7 +1147,7 @@
   },
   "native_core_profile_conformance_claimed": false,
   "network_calls": false,
-  "published_schema_commit": "cbef37a7d8a2b46bf37f6c144800a8a92581eefa",
+  "published_schema_commit": "14818b2e1e37664e908135255a5c3b2efd4fae81",
   "published_schema_source": "https://github.com/caretrust-hub/caretrust-spec/tree/main/schemas/core/v0.1",
   "synthetic_only": true
 }

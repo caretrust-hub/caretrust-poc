@@ -2729,7 +2729,7 @@ window.CARETRUST_DEMO_DATA = {
   },
   "dashboard_contract": {
     "case_id": "case:synthetic-multi-caregiver-001",
-    "dashboard_sha256": "b00f0e9fa556c30e747810d7c77d0420b9058cf543d16a85b24f4165f3a3a296",
+    "dashboard_sha256": "3cf610c92b90520d4a2f4c355065a7180000f805c80a10d622960497015b5830",
     "evidence_status": "executed_local",
     "generated_at": "2026-07-30T18:00:00Z",
     "non_claims": [
@@ -2741,7 +2741,7 @@ window.CARETRUST_DEMO_DATA = {
       "application_compilation_sha256": "4e947fb480f12d045bdb3b788dda4936104adb0df9359d33d6b3a78c8fdd7d53",
       "application_input_sha256": "23f02e874d5a2b77329ee34a456f92a1adced41e885fa4d113c0d15d45a7d4a9",
       "case_bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
-      "core_bridge_artifact_sha256": "fe9d693c05a189e68bf761c84ab4455b422b99c755cfad11afc5e863da2ee61c",
+      "core_bridge_artifact_sha256": "91624a246d475e0a5f60a8ebbe3b6c45a7f3b1e95900bfd7f0e837807e11cbe7",
       "intent_compilation_sha256": "dedd14f5dc1dec3a5125a9231942f8ae706a743e8ebe9b6b394749fed2645927",
       "intent_input_sha256": "24869fc1cd3d5668dc693eeea28de0347028f16bbf75fc370084f693995bb360"
     },
@@ -7012,7 +7012,7 @@ window.CARETRUST_DEMO_DATA = {
           },
           {
             "artifact": "artifacts/validation/core-v0.1/core-runtime-bridge-validation.json",
-            "artifact_sha256": "fe9d693c05a189e68bf761c84ab4455b422b99c755cfad11afc5e863da2ee61c",
+            "artifact_sha256": "91624a246d475e0a5f60a8ebbe3b6c45a7f3b1e95900bfd7f0e837807e11cbe7",
             "canonical_ids": [
               "urn:caretrust:message:core-bridge:delegation_revocation_status"
             ]
@@ -7158,7 +7158,7 @@ window.CARETRUST_DEMO_DATA = {
     ],
     "suggested_total_seconds": 340,
     "synthetic": true,
-    "walkthrough_sha256": "25ea1f4764bef0910e674fcc23e0d5f846baed0d5d8d884aca8c415f0792f9d4"
+    "walkthrough_sha256": "c002d36749bc82d3260d6a2ffc2526ae18496d0a84d971dac39394c8f96c36b9"
   },
   "navigator": {
     "care_team_rows": [
