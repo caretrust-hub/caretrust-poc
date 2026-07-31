@@ -39,8 +39,10 @@ def test_browser_bundle_is_synthetic_and_retains_authority_boundaries() -> None:
     assert any("No time saved" in item for item in operations["non_claims"])
 
 
-def test_browser_page_loads_generated_bundle_before_behavior() -> None:
+def test_operational_console_does_not_replay_the_generated_bundle() -> None:
     html = (ROOT / "demo" / "network.html").read_text(encoding="utf-8")
-    assert '<script src="network-data.js?v=0.4.1"></script>' in html
-    assert '<script src="network.js?v=0.4.1"></script>' in html
-    assert html.index('src="network-data.js') < html.index('src="network.js')
+    javascript = (ROOT / "demo" / "network.js").read_text(encoding="utf-8")
+    assert "network-data.js" not in html
+    assert '<script src="network.js?v=0.5.0" defer></script>' in html
+    assert "class ApiBackend" in javascript
+    assert "class BrowserReferenceBackend" in javascript

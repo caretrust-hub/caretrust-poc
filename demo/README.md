@@ -1,42 +1,33 @@
-# CareTrust judge-facing design prototype
+# CareTrust interactive design prototypes
 
-Open `index.html` through any static web server. The prototype is dependency-free
-and uses only synthetic data.
-
-This is a communication surface for the tested CareTrust state model, not a
-production interface. The clean walkthrough demonstrates:
-
-1. a visibly synthetic legacy CNA document;
-2. a retained Amazon Textract OCR response with line confidence and evidence
-   locations;
-3. a retained Bedrock/Qwen structured draft, explicitly separated from OCR;
-4. separate human-review, synthetic-source-check, and claim-signing actions;
-5. independent App A workforce-onboarding and App B scheduling policy receipts
-   that reference the same stable claim ID;
-6. revocation after both permits; and
-7. `DENY / TOKEN_REVOKED` on a fresh App B request.
-
-The browser makes no AWS, registry, wallet, EHR, or federation call. It replays
-retained OCR/model artifacts so the walkthrough is deterministic and does not
-expose cloud credentials. Revocation affects new requests in the demonstration;
-it does not claim to terminate an already established application session.
-
-The page also exposes the frozen synthetic evaluation results and labels
-standards work as `Tested`, `Mapped`, `Contract`, or `Planned`. Safety scenarios
-show human correction, material-uncertainty deferral, source mismatch, and
-embedded-instruction handling.
-
-For local review:
+Use `network.html` for the primary provider-operations workflow. It uses only
+synthetic data and can run against the local Python workflow API:
 
 ```powershell
-python -m http.server 8000 --directory demo
+.\.venv\Scripts\python scripts\run_provider_console.py
 ```
 
+Then open `http://127.0.0.1:8765/network.html`.
+
+The workflow demonstrates:
+
+1. an incomplete referral;
+2. eight source-linked AI draft fields and two focused gaps;
+3. coordinator correction;
+4. separate patient sharing approval;
+5. deterministic workforce eligibility and supervisor assignment;
+6. different minimum-data projections for two independent apps;
+7. visible prototype workload counters; and
+8. fail-closed denial on a fresh request after revocation.
+
 The companion `reference-client.html` is a deliberately separate, phone-sized
-test client. It reuses the same retained canonical records as the provider
-console, holds no independent authority state, and demonstrates invitation,
-synthetic OIDC/PKCE-shaped account binding, patient approval status, exact
-per-app decisions, document upload, and revocation.
+test worker client. It reads only the Care Tasks Mobile projection from the same
+synthetic browser session and holds no independent authority state.
+
+When served as static files, the console falls back to a clearly labeled
+browser reference adapter. No demo surface makes a live AWS, registry, wallet,
+EHR, HIE, identity-provider, or federation call. Revocation affects fresh
+requests; existing-session termination is not claimed.
 
 The login-free published copies are available at:
 

@@ -39,7 +39,7 @@ from caretrust.trace import canonical_json
 COMPILER_VERSION = "caretrust.intent-compiler.v1"
 LOCAL_REPLAY_MODEL_ID = "caretrust-deterministic-replay-v1"
 _FORBIDDEN_ASSERTIONS = re.compile(
-    r"\b(?:approval|approved?|permits?|activation|activated?|revocation|revoked?|authori[sz](?:e|ed|ation))\b",
+    r"\b(?:approval|approved?|permission|permit(?:s|ted|ting)?|activation|activated?|revocation|revoked?|authori[sz](?:e|ed|ation))\b",
     re.IGNORECASE,
 )
 _INJECTION_PATTERNS = (
@@ -319,11 +319,49 @@ class CompilerService:
             raise RuntimeError("no structured model was configured")
         response = self.model.extract(
             system_prompt=(
-                "Return one strict, evidence-cited candidate for a synthetic delegation draft. "
-                "Every value needs an exact retained span_id and quote. Do not state approval, "
-                "permission, activation, authorization, revocation, or status changes."
+                "The input is JSON containing an utterance and retained_spans. Return one "
+                "strict, evidence-cited candidate for a synthetic delegation draft using "
+                "only the supplied directory and allowed_vocabulary values. Emit every "
+                "required_output_key; use null or [] when the utterance does not support "
+                "a value. Every candidate value must cite a span_id copied exactly from "
+                "retained_spans and an exact quote contained in that span. For delegate_ref, "
+                "return either the directory label or its mapped identifier. Do not state "
+                "approval, permission, activation, authorization, revocation, or status changes."
             ),
-            user_text=intent.utterance,
+            user_text=canonical_json(
+                {
+                    "utterance": intent.utterance,
+                    "retained_spans": [
+                        {
+                            "span_id": span.span_id,
+                            "quote": span.quote,
+                            "start_char": span.start_char,
+                            "end_char": span.end_char,
+                        }
+                        for span in intent.spans
+                    ],
+                    "delegate_directory": self.delegate_directory,
+                    "allowed_vocabulary": {
+                        "relationship_code": [
+                            item.value for item in RelationshipCode
+                        ],
+                        "actions": [item.value for item in DelegationAction],
+                        "resources": [item.value for item in DelegationResource],
+                        "audience": [item.value for item in DelegationAudience],
+                        "purpose": [item.value for item in DelegationPurpose],
+                    },
+                    "required_output_keys": [
+                        "delegate_ref",
+                        "relationship_code",
+                        "actions",
+                        "resources",
+                        "excluded_resources",
+                        "audience",
+                        "purpose",
+                        "valid_until",
+                    ],
+                }
+            ),
             json_schema=IntentModelCandidate.model_json_schema(),
             schema_name="caretrust_intent_model_candidate",
             schema_description="Non-authoritative, exact-citation candidate over synthetic intent only",
@@ -579,14 +617,19 @@ class CompilerService:
             value, span_id = verified(candidate.delegate_ref, ())
             cited_delegate = candidate.delegate_ref.citation.quote.casefold()
             found = [
-                ref
+                (name, ref)
                 for name, ref in self.delegate_directory.items()
                 if re.search(rf"\b{re.escape(name)}\b", cited_delegate)
             ]
-            if value not in found:
+            matched_refs = {
+                ref
+                for name, ref in found
+                if value == ref or value.casefold() == name
+            }
+            if len(matched_refs) != 1:
                 raise ValueError("model candidate delegate is not bound to a cited directory identity")
-            delegate_ref = value
-            bindings.append(DraftEvidenceBinding(field_path=DraftEvidenceField.DELEGATE_REF, value=value, evidence_refs=(span_id,)))
+            delegate_ref = matched_refs.pop()
+            bindings.append(DraftEvidenceBinding(field_path=DraftEvidenceField.DELEGATE_REF, value=delegate_ref, evidence_refs=(span_id,)))
         else:
             blocking.append(DelegationBlockingCode.MISSING_DELEGATE)
             self._uncertain(uncertainties, DelegationUncertaintyCode.AMBIGUOUS_DELEGATE, "delegate_ref", "The model did not propose a cited bounded delegate.", intent)

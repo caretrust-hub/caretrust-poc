@@ -88,7 +88,7 @@ def test_protocol_9_delta_is_unknown_and_routes_to_human_without_authority() -> 
     assert result.clarifications
 
 
-@pytest.mark.parametrize("text", ["The request is approved.", "We permit it.", "Activation is complete.", "Revocation is complete."])
+@pytest.mark.parametrize("text", ["The request is approved.", "Permission is set.", "We permit it.", "It is permitted.", "Activation is complete.", "Revocation is complete."])
 def test_authority_assertions_in_model_output_are_rejected(text: str) -> None:
     with pytest.raises(CompilerSafetyError):
         reject_authority_assertions({"observation": text})
@@ -116,6 +116,8 @@ class _FakeResponse:
 class _FakeModel:
     def extract(self, **kwargs: object) -> _FakeResponse:
         assert kwargs["request_metadata"] == {"caretrust_component": "intent_compiler"}
+        assert '"retained_spans"' in str(kwargs["user_text"])
+        assert "intent:compiler-test-bedrock:full-text" in str(kwargs["user_text"])
         return _FakeResponse()
 
 
@@ -158,6 +160,39 @@ class _ParaphraseCandidateModel:
             }],
         }
         return response
+
+
+class _DirectoryLabelCandidateModel:
+    def extract(self, **kwargs: object) -> _FakeResponse:
+        response = _FakeResponse()
+        response.parsed_json = {
+            **_FakeResponse.parsed_json,
+            "delegate_ref": {
+                "value": "Leilani",
+                "citation": {
+                    "span_id": "intent:compiler-test-bedrock:full-text",
+                    "quote": "my daughter Leilani",
+                },
+            },
+        }
+        return response
+
+
+def test_model_may_propose_cited_directory_label_not_internal_identifier() -> None:
+    intent = make_intent_statement(
+        intent_id="intent:compiler-test-bedrock",
+        patient_ref="patient:compiler-test-003",
+        utterance=(
+            "Let my daughter Leilani view appointments through 2026-12-31 "
+            "in the scheduling app for appointment management."
+        ),
+        created_at=NOW,
+    )
+    result = CompilerService(
+        model=_DirectoryLabelCandidateModel()
+    ).compile_intent_with_bedrock(intent, now=NOW)
+    assert result.compilation_mode == "model_candidate_validated"
+    assert result.draft.delegate_ref == "person:synthetic-leilani-caregiver"
 
 
 def test_validated_model_candidate_materially_maps_supported_paraphrase() -> None:

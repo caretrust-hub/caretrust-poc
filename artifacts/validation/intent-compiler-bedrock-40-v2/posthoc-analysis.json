@@ -1,0 +1,18 @@
+{
+  "analysis_type": "deterministic_posthoc_over_frozen_v2",
+  "frozen_config_sha256": "5832cbc3260925df8fe2f6b9a28f2c8ad5c46f840f97b13b3e97a2682518da15",
+  "record_count": 40,
+  "raw_response_has_citation": 40,
+  "raw_response_all_citations_use_allowed_span_and_exact_quote": 40,
+  "full_model_candidate_accepted": {
+    "correct": 0,
+    "count": 34,
+    "rate": 0.0
+  },
+  "safety_rejections": 6,
+  "candidate_validation_error_counts": {
+    "model candidate delegate is not bound to a cited directory identity": 34
+  },
+  "interpretation": "Exposing canonical span IDs corrected the v1 citation-transport defect: every raw response cited an allowed span and exact source quote. Full candidate acceptance remained zero because the prompt did not adequately supply or require canonical identity and bounded vocabulary mappings. Deterministic fallback quality must not be reported as model-candidate quality.",
+  "next_protocol_change": "Freeze the delegate directory, allowed vocabularies, and required output keys in model input; score partial candidate fields before deterministic fallback."
+}
