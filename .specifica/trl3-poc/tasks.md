@@ -564,9 +564,13 @@ Controlling execution design:
   synthetic session, shows only its permitted shift/task projection, and shows
   no case fields on deny.
 - [x] **T089 [AI protocol correction]** Expose frozen canonical evidence-span
-  IDs to the intent model before requiring citations. Preserve the defective v1
-  run and publish a new, frozen v2 run with candidate acceptance, grounding,
-  semantic accuracy, HITL routing, and safety reported separately.
+  IDs, delegate identity mappings, and bounded vocabularies to the intent model;
+  require an ontology-complete output contract. Preserve the defective v1/v2
+  runs and publish the frozen v3 run with the exact executed request, candidate
+  acceptance, grounding, semantic accuracy, HITL routing, safety, and
+  deterministic fallback reported separately. **Evidence:** 40/40 schema-valid,
+  39/40 citation-valid, 22/40 accepted and semantically exact candidates, 18
+  fail-closed fallbacks, 40/40 HITL routing, and 40/40 no-authority enforcement.
 - [x] **T090 [Design/submission]** Rewrite the UI handoff and application’s
   primary workflow around explicit provider workload reduction. **Acceptance:**
   use case, actors, screen hierarchy, workload measures, AI boundaries,

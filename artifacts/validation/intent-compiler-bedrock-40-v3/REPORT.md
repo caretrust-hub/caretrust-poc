@@ -1,0 +1,56 @@
+# Smart40 v3 intent compiler evaluation
+
+V3 freezes and executes the same exact ontology-complete request contract. Model-candidate quality is separate from deterministic fallback.
+
+```json
+{
+  "state": "completed",
+  "protocol_version": "v3_exact_request_ontology_complete",
+  "frozen_config_sha256": "363d4993c0c0a8e3f4e91c3723b1034b38b82cd251c961b42f48d8c2b8bdf126",
+  "retained_record_count": 40,
+  "consecutive_integrity": true,
+  "actual_or_estimated_cost_usd": 0.01169535,
+  "metrics": {
+    "request_matches_freeze": {
+      "correct": 40,
+      "count": 40,
+      "rate": 1.0
+    },
+    "schema_valid": {
+      "correct": 40,
+      "count": 40,
+      "rate": 1.0
+    },
+    "citations_valid": {
+      "correct": 39,
+      "count": 40,
+      "rate": 0.975
+    },
+    "candidate_accepted": {
+      "correct": 22,
+      "count": 40,
+      "rate": 0.55
+    },
+    "candidate_semantic_exact": {
+      "correct": 22,
+      "count": 40,
+      "rate": 0.55
+    },
+    "hitl_routing_correct": {
+      "correct": 40,
+      "count": 40,
+      "rate": 1.0
+    },
+    "no_authority_effect": {
+      "correct": 40,
+      "count": 40,
+      "rate": 1.0
+    },
+    "status_counts": {
+      "completed": 40
+    },
+    "fallback_count": 18
+  },
+  "limitations": "Synthetic, small, and intentionally repetitive contract benchmark; not user-outcome evidence. A validated candidate remains an unverified draft and cannot activate or authorize."
+}
+```

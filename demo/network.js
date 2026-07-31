@@ -403,6 +403,11 @@ function reviewMarkup() {
     <div class="review-layout">
       <article class="card">
         <div class="card-heading"><div><p class="eyebrow">8 fields prefilled</p><h3>Review the cited intake draft</h3></div><span class="file-pill">AI draft · not authority</span></div>
+        <div class="ai-proof-strip" role="note">
+          <strong>What AI contributes</strong>
+          <span>ordinary-language referral → eight structured candidates + exact source quotes + two focused exceptions</span>
+          <small>This screen is the deterministic reference workflow. Separate retained AWS evidence: 40/40 schema-valid, 22 accepted semantically exact drafts, 18 safe fallbacks, 40/40 correct human-review routing, and zero authority effects.</small>
+        </div>
         <div class="fact-list">${facts}</div>
         <div class="review-footer"><p>Green fields were copied with strong evidence. Amber needs judgment.</p><button id="review-action" class="primary-action" type="button">Complete coordinator review →</button></div>
       </article>

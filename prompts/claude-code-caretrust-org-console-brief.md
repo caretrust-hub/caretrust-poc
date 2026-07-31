@@ -16,6 +16,11 @@ CareTrust helps a care organization turn a fragmented referral into a
 reviewed, patient-approved, qualified-worker assignment, then gives each
 independent app only the minimum information it needs.
 
+The visible AI value proposition is: **ordinary-language referral in; cited
+structured candidates and a focused exception queue out.** Staff review fewer
+fields. AI never creates authority; people approve and deterministic CareTrust
+policy controls every consequential decision.
+
 The product is the neutral trust and coordination layer. It is not a new
 scheduler, EVV product, clinical chart, family organizer, or document-summary
 app.
@@ -233,6 +238,14 @@ Render eight editable field rows. Each row includes:
 - confidence;
 - exact-source link; and
 - a visible exception treatment when uncertain.
+
+Above the rows, show a compact “What AI contributes” strip that explains the
+transformation from ordinary language to structured candidates, exact source
+quotes, and focused exceptions. Distinguish the deterministic browser reference
+workflow from retained AWS evidence. Cite the current retained Smart40 v3
+results without implying autonomy: 40/40 schema-valid, 22 accepted and
+semantically exact model drafts, 18 validator rejections to fallback, 40/40
+correct human-review routing, and 40/40 no authority effect.
 
 The schedule proposal should remain “Wednesday afternoons” because the source
 does not establish exact hours. The coordinator corrects it to

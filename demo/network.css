@@ -240,6 +240,9 @@ button:disabled { cursor: not-allowed; opacity: .55; }
 .review-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--line); }
 .review-footer p { margin: 0; color: var(--muted); font-size: .72rem; }
 .evidence-quote { margin: 14px 0 0; padding: 12px; color: #405047; background: #f5f8f6; border-left: 3px solid var(--blue); font: .8rem/1.55 Georgia, serif; }
+.ai-proof-strip { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 15px 0 0; padding: 12px 14px; color: #263d32; background: #edf5f0; border: 1px solid #cfe0d6; border-radius: 8px; font-size: .73rem; line-height: 1.45; }
+.ai-proof-strip strong { color: var(--green-dark); }
+.ai-proof-strip small { grid-column: 1 / -1; color: var(--muted); font-size: .66rem; }
 
 .approval-shell { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .scope-list { list-style: none; padding: 0; margin: 14px 0; }

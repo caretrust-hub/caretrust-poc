@@ -224,6 +224,21 @@ activation. The run's authorization figure is only a Boolean scenario proxy;
 separate deterministic tests provide the signed-token, tamper, and revocation
 evidence.
 
+### Intent-to-standards Smart40 v3
+
+The separate delegation-intent compiler evaluation freezes the exact executed
+prompt, ontology, evidence spans, output schema, temperature, and token limit.
+The retained v3 consecutive run produced 40/40 schema-valid responses and 39/40
+valid citation sets. Twenty-two model candidates passed every deterministic
+validator, and all 22 were semantically exact; 18 were rejected to deterministic
+fallback. Human-review routing and no-authority enforcement were 40/40. This is
+evidence for useful bounded drafting—not autonomous permission management.
+
+The v1 and v2 failures remain published. They exposed missing evidence-span and
+canonical-vocabulary inputs and led to the v3 request contract rather than being
+silently replaced. See the
+[v3 report](artifacts/validation/intent-compiler-bedrock-40-v3/REPORT.md).
+
 Independent post-run review found that the frozen activation code did not
 explicitly require the extracted credential status to be `active`. The affected
 fixture still failed closed through another gate, so the frozen metrics did not
