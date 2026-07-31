@@ -15,7 +15,8 @@
       <span><strong>CareTrust</strong><small>Interoperable Care Trust Hub</small></span>
     </a>
     <nav class="header-nav" aria-label="Page sections">
-      <a href="#walkthrough">Walkthrough</a>
+      <a href="network.html">Provider console</a>
+      <a href="#walkthrough">Credential evidence lab</a>
       <a href="#reuse">App decisions</a>
       <a href="#evidence">Evidence &amp; limits</a>
     </nav>
@@ -26,16 +27,16 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow">Caregiver workforce infrastructure · ACL Track 2</p>
-        <h1 id="page-title">Turn legacy caregiver evidence into <em>reusable, source-backed trust.</em></h1>
-        <p class="lede">CareTrust uses AI to draft a portable claim from legacy evidence. People approve the draft, an accountable source establishes status, and each care application applies its own policy.</p>
+        <h1 id="page-title">Activate a trusted care workforce <em>across applications.</em></h1>
+        <p class="lede">CareTrust gives provider organizations one AI-assisted workflow to compile caregiver intent, workforce credentials, assignments, documents, and app requirements into reviewable trust packages. People approve; deterministic policy gives each worker and independent app different, revocable access.</p>
         <div class="hero-actions">
-          <a class="button primary hero-button" href="#walkthrough">Run the synthetic walkthrough <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="#evidence">See measured evidence and limits</a>
+          <a class="button primary hero-button" href="network.html">Open the provider organization console <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#walkthrough">Inspect the secondary credential evidence lab</a>
         </div>
         <ul class="truth-row" aria-label="Prototype boundaries">
           <li>Synthetic data only</li>
-          <li>Retained cloud outputs</li>
-          <li>No live browser cloud call</li>
+          <li>Exact-message local trace</li>
+          <li>No live HIE or EHR</li>
         </ul>
       </div>
 
@@ -44,19 +45,19 @@
         <h2 id="scope-title">A focused proof with a platform path</h2>
         <ol class="scope-path">
           <li class="scope-now">
-            <span>Now · tested</span>
-            <strong>Synthetic Hawaii CNA lifecycle</strong>
-            <small>Evidence, AI draft, human gate, source gate, signed claim, two local app decisions, revocation.</small>
+            <span>Now · executable local</span>
+            <strong>Provider workforce activation</strong>
+            <small>Multi-client queue, one-case drill-down, three caregiver contexts, app onboarding, reviewed coordination items, exact decisions, and revocation.</small>
           </li>
           <li>
-            <span>Next · Phase 2</span>
-            <strong>One accountable operator</strong>
-            <small>Real workflow co-design, authoritative source adapter, two consuming applications.</small>
+            <span>Secondary technical proof · retained AWS</span>
+            <strong>Credential evidence compiler</strong>
+            <small>OCR and model output remain untrusted until accountable human and source gates are satisfied.</small>
           </li>
           <li>
-            <span>Network · planned</span>
-            <strong>Conformant trust domains</strong>
-            <small>Federation and governance without a universal caregiver database.</small>
+            <span>Network path · local federation laboratory</span>
+            <strong>Independent organizations and applications</strong>
+            <small>Open contracts and signed metadata support a federated path without a universal caregiver or clinical-data silo; operational federation and live HIE/EHR access remain planned.</small>
           </li>
         </ol>
       </aside>
@@ -65,10 +66,10 @@
     <section class="walkthrough" id="walkthrough" aria-labelledby="walkthrough-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow">Interactive judge walkthrough</p>
-          <h2 id="walkthrough-title">Follow one claim through every trust boundary</h2>
+          <p class="eyebrow">Secondary technical evidence lane</p>
+          <h2 id="walkthrough-title">Inspect how one workforce credential crosses every trust boundary</h2>
         </div>
-        <p>Every button performs exactly one recorded action. Start with the clean path; safety scenarios fail closed.</p>
+        <p>This retained credential lab supports the provider-console workflow. Every button performs one recorded action, and safety scenarios fail closed.</p>
       </div>
 
       <div class="demo-shell">
@@ -295,10 +296,10 @@
     <details class="technical-proof" id="proof">
       <summary><span><span class="eyebrow">Secondary technical proof</span><strong>Inspect standards status and implementation boundaries</strong></span><span>Open details</span></summary>
       <div class="standards-grid">
-        <article><span class="status tested">Tested</span><strong>CareTrust claim lifecycle</strong><p>Schema, evidence links, human/source gates, signing, deterministic policy, and revocation behavior.</p></article>
-        <article><span class="status mapped">Mapped</span><strong>FHIR R4 projection</strong><p>Local Practitioner, Organization, and Provenance projection; not an official conformance claim.</p></article>
-        <article><span class="status contract">Contract</span><strong>OID4VC exchange</strong><p>Purpose-bound request and credential examples; no browser wallet exchange.</p></article>
-        <article><span class="status planned">Planned</span><strong>Cross-domain federation</strong><p>Phase 2/3 governance and conformance path; no deployed federation is shown.</p></article>
+        <article data-evidence-status="executed_local"><span class="status tested">Executed local</span><strong>CareTrust claim lifecycle</strong><p>Schema, evidence links, human/source gates, signing, deterministic policy, and revocation behavior.</p></article>
+        <article data-evidence-status="executed_local"><span class="status tested">Executed local</span><strong>FHIR R4 projection</strong><p>Local Practitioner, Organization, and Provenance projection; not an official conformance claim.</p></article>
+        <article data-evidence-status="contract_tested"><span class="status contract">Contract tested</span><strong>OID4VC exchange</strong><p>Purpose-bound request and credential examples; no browser wallet exchange.</p></article>
+        <article data-evidence-status="local_simulation"><span class="status mapped">Local simulation</span><strong>Federation-shaped trust resolution</strong><p>Signed synthetic statements resolve against a local pinned anchor; no deployed federation or network call.</p></article>
       </div>
     </details>
 
