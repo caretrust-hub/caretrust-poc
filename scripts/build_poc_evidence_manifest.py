@@ -19,7 +19,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 
-MANIFEST_VERSION = "caretrust.post-evaluation-evidence.v0.2"
+MANIFEST_VERSION = "caretrust.post-evaluation-evidence.v0.4"
 FROZEN_EVALUATION_RUN_ID = "20260730T085655.959974Z"
 FROZEN_EVALUATION_REFERENCES = (
     "artifacts/evaluation/frozen-run-config.json",
@@ -29,19 +29,26 @@ FROZEN_EVALUATION_REFERENCES = (
 )
 
 ARTIFACT_PATTERNS = (
+    "README.md",
+    ".specifica/trl3-poc/*.md",
+    "pyproject.toml",
+    "requirements.lock",
+    "artifacts/validation/**/*.json",
+    "artifacts/validation/**/*.jsonl",
+    "artifacts/validation/**/*.md",
+    "demo/*.html",
+    "demo/*.css",
+    "demo/*.js",
+    "demo/*.md",
     "docs/standards/**/*.json",
     "docs/standards/**/*.md",
+    "docs/use-cases/*.md",
+    "fixtures/**/*.json",
+    "fixtures/**/*.txt",
     "schemas/*.json",
-    "scripts/build_poc_evidence_manifest.py",
-    "scripts/export_clinical_edge_examples.py",
-    "src/caretrust/clinical_edge.py",
-    "src/caretrust/federation.py",
-    "src/caretrust/fhir_projection.py",
-    "tests/test_clinical_edge.py",
-    "tests/test_federation.py",
-    "tests/test_fhir_projection.py",
-    "tests/test_oid4vc_artifacts.py",
-    "tests/test_poc_evidence_manifest.py",
+    "scripts/*.py",
+    "src/caretrust/**/*.py",
+    "tests/*.py",
     *FROZEN_EVALUATION_REFERENCES,
 )
 
@@ -178,6 +185,7 @@ def collect_artifact_paths(
     """Return the stable, sorted artifact set selected by the manifest profile."""
 
     excluded = output_path.resolve() if output_path is not None else None
+    tracked = set(_run_git(root, "ls-files").splitlines())
     selected: dict[str, Path] = {}
     for pattern in patterns:
         matches = list(root.glob(pattern))
@@ -187,6 +195,8 @@ def collect_artifact_paths(
             if not path.is_file() or (excluded is not None and path.resolve() == excluded):
                 continue
             relative = _relative_path(root, path)
+            if relative not in tracked:
+                continue
             selected[relative] = path
     return [selected[relative] for relative in sorted(selected)]
 

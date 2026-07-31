@@ -1,0 +1,105 @@
+{
+  "record_type": "caretrust.release-readiness.v1",
+  "checked_at_utc": "2026-07-31T03:36:21Z",
+  "release": {
+    "poc_commit_tested": "82c3d4fa6e7c3ea8c2d79aab8b6b74effbfbbbc5",
+    "poc_tag": "trl3-poc-v0.4.1",
+    "spec_commit_tested": "cbef37a7d8a2b46bf37f6c144800a8a92581eefa",
+    "spec_tag": "caretrust-profile-v0.1.1",
+    "pages_source_commit": "dc7981b513894d6ccd88fec525d331a1beb5b6cd"
+  },
+  "environment": {
+    "platform": "Windows",
+    "python": "3.13",
+    "synthetic_only": true
+  },
+  "checks": {
+    "local_pytest": {
+      "command": ".\\.venv\\Scripts\\python.exe -m pytest -q",
+      "passed": 331,
+      "failed": 0,
+      "elapsed_seconds": 35.44
+    },
+    "clean_clone_reproduction": {
+      "poc_commit": "82c3d4fa6e7c3ea8c2d79aab8b6b74effbfbbbc5",
+      "spec_commit": "cbef37a7d8a2b46bf37f6c144800a8a92581eefa",
+      "install": "requirements.lock then editable project with --no-deps",
+      "pytest_passed": 331,
+      "pytest_failed": 0,
+      "elapsed_seconds": 33.68
+    },
+    "dependency_consistency": {
+      "command": ".\\.venv\\Scripts\\python.exe -m pip check",
+      "result": "No broken requirements found."
+    },
+    "standards_repository_validation": {
+      "command": "python conformance/validate.py",
+      "json_files_checked": 113,
+      "markdown_files_checked": 29,
+      "result": "validation passed"
+    },
+    "browser_reference_client": {
+      "surfaces": [
+        "provider organization console",
+        "synthetic caregiver reference client"
+      ],
+      "workflow_checks": [
+        "synthetic OIDC and PKCE account-binding replay",
+        "invitation acceptance",
+        "separate patient approval observation",
+        "bounded scheduling permit",
+        "undelegated medication denial",
+        "patient-provided document upload provenance",
+        "patient revocation",
+        "fresh GRANT_REVOKED denial"
+      ],
+      "phone_width_horizontal_overflow": false,
+      "first_keyboard_focus": "Skip to caregiver workflow",
+      "page_console_errors": 0
+    },
+    "public_demo_deployment": {
+      "pages_build_run": 30601907087,
+      "pages_build_status": "success",
+      "source_commit": "dc7981b513894d6ccd88fec525d331a1beb5b6cd",
+      "urls": {
+        "landing": {
+          "url": "https://caretrust-hub.github.io/caretrust-poc/",
+          "anonymous_http_status": 200
+        },
+        "provider_console": {
+          "url": "https://caretrust-hub.github.io/caretrust-poc/network.html",
+          "anonymous_http_status": 200
+        },
+        "reference_client": {
+          "url": "https://caretrust-hub.github.io/caretrust-poc/reference-client.html",
+          "anonymous_http_status": 200
+        }
+      }
+    },
+    "git_object_integrity": {
+      "command": "git fsck --full --no-progress",
+      "result": "passed with unreachable development blobs reported"
+    },
+    "public_repository_scan": {
+      "applicant_email_matches": 0,
+      "applicant_phone_matches": 0,
+      "aws_access_key_identifier_matches": 0,
+      "private_key_block_matches": 0,
+      "likely_literal_secret_assignment_matches": 0,
+      "expected_applicant_name_metadata_matches": 1
+    }
+  },
+  "frozen_evaluation_boundary": {
+    "run": "20260730T085655.959974Z",
+    "case_count": 20,
+    "run_replaced": false,
+    "later_validation_and_product-work_do_not_recompute_the_frozen_run": true
+  },
+  "limitations": [
+    "This is a TRL 3 synthetic proof of concept, not a penetration test, formal conformance certification, or production security assessment.",
+    "No production identity provider, identity proofing service, live registry, HIE, EHR, or cross-organization federation is connected.",
+    "The browser replays retained records and local decisions; it is not evidence of deployed API interoperability or measured caregiver-organization outcomes.",
+    "Pattern scanning cannot prove that a repository contains no secret or personal data.",
+    "The pinned requirements file does not include cross-platform wheel hashes."
+  ]
+}

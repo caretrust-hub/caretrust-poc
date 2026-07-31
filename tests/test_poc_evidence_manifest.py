@@ -39,7 +39,7 @@ def _manifest() -> dict:
     release_tag, release_commit = _known_release()
     return manifest_module.build_manifest(
         root=ROOT,
-        test_result_reference="artifacts/validation/release-readiness.json",
+        test_result_reference="artifacts/validation/release-readiness-v0.4.1.json",
         public_repository_url="https://github.com/caretrust-hub/caretrust-poc",
         release_tag=release_tag,
         release_commit=release_commit,
@@ -69,6 +69,12 @@ def test_manifest_is_deterministic_and_has_stable_artifact_hashes() -> None:
         "tests/test_federation.py",
         "tests/test_fhir_projection.py",
         "tests/test_oid4vc_artifacts.py",
+        "demo/network.html",
+        "demo/reference-client.html",
+        "artifacts/validation/dashboard-contract.json",
+        "artifacts/validation/auth-harness-trace.json",
+        "artifacts/validation/synthetic-multi-caregiver-case.json",
+        "artifacts/validation/release-readiness-v0.4.1.json",
     } <= {item["path"] for item in artifacts}
 
 
@@ -103,6 +109,11 @@ def test_status_matrix_uses_bounded_evidence_classes_and_non_claims() -> None:
     assert statuses["openid-federation-trust-resolution"] == "local_simulation"
     assert statuses["caretrust-openapi-surface"] == "contract_tested"
     assert statuses["synthetic-clinical-data-holder-edge"] == "executed_local"
+    assert statuses["provider-organization-console"] == "executed_local"
+    assert statuses["caregiver-reference-client"] == "executed_local"
+    assert statuses["oidc-pkce-rar-auth-harness"] == "executed_local"
+    assert statuses["multi-caregiver-case-policy"] == "executed_local"
+    assert statuses["three-lane-ai-compilers"] == "executed_local"
 
     non_claims = "\n".join(manifest["explicit_non_claims"]).lower()
     for boundary in (
@@ -127,7 +138,7 @@ def test_public_release_and_test_references_are_caller_supplied() -> None:
         "identifiers_supplied_by_caller": True,
     }
     assert manifest["testing"] == {
-        "result_reference": "artifacts/validation/release-readiness.json",
+        "result_reference": "artifacts/validation/release-readiness-v0.4.1.json",
         "reference_supplied_by_caller": True,
         "tests_executed_by_manifest_generator": False,
     }
@@ -166,7 +177,7 @@ def test_cli_writes_a_valid_manifest_and_excludes_its_output(
         "--output",
         str(output),
         "--test-result-reference",
-        "artifacts/validation/release-readiness.json",
+        "artifacts/validation/release-readiness-v0.4.1.json",
         "--public-repository-url",
         "https://github.com/caretrust-hub/caretrust-poc",
         "--release-tag",
@@ -178,7 +189,7 @@ def test_cli_writes_a_valid_manifest_and_excludes_its_output(
     payload = json.loads(output.read_bytes())
     assert str(output) not in json.dumps(payload)
     assert payload["manifest_version"] == (
-        "caretrust.post-evaluation-evidence.v0.2"
+        "caretrust.post-evaluation-evidence.v0.4"
     )
 
 

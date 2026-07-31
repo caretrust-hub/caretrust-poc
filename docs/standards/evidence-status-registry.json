@@ -139,6 +139,71 @@
       "include_in_manifest": true
     },
     {
+      "boundary": "The dependency-free provider console replays generated synthetic artifacts in a browser. It is not a deployed case-management system, clinical chart, or measured workforce intervention.",
+      "capability_id": "provider-organization-console",
+      "evidence": [
+        "demo/network.html",
+        "demo/network.css",
+        "demo/network.js",
+        "demo/network-data.js",
+        "artifacts/validation/dashboard-contract.json",
+        "tests/test_network_demo.py",
+        "tests/test_dashboard_contract.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "The phone-sized caregiver client is a test/reference consumer over retained synthetic records. It stores presentation state only and makes no live identity-provider, API, EHR, HIE, or federation call.",
+      "capability_id": "caregiver-reference-client",
+      "evidence": [
+        "demo/reference-client.html",
+        "demo/reference-client.css",
+        "demo/reference-client.js",
+        "demo/network-data.js",
+        "tests/test_network_demo.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "The authorization-code, PKCE, OIDC, resource-indicator, and RAR exchange is a local synthetic harness. It does not connect to Login.gov or another production identity provider and does not establish production identity assurance.",
+      "capability_id": "oidc-pkce-rar-auth-harness",
+      "evidence": [
+        "src/caretrust/auth_harness.py",
+        "artifacts/validation/auth-harness-trace.json",
+        "tests/test_auth_harness.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "One synthetic patient and multiple synthetic caregivers are evaluated in one local deterministic runtime. No live organization directory, credential registry, or production policy deployment is represented.",
+      "capability_id": "multi-caregiver-case-policy",
+      "evidence": [
+        "src/caretrust/case_bundle.py",
+        "artifacts/validation/synthetic-multi-caregiver-case.json",
+        "docs/use-cases/multi-caregiver-reference-case.md",
+        "tests/test_case_bundle.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "Intent, document, and application-requirements compilers emit source-linked drafts only. Human approval and deterministic policy remain separate; no compiler output can activate authority or return a permit.",
+      "capability_id": "three-lane-ai-compilers",
+      "evidence": [
+        "src/caretrust/compiler.py",
+        "artifacts/validation/intent-compiler-bedrock-40/summary.json",
+        "artifacts/validation/synthetic-uploaded-care-document-trace.json",
+        "artifacts/validation/dashboard-contract.json",
+        "tests/test_compiler.py",
+        "tests/test_uploaded_care.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
       "boundary": "No VC document, JSON-LD processing, VC securing mechanism, credential-status method, wallet, or VC conformance suite is implemented.",
       "capability_id": "w3c-vc-2.0-projection",
       "evidence": [
