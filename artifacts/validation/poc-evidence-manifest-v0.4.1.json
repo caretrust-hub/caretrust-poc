@@ -1,0 +1,1648 @@
+{
+  "artifact_hash_algorithm": "sha256",
+  "artifact_set_sha256": "a607a34105608b5093e1638f43e9f555dc12ccd30deacea99536d1b8453dc5a4",
+  "artifacts": [
+    {
+      "bytes": 28191,
+      "path": ".specifica/trl3-poc/design.md",
+      "sha256": "068d2cb04393462a619e00f7fc3937cce3742d000c23b4bc7b200839786d47cc"
+    },
+    {
+      "bytes": 10540,
+      "path": ".specifica/trl3-poc/execution-v0.4.md",
+      "sha256": "3bae7e8494ff7cb4d4015fdfacf285b0e13ba411e00ef5ef09b3c4cac862d35d"
+    },
+    {
+      "bytes": 30530,
+      "path": ".specifica/trl3-poc/spec.md",
+      "sha256": "4280230f50f5db87e0b5966eb478115deec4664f9923179ddab6abf3408d15c4"
+    },
+    {
+      "bytes": 36572,
+      "path": ".specifica/trl3-poc/tasks.md",
+      "sha256": "9c7b4fadc52743954e5cac634a92e4e3eefa40e6a81fa5bbd83bbbf2261ecf94"
+    },
+    {
+      "bytes": 5406,
+      "path": ".specifica/trl3-poc/terra-waves-v0.4.md",
+      "sha256": "f5a907d81f0a41ce6e2c8a0d97709103a4ddf68d58764ecc26b8d687b2c45b61"
+    },
+    {
+      "bytes": 14241,
+      "path": "README.md",
+      "sha256": "a223b6dbcadee55558b1ac55f84d1b41be957fbd061c72bde76964c9fc882b49"
+    },
+    {
+      "bytes": 7842,
+      "path": "artifacts/evaluation/20260730T085655.959974Z/REPORT.md",
+      "sha256": "dd68c15c29fd765736606489f4c294af21ff4a56631056a1e35668cc13060840"
+    },
+    {
+      "bytes": 4292,
+      "path": "artifacts/evaluation/20260730T085655.959974Z/frozen-config.json",
+      "sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775"
+    },
+    {
+      "bytes": 17324,
+      "path": "artifacts/evaluation/20260730T085655.959974Z/summary.json",
+      "sha256": "73ad2be5a3c329bb96c386de77d25aac286ef887a171dc518f0a7a7bc00d8949"
+    },
+    {
+      "bytes": 4292,
+      "path": "artifacts/evaluation/frozen-run-config.json",
+      "sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775"
+    },
+    {
+      "bytes": 10338,
+      "path": "artifacts/validation/auth-harness-trace.json",
+      "sha256": "ae7dfb39512ffa2aa0b43b4086fbb9c236b244c62e576cdb01a693f499c7b73c"
+    },
+    {
+      "bytes": 2569,
+      "path": "artifacts/validation/connected-vertical-slice.json",
+      "sha256": "023797810f8b60eb65bb79e0fed1e6886975d0ca47c61bae5bd5e4b241dda96a"
+    },
+    {
+      "bytes": 53490,
+      "path": "artifacts/validation/core-v0.1/core-runtime-bridge-validation.json",
+      "sha256": "7c67517deecbf4e933d7d08c2600eb48e537aa5b33bfb3038c0ad0566386cd91"
+    },
+    {
+      "bytes": 26214,
+      "path": "artifacts/validation/credential-walkthrough-trace.json",
+      "sha256": "0c77109c577c732a52966092837bfb30264a818e352e5af2d3e6e1e621074e61"
+    },
+    {
+      "bytes": 121354,
+      "path": "artifacts/validation/dashboard-contract.json",
+      "sha256": "33fbb557b7a698eb9741b207db022f0c6bd10a95a79b45c3cd047f85f45ed274"
+    },
+    {
+      "bytes": 2766,
+      "path": "artifacts/validation/demo-browser-qa-screenshots.json",
+      "sha256": "fc8e8c53bfebd0a24284df434e0a56867bda252499bac8cadb64156051a92839"
+    },
+    {
+      "bytes": 1668,
+      "path": "artifacts/validation/demo-browser-qa.json",
+      "sha256": "bf8c1be12f11cb7bb3979dc30e6768e19253ca9d096b0b0dd28a4a8c8610a606"
+    },
+    {
+      "bytes": 5656,
+      "path": "artifacts/validation/federation-two-hub-lab.json",
+      "sha256": "676bb2f1fe4b6a71915b03572d3286c816629cf9bb5b91edb9f7f5e75d27533c"
+    },
+    {
+      "bytes": 5783,
+      "path": "artifacts/validation/fhir-smart-scheduling-projection.json",
+      "sha256": "880f73f470f246c1f3b4855a558ecebc8123104228cef70b4ff50494e5fcc9f5"
+    },
+    {
+      "bytes": 915,
+      "path": "artifacts/validation/github-pages-deployment.json",
+      "sha256": "091e706cdd69dba08491a6790464d7b5aed50c571544654e4df837586000615f"
+    },
+    {
+      "bytes": 1548,
+      "path": "artifacts/validation/intent-compiler-bedrock-40/REPORT.md",
+      "sha256": "cb9faabb9df9829dec532d2cb6cdd4a6411a6774fa6cd440e552459ddaf8aacb"
+    },
+    {
+      "bytes": 27031,
+      "path": "artifacts/validation/intent-compiler-bedrock-40/frozen-config.json",
+      "sha256": "6d6ff319daa0b5df80b2bbe88b4a6709c8d4b61f4de1a1446c56d7324f101900"
+    },
+    {
+      "bytes": 168510,
+      "path": "artifacts/validation/intent-compiler-bedrock-40/results.jsonl",
+      "sha256": "b1f8ac80fecbdc0beaf9a70eee586959c7992ed497946496fe30e675bd897f67"
+    },
+    {
+      "bytes": 1376,
+      "path": "artifacts/validation/intent-compiler-bedrock-40/summary.json",
+      "sha256": "432af89fcf457d1a55e39751d007f2aa55e356c6941807beea89f93eec646824"
+    },
+    {
+      "bytes": 25859,
+      "path": "artifacts/validation/judge-walkthrough-contract.json",
+      "sha256": "bebd6e633db0e09a61cf19e6f4946d819edc5d7f35b2e4de0566d53e62fd9caa"
+    },
+    {
+      "bytes": 49774,
+      "path": "artifacts/validation/mcp-adapter-contract.json",
+      "sha256": "f52566e6252d12067ae065de97fb4fc4634dd4f2b5638da84e04e19d118301d4"
+    },
+    {
+      "bytes": 1317,
+      "path": "artifacts/validation/post-evaluation-status-gate.json",
+      "sha256": "3cf15fdcb7e1cd87e8a9779a4cf365917979ebbc4ea4d3f6d6e70fc0a61e9e57"
+    },
+    {
+      "bytes": 4016,
+      "path": "artifacts/validation/release-readiness-v0.4.1.json",
+      "sha256": "ae9d237aae59dcc40b23549c410a91a1e6de4311b6f4b02876e7d154c4ae7260"
+    },
+    {
+      "bytes": 3721,
+      "path": "artifacts/validation/release-readiness.json",
+      "sha256": "cc0c67b6c13770db47933ece6e20cf8a77800717987e9782c53eb3c74fbb5f41"
+    },
+    {
+      "bytes": 3809,
+      "path": "artifacts/validation/screenshots-v0.2/manifest.json",
+      "sha256": "df4b0139e583b643bf429e47383f181eef8ba3951b47903dbab0a977f500391a"
+    },
+    {
+      "bytes": 92230,
+      "path": "artifacts/validation/synthetic-multi-caregiver-case.json",
+      "sha256": "f436a031099b82979eda664683bb707d19dd68b5f534d417860728ac5076e836"
+    },
+    {
+      "bytes": 31699,
+      "path": "artifacts/validation/synthetic-patient-navigator.json",
+      "sha256": "49de6a467daabcdfb49ad97bc22a09e990a691f931d77b22e89dc24144f84280"
+    },
+    {
+      "bytes": 38659,
+      "path": "artifacts/validation/synthetic-uploaded-care-document-trace.json",
+      "sha256": "bc0a2e052051e93b8773bd931cc758bd6dd706de7852c6d194522e92aaf6c571"
+    },
+    {
+      "bytes": 1457,
+      "path": "artifacts/validation/vertical-slice.json",
+      "sha256": "e68ab90e49163837dbf80b48978df1632dd60aa411513ed4cba375a36009d0c5"
+    },
+    {
+      "bytes": 2038,
+      "path": "demo/README.md",
+      "sha256": "5ddff42f3b9d5cae1897c7c487fed690e6c41027a19f60d30a69d0e810f41cd1"
+    },
+    {
+      "bytes": 15515,
+      "path": "demo/app.js",
+      "sha256": "674ddbbeb7ffd0870e4e2e04cf329b121b8692bc70f509c4065c0228b08c39b5"
+    },
+    {
+      "bytes": 21378,
+      "path": "demo/index.html",
+      "sha256": "a8ac51e24ab68fec907bccb56b57785b4e90f6130f32cb728740a61617893cbd"
+    },
+    {
+      "bytes": 346303,
+      "path": "demo/network-data.js",
+      "sha256": "9e07771c629330a4e21604074c6794eac91a1b8e7c461fd0a1c38c60cc4c5976"
+    },
+    {
+      "bytes": 32214,
+      "path": "demo/network.css",
+      "sha256": "875dac525b2d55e65aa50a9506048db0e752e3d307a866c6c2370fe59dd250d3"
+    },
+    {
+      "bytes": 35460,
+      "path": "demo/network.html",
+      "sha256": "e3d4a6f0724251f5ad296884f20693c3a55bf6b916b8987fa0909a1efa881ead"
+    },
+    {
+      "bytes": 35804,
+      "path": "demo/network.js",
+      "sha256": "993b0917a54711b452b849b60c83ab79ed8621d91c9f12ae2ea03406173fe442"
+    },
+    {
+      "bytes": 14753,
+      "path": "demo/reference-client.css",
+      "sha256": "ba5c5b12b8975d0852df0e7b11434256d65fa89142db3d894c4da4a82774e176"
+    },
+    {
+      "bytes": 9620,
+      "path": "demo/reference-client.html",
+      "sha256": "152594eecd0670c5f8cad1b6c83dfea8cad496ed11c01d7d2d020a35b57156cd"
+    },
+    {
+      "bytes": 11363,
+      "path": "demo/reference-client.js",
+      "sha256": "7cb9c760456f0a8f2d732a7444582f168929593fe175b605961964cb517e6faf"
+    },
+    {
+      "bytes": 35875,
+      "path": "demo/styles.css",
+      "sha256": "819cafdc4b120875fbccec8c4d4cc1fe6b2425b079cf7f8eeab5bb3825502733"
+    },
+    {
+      "bytes": 4723,
+      "path": "docs/standards/README.md",
+      "sha256": "054af356a9d5a16c2ebc52a7fc6c1001f7e7f17659e90e66ef1cf0e45017e871"
+    },
+    {
+      "bytes": 4440,
+      "path": "docs/standards/ai-compiler-profile.md",
+      "sha256": "1a62f3ee4d2df93cd10b87139549bc86e951ebacf06647a2b7fc44a3bd2ebc6e"
+    },
+    {
+      "bytes": 3199,
+      "path": "docs/standards/caretrust-delegation-vocabulary.v1.json",
+      "sha256": "2c8ca8f4b16b3b8f80085d4c19e5040cb8fc1bcc51603df6f32f43bd12fcceaf"
+    },
+    {
+      "bytes": 21183,
+      "path": "docs/standards/caretrust-openapi-3.1.json",
+      "sha256": "cc1f7e82373c21abb2e34c92d8fc91335f826180438a0e5dfb84a864fd25f30a"
+    },
+    {
+      "bytes": 6142,
+      "path": "docs/standards/clinical-data-holder-edge.md",
+      "sha256": "42e36622c822f69b50eed9199afa66266ca1a3045fbabc08d223e17073bd8583"
+    },
+    {
+      "bytes": 10553,
+      "path": "docs/standards/evidence-status-registry.json",
+      "sha256": "e2e5477cccb6099449e22fb33d45c8b65cfa003d89c83195d03e9dd033559fb0"
+    },
+    {
+      "bytes": 2284,
+      "path": "docs/standards/examples/README.md",
+      "sha256": "c402ec7c895f2595cef2ad0ae1bdd21bb1c98fe0703af0fdfe42d433633ada9b"
+    },
+    {
+      "bytes": 817,
+      "path": "docs/standards/examples/active-credential-claim.json",
+      "sha256": "0a59c9ca2be4e4939d665f2c27fb646d04457f57dc09a5e05a1641a84b4fb034"
+    },
+    {
+      "bytes": 360,
+      "path": "docs/standards/examples/audit-event.json",
+      "sha256": "b8c33ea1a6172485f9a567c4bbff6b9b762de74d7e214ef5b1b02160d5f173b3"
+    },
+    {
+      "bytes": 320,
+      "path": "docs/standards/examples/authorization-decision-deny.json",
+      "sha256": "5b6bc59a027c8521e2a639409653a11c0bb1f305f2a15552bd2729a688fc02cd"
+    },
+    {
+      "bytes": 343,
+      "path": "docs/standards/examples/authorization-decision-permit.json",
+      "sha256": "785ffad22d279190a61e5d23a964032ffcb9709cc6c83af974119e7c1b1974dc"
+    },
+    {
+      "bytes": 321,
+      "path": "docs/standards/examples/authorization-request-deny.json",
+      "sha256": "23bcf977ba2fb49395dc126a38c0c3788ce39869b90d0b9f10c830d1da56f06a"
+    },
+    {
+      "bytes": 307,
+      "path": "docs/standards/examples/authorization-request.json",
+      "sha256": "15b6108b2fd0186438424515c0c3d0bc6ea6cb6d38f3921913ac9ba5573a430c"
+    },
+    {
+      "bytes": 4098,
+      "path": "docs/standards/examples/clinical-edge/deny-insufficient-scope.json",
+      "sha256": "629599eaef56d7328ef2a5de0cfa0a7cd54b2c4d62082df4c3c35e01bd4cab4f"
+    },
+    {
+      "bytes": 3976,
+      "path": "docs/standards/examples/clinical-edge/deny-no-patient-match.json",
+      "sha256": "4ca99488a7592ae31b06b27fe2800d2a33fde12be391572e283873b313d049d9"
+    },
+    {
+      "bytes": 4078,
+      "path": "docs/standards/examples/clinical-edge/deny-revoked-fresh-request.json",
+      "sha256": "8aaaf18440a7b07a21ae6f3b57c793b016aee1fa790682ec4a03dea3144757e4"
+    },
+    {
+      "bytes": 4109,
+      "path": "docs/standards/examples/clinical-edge/deny-unregistered-client.json",
+      "sha256": "afb826fd97f8d23abde2fbf1e06e9e75ae7c83eead9081d3bd53e3e54ad1a341"
+    },
+    {
+      "bytes": 5042,
+      "path": "docs/standards/examples/clinical-edge/permit.json",
+      "sha256": "0b6da041104ce2833039e3038533cb5d03a004d72f32b2dc02c34d9456ba4ff2"
+    },
+    {
+      "bytes": 1104,
+      "path": "docs/standards/examples/delegation/README.md",
+      "sha256": "8a83e48dbc8e635a8c8e03e2bb33394091513f209b26694fb1400a9258babbb8"
+    },
+    {
+      "bytes": 687,
+      "path": "docs/standards/examples/delegation/care-relationship-claim.json",
+      "sha256": "df23905b55e1d16a8b4398a92acfbef31b798112654e0daeba33084048d1654e"
+    },
+    {
+      "bytes": 545,
+      "path": "docs/standards/examples/delegation/clarification-request.json",
+      "sha256": "1c3d9b44f40c430375a4fb98eb489383caf17040666e2750a25182493d849e94"
+    },
+    {
+      "bytes": 579,
+      "path": "docs/standards/examples/delegation/clarification-response.json",
+      "sha256": "67aac0bd7a0352082b068669474305bd83685bff3db461521b3b7869fb4b96a8"
+    },
+    {
+      "bytes": 445,
+      "path": "docs/standards/examples/delegation/delegation-authorization-decision.json",
+      "sha256": "24f73efa1a31d699baf5a24957e845c0082b38374979f2f4c231143ece0e419e"
+    },
+    {
+      "bytes": 461,
+      "path": "docs/standards/examples/delegation/delegation-authorization-request.json",
+      "sha256": "1552264e79e4675dd80f10c2799dd9ca4a89b5d50778d99f71ee73b6d6e47a1d"
+    },
+    {
+      "bytes": 3329,
+      "path": "docs/standards/examples/delegation/delegation-draft.json",
+      "sha256": "f171a2978e944548841a1c66ecc1606327dcc4e67e34cc5f305fc23fff5a14be"
+    },
+    {
+      "bytes": 1035,
+      "path": "docs/standards/examples/delegation/delegation-grant.json",
+      "sha256": "805437f2021e9a3214cf7ecd3dd40fe419f6133ec56300c6a1d643fd98f2d559"
+    },
+    {
+      "bytes": 456,
+      "path": "docs/standards/examples/delegation/delegation-revocation-record.json",
+      "sha256": "764d934c316c81c9edf78bf6c83a4eb1059a97a3b4ddbdb8fbd2e9b7e34aa86d"
+    },
+    {
+      "bytes": 1505,
+      "path": "docs/standards/examples/delegation/intent-statement.json",
+      "sha256": "843cf52d25fc38f886c2d64e692fd8434552610e45257d847ed16b8dff435885"
+    },
+    {
+      "bytes": 709,
+      "path": "docs/standards/examples/delegation/invite-acceptance.json",
+      "sha256": "d3a9f1904e2ea4976c999fac0c9be6e0108d4ae9488e8fba1348b9c4a0543596"
+    },
+    {
+      "bytes": 910,
+      "path": "docs/standards/examples/delegation/patient-approval-record.json",
+      "sha256": "57ddb7897bef0dde95d351355754f0721f86e695e7c88a09c62159344439fe56"
+    },
+    {
+      "bytes": 653,
+      "path": "docs/standards/examples/delegation/patient-invite.json",
+      "sha256": "1e6366bcddfb051163870b3c69f5fe6e3069ba2e4eb5ccdac242bb9ab30203f7"
+    },
+    {
+      "bytes": 643,
+      "path": "docs/standards/examples/evidence-artifact.json",
+      "sha256": "12da12be3118f25f9e8566678ee706bc52a6d2babc0f5864d1f719c52e0ab01d"
+    },
+    {
+      "bytes": 770,
+      "path": "docs/standards/examples/extraction-record.json",
+      "sha256": "2dba84308803c1265975f2dbc2c62e5a614fc4f637f5217870861caf214c773a"
+    },
+    {
+      "bytes": 5538,
+      "path": "docs/standards/examples/federation/two-care-organizations.json",
+      "sha256": "bc87c5ce47bb821acfe260e9227341229479c810cee54be3114c9a235a99c8f9"
+    },
+    {
+      "bytes": 4398,
+      "path": "docs/standards/examples/fhir/synthetic-hawaii-cna-bundle.json",
+      "sha256": "33c4cf57e0b23dcbb81ecb1a62c9a76786f6c596d18394997380305b3be3f97b"
+    },
+    {
+      "bytes": 1029,
+      "path": "docs/standards/examples/oid4vc/authorization-details.json",
+      "sha256": "2996fb3caca35c4b1ec3fb2f3b50b988eec8218d33cb896793ebcc3227f24839"
+    },
+    {
+      "bytes": 3024,
+      "path": "docs/standards/examples/oid4vc/credential-issuer-metadata.json",
+      "sha256": "22789087b443669de9614815ad4c5ad47636d05ffead66f90b1d92ac26bc9fd0"
+    },
+    {
+      "bytes": 247,
+      "path": "docs/standards/examples/oid4vc/credential-offer.json",
+      "sha256": "bdc187b29fc6345375af138136c23f60d4d0d88b732940928bdc1b093792e8dd"
+    },
+    {
+      "bytes": 412,
+      "path": "docs/standards/examples/oid4vc/oauth-authorization-server-metadata.json",
+      "sha256": "1d4b39dae9559ab8b1292f33f6cd35f52cadc2f96e54c86090d310154d12b8d1"
+    },
+    {
+      "bytes": 1848,
+      "path": "docs/standards/examples/oid4vc/presentation-request.json",
+      "sha256": "dc478de8f19f3bd9a2b20d0c1dcd9f14c86187482eccb86599a00c900321c2a7"
+    },
+    {
+      "bytes": 164,
+      "path": "docs/standards/examples/oid4vc/presentation-response.json",
+      "sha256": "1b3b5c4820290425c37ef949f86f0a3c9a1a15b45a469186b15b19e03d5ce906"
+    },
+    {
+      "bytes": 1067,
+      "path": "docs/standards/examples/oid4vc/response-decision-linkage.json",
+      "sha256": "458db30ff581af7c504ac385378e2d1efbd5903da7250290b50b0a19ba03e9f3"
+    },
+    {
+      "bytes": 417,
+      "path": "docs/standards/examples/registry-result.json",
+      "sha256": "73b07d40ed08e9b0f4f8adfacbbbfc192c9e11c0ee45ff9ab799ed2e2c920618"
+    },
+    {
+      "bytes": 716,
+      "path": "docs/standards/examples/review-record.json",
+      "sha256": "bade9ed703c94ddd5181c1c42b5a5480331a4b6c536980f8999051258f905f9f"
+    },
+    {
+      "bytes": 451,
+      "path": "docs/standards/examples/revocation-record.json",
+      "sha256": "705dfde01058f7be9c9d043190a96a8270d777eb8e16bf2d5497cf8c913bcc5b"
+    },
+    {
+      "bytes": 2795,
+      "path": "docs/standards/examples/uploaded-care/approved-document-items.json",
+      "sha256": "9e0f9ab03c1c62dc094aea95f0da17f1f9ace2e0dcebcb814759fc69b04b2c18"
+    },
+    {
+      "bytes": 607,
+      "path": "docs/standards/examples/uploaded-care/direct-care-task-share-decision.json",
+      "sha256": "00b7abdc1a34c7fb7081c9d8048c29766fa7ed847c66a557f217bd4bafdaf48c"
+    },
+    {
+      "bytes": 921,
+      "path": "docs/standards/examples/uploaded-care/direct-care-task-share-grant.json",
+      "sha256": "72a3058b0b64aa2916270b86fef90d738e2aa76f79b96b159124a43d5dcea754"
+    },
+    {
+      "bytes": 618,
+      "path": "docs/standards/examples/uploaded-care/direct-care-task-share-request.json",
+      "sha256": "5702792320b8380f0217c54b9be35e5080b0266ae8fb22689616b100e03c7801"
+    },
+    {
+      "bytes": 7017,
+      "path": "docs/standards/examples/uploaded-care/document-extraction-draft.json",
+      "sha256": "fa0c0a81566c6e98c3b95550a6996d33f5214d32056ef4a5b2334d97ac201d66"
+    },
+    {
+      "bytes": 1316,
+      "path": "docs/standards/examples/uploaded-care/document-review-correction-record.json",
+      "sha256": "e30bd68ef777670a175cf808a7259fa5e2b0fca23d929f3b6ad34293a5f399c4"
+    },
+    {
+      "bytes": 583,
+      "path": "docs/standards/examples/uploaded-care/document-share-decision.json",
+      "sha256": "a043108aa3a40597626f151de158d3cd853009e02b74ef07ac974180c052123a"
+    },
+    {
+      "bytes": 904,
+      "path": "docs/standards/examples/uploaded-care/document-share-grant.json",
+      "sha256": "c7f5bd79b120d471bcb945d0b45f7afeac3fc29a6528f5e5a56816cf458500aa"
+    },
+    {
+      "bytes": 588,
+      "path": "docs/standards/examples/uploaded-care/document-share-request.json",
+      "sha256": "83a5496d00a6b87b390d4a4102c040ac9a3db09976734567d0fa089bb386e18c"
+    },
+    {
+      "bytes": 522,
+      "path": "docs/standards/examples/uploaded-care/document-share-revocation-record.json",
+      "sha256": "af188b56dc5340728dbc15363bd893f9f124dbf3171863ea8393a43fa0f6561b"
+    },
+    {
+      "bytes": 462,
+      "path": "docs/standards/examples/uploaded-care/post-revocation-share-decision.json",
+      "sha256": "9bbb44c43f9915c52e191e0e4a21aed8705f80f8c48ae8b5a4046509cd5fb8e6"
+    },
+    {
+      "bytes": 587,
+      "path": "docs/standards/examples/uploaded-care/post-revocation-share-request.json",
+      "sha256": "548b71d14e61aa9719c75f2da1d99a7490a5469e43416c10c679d7977f9efaf1"
+    },
+    {
+      "bytes": 923,
+      "path": "docs/standards/examples/uploaded-care/revoked-document-share-grant.json",
+      "sha256": "914a95f8a6a9e81829b7b5b98370e2efdcf37ff8d87d4b8f1899a93653787a67"
+    },
+    {
+      "bytes": 1493,
+      "path": "docs/standards/examples/uploaded-care/uploaded-care-document.json",
+      "sha256": "03e54f55b15e24766d8c7ab597650e2e2acdce301f23e2a513abcfb3c0f5cdc1"
+    },
+    {
+      "bytes": 5107,
+      "path": "docs/standards/examples/uploaded-care/uploaded-document-fhir-projection.json",
+      "sha256": "e6b1579bcd940f5e791bbcfc5cda46be22b24600980ab16bdc2f2164752d3939"
+    },
+    {
+      "bytes": 4296,
+      "path": "docs/standards/fhir-r4-practitioner-qualification-mapping.md",
+      "sha256": "fe021a68fa94abeea816e912008eb5bce142c3914a399446240765278e55ef34"
+    },
+    {
+      "bytes": 4481,
+      "path": "docs/standards/fhir-r4-projection-profile.md",
+      "sha256": "71c77d12e53ce8ea59473c966f77d2f23c7ad34bdafb6cb1e7577d2f655b65b5"
+    },
+    {
+      "bytes": 2540,
+      "path": "docs/standards/fhir-r4-smart-scheduling-projection.md",
+      "sha256": "b18120df699a0a998395e5d7c108c22c6ca79fdae4c3bf612743b0576b54eeae"
+    },
+    {
+      "bytes": 6396,
+      "path": "docs/standards/lifecycle-and-reason-codes.md",
+      "sha256": "6dc990632b56b4d13f22f5ba4bea1327563d1feb1f08e058562c4fc829318950"
+    },
+    {
+      "bytes": 2974,
+      "path": "docs/standards/mcp-adapter-profile.md",
+      "sha256": "91b4fe916bf6f045907011708b1e84872c08df8a69b8840a2268291a7997c550"
+    },
+    {
+      "bytes": 1784,
+      "path": "docs/standards/oauth-oidc-harness.md",
+      "sha256": "ea12c88e1b3f5263d924799a3432422e7bc42ced57026a146f384d09d10bcf0e"
+    },
+    {
+      "bytes": 7622,
+      "path": "docs/standards/oid4vc-exchange-profile.md",
+      "sha256": "5c21dda3819968020f4f06229911d3c6a26ce4915276a5d0bf73b35c9240562e"
+    },
+    {
+      "bytes": 7256,
+      "path": "docs/standards/openid-federation-trust-profile.md",
+      "sha256": "2482a4a5792fc7a2729ef4c9aac1d3aa54d4396450ee5cba91b8f0ebba94f675"
+    },
+    {
+      "bytes": 7090,
+      "path": "docs/standards/provenance-lineages.json",
+      "sha256": "7b44fc54fb335ba62bedb60b24e372636720b7fab15cf00444c8b7d5e4d648fa"
+    },
+    {
+      "bytes": 5896,
+      "path": "docs/standards/standards-status.md",
+      "sha256": "939ccd67683f6032bc700d2b522cdb6f01b454f639a28be6339c462a40b9dbb6"
+    },
+    {
+      "bytes": 5602,
+      "path": "docs/standards/uploaded-care-document-lane.md",
+      "sha256": "7b426121f1a96709bd277a69040ccb38f99c98b68b9933a301b977217b4b68fd"
+    },
+    {
+      "bytes": 3645,
+      "path": "docs/standards/w3c-vc-2.0-mapping.md",
+      "sha256": "93ce551a93125197f007c6b9b7e7070b6e799449a66ba0c343a2d15a1f3e2a04"
+    },
+    {
+      "bytes": 12220,
+      "path": "docs/use-cases/alulike-caregiver-support-reference-scenario.md",
+      "sha256": "63286f3a6025f128a95f84d17684a45fe024d588bd235a2489a64bdf29985e0e"
+    },
+    {
+      "bytes": 1976,
+      "path": "docs/use-cases/multi-caregiver-reference-case.md",
+      "sha256": "7e727059191bc3dd223de8dc5eaa5899a0d8769c117c1ccc106d00a3180b847a"
+    },
+    {
+      "bytes": 363,
+      "path": "fixtures/auth/synthetic-upstream-identity-link.json",
+      "sha256": "0e6b23a439e67eec04b3274e93fc9256eb36912a6b303ace4c3ac9834f4258ce"
+    },
+    {
+      "bytes": 224,
+      "path": "fixtures/cases/synthetic-multi-caregiver-case-input.json",
+      "sha256": "5e9e19a82fb54a8b8e823f74b2b14a67ca918c64b7a305cace0c35ec09557821"
+    },
+    {
+      "bytes": 3319,
+      "path": "fixtures/cna/final/01-clean-standard.json",
+      "sha256": "0557f2180b69b2207014e10c3dab9920d743cd8ce8b177802cc170c4db9e532f"
+    },
+    {
+      "bytes": 3376,
+      "path": "fixtures/cna/final/02-clean-hyphenated-name.json",
+      "sha256": "6666ca2b032094c6a4f8d85b2d51027a5126783a5377f5152e05b5add7f0437c"
+    },
+    {
+      "bytes": 3296,
+      "path": "fixtures/cna/final/03-clean-apostrophe-name.json",
+      "sha256": "d4d2549db90bfd7322bca246ad37a1cfb6f0b382d2fa8ee0735feb715b867260"
+    },
+    {
+      "bytes": 3341,
+      "path": "fixtures/cna/final/04-clean-diacritics.json",
+      "sha256": "bd7a2fdc0c541a49144e09a399509d65c9ac2036c0b59f24f9071ad7fd75813f"
+    },
+    {
+      "bytes": 3367,
+      "path": "fixtures/cna/final/05-clean-ocr-label-confusion.json",
+      "sha256": "a7075f7b9658c8e7b06fe0987b1bb6fa67e78d3f5918f2db7107cbfd8d389422"
+    },
+    {
+      "bytes": 3346,
+      "path": "fixtures/cna/final/06-clean-iso-dates.json",
+      "sha256": "31b05888d7bf2e721c6969e42ec25bceb3766813540924b5a1d2d35fe7e8a745"
+    },
+    {
+      "bytes": 3329,
+      "path": "fixtures/cna/final/07-clean-state-label.json",
+      "sha256": "48b44621657520ae9ec15d424458fb448bc3037935dcf6f88883876e6c66b379"
+    },
+    {
+      "bytes": 3277,
+      "path": "fixtures/cna/final/08-clean-cna-abbreviation.json",
+      "sha256": "bffcfd3898d4ffe03b3722debef6a9c69f5e25afa1e1ea6a3ae4c118ad55f8de"
+    },
+    {
+      "bytes": 3282,
+      "path": "fixtures/cna/final/09-clean-no-notes-label.json",
+      "sha256": "24807d768f5d772b0508bba30ea87aa4e6d94060dfee491d74d7edd250c7d1d5"
+    },
+    {
+      "bytes": 3360,
+      "path": "fixtures/cna/final/10-clean-name-order.json",
+      "sha256": "64f910e15d5534ec4b5bafe994efb855a8bb9d78da449010e93eacf19251567f"
+    },
+    {
+      "bytes": 3516,
+      "path": "fixtures/cna/final/11-missing-identifier.json",
+      "sha256": "8ff9ebfc204c9f81cf1c3ae63c55d3c97fc63670addd8f64fa0af744a952be6e"
+    },
+    {
+      "bytes": 3619,
+      "path": "fixtures/cna/final/12-cropped-restriction.json",
+      "sha256": "bcf8537dde2e362004a2a89ac276a1496f5188e45c69df2e275dc96de1ac9e1d"
+    },
+    {
+      "bytes": 3490,
+      "path": "fixtures/cna/final/13-ambiguous-dates.json",
+      "sha256": "4514514f466c103bb090b4d8f95e71eaabfa2f9b652a714b6867b3b352ab0906"
+    },
+    {
+      "bytes": 3570,
+      "path": "fixtures/cna/final/14-unreadable-status.json",
+      "sha256": "f9fa0254d8a2a92dff218d491df8c9343eb2a8bf2d2bcade59731d1bc5d30e32"
+    },
+    {
+      "bytes": 3664,
+      "path": "fixtures/cna/final/15-unsupported-issuer.json",
+      "sha256": "f42ec505fa918be0412f8015abbed81c258aadfd33e4cd615f586ba7d0329847"
+    },
+    {
+      "bytes": 3402,
+      "path": "fixtures/cna/final/16-registry-mismatch.json",
+      "sha256": "ea69dbe4d542d35d68e5255b1044408adc104bfd83bc9c11925985c33b1e3288"
+    },
+    {
+      "bytes": 3337,
+      "path": "fixtures/cna/final/17-expired-credential.json",
+      "sha256": "30f596f2febe09e95085a159548fddeb6bcff9f2dcb3024d7c3af5ccfd6c3e94"
+    },
+    {
+      "bytes": 3460,
+      "path": "fixtures/cna/final/18-registry-unavailable.json",
+      "sha256": "299bd68a1b4eb4c4f69c0b5a8de79e0bf6cb52ac4887abfa3c5a5d5ea155fc5e"
+    },
+    {
+      "bytes": 3907,
+      "path": "fixtures/cna/final/19-injection-forbidden-status.json",
+      "sha256": "ad0160c04af1b34b2576f2b067d7a53b21ea045a3c6d742f9914df0c9a40336a"
+    },
+    {
+      "bytes": 3981,
+      "path": "fixtures/cna/final/20-injection-forbidden-authorization.json",
+      "sha256": "9c7856605c3229d7c71d637d33c1bddd46296e2c300b6bdd11df0848a67b08bf"
+    },
+    {
+      "bytes": 2766,
+      "path": "fixtures/cna/final/manifest.json",
+      "sha256": "ae24aef37d34ed5976cdeedc158eac46fbbb5b72b9c1b6c612a66f6cb5472b71"
+    },
+    {
+      "bytes": 4461,
+      "path": "fixtures/cna/smoke/ambiguous-date.json",
+      "sha256": "a313cff8f47e90b8b2db4f55e9a53204499032521d06df5c67f477dbef122ce5"
+    },
+    {
+      "bytes": 4321,
+      "path": "fixtures/cna/smoke/clean.json",
+      "sha256": "a245cb9dc5c8a8e1ae4ec3aca35537d61801dae730d31f9e5980dd20462bac7f"
+    },
+    {
+      "bytes": 4732,
+      "path": "fixtures/cna/smoke/cropped-restriction.json",
+      "sha256": "fc9b5991bbd1a2d268d06b1d4ebc37dfec9c5c5bbb3007cedf5e43cd66e39495"
+    },
+    {
+      "bytes": 1076,
+      "path": "fixtures/cna/smoke/manifest.json",
+      "sha256": "67092bb169688784910c9ec512efce75da5967b4e6a02eb512e24b5a575139c4"
+    },
+    {
+      "bytes": 4711,
+      "path": "fixtures/cna/smoke/missing-identifier.json",
+      "sha256": "115749e8bcf6c0521b9c388a5bf2fa7f8f7ba35ba3f2cc3a45dd16b79fb714af"
+    },
+    {
+      "bytes": 4913,
+      "path": "fixtures/cna/smoke/unsupported-issuer.json",
+      "sha256": "c086fb75e5d1904f10e255d1791c91a7fb00ddb7d8f6bef434331e437d6743df"
+    },
+    {
+      "bytes": 3897,
+      "path": "fixtures/compiler/application-compilation.json",
+      "sha256": "4bfef9071c04b0b52d369c81034318b8679457a8683e7060733fb89869d6498f"
+    },
+    {
+      "bytes": 1919,
+      "path": "fixtures/compiler/application-input.json",
+      "sha256": "b911b842bf88f84d1633045c5ab817b798d2af213289e47560837f1cfeac898b"
+    },
+    {
+      "bytes": 5476,
+      "path": "fixtures/compiler/intent-compilation.json",
+      "sha256": "f8cbf6c3298385963eefff7debb1e5eeaee2e42cc1d879ee04d430c75b327089"
+    },
+    {
+      "bytes": 821,
+      "path": "fixtures/compiler/intent-input.json",
+      "sha256": "c7f885cfa9977b3ed0e525595a605e65e88dc5a3ab284926b6ecf3b4e2633728"
+    },
+    {
+      "bytes": 33661,
+      "path": "fixtures/delegation/synthetic-patient-navigator-trace.json",
+      "sha256": "06cd4acdb44b2a49f06e57c752cf6fca7124cf297e030b7152dc62617e0bd421"
+    },
+    {
+      "bytes": 457,
+      "path": "fixtures/documents/synthetic-discharge-instructions.txt",
+      "sha256": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70"
+    },
+    {
+      "bytes": 1245,
+      "path": "fixtures/documents/synthetic-hawaii-cna.source.json",
+      "sha256": "bb48c7403358b9efe81f5073064adf245c190e44139c140142b1e81dcb2db93f"
+    },
+    {
+      "bytes": 18802,
+      "path": "fixtures/documents/synthetic-hawaii-cna.textract.json",
+      "sha256": "8aa70521f8a523c742bfa2a1819cc140f0ea10f1bf63bb75f1ef18baadebdf61"
+    },
+    {
+      "bytes": 1652,
+      "path": "fixtures/federation/two-hub-lab.json",
+      "sha256": "e3a26cb90af60d6243c8f92b29f3fa26d3f11195df49c91689953833251828b6"
+    },
+    {
+      "bytes": 635,
+      "path": "fixtures/safety/protocol-9-delta.json",
+      "sha256": "2ac4f059205d7ed68b65e91a965e7e3f8fc9f7a8e54bdd203c8920fc8edc447b"
+    },
+    {
+      "bytes": 678,
+      "path": "pyproject.toml",
+      "sha256": "ee105892b2843c76c5c402aa295004daa8d3282d5302d80dc3ea3f342785a357"
+    },
+    {
+      "bytes": 745,
+      "path": "requirements.lock",
+      "sha256": "7e83dbc70e0d62cccdda2ae3d62b98148c64721c5a2853966f13adb018ce8c40"
+    },
+    {
+      "bytes": 3097,
+      "path": "schemas/active-credential-claim.schema.json",
+      "sha256": "1a3edf78afe0962ebc1d4791bc12dea932cf454c8f2d1608dc39f0fc95a37337"
+    },
+    {
+      "bytes": 1571,
+      "path": "schemas/audit-event.schema.json",
+      "sha256": "1e61047b16c97645f04c27fa74f208c1a862cb8c3397b437b35403511101a3c0"
+    },
+    {
+      "bytes": 1195,
+      "path": "schemas/authorization-decision.schema.json",
+      "sha256": "cc3ee749d3bb8bcd50aae9d5685d7ee1c514c5d186910118aa11a88510e1c843"
+    },
+    {
+      "bytes": 947,
+      "path": "schemas/authorization-request.schema.json",
+      "sha256": "4acb3936aa1e38a6020098b5fe970ac6bc28161da09d2016ee6b6c5562054772"
+    },
+    {
+      "bytes": 3162,
+      "path": "schemas/care-relationship-claim.schema.json",
+      "sha256": "a6aefca328759bff93f965e1308852d0efd2d212dfbdc028c2f6a3dfaeabfbc8"
+    },
+    {
+      "bytes": 1856,
+      "path": "schemas/clarification-request.schema.json",
+      "sha256": "29d7e9e6428d1156be8d36e7e3f17b5b8465a99a3a014fcea311f999414a041f"
+    },
+    {
+      "bytes": 1399,
+      "path": "schemas/clarification-response.schema.json",
+      "sha256": "4e284867363180c2250450eebf590ad8e2c649de9e9a08480fb386b44d9bee6b"
+    },
+    {
+      "bytes": 4097,
+      "path": "schemas/clinical-data-authorization-decision.schema.json",
+      "sha256": "933a98238ed0ef5a7a8bf92733f90ef5367cae2201dccd22381ef78d6660571a"
+    },
+    {
+      "bytes": 7745,
+      "path": "schemas/clinical-data-authorization-request.schema.json",
+      "sha256": "9571175f06f8bd699a038250b755e9e2b33a8683fb1aaa58b22dace12e7c0d64"
+    },
+    {
+      "bytes": 20617,
+      "path": "schemas/clinical-data-exchange-record.schema.json",
+      "sha256": "f689dc6ffc65e693f1582ed70b9682850c74254a687afc3e733cf2f274c9768b"
+    },
+    {
+      "bytes": 2145,
+      "path": "schemas/delegation-authorization-decision.schema.json",
+      "sha256": "26fc212b53a2a3d43f0935843a1f096c3803114a9e71ac48f1b795ccc0f73e02"
+    },
+    {
+      "bytes": 2602,
+      "path": "schemas/delegation-authorization-request.schema.json",
+      "sha256": "1539dd0aa980da6548286a43788e162877f77f3c4483ec5fcb428b65266c38c4"
+    },
+    {
+      "bytes": 8854,
+      "path": "schemas/delegation-draft.schema.json",
+      "sha256": "47972a15c1b7b2f07d719d4b0091957cf1d4502aabdc2c5f7ce8d124030225ec"
+    },
+    {
+      "bytes": 4777,
+      "path": "schemas/delegation-grant.schema.json",
+      "sha256": "1a20909acc33bda1ad1b1419fc1be2e9aba71dd0a61cf231f60e701838b43b93"
+    },
+    {
+      "bytes": 1370,
+      "path": "schemas/delegation-revocation-record.schema.json",
+      "sha256": "8cf497b53b4c2fa2c9044269bf292693df9cc1aebc40d01b36ee5ea4278e34cf"
+    },
+    {
+      "bytes": 11003,
+      "path": "schemas/document-extraction-draft.schema.json",
+      "sha256": "07dc7df5eddc33dbc4720062dcba58395564ed80066ae8cd75de16a5ebeae3a9"
+    },
+    {
+      "bytes": 4858,
+      "path": "schemas/document-review-correction-record.schema.json",
+      "sha256": "543dae6504fafaa4ab06b433c0704c08dca16e6bbd5522ffdd17fd08e1196cc1"
+    },
+    {
+      "bytes": 2649,
+      "path": "schemas/document-share-decision.schema.json",
+      "sha256": "17b7921d4c88811079c28ab56af6c32e3b53ef5643ff6da45055017dc76c61d2"
+    },
+    {
+      "bytes": 4576,
+      "path": "schemas/document-share-grant.schema.json",
+      "sha256": "4dad37af08be349e91fda2ff4b8562fa76c06354e8f896f94bac959cee1f81a0"
+    },
+    {
+      "bytes": 2529,
+      "path": "schemas/document-share-request.schema.json",
+      "sha256": "ed66e93906543809c126e99356a80c08f1d93d0c35a3ef529a71c46e1802c9f4"
+    },
+    {
+      "bytes": 1845,
+      "path": "schemas/document-share-revocation-record.schema.json",
+      "sha256": "9837f5c4701086b341ffb7a6f945e71cc99edbd175656579d13d3f6fb6e18b79"
+    },
+    {
+      "bytes": 5170,
+      "path": "schemas/draft-credential-claim.schema.json",
+      "sha256": "3ae2b95fdf2eca88223be8c621a27d31733816a1c545bb923670331a4ce56819"
+    },
+    {
+      "bytes": 4235,
+      "path": "schemas/evidence-artifact.schema.json",
+      "sha256": "64f84819ef5580add176fe4af48b87a2f9f2148a41052269e925db2a0ef33b04"
+    },
+    {
+      "bytes": 8108,
+      "path": "schemas/extraction-record.schema.json",
+      "sha256": "172710cbd5ad0f2d9ebf780f141dce0480501cb32a8ded9333dc5a2989a3d909"
+    },
+    {
+      "bytes": 2081,
+      "path": "schemas/intent-statement.schema.json",
+      "sha256": "ce50ceb4c29f89c73bc97274d324155db6d75d5875fbef7b282f247aaa958679"
+    },
+    {
+      "bytes": 2257,
+      "path": "schemas/invite-acceptance.schema.json",
+      "sha256": "0631cb48e0f53d8498468eb4e38344c0d1406854b0edfc0cffce01032bee839a"
+    },
+    {
+      "bytes": 2636,
+      "path": "schemas/patient-approval-record.schema.json",
+      "sha256": "08192201e650e88d2da6e2c6bf9223eae210c6d9b6ac88bf0e77ccb383ee2f91"
+    },
+    {
+      "bytes": 1843,
+      "path": "schemas/patient-invite.schema.json",
+      "sha256": "59c1a9a9718bc35d7d253a0c641743576558bd7e10be76205f50f4a6e4f32a58"
+    },
+    {
+      "bytes": 2072,
+      "path": "schemas/patient-match-result.schema.json",
+      "sha256": "6c13bafe3fb1ac368abff6f0e59771b6fa324c500ff669fabc8c0e9d82a8f9bd"
+    },
+    {
+      "bytes": 16151,
+      "path": "schemas/patient-navigator-projection.schema.json",
+      "sha256": "ad38a79b4ba6580f4c62c57dafe7cb6abea2f91c5aaf826965350c3bc4e574f3"
+    },
+    {
+      "bytes": 1517,
+      "path": "schemas/registry-result.schema.json",
+      "sha256": "81d59b247b4e3404b44e533950d4c0721d10543d27bacbc86e3a0afdb7d1105d"
+    },
+    {
+      "bytes": 2579,
+      "path": "schemas/review-record.schema.json",
+      "sha256": "c882edb5952d7adc64bbfc8fbdd77e6ccf2066330ce39e3186ffe326501d2168"
+    },
+    {
+      "bytes": 1719,
+      "path": "schemas/revocation-record.schema.json",
+      "sha256": "12160d4cc873075bef81f6849a769f80b7a085788b21080b6bd2b9cd0c90c951"
+    },
+    {
+      "bytes": 4093,
+      "path": "schemas/trace-bundle.schema.json",
+      "sha256": "2bc5951691a7bedf55c6d169be1003983f4c6718b31c462f7c239d23e9cdf411"
+    },
+    {
+      "bytes": 2508,
+      "path": "schemas/trace-envelope.schema.json",
+      "sha256": "45ea6516cead54da703d184eda810f49097245fac0fc4ad60a5455ffa70e7fd6"
+    },
+    {
+      "bytes": 7417,
+      "path": "schemas/uploaded-care-document.schema.json",
+      "sha256": "51f1e8cefe9057b3e43185b068d30a2dc26b66ee8afab425f340bf58bf7c7baa"
+    },
+    {
+      "bytes": 13331,
+      "path": "schemas/uploaded-document-fhir-projection.schema.json",
+      "sha256": "fb4f5b77a553de72a687f7f1694334d34744aa27fb1850706df95a56a177c0e4"
+    },
+    {
+      "bytes": 5414,
+      "path": "scripts/build_auth_harness_trace.py",
+      "sha256": "22285e03606b51d3145977993495f31a0c4a82345b1777b931a35757a4b07d62"
+    },
+    {
+      "bytes": 618,
+      "path": "scripts/build_case_bundle.py",
+      "sha256": "c9206103d1aae5fb48461783d06906c82809d16b126071c7e65a075b3f70804b"
+    },
+    {
+      "bytes": 6209,
+      "path": "scripts/build_compiler_fixtures.py",
+      "sha256": "6650dad79239b72f3c027a535140dceb28004414576b15545fe4312367988356"
+    },
+    {
+      "bytes": 21722,
+      "path": "scripts/build_credential_walkthrough_trace.py",
+      "sha256": "48413847a1179650cbd947c861636673e40bae8508f55f728e0ea76e840b292e"
+    },
+    {
+      "bytes": 581,
+      "path": "scripts/build_dashboard_contract.py",
+      "sha256": "c2eecc955b49c154c178ba637df432552bb4f8b220407c49f674811578296489"
+    },
+    {
+      "bytes": 730,
+      "path": "scripts/build_federation_lab.py",
+      "sha256": "64406d2f30b19f8236f771fd556cc775a641a37128f130caa8d290c22838fbfa"
+    },
+    {
+      "bytes": 603,
+      "path": "scripts/build_fhir_scheduling_projection.py",
+      "sha256": "ae97b30981a255d54a61ca1f0fb11b866ef68ddc980b8392173761df40d81a00"
+    },
+    {
+      "bytes": 523,
+      "path": "scripts/build_judge_walkthrough.py",
+      "sha256": "72ef4dff176370b09b38beed5ecff1474a66f3217d2a030ff6250d42b7d9c2a0"
+    },
+    {
+      "bytes": 5436,
+      "path": "scripts/build_mcp_contract_artifact.py",
+      "sha256": "5a7e655b9b268a3d0391e7e7dbf5ddda5432fab3fd7943bb90312cf7c2097407"
+    },
+    {
+      "bytes": 5758,
+      "path": "scripts/build_network_demo_data.py",
+      "sha256": "f1f241df866239f68c1053c9b225395e3c169ae44fe1d24bbe5cec2f60eacc91"
+    },
+    {
+      "bytes": 14012,
+      "path": "scripts/build_poc_evidence_manifest.py",
+      "sha256": "75cce0364f18d1ce2a81d0687e38d5f47a0037669fae2e3f859125b9f6fd7daf"
+    },
+    {
+      "bytes": 5741,
+      "path": "scripts/build_smart40_data_output_logs.py",
+      "sha256": "65604ff32c97aac803dfda55eaf2a57cdb0288a5bbe8f6906cbea62c7888b3e6"
+    },
+    {
+      "bytes": 13691,
+      "path": "scripts/build_synthetic_patient_navigator.py",
+      "sha256": "18abb1f583f16df6229b9229ec1041e9251353735afa176fc6b666dc3cd4fa89"
+    },
+    {
+      "bytes": 25430,
+      "path": "scripts/build_uploaded_care_document_trace.py",
+      "sha256": "e54e1b01a7710529afbf1c52e677a1957c0908787d2821ea6915e58e3fec5917"
+    },
+    {
+      "bytes": 17596,
+      "path": "scripts/demo_vertical_slice.py",
+      "sha256": "5f850ddc89e7257e1afa4955a21ef5697d77f8d465c42613efb526c1fba18519"
+    },
+    {
+      "bytes": 7106,
+      "path": "scripts/export_clinical_edge_examples.py",
+      "sha256": "711f92e5e5b8ff3e717d027bc7d91a6ef6b8c4b8df6a42c0125984d568f86f4a"
+    },
+    {
+      "bytes": 11760,
+      "path": "scripts/export_core_case_contracts.py",
+      "sha256": "5c067462d21a87569628226fe7d4131fc79546782798fb60f160ff2b877fae14"
+    },
+    {
+      "bytes": 6067,
+      "path": "scripts/export_interoperability_artifacts.py",
+      "sha256": "44be8b2acd8bcae179c2855aa7c30cc699f453c03fa3f8c9d50b5befc3a73973"
+    },
+    {
+      "bytes": 203,
+      "path": "scripts/export_schema.py",
+      "sha256": "011bd3dbfa73286533b04940883eed1d5328ffbeef959e5f07f7c335e3c18360"
+    },
+    {
+      "bytes": 11797,
+      "path": "scripts/render_evaluation_report.py",
+      "sha256": "db80f5cff3e514dc4254fbc222c3993fad44343c46f1f9c2f14cf22ffc2f9c34"
+    },
+    {
+      "bytes": 4259,
+      "path": "scripts/run_evaluation.py",
+      "sha256": "752ab854e4e881faefe1073f0282d7f3b0842031cdee1bf81186e62d7f5c95a0"
+    },
+    {
+      "bytes": 8532,
+      "path": "scripts/run_intent_compiler_bedrock_40.py",
+      "sha256": "4da6a655650846fdfef31a940909eaef409cb5e5707d4b9ac817c17ffecfa44a"
+    },
+    {
+      "bytes": 652,
+      "path": "scripts/run_judge_walkthrough.py",
+      "sha256": "f667f11879236cb3d4987fcf876b4c3cbb44f830c9f3c15361e0a3daae686970"
+    },
+    {
+      "bytes": 720,
+      "path": "scripts/run_mcp_server.py",
+      "sha256": "fbf78c7c310d73b973640a71d08d819b9f2ea59cd28b2f8e924bab95bec02a38"
+    },
+    {
+      "bytes": 13972,
+      "path": "scripts/run_ocr_vertical_slice.py",
+      "sha256": "a28a42d0f39fc109df0e1a11249ad88df27832421fe73cee4c30952030f2ff2d"
+    },
+    {
+      "bytes": 9686,
+      "path": "scripts/run_smoke.py",
+      "sha256": "84a025068b498ad8cab6b1517e3eaa93e5aa16628e2d3f1831c082e0cec4b2f6"
+    },
+    {
+      "bytes": 8448,
+      "path": "scripts/run_unknown_protocol.py",
+      "sha256": "914a6e1bb0a4dbfb86a03deb5dfd39e0fd2e30c2eed5434663a9443a6f264537"
+    },
+    {
+      "bytes": 1756,
+      "path": "src/caretrust/__init__.py",
+      "sha256": "82b7d75fd18a6a99a02fab707b7a0b3a6df1c0ca8c71a1f594a393e4e4297125"
+    },
+    {
+      "bytes": 426,
+      "path": "src/caretrust/adapters/__init__.py",
+      "sha256": "bef264a33c289ab62c213a2a5b4ff308868b37757487b76d37c721c1c21d8907"
+    },
+    {
+      "bytes": 7692,
+      "path": "src/caretrust/adapters/bedrock.py",
+      "sha256": "0adf6b64999d35e7a67c5281fc8a33ea847cc1035a90b3e1b2e0fd46d48b81a4"
+    },
+    {
+      "bytes": 12189,
+      "path": "src/caretrust/adapters/ocr.py",
+      "sha256": "14ecab30a712573623aeb2eae03fbefe51c29e52cf651bda7b8de9ef4cb1fc76"
+    },
+    {
+      "bytes": 28667,
+      "path": "src/caretrust/app_onboarding.py",
+      "sha256": "1d467567bd66ddd927322fe8ac700bf70a6f2f43ada4fdb5b8d554041bae80f5"
+    },
+    {
+      "bytes": 21521,
+      "path": "src/caretrust/auth_harness.py",
+      "sha256": "2b4e6b912aa3c1d87649a7b8ac5d15fe61eb6c9a8a2de054f45c253232c1f34b"
+    },
+    {
+      "bytes": 8104,
+      "path": "src/caretrust/authorization.py",
+      "sha256": "2f31f7c998e0c0b61a2a4b58dd8023e23e0753e5bb4a72e08236c784e5e1464f"
+    },
+    {
+      "bytes": 30724,
+      "path": "src/caretrust/case_bundle.py",
+      "sha256": "572e59b63b3bfbed885c1a0684cbb6204b7d54ea9fa4f1cc2a1f1ccb7dcc9952"
+    },
+    {
+      "bytes": 25125,
+      "path": "src/caretrust/clinical_edge.py",
+      "sha256": "fa725ab7cdff9ae846fd71354f8ffacdb0d4450a38073de54fbc2f3fca7318be"
+    },
+    {
+      "bytes": 37646,
+      "path": "src/caretrust/compiler.py",
+      "sha256": "51fc72c2b7977a35f49dbd5809ea0efd894e0ba8635add5ebcaaf0bb2f5a030c"
+    },
+    {
+      "bytes": 19162,
+      "path": "src/caretrust/core_mappings.py",
+      "sha256": "c8e181d2056bdb54a689280eb24425f71bc5b34f2fbe6ba60f30170b1ebac021"
+    },
+    {
+      "bytes": 18135,
+      "path": "src/caretrust/core_protocol.py",
+      "sha256": "7d163176a2b06177fe56582a950a99a48ea0aea1c386b7edf8f4c627a1748cd9"
+    },
+    {
+      "bytes": 24481,
+      "path": "src/caretrust/dashboard_contract.py",
+      "sha256": "fe8aaa696a0fe2db1e9acb691a06e3768cf618a403ef693f82ece8a279b69691"
+    },
+    {
+      "bytes": 29698,
+      "path": "src/caretrust/delegation.py",
+      "sha256": "0f6d28e66c0e929ea6b457dce5376224f21f79534d88294711d1a05db81601fe"
+    },
+    {
+      "bytes": 37192,
+      "path": "src/caretrust/evaluation.py",
+      "sha256": "b07dfe9cffb257a9e74d4076dda39cb33eb3142ac59d51fe441ae18cacb567fd"
+    },
+    {
+      "bytes": 22643,
+      "path": "src/caretrust/federation.py",
+      "sha256": "3f6cc081deb7e6630901d92c6aaa0b0e081048b9b0760df3b6ddd50c4dee44b7"
+    },
+    {
+      "bytes": 10791,
+      "path": "src/caretrust/federation_lab.py",
+      "sha256": "f33f7baa9ea57a072100c45effc5a43ac76733287cdaa2bea5fd83dcab63952c"
+    },
+    {
+      "bytes": 19564,
+      "path": "src/caretrust/fhir_projection.py",
+      "sha256": "fe7e9ec6ed4e96592685a21572f86d7ec4342ed7ccf824bf236cdad9a567f642"
+    },
+    {
+      "bytes": 11792,
+      "path": "src/caretrust/fhir_scheduling.py",
+      "sha256": "b4e3e089f436098f53cec039b7577dc4ae0a1a94e14d75595f4eaa239e85a28f"
+    },
+    {
+      "bytes": 20858,
+      "path": "src/caretrust/judge_walkthrough.py",
+      "sha256": "97e2ac0f661ac3db850e3b41dd5068cc425a6b28bf0dd39bc767464c002d854a"
+    },
+    {
+      "bytes": 22593,
+      "path": "src/caretrust/mcp_adapter.py",
+      "sha256": "d4a76f7e1e60a3a3f1aff83d7dad1cf2c25ed9e7b1566242158fbd2e8d913f7f"
+    },
+    {
+      "bytes": 12824,
+      "path": "src/caretrust/models.py",
+      "sha256": "252453bfab520ff32ca65249c075139d359289ae4a9645269617139bb1a5f09d"
+    },
+    {
+      "bytes": 32028,
+      "path": "src/caretrust/navigator.py",
+      "sha256": "1c45686fd90885db5538c098edd6e202b00585466f98a786d5ea02408ebd419a"
+    },
+    {
+      "bytes": 20224,
+      "path": "src/caretrust/security.py",
+      "sha256": "23e73a9fc4ed2dc032f6f8a320a1d6c0a42e9f3683f5c96f2e5b5a3343d8eae9"
+    },
+    {
+      "bytes": 8000,
+      "path": "src/caretrust/trace.py",
+      "sha256": "983f8c7fa176a61ba14df4288f141c31ece777d4e758a71affe746d1b7dfb980"
+    },
+    {
+      "bytes": 36074,
+      "path": "src/caretrust/uploaded_care.py",
+      "sha256": "30ac775ca351223896e7d26cabae3bbf67bf16c4c2bc39800dd243d0c1287e09"
+    },
+    {
+      "bytes": 21576,
+      "path": "src/caretrust/workflow.py",
+      "sha256": "f9593d08eaaec21c17d2c0a7da3a160e6653774a317cc2e674bd98849380c231"
+    },
+    {
+      "bytes": 9015,
+      "path": "tests/test_app_onboarding.py",
+      "sha256": "a66c976debb2feff799256afac61e790f1d986a5c0413ecf83fd7e63368c7f7c"
+    },
+    {
+      "bytes": 8985,
+      "path": "tests/test_auth_harness.py",
+      "sha256": "435c477b5019aef0484148d8db255d43619606bed33bc54f0a99ed7b8689dc79"
+    },
+    {
+      "bytes": 3636,
+      "path": "tests/test_bedrock_adapter.py",
+      "sha256": "f03f68378001f11d4511ba496867d64795d66b69d7538ea979fde0203b23a110"
+    },
+    {
+      "bytes": 6535,
+      "path": "tests/test_case_bundle.py",
+      "sha256": "078341d04e0ae89912c056a4d710d5c6ef5afacbd1bc160d3888f7b3701fe50b"
+    },
+    {
+      "bytes": 9806,
+      "path": "tests/test_clinical_edge.py",
+      "sha256": "8871327f822b9111472dde6ea6b884dd33c9778878c75b4843718321fc0e3b6a"
+    },
+    {
+      "bytes": 9660,
+      "path": "tests/test_compiler.py",
+      "sha256": "98c014bc1eee8efb07ce705c33ee3395795744482a9d8b762915f34cb6294605"
+    },
+    {
+      "bytes": 4424,
+      "path": "tests/test_core_mappings.py",
+      "sha256": "0d40f36a727996f8efc535c2680026c22f8d49d9e7973873a9fcce1e1dfbab9f"
+    },
+    {
+      "bytes": 8827,
+      "path": "tests/test_core_protocol.py",
+      "sha256": "da3584d1cc0238aa1758a07615da125d13dc2fd2b2184841477d9cda1fde8ae7"
+    },
+    {
+      "bytes": 3986,
+      "path": "tests/test_credential_walkthrough_trace.py",
+      "sha256": "3415b5bbec2e35e9d0671566d5e4e0173cd1ad1cca8634ab6028ad59edde7866"
+    },
+    {
+      "bytes": 5557,
+      "path": "tests/test_dashboard_contract.py",
+      "sha256": "21b88d41ebe55d9da0b45665465c9ac447c60a4c559943f410cd3fc44277cb74"
+    },
+    {
+      "bytes": 18073,
+      "path": "tests/test_delegation_contracts.py",
+      "sha256": "fc41480d1121923bc8adbb550fc8c605e0ddf525c26168589ad69008e91ecd07"
+    },
+    {
+      "bytes": 6642,
+      "path": "tests/test_demo.py",
+      "sha256": "bcd26f509a329db1998fa6c10b377764b3470b06bc12fe6e609cfd39e7ce9608"
+    },
+    {
+      "bytes": 11030,
+      "path": "tests/test_evaluation.py",
+      "sha256": "d4c1f23e715182ff42b09ed2571da67337e56f717ce12b967eb7635f686ec4c3"
+    },
+    {
+      "bytes": 5483,
+      "path": "tests/test_evidence_status_registry.py",
+      "sha256": "7e4659a56526f3dfc5da24ec79fe8fd35c0f0b06652ed4b735e197742443ca29"
+    },
+    {
+      "bytes": 11320,
+      "path": "tests/test_federation.py",
+      "sha256": "adb8c9c93748ac026060d91746bba5002c4b0b641d9d66a2aa8503c48a1029a9"
+    },
+    {
+      "bytes": 3592,
+      "path": "tests/test_federation_lab.py",
+      "sha256": "0d3002c3cb8e8ec122dae07da9b0d584c50956efc17abb59055df0664f705518"
+    },
+    {
+      "bytes": 5827,
+      "path": "tests/test_fhir_projection.py",
+      "sha256": "6db8556346db0f0a94a963ecbd2ce206a7ea9bfdeae85075440b7c1cd24dd304"
+    },
+    {
+      "bytes": 3453,
+      "path": "tests/test_fhir_scheduling.py",
+      "sha256": "0b07c74e91447780236502d8cd96dc6f8d4d159fd7f27d343018926391403e7f"
+    },
+    {
+      "bytes": 8943,
+      "path": "tests/test_final_fixtures.py",
+      "sha256": "c336cc50377d867701a072715150f1019635043336996bf519acd1362e630a79"
+    },
+    {
+      "bytes": 14253,
+      "path": "tests/test_interoperability_artifacts.py",
+      "sha256": "2d6a317a0fba8df1d00597c535a4d01db20c09f3358eba04bc522336fa220a95"
+    },
+    {
+      "bytes": 4614,
+      "path": "tests/test_judge_walkthrough.py",
+      "sha256": "84cd61619bb2038cbb14c791e4afa3064f1ac0264ddcebc2c30c600e010ef705"
+    },
+    {
+      "bytes": 10700,
+      "path": "tests/test_mcp_adapter.py",
+      "sha256": "2bb982c78ee8bc98cfa1c10d1c99e9c77ae481c7955fcc68910bb35784dc05b9"
+    },
+    {
+      "bytes": 3337,
+      "path": "tests/test_models.py",
+      "sha256": "9ef046ff024c7b3c2fa1a384a2373c835e88a403bfcccce5de8282053ca69c3d"
+    },
+    {
+      "bytes": 10228,
+      "path": "tests/test_navigator.py",
+      "sha256": "f1d135be9febc432cc52399df3ea859246f9f883a2381d2005e044cd06b68c43"
+    },
+    {
+      "bytes": 7974,
+      "path": "tests/test_network_demo.py",
+      "sha256": "536dd105aec724b5095466185162554e5cfea9ef48b4a08e028a37535081ac1f"
+    },
+    {
+      "bytes": 1929,
+      "path": "tests/test_network_demo_data.py",
+      "sha256": "0a3b57b2079f3f67aa00d5c6218b2fc3d9887db8d06211caede51beb5a3c83f5"
+    },
+    {
+      "bytes": 6410,
+      "path": "tests/test_ocr_adapter.py",
+      "sha256": "eb38153e57937a20af8a754ff69f8ee17cde2532b962f54db7d236fbcc08014d"
+    },
+    {
+      "bytes": 5230,
+      "path": "tests/test_ocr_vertical_slice.py",
+      "sha256": "be4fc9c390f755fef43edce6bf348b434a25ab748e5227bc3e7986d9504d9fcb"
+    },
+    {
+      "bytes": 9456,
+      "path": "tests/test_oid4vc_artifacts.py",
+      "sha256": "5be17709d9e0aa449b94b84108e3456a6872d016b5ef725649b2db7703f3c1bb"
+    },
+    {
+      "bytes": 9493,
+      "path": "tests/test_poc_evidence_manifest.py",
+      "sha256": "d2d00655de68702457ef758994315e32a0254765f2941be0d62ee2c79cfc33d8"
+    },
+    {
+      "bytes": 13270,
+      "path": "tests/test_security_authorization.py",
+      "sha256": "e779465580356df05d9b786c533690dde5ad62cf86e11e965a1123f04e5da4a3"
+    },
+    {
+      "bytes": 1169,
+      "path": "tests/test_smart40_data_output_logs.py",
+      "sha256": "5297a90199c04e56059be0915d5470631a97fa544bfb6932744b46827c0b6e08"
+    },
+    {
+      "bytes": 6195,
+      "path": "tests/test_trace.py",
+      "sha256": "4a70b97d5058bce3628bee740de1849e7e73163a9ff0ecfaca1fe1a6e28af3db"
+    },
+    {
+      "bytes": 698,
+      "path": "tests/test_unknown_protocol.py",
+      "sha256": "39aab8903d7e91e10e406e8d28986f67279a50efc32366229f9aff6f76efbc93"
+    },
+    {
+      "bytes": 11878,
+      "path": "tests/test_uploaded_care.py",
+      "sha256": "fd68bc4d29502c16474a1d4fb66b7bc037a6ee365cecb7dc146d8b298433460b"
+    },
+    {
+      "bytes": 19116,
+      "path": "tests/test_workflow.py",
+      "sha256": "17dad83ac0b6c6597dddd14cc2444d1866c147b267c5dcdbc6fa294c42d61da0"
+    }
+  ],
+  "evidence_scope": {
+    "frozen_model_evaluation_recomputed": false,
+    "kind": "post_evaluation_repository_and_standards_evidence",
+    "statement": "This manifest records post-evaluation code, contracts, local tests, and repository state. It does not rerun, replace, expand, or reinterpret the frozen 20-case model evaluation.",
+    "synthetic_only": true
+  },
+  "explicit_non_claims": [
+    "cross-organization federation",
+    "FHIR conformance or independent FHIR interoperability",
+    "OID4VC deployment or protocol conformance",
+    "a deployed credential issuer, verifier, or wallet",
+    "live-registry integration or automated source verification",
+    "EHR integration or SMART App Launch conformance",
+    "production identity proofing, authorization, security, or readiness"
+  ],
+  "frozen_model_evaluation": {
+    "case_count": 20,
+    "references": [
+      {
+        "path": "artifacts/evaluation/frozen-run-config.json",
+        "sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775"
+      },
+      {
+        "path": "artifacts/evaluation/20260730T085655.959974Z/frozen-config.json",
+        "sha256": "8153341affea53210f8127850de42ca44d67387d1b1050a64485943b0390f775"
+      },
+      {
+        "path": "artifacts/evaluation/20260730T085655.959974Z/summary.json",
+        "sha256": "73ad2be5a3c329bb96c386de77d25aac286ef887a171dc518f0a7a7bc00d8949"
+      },
+      {
+        "path": "artifacts/evaluation/20260730T085655.959974Z/REPORT.md",
+        "sha256": "dd68c15c29fd765736606489f4c294af21ff4a56631056a1e35668cc13060840"
+      }
+    ],
+    "run_id": "20260730T085655.959974Z",
+    "state": "referenced_only_not_recomputed_or_replaced"
+  },
+  "implementation_status_matrix": [
+    {
+      "boundary": "The retained live AWS record stops at an unverified draft and performs no review, activation, signing, authorization, or revocation.",
+      "capability_id": "aws-ocr-bedrock-intake",
+      "evidence": [
+        "artifacts/ocr/20260730T171807.004134Z/vertical-slice.json",
+        "src/caretrust/adapters/ocr.py",
+        "scripts/run_ocr_vertical_slice.py",
+        "tests/test_ocr_adapter.py",
+        "tests/test_ocr_vertical_slice.py"
+      ],
+      "status": "retained_aws"
+    },
+    {
+      "boundary": "The local claim lifecycle and deterministic policy do not establish production authorization or trust between independent organizations.",
+      "capability_id": "caretrust-core-claim-and-policy-contract",
+      "evidence": [
+        "schemas/active-credential-claim.schema.json",
+        "schemas/authorization-request.schema.json",
+        "schemas/authorization-decision.schema.json",
+        "docs/standards/lifecycle-and-reason-codes.md",
+        "artifacts/validation/connected-vertical-slice.json"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "No official HL7 validator, FHIR server, EHR, implementation guide, or independent FHIR implementation is used.",
+      "capability_id": "fhir-r4-qualification-projection",
+      "evidence": [
+        "src/caretrust/fhir_projection.py",
+        "tests/test_fhir_projection.py",
+        "docs/standards/fhir-r4-projection-profile.md",
+        "docs/standards/examples/fhir/synthetic-hawaii-cna-bundle.json"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "No OID4VC endpoint, credential issuance, valid presentation, wallet, holder binding, cryptographic verification, or conformance test runs.",
+      "capability_id": "oid4vci-and-oid4vp-exchange-artifacts",
+      "evidence": [
+        "tests/test_oid4vc_artifacts.py",
+        "docs/standards/oid4vc-exchange-profile.md",
+        "docs/standards/examples/oid4vc/credential-issuer-metadata.json",
+        "docs/standards/examples/oid4vc/presentation-request.json",
+        "docs/standards/examples/oid4vc/presentation-response.json",
+        "docs/standards/examples/oid4vc/response-decision-linkage.json"
+      ],
+      "status": "contract_tested"
+    },
+    {
+      "boundary": "Two synthetic entity identifiers resolve in one local process with caller-supplied statements and a pinned anchor; there is no network discovery, operational federation, or cross-organization test.",
+      "capability_id": "openid-federation-trust-resolution",
+      "evidence": [
+        "src/caretrust/federation.py",
+        "tests/test_federation.py",
+        "docs/standards/openid-federation-trust-profile.md",
+        "docs/standards/examples/federation/two-care-organizations.json"
+      ],
+      "status": "local_simulation"
+    },
+    {
+      "boundary": "No HTTP server or deployed Phase 1 API is represented.",
+      "capability_id": "caretrust-openapi-surface",
+      "evidence": [
+        "docs/standards/caretrust-openapi-3.1.json",
+        "tests/test_interoperability_artifacts.py"
+      ],
+      "status": "contract_tested"
+    },
+    {
+      "boundary": "An authorized synthetic participating-organization user/client supplies CareTrust caregiver delegation/trust context; the caregiver does not query the holder. The synthetic data holder owns participant/client/user eligibility, patient matching, and final disclosure policy. No live HIE/EHR, MPI, SMART/OAuth, FHIR server, legal determination, or independent interoperability test is represented.",
+      "capability_id": "synthetic-clinical-data-holder-edge",
+      "evidence": [
+        "src/caretrust/clinical_edge.py",
+        "scripts/export_clinical_edge_examples.py",
+        "tests/test_clinical_edge.py",
+        "docs/standards/clinical-data-holder-edge.md",
+        "docs/standards/examples/clinical-edge/permit.json",
+        "docs/standards/examples/clinical-edge/deny-unregistered-client.json",
+        "docs/standards/examples/clinical-edge/deny-no-patient-match.json",
+        "docs/standards/examples/clinical-edge/deny-insufficient-scope.json",
+        "docs/standards/examples/clinical-edge/deny-revoked-fresh-request.json",
+        "schemas/clinical-data-authorization-request.schema.json",
+        "schemas/clinical-data-authorization-decision.schema.json",
+        "schemas/clinical-data-exchange-record.schema.json"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "The dependency-free provider console replays generated synthetic artifacts in a browser. It is not a deployed case-management system, clinical chart, or measured workforce intervention.",
+      "capability_id": "provider-organization-console",
+      "evidence": [
+        "demo/network.html",
+        "demo/network.css",
+        "demo/network.js",
+        "demo/network-data.js",
+        "artifacts/validation/dashboard-contract.json",
+        "tests/test_network_demo.py",
+        "tests/test_dashboard_contract.py"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "The phone-sized caregiver client is a test/reference consumer over retained synthetic records. It stores presentation state only and makes no live identity-provider, API, EHR, HIE, or federation call.",
+      "capability_id": "caregiver-reference-client",
+      "evidence": [
+        "demo/reference-client.html",
+        "demo/reference-client.css",
+        "demo/reference-client.js",
+        "demo/network-data.js",
+        "tests/test_network_demo.py"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "The authorization-code, PKCE, OIDC, resource-indicator, and RAR exchange is a local synthetic harness. It does not connect to Login.gov or another production identity provider and does not establish production identity assurance.",
+      "capability_id": "oidc-pkce-rar-auth-harness",
+      "evidence": [
+        "src/caretrust/auth_harness.py",
+        "artifacts/validation/auth-harness-trace.json",
+        "tests/test_auth_harness.py"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "One synthetic patient and multiple synthetic caregivers are evaluated in one local deterministic runtime. No live organization directory, credential registry, or production policy deployment is represented.",
+      "capability_id": "multi-caregiver-case-policy",
+      "evidence": [
+        "src/caretrust/case_bundle.py",
+        "artifacts/validation/synthetic-multi-caregiver-case.json",
+        "docs/use-cases/multi-caregiver-reference-case.md",
+        "tests/test_case_bundle.py"
+      ],
+      "status": "executed_local"
+    },
+    {
+      "boundary": "Intent, document, and application-requirements compilers emit source-linked drafts only. Human approval and deterministic policy remain separate; no compiler output can activate authority or return a permit.",
+      "capability_id": "three-lane-ai-compilers",
+      "evidence": [
+        "src/caretrust/compiler.py",
+        "artifacts/validation/intent-compiler-bedrock-40/summary.json",
+        "artifacts/validation/synthetic-uploaded-care-document-trace.json",
+        "artifacts/validation/dashboard-contract.json",
+        "tests/test_compiler.py",
+        "tests/test_uploaded_care.py"
+      ],
+      "status": "executed_local"
+    }
+  ],
+  "manifest_version": "caretrust.post-evaluation-evidence.v0.4",
+  "publication": {
+    "identifiers_supplied_by_caller": true,
+    "public_repository_url": "https://github.com/caretrust-hub/caretrust-poc",
+    "release_commit": "82c3d4fa6e7c3ea8c2d79aab8b6b74effbfbbbc5",
+    "release_tag": "trl3-poc-v0.4.1"
+  },
+  "repository_state": {
+    "head_commit": "63035315df1d4e12676ecb31a0320489689cd677",
+    "head_ref": "prototype-v0.3-network-explorer",
+    "is_dirty": false,
+    "status_entries": [],
+    "tracked_change_count": 0,
+    "untracked_file_count": 0
+  },
+  "testing": {
+    "reference_supplied_by_caller": true,
+    "result_reference": "artifacts/validation/release-readiness-v0.4.1.json",
+    "tests_executed_by_manifest_generator": false
+  }
+}
