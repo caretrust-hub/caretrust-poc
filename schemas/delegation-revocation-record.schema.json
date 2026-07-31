@@ -1,0 +1,64 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "actor_ref": {
+      "title": "Actor Ref",
+      "type": "string"
+    },
+    "grant_id": {
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    },
+    "reason_code": {
+      "const": "PATIENT_REVOKED_DELEGATION",
+      "title": "Reason Code",
+      "type": "string"
+    },
+    "revocation_id": {
+      "title": "Revocation Id",
+      "type": "string"
+    },
+    "revoked_at": {
+      "format": "date-time",
+      "title": "Revoked At",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.delegation-revocation-record.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target_type": {
+      "const": "delegation_grant",
+      "title": "Target Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "revocation_id",
+    "grant_id",
+    "patient_ref",
+    "actor_ref",
+    "target_type",
+    "reason_code",
+    "reason",
+    "revoked_at",
+    "synthetic"
+  ],
+  "title": "DelegationRevocationRecord",
+  "type": "object"
+}

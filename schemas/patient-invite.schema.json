@@ -1,0 +1,82 @@
+{
+  "additionalProperties": false,
+  "description": "Single-use synthetic invite with no plaintext recipient contact.",
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "delivery_channel": {
+      "const": "synthetic_out_of_band",
+      "title": "Delivery Channel",
+      "type": "string"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "invite_id": {
+      "title": "Invite Id",
+      "type": "string"
+    },
+    "invite_token_sha256": {
+      "title": "Invite Token Sha256",
+      "type": "string"
+    },
+    "nonce_sha256": {
+      "title": "Nonce Sha256",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "recipient_hint_sha256": {
+      "title": "Recipient Hint Sha256",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.patient-invite.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "single_use": {
+      "const": true,
+      "title": "Single Use",
+      "type": "boolean"
+    },
+    "status": {
+      "const": "pending",
+      "title": "Status",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "invite_id",
+    "patient_ref",
+    "draft_id",
+    "recipient_hint_sha256",
+    "invite_token_sha256",
+    "nonce_sha256",
+    "delivery_channel",
+    "single_use",
+    "status",
+    "created_at",
+    "expires_at",
+    "synthetic"
+  ],
+  "title": "PatientInvite",
+  "type": "object"
+}

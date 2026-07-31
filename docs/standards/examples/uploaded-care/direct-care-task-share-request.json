@@ -1,0 +1,15 @@
+{
+  "audience": "app:synthetic-direct-care-tasks",
+  "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+  "include_raw_document": false,
+  "patient_ref": "patient:synthetic-001",
+  "purpose": "visit_preparation",
+  "request_id": "document-share-request:synthetic-direct-care-task-permit-001",
+  "requested_approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:bring-documents"
+  ],
+  "requested_at": "2026-07-30T18:00:07Z",
+  "requester_ref": "app:synthetic-direct-care-tasks",
+  "schema_version": "caretrust.document-share-request.v1",
+  "synthetic_only": true
+}

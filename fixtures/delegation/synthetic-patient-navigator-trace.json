@@ -1,0 +1,880 @@
+{
+  "events": [
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "untrusted_patient_intent",
+      "event_id": "event:navigator:intent:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "intent_id": "intent:synthetic-delegation-001"
+      },
+      "message_type": "IntentStatement",
+      "non_claims": [
+        "Natural-language intent is not a delegation grant."
+      ],
+      "occurred_at": "2026-07-30T10:00:00Z",
+      "payload": {
+        "created_at": "2026-07-30T10:00:00Z",
+        "intent_id": "intent:synthetic-delegation-001",
+        "patient_ref": "patient:synthetic-001",
+        "schema_version": "caretrust.intent-statement.v1",
+        "spans": [
+          {
+            "end_char": 23,
+            "intent_id": "intent:synthetic-delegation-001",
+            "quote": "my daughter Leilani",
+            "span_id": "intent-span:synthetic-delegate",
+            "start_char": 4
+          },
+          {
+            "end_char": 45,
+            "intent_id": "intent:synthetic-delegation-001",
+            "quote": "schedule appointments",
+            "span_id": "intent-span:synthetic-scheduling",
+            "start_char": 24
+          },
+          {
+            "end_char": 72,
+            "intent_id": "intent:synthetic-delegation-001",
+            "quote": "see visit instructions",
+            "span_id": "intent-span:synthetic-instructions",
+            "start_char": 50
+          },
+          {
+            "end_char": 91,
+            "intent_id": "intent:synthetic-delegation-001",
+            "quote": "through 2026-12-31",
+            "span_id": "intent-span:synthetic-expiration",
+            "start_char": 73
+          },
+          {
+            "end_char": 133,
+            "intent_id": "intent:synthetic-delegation-001",
+            "quote": "not billing or mental health records",
+            "span_id": "intent-span:synthetic-exclusions",
+            "start_char": 97
+          }
+        ],
+        "synthetic": true,
+        "utterance": "Let my daughter Leilani schedule appointments and see visit instructions through 2026-12-31, but not billing or mental health records.",
+        "utterance_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4"
+      },
+      "payload_sha256": "3d03657cd25df3777a7d2369047bda82892287058f2118a6a2ca7e4aabf75aa8",
+      "receiver_ref": "caretrust:intent-intake",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 1,
+      "standard_refs": [
+        "CareTrust IntentStatement v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "caretrust:intent-model-adapter",
+      "boundary": "untrusted_model_output",
+      "event_id": "event:navigator:draft:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "draft_id": "delegation-draft:synthetic-001:v1",
+        "intent_id": "intent:synthetic-delegation-001"
+      },
+      "message_type": "DelegationDraft",
+      "non_claims": [
+        "AI output is draft-only and has a blocking ambiguity."
+      ],
+      "occurred_at": "2026-07-30T10:00:01Z",
+      "payload": {
+        "activation_permitted": false,
+        "allowed_actions": [
+          "schedule_appointments",
+          "view_visit_instructions"
+        ],
+        "allowed_audiences": [],
+        "allowed_purposes": [
+          "appointment_management",
+          "care_coordination"
+        ],
+        "allowed_resources": [
+          "appointments",
+          "visit_instructions"
+        ],
+        "authority_basis": "unverified_patient_intent",
+        "authorization_permitted": false,
+        "blocking_issues": [
+          "UNRESOLVED_MATERIAL_UNCERTAINTY",
+          "UNKNOWN_AUDIENCE"
+        ],
+        "delegate_ref": "account:synthetic-leilani",
+        "draft_id": "delegation-draft:synthetic-001:v1",
+        "draft_version": 1,
+        "evidence_bindings": [
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-delegate"
+            ],
+            "field_path": "delegate_ref",
+            "value": "account:synthetic-leilani"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-delegate"
+            ],
+            "field_path": "relationship_code",
+            "value": "child"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_actions",
+            "value": "schedule_appointments"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_actions",
+            "value": "view_visit_instructions"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_resources",
+            "value": "appointments"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_resources",
+            "value": "visit_instructions"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-exclusions"
+            ],
+            "field_path": "excluded_resources",
+            "value": "billing"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-exclusions"
+            ],
+            "field_path": "excluded_resources",
+            "value": "mental_health_records"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_purposes",
+            "value": "appointment_management"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_purposes",
+            "value": "care_coordination"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-expiration"
+            ],
+            "field_path": "valid_until",
+            "value": "2026-12-31"
+          }
+        ],
+        "excluded_resources": [
+          "billing",
+          "mental_health_records"
+        ],
+        "intent_id": "intent:synthetic-delegation-001",
+        "intent_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
+        "legal_authority_status": "not_established",
+        "patient_ref": "patient:synthetic-001",
+        "proposed_by": "ai_model",
+        "relationship_code": "child",
+        "schema_version": "caretrust.delegation-draft.v1",
+        "status": "draft",
+        "synthetic": true,
+        "uncertainties": [
+          {
+            "blocking": true,
+            "code": "AMBIGUOUS_AUDIENCE",
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling",
+              "intent-span:synthetic-instructions"
+            ],
+            "field_paths": [
+              "allowed_audiences"
+            ],
+            "message": "The intended applications are not explicit."
+          }
+        ],
+        "valid_from": null,
+        "valid_until": "2026-12-31"
+      },
+      "payload_sha256": "9c98776bb48a486985cd1dba3ac1693947028d3e2b4834e5bdbb6522189c0986",
+      "receiver_ref": "caretrust:draft-validator",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 2,
+      "standard_refs": [
+        "CareTrust DelegationDraft v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "caretrust:clarification-policy",
+      "boundary": "material_ambiguity_gate",
+      "event_id": "event:navigator:clarification-request:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "clarification_id": "clarification:synthetic-audience-001",
+        "draft_id": "delegation-draft:synthetic-001:v1",
+        "intent_id": "intent:synthetic-delegation-001"
+      },
+      "message_type": "ClarificationRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T10:00:05Z",
+      "payload": {
+        "clarification_id": "clarification:synthetic-audience-001",
+        "code": "CHOOSE_AUDIENCE",
+        "draft_id": "delegation-draft:synthetic-001:v1",
+        "field_paths": [
+          "allowed_audiences"
+        ],
+        "intent_id": "intent:synthetic-delegation-001",
+        "options": [
+          "app:synthetic-scheduling",
+          "app:synthetic-care-portal"
+        ],
+        "question": "Which synthetic applications should Leilani be able to use?",
+        "requested_at": "2026-07-30T10:00:05Z",
+        "required": true,
+        "schema_version": "caretrust.clarification-request.v1",
+        "synthetic": true
+      },
+      "payload_sha256": "fe99d2d6749dc04e2ac3e3ca954eeafa24b0eaea5b7f670445b58334842040a9",
+      "receiver_ref": "patient:synthetic-001",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 3,
+      "standard_refs": [
+        "CareTrust ClarificationRequest v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "explicit_patient_clarification",
+      "event_id": "event:navigator:clarification-response:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "clarification_id": "clarification:synthetic-audience-001",
+        "intent_id": "intent:synthetic-delegation-001",
+        "response_id": "clarification-response:synthetic-001"
+      },
+      "message_type": "ClarificationResponse",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T10:00:10Z",
+      "payload": {
+        "clarification_id": "clarification:synthetic-audience-001",
+        "intent_id": "intent:synthetic-delegation-001",
+        "patient_ref": "patient:synthetic-001",
+        "responded_at": "2026-07-30T10:00:10Z",
+        "response_id": "clarification-response:synthetic-001",
+        "response_sha256": "ad65b0cec76088dbd75579c157acf0bd753d1a904bb2a41c753663483c1fc83d",
+        "response_text": "Use the scheduling app and care portal.",
+        "schema_version": "caretrust.clarification-response.v1",
+        "selected_values": [
+          "app:synthetic-scheduling",
+          "app:synthetic-care-portal"
+        ],
+        "synthetic": true
+      },
+      "payload_sha256": "8b5d3571dbdf785e00a23d0032b153c9ca19395c8be24062d9cf8c74666643ab",
+      "receiver_ref": "caretrust:clarification-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 4,
+      "standard_refs": [
+        "CareTrust ClarificationResponse v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "caretrust:intent-model-adapter",
+      "boundary": "corrected_draft_version",
+      "event_id": "event:navigator:draft:002",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "draft_id": "delegation-draft:synthetic-001:v2",
+        "intent_id": "intent:synthetic-delegation-001",
+        "supersedes_event_id": "event:navigator:draft:001"
+      },
+      "message_type": "DelegationDraft",
+      "non_claims": [
+        "The original ambiguous draft remains in history."
+      ],
+      "occurred_at": "2026-07-30T10:00:11Z",
+      "payload": {
+        "activation_permitted": false,
+        "allowed_actions": [
+          "schedule_appointments",
+          "view_visit_instructions"
+        ],
+        "allowed_audiences": [
+          "app:synthetic-scheduling",
+          "app:synthetic-care-portal"
+        ],
+        "allowed_purposes": [
+          "appointment_management",
+          "care_coordination"
+        ],
+        "allowed_resources": [
+          "appointments",
+          "visit_instructions"
+        ],
+        "authority_basis": "unverified_patient_intent",
+        "authorization_permitted": false,
+        "blocking_issues": [],
+        "delegate_ref": "account:synthetic-leilani",
+        "draft_id": "delegation-draft:synthetic-001:v2",
+        "draft_version": 2,
+        "evidence_bindings": [
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-delegate"
+            ],
+            "field_path": "delegate_ref",
+            "value": "account:synthetic-leilani"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-delegate"
+            ],
+            "field_path": "relationship_code",
+            "value": "child"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_actions",
+            "value": "schedule_appointments"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_actions",
+            "value": "view_visit_instructions"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_resources",
+            "value": "appointments"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_resources",
+            "value": "visit_instructions"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-exclusions"
+            ],
+            "field_path": "excluded_resources",
+            "value": "billing"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-exclusions"
+            ],
+            "field_path": "excluded_resources",
+            "value": "mental_health_records"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-scheduling"
+            ],
+            "field_path": "allowed_purposes",
+            "value": "appointment_management"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-instructions"
+            ],
+            "field_path": "allowed_purposes",
+            "value": "care_coordination"
+          },
+          {
+            "evidence_refs": [
+              "clarification-response:synthetic-001"
+            ],
+            "field_path": "allowed_audiences",
+            "value": "app:synthetic-scheduling"
+          },
+          {
+            "evidence_refs": [
+              "clarification-response:synthetic-001"
+            ],
+            "field_path": "allowed_audiences",
+            "value": "app:synthetic-care-portal"
+          },
+          {
+            "evidence_refs": [
+              "intent-span:synthetic-expiration"
+            ],
+            "field_path": "valid_until",
+            "value": "2026-12-31"
+          }
+        ],
+        "excluded_resources": [
+          "billing",
+          "mental_health_records"
+        ],
+        "intent_id": "intent:synthetic-delegation-001",
+        "intent_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
+        "legal_authority_status": "not_established",
+        "patient_ref": "patient:synthetic-001",
+        "proposed_by": "ai_model",
+        "relationship_code": "child",
+        "schema_version": "caretrust.delegation-draft.v1",
+        "status": "draft",
+        "synthetic": true,
+        "uncertainties": [],
+        "valid_from": null,
+        "valid_until": "2026-12-31"
+      },
+      "payload_sha256": "16f49109a9104f5aef862a5af6013e77277fe56e2c1b76b59d3f9e98db9d2da8",
+      "receiver_ref": "caretrust:draft-validator",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 5,
+      "standard_refs": [
+        "CareTrust DelegationDraft v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "hashed_single_use_invite",
+      "event_id": "event:navigator:invite:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "draft_id": "delegation-draft:synthetic-001:v2",
+        "invite_id": "invite:synthetic-001"
+      },
+      "message_type": "PatientInvite",
+      "non_claims": [
+        "No plaintext recipient contact is retained."
+      ],
+      "occurred_at": "2026-07-30T10:01:00Z",
+      "payload": {
+        "created_at": "2026-07-30T10:01:00Z",
+        "delivery_channel": "synthetic_out_of_band",
+        "draft_id": "delegation-draft:synthetic-001:v2",
+        "expires_at": "2026-07-30T11:01:00Z",
+        "invite_id": "invite:synthetic-001",
+        "invite_token_sha256": "667eff78639bb145217c5a625ec85cc03d90d9e0181504c5c220c1b948ebeb2a",
+        "nonce_sha256": "a279b165334303a3f576eb0e583db2bc4b830060ec2b9fae256acbfdbab5e049",
+        "patient_ref": "patient:synthetic-001",
+        "recipient_hint_sha256": "fcd4304af64f47429d3faf287ee7594ac92f6dfb8b614bfecd901bca3b5d62f2",
+        "schema_version": "caretrust.patient-invite.v1",
+        "single_use": true,
+        "status": "pending",
+        "synthetic": true
+      },
+      "payload_sha256": "b395ce72ada6c9f1730427272931c4e18fd96ec0131b711286d886ace7257f90",
+      "receiver_ref": "caretrust:invite-service",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 6,
+      "standard_refs": [
+        "CareTrust PatientInvite v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "synthetic_account_acceptance",
+      "event_id": "event:navigator:invite-acceptance:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "acceptance_id": "invite-acceptance:synthetic-001",
+        "invite_id": "invite:synthetic-001"
+      },
+      "message_type": "InviteAcceptance",
+      "non_claims": [
+        "Invite acceptance proves neither relationship nor legal authority."
+      ],
+      "occurred_at": "2026-07-30T10:02:00Z",
+      "payload": {
+        "acceptance_id": "invite-acceptance:synthetic-001",
+        "accepted_at": "2026-07-30T10:02:00Z",
+        "caregiver_ref": "account:synthetic-leilani",
+        "delegation_activated": false,
+        "identity_assurance": "synthetic_account_only",
+        "invite_id": "invite:synthetic-001",
+        "invite_token_sha256": "667eff78639bb145217c5a625ec85cc03d90d9e0181504c5c220c1b948ebeb2a",
+        "legal_authority_status": "not_established",
+        "nonce_sha256": "a279b165334303a3f576eb0e583db2bc4b830060ec2b9fae256acbfdbab5e049",
+        "patient_consent_established": false,
+        "patient_ref": "patient:synthetic-001",
+        "relationship_verified": false,
+        "schema_version": "caretrust.invite-acceptance.v1",
+        "status": "accepted",
+        "synthetic": true
+      },
+      "payload_sha256": "30d64f5726f8149831b5abcc91ad57e070c94881a1433a46d4dfc7c3a27e1ca1",
+      "receiver_ref": "caretrust:invite-service",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 7,
+      "standard_refs": [
+        "CareTrust InviteAcceptance v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "explicit_patient_approval",
+      "event_id": "event:navigator:approval:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "acceptance_id": "invite-acceptance:synthetic-001",
+        "approval_id": "approval:synthetic-001",
+        "draft_id": "delegation-draft:synthetic-001:v2"
+      },
+      "message_type": "PatientApprovalRecord",
+      "non_claims": [
+        "Patient approval is not an application permit."
+      ],
+      "occurred_at": "2026-07-30T10:03:00Z",
+      "payload": {
+        "activation_permitted": false,
+        "approval_basis": "patient_attestation",
+        "approval_id": "approval:synthetic-001",
+        "approved_at": "2026-07-30T10:03:00Z",
+        "authorization_permitted": false,
+        "clarification_bundle_sha256": "fa0dea711bd1d9e4f7b9a15edf8a05f17793ed5a1d823811db9c86992cf6c2b6",
+        "clarification_response_ids": [
+          "clarification-response:synthetic-001"
+        ],
+        "decision": "approved",
+        "explicit_patient_action": true,
+        "final_draft_id": "delegation-draft:synthetic-001:v2",
+        "final_draft_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "intent_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
+        "invite_acceptance_id": "invite-acceptance:synthetic-001",
+        "legal_authority_status": "not_established",
+        "patient_ref": "patient:synthetic-001",
+        "schema_version": "caretrust.patient-approval-record.v1",
+        "synthetic": true
+      },
+      "payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+      "receiver_ref": "caretrust:approval-service",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 8,
+      "standard_refs": [
+        "CareTrust PatientApprovalRecord v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "caretrust:relationship-activation-policy",
+      "boundary": "relationship_assertion_activation",
+      "event_id": "event:navigator:relationship:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "approval_id": "approval:synthetic-001",
+        "relationship_claim_id": "relationship:synthetic-001"
+      },
+      "message_type": "CareRelationshipClaim",
+      "non_claims": [
+        "The relationship assertion is not legal authority or permission."
+      ],
+      "occurred_at": "2026-07-30T10:03:01Z",
+      "payload": {
+        "approval_id": "approval:synthetic-001",
+        "caregiver_ref": "account:synthetic-leilani",
+        "invite_acceptance_id": "invite-acceptance:synthetic-001",
+        "issued_at": "2026-07-30T10:03:01Z",
+        "issuer_ref": "org:synthetic-caretrust",
+        "legal_authority_status": "not_established",
+        "patient_ref": "patient:synthetic-001",
+        "relationship_assertion_only": true,
+        "relationship_basis": "patient_attestation",
+        "relationship_claim_id": "relationship:synthetic-001",
+        "relationship_code": "child",
+        "revoked_at": null,
+        "schema_version": "caretrust.care-relationship-claim.v1",
+        "status": "active",
+        "synthetic": true,
+        "valid_from": "2026-07-30",
+        "valid_until": "2026-12-31"
+      },
+      "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+      "receiver_ref": "caretrust:relationship-store",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 9,
+      "standard_refs": [
+        "CareTrust CareRelationshipClaim v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "caretrust:delegation-activation-policy",
+      "boundary": "least_privilege_delegation_activation",
+      "event_id": "event:navigator:grant:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "approval_id": "approval:synthetic-001",
+        "grant_id": "grant:synthetic-001",
+        "relationship_claim_id": "relationship:synthetic-001"
+      },
+      "message_type": "DelegationGrant",
+      "non_claims": [
+        "Each application still applies independent local policy."
+      ],
+      "occurred_at": "2026-07-30T10:03:02Z",
+      "payload": {
+        "allowed_actions": [
+          "schedule_appointments",
+          "view_visit_instructions"
+        ],
+        "allowed_audiences": [
+          "app:synthetic-scheduling",
+          "app:synthetic-care-portal"
+        ],
+        "allowed_purposes": [
+          "appointment_management",
+          "care_coordination"
+        ],
+        "allowed_resources": [
+          "appointments",
+          "visit_instructions"
+        ],
+        "application_decision_required": true,
+        "approval_id": "approval:synthetic-001",
+        "authority_basis": "patient_attestation",
+        "delegate_ref": "account:synthetic-leilani",
+        "excluded_resources": [
+          "billing",
+          "mental_health_records"
+        ],
+        "grant_id": "grant:synthetic-001",
+        "issued_at": "2026-07-30T10:03:01Z",
+        "issuer_ref": "org:synthetic-caretrust",
+        "legal_authority_status": "not_established",
+        "patient_ref": "patient:synthetic-001",
+        "relationship_claim_id": "relationship:synthetic-001",
+        "revoked_at": null,
+        "schema_version": "caretrust.delegation-grant.v1",
+        "status": "active",
+        "synthetic": true,
+        "valid_from": "2026-07-30",
+        "valid_until": "2026-12-31"
+      },
+      "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+      "receiver_ref": "caretrust:delegation-store",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 10,
+      "standard_refs": [
+        "CareTrust DelegationGrant v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "application_specific_request",
+      "event_id": "event:navigator:request:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "grant:synthetic-001",
+        "request_id": "delegation-request:synthetic-001"
+      },
+      "message_type": "DelegationAuthorizationRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T10:04:00Z",
+      "payload": {
+        "action": "schedule_appointments",
+        "audience": "app:synthetic-scheduling",
+        "delegate_ref": "account:synthetic-leilani",
+        "grant_id": "grant:synthetic-001",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "appointment_management",
+        "request_id": "delegation-request:synthetic-001",
+        "requested_at": "2026-07-30T10:04:00Z",
+        "resource": "appointments",
+        "schema_version": "caretrust.delegation-authorization-request.v1",
+        "synthetic": true
+      },
+      "payload_sha256": "45f4e6005cf4945ea48ed0318fba055aeacb5efd941f31dd61e52bbc1f6052c9",
+      "receiver_ref": "app:synthetic-scheduling-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 11,
+      "standard_refs": [
+        "CareTrust DelegationAuthorizationRequest v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling-policy",
+      "boundary": "application_local_authorization",
+      "event_id": "event:navigator:decision:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "decision_id": "delegation-decision:synthetic-001",
+        "grant_id": "grant:synthetic-001",
+        "request_id": "delegation-request:synthetic-001"
+      },
+      "message_type": "DelegationAuthorizationDecision",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T10:04:01Z",
+      "payload": {
+        "decided_at": "2026-07-30T10:04:01Z",
+        "decision": "permit",
+        "decision_id": "delegation-decision:synthetic-001",
+        "policy_version": "caretrust.delegation-authorization.v1",
+        "reason_codes": [
+          "POLICY_REQUIREMENTS_SATISFIED"
+        ],
+        "request_id": "delegation-request:synthetic-001",
+        "schema_version": "caretrust.delegation-authorization-decision.v1",
+        "supporting_grant_ids": [
+          "grant:synthetic-001"
+        ],
+        "synthetic": true
+      },
+      "payload_sha256": "48227c708c57b6b60337b164712128bf034d2eed73dcd46b1a494231f86a4bfb",
+      "receiver_ref": "account:synthetic-leilani",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 12,
+      "standard_refs": [
+        "CareTrust DelegationAuthorizationDecision v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "patient_directed_revocation",
+      "event_id": "event:navigator:revocation:001",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "grant:synthetic-001",
+        "revocation_id": "delegation-revocation:synthetic-001"
+      },
+      "message_type": "DelegationRevocationRecord",
+      "non_claims": [
+        "The separate relationship record remains visible and active."
+      ],
+      "occurred_at": "2026-07-30T10:05:00Z",
+      "payload": {
+        "actor_ref": "patient:synthetic-001",
+        "grant_id": "grant:synthetic-001",
+        "patient_ref": "patient:synthetic-001",
+        "reason": "Synthetic patient withdrew the bounded delegation.",
+        "reason_code": "PATIENT_REVOKED_DELEGATION",
+        "revocation_id": "delegation-revocation:synthetic-001",
+        "revoked_at": "2026-07-30T10:05:00Z",
+        "schema_version": "caretrust.delegation-revocation-record.v1",
+        "synthetic": true,
+        "target_type": "delegation_grant"
+      },
+      "payload_sha256": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89",
+      "receiver_ref": "caretrust:delegation-status-seam",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 13,
+      "standard_refs": [
+        "CareTrust DelegationRevocationRecord v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "fresh_post_revocation_request",
+      "event_id": "event:navigator:request:002",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "grant:synthetic-001",
+        "request_id": "delegation-request:synthetic-002"
+      },
+      "message_type": "DelegationAuthorizationRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T10:05:01Z",
+      "payload": {
+        "action": "schedule_appointments",
+        "audience": "app:synthetic-scheduling",
+        "delegate_ref": "account:synthetic-leilani",
+        "grant_id": "grant:synthetic-001",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "appointment_management",
+        "request_id": "delegation-request:synthetic-002",
+        "requested_at": "2026-07-30T10:05:01Z",
+        "resource": "appointments",
+        "schema_version": "caretrust.delegation-authorization-request.v1",
+        "synthetic": true
+      },
+      "payload_sha256": "9e22514168e599bfac6f0bb65e4cce98e62246e52a491db61c790a6baaba04f7",
+      "receiver_ref": "app:synthetic-scheduling-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 14,
+      "standard_refs": [
+        "CareTrust DelegationAuthorizationRequest v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling-policy",
+      "boundary": "application_local_authorization",
+      "event_id": "event:navigator:decision:002",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "decision_id": "delegation-decision:synthetic-002",
+        "grant_id": "grant:synthetic-001",
+        "request_id": "delegation-request:synthetic-002",
+        "revocation_id": "delegation-revocation:synthetic-001"
+      },
+      "message_type": "DelegationAuthorizationDecision",
+      "non_claims": [
+        "Earlier permit receipts remain historical; existing sessions are not terminated."
+      ],
+      "occurred_at": "2026-07-30T10:05:02Z",
+      "payload": {
+        "decided_at": "2026-07-30T10:05:02Z",
+        "decision": "deny",
+        "decision_id": "delegation-decision:synthetic-002",
+        "policy_version": "caretrust.delegation-authorization.v1",
+        "reason_codes": [
+          "GRANT_REVOKED"
+        ],
+        "request_id": "delegation-request:synthetic-002",
+        "schema_version": "caretrust.delegation-authorization-decision.v1",
+        "supporting_grant_ids": [],
+        "synthetic": true
+      },
+      "payload_sha256": "d1c1b82b73c48c02a608ce2dcfc94d84f7f216de0c289413d718562b674f3daf",
+      "receiver_ref": "account:synthetic-leilani",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 15,
+      "standard_refs": [
+        "CareTrust DelegationAuthorizationDecision v1"
+      ],
+      "trace_id": "trace:synthetic-patient-navigator-001"
+    }
+  ],
+  "fixture_refs": [
+    "docs/standards/examples/delegation/",
+    "docs/standards/caretrust-delegation-vocabulary.v1.json"
+  ],
+  "limitations": [
+    "Synthetic data and local policies only.",
+    "No identity proofing, legal authority, clinical chart, EHR, or external application is represented."
+  ],
+  "schema_version": "caretrust.trace-bundle.v1",
+  "synthetic_only": true,
+  "title": "Synthetic patient delegation case navigator source trace",
+  "trace_id": "trace:synthetic-patient-navigator-001"
+}

@@ -1,0 +1,185 @@
+{
+  "candidate_validation_errors": [],
+  "clarifications": [],
+  "compilation_mode": "model_candidate_validated",
+  "draft": {
+    "activation_permitted": false,
+    "allowed_actions": [
+      "view_appointments"
+    ],
+    "allowed_audiences": [
+      "app:synthetic-scheduling"
+    ],
+    "allowed_purposes": [
+      "appointment_management"
+    ],
+    "allowed_resources": [
+      "appointments"
+    ],
+    "authority_basis": "unverified_patient_intent",
+    "authorization_permitted": false,
+    "blocking_issues": [],
+    "delegate_ref": "person:synthetic-leilani-caregiver",
+    "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+    "draft_version": 1,
+    "evidence_bindings": [
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "delegate_ref",
+        "value": "person:synthetic-leilani-caregiver"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "relationship_code",
+        "value": "child"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "allowed_actions",
+        "value": "view_appointments"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "allowed_resources",
+        "value": "appointments"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "excluded_resources",
+        "value": "billing"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "allowed_audiences",
+        "value": "app:synthetic-scheduling"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "allowed_purposes",
+        "value": "appointment_management"
+      },
+      {
+        "evidence_refs": [
+          "intent:compiler-fixture-001:full-text"
+        ],
+        "field_path": "valid_until",
+        "value": "2026-12-31"
+      }
+    ],
+    "excluded_resources": [
+      "billing"
+    ],
+    "intent_id": "intent:compiler-fixture-001",
+    "intent_sha256": "c3593120f3a219a14adf5f696d2fa3449b5134d0dc1868808cca5e63e68463d2",
+    "legal_authority_status": "not_established",
+    "patient_ref": "patient:synthetic-compiler-001",
+    "proposed_by": "ai_model",
+    "relationship_code": "child",
+    "schema_version": "caretrust.delegation-draft.v1",
+    "status": "draft",
+    "synthetic": true,
+    "uncertainties": [],
+    "valid_from": null,
+    "valid_until": "2026-12-31"
+  },
+  "evidence_status": "contract_tested",
+  "model_candidate": {
+    "actions": [
+      {
+        "citation": {
+          "quote": "look at upcoming appointments",
+          "span_id": "intent:compiler-fixture-001:full-text"
+        },
+        "value": "view_appointments"
+      }
+    ],
+    "audience": {
+      "citation": {
+        "quote": "scheduling app",
+        "span_id": "intent:compiler-fixture-001:full-text"
+      },
+      "value": "app:synthetic-scheduling"
+    },
+    "delegate_ref": {
+      "citation": {
+        "quote": "daughter Leilani",
+        "span_id": "intent:compiler-fixture-001:full-text"
+      },
+      "value": "person:synthetic-leilani-caregiver"
+    },
+    "excluded_resources": [
+      {
+        "citation": {
+          "quote": "billing",
+          "span_id": "intent:compiler-fixture-001:full-text"
+        },
+        "value": "billing"
+      }
+    ],
+    "purpose": {
+      "citation": {
+        "quote": "appointment management",
+        "span_id": "intent:compiler-fixture-001:full-text"
+      },
+      "value": "appointment_management"
+    },
+    "relationship_code": {
+      "citation": {
+        "quote": "daughter",
+        "span_id": "intent:compiler-fixture-001:full-text"
+      },
+      "value": "child"
+    },
+    "resources": [
+      {
+        "citation": {
+          "quote": "look at upcoming appointments",
+          "span_id": "intent:compiler-fixture-001:full-text"
+        },
+        "value": "appointments"
+      }
+    ],
+    "valid_until": {
+      "citation": {
+        "quote": "2026-12-31",
+        "span_id": "intent:compiler-fixture-001:full-text"
+      },
+      "value": "2026-12-31"
+    }
+  },
+  "non_claims": [
+    "This compilation is an unverified draft and cannot create authority."
+  ],
+  "run": {
+    "authority_actions_available": false,
+    "compiler_version": "caretrust.intent-compiler.v1",
+    "completed_at": "2026-07-30T10:00:00Z",
+    "draft_only": true,
+    "estimated_cost_usd": 0.0,
+    "input_sha256": "c3593120f3a219a14adf5f696d2fa3449b5134d0dc1868808cca5e63e68463d2",
+    "latency_ms": 0,
+    "model_id": "recorded-structured-output-v1",
+    "prompt_sha256": "3a401e6ea1f0e731d20011dc210a7ef7c1eef73ca51f7ac1f9e5bc79b4a9392d",
+    "provider": "recorded_contract_fixture",
+    "response_sha256": "d413d9ac1a683d6bee00cf80b38410cc3b64a20227b9e74b4301dabdba011c6d",
+    "run_id": "compiler-run:intent:compiler-fixture-001:bedrock",
+    "schema_version": "caretrust.compiler-run.v1",
+    "started_at": "2026-07-30T10:00:00Z"
+  },
+  "safety_flags": [],
+  "schema_version": "caretrust.intent-compilation.v1"
+}

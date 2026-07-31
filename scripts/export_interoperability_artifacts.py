@@ -7,6 +7,26 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
+from caretrust.clinical_edge import (
+    ClinicalDataAuthorizationDecision,
+    ClinicalDataAuthorizationRequest,
+    ClinicalDataExchangeRecord,
+    PatientMatchResult,
+)
+from caretrust.delegation import (
+    CareRelationshipClaim,
+    ClarificationRequest,
+    ClarificationResponse,
+    DelegationAuthorizationDecision,
+    DelegationAuthorizationRequest,
+    DelegationDraft,
+    DelegationGrant,
+    DelegationRevocationRecord,
+    IntentStatement,
+    InviteAcceptance,
+    PatientApprovalRecord,
+    PatientInvite,
+)
 from caretrust.models import (
     ActiveCredentialClaim,
     AuditEvent,
@@ -18,6 +38,18 @@ from caretrust.models import (
     RegistryResult,
     ReviewRecord,
     RevocationRecord,
+)
+from caretrust.navigator import PatientNavigatorProjection
+from caretrust.trace import TraceBundle, TraceEnvelope
+from caretrust.uploaded_care import (
+    DocumentExtractionDraft,
+    DocumentReviewCorrectionRecord,
+    DocumentShareDecision,
+    DocumentShareGrant,
+    DocumentShareRequest,
+    DocumentShareRevocationRecord,
+    UploadedCareDocument,
+    UploadedDocumentFhirProjection,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,6 +93,114 @@ EXPORTS: tuple[tuple[type[BaseModel], Path], ...] = (
     (
         AuditEvent,
         ROOT / "schemas" / "audit-event.schema.json",
+    ),
+    (
+        TraceEnvelope,
+        ROOT / "schemas" / "trace-envelope.schema.json",
+    ),
+    (
+        TraceBundle,
+        ROOT / "schemas" / "trace-bundle.schema.json",
+    ),
+    (
+        IntentStatement,
+        ROOT / "schemas" / "intent-statement.schema.json",
+    ),
+    (
+        DelegationDraft,
+        ROOT / "schemas" / "delegation-draft.schema.json",
+    ),
+    (
+        ClarificationRequest,
+        ROOT / "schemas" / "clarification-request.schema.json",
+    ),
+    (
+        ClarificationResponse,
+        ROOT / "schemas" / "clarification-response.schema.json",
+    ),
+    (
+        PatientInvite,
+        ROOT / "schemas" / "patient-invite.schema.json",
+    ),
+    (
+        InviteAcceptance,
+        ROOT / "schemas" / "invite-acceptance.schema.json",
+    ),
+    (
+        PatientApprovalRecord,
+        ROOT / "schemas" / "patient-approval-record.schema.json",
+    ),
+    (
+        CareRelationshipClaim,
+        ROOT / "schemas" / "care-relationship-claim.schema.json",
+    ),
+    (
+        DelegationGrant,
+        ROOT / "schemas" / "delegation-grant.schema.json",
+    ),
+    (
+        DelegationAuthorizationRequest,
+        ROOT / "schemas" / "delegation-authorization-request.schema.json",
+    ),
+    (
+        DelegationAuthorizationDecision,
+        ROOT / "schemas" / "delegation-authorization-decision.schema.json",
+    ),
+    (
+        DelegationRevocationRecord,
+        ROOT / "schemas" / "delegation-revocation-record.schema.json",
+    ),
+    (
+        ClinicalDataAuthorizationRequest,
+        ROOT / "schemas" / "clinical-data-authorization-request.schema.json",
+    ),
+    (
+        PatientMatchResult,
+        ROOT / "schemas" / "patient-match-result.schema.json",
+    ),
+    (
+        ClinicalDataAuthorizationDecision,
+        ROOT / "schemas" / "clinical-data-authorization-decision.schema.json",
+    ),
+    (
+        ClinicalDataExchangeRecord,
+        ROOT / "schemas" / "clinical-data-exchange-record.schema.json",
+    ),
+    (
+        PatientNavigatorProjection,
+        ROOT / "schemas" / "patient-navigator-projection.schema.json",
+    ),
+    (
+        UploadedCareDocument,
+        ROOT / "schemas" / "uploaded-care-document.schema.json",
+    ),
+    (
+        DocumentExtractionDraft,
+        ROOT / "schemas" / "document-extraction-draft.schema.json",
+    ),
+    (
+        DocumentReviewCorrectionRecord,
+        ROOT / "schemas" / "document-review-correction-record.schema.json",
+    ),
+    (
+        DocumentShareGrant,
+        ROOT / "schemas" / "document-share-grant.schema.json",
+    ),
+    (
+        DocumentShareRequest,
+        ROOT / "schemas" / "document-share-request.schema.json",
+    ),
+    (
+        DocumentShareDecision,
+        ROOT / "schemas" / "document-share-decision.schema.json",
+    ),
+    (
+        DocumentShareRevocationRecord,
+        ROOT / "schemas" / "document-share-revocation-record.schema.json",
+    ),
+    (
+        UploadedDocumentFhirProjection,
+        ROOT / "schemas" / "uploaded-document-fhir-projection.schema.json",
     ),
 )
 

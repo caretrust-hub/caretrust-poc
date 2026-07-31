@@ -1,0 +1,65 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "clarification_id": {
+      "title": "Clarification Id",
+      "type": "string"
+    },
+    "intent_id": {
+      "title": "Intent Id",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "responded_at": {
+      "format": "date-time",
+      "title": "Responded At",
+      "type": "string"
+    },
+    "response_id": {
+      "title": "Response Id",
+      "type": "string"
+    },
+    "response_sha256": {
+      "title": "Response Sha256",
+      "type": "string"
+    },
+    "response_text": {
+      "title": "Response Text",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.clarification-response.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "selected_values": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Selected Values",
+      "type": "array"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "response_id",
+    "clarification_id",
+    "intent_id",
+    "patient_ref",
+    "selected_values",
+    "response_text",
+    "response_sha256",
+    "responded_at",
+    "synthetic"
+  ],
+  "title": "ClarificationResponse",
+  "type": "object"
+}

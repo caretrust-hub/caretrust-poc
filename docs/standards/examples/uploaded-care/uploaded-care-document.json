@@ -1,0 +1,39 @@
+{
+  "classification": "discharge_instructions",
+  "clinically_authoritative": false,
+  "content_sha256": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70",
+  "content_type": "application/pdf",
+  "document_id": "document:synthetic-discharge-001",
+  "file_validation": {
+    "active_content_detected": false,
+    "file_validation_status": "valid",
+    "malware_scan_status": "clean",
+    "malware_scanner": "scanner:synthetic-clamav-contract",
+    "password_protected": false,
+    "reason_codes": [
+      "magic-bytes-contract-checked",
+      "active-content-not-detected"
+    ],
+    "scanned_at": "2026-07-30T18:00:00Z",
+    "validated_content_type": "application/pdf",
+    "validated_size_bytes": 457
+  },
+  "filename": "synthetic-discharge-instructions.pdf",
+  "intake_status": "accepted",
+  "invite_acceptance_id": "invite-acceptance:synthetic-001",
+  "original_retained_ref": "artifact:synthetic-upload-original-001",
+  "page_count": 1,
+  "patient_ref": "patient:synthetic-001",
+  "privacy": {
+    "contains_health_information": true,
+    "contains_real_phi": false,
+    "minimum_necessary_required": true,
+    "redisclosure_requires_new_decision": true,
+    "sensitivity": "restricted_health_information",
+    "synthetic_only": true
+  },
+  "schema_version": "caretrust.uploaded-care-document.v1",
+  "uploaded_at": "2026-07-30T18:00:01Z",
+  "uploader_account_ref": "account:synthetic-leilani",
+  "uploader_role": "invited_relative"
+}

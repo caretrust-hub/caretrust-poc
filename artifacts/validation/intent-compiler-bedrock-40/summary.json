@@ -1,0 +1,60 @@
+{
+  "state": "completed",
+  "frozen_config_sha256": "aca38bad052e5a5bc95deffdc05c6a8fe4a28f3125210f97d72986f10abd9424",
+  "retained_record_count": 40,
+  "consecutive_integrity": true,
+  "actual_or_estimated_cost_usd": 0.00391725,
+  "metrics": {
+    "schema_valid": {
+      "correct": 0,
+      "count": 39,
+      "rate": 0.0
+    },
+    "action": {
+      "correct": 39,
+      "count": 39,
+      "rate": 1.0
+    },
+    "resource": {
+      "correct": 39,
+      "count": 39,
+      "rate": 1.0
+    },
+    "audience": {
+      "correct": 38,
+      "count": 39,
+      "rate": 0.9743589743589743
+    },
+    "purpose": {
+      "correct": 39,
+      "count": 39,
+      "rate": 1.0
+    },
+    "expiry": {
+      "correct": 33,
+      "count": 39,
+      "rate": 0.8461538461538461
+    },
+    "evidence_grounded": {
+      "correct": 0,
+      "count": 39,
+      "rate": 0.0
+    },
+    "unsafe_authority_false_positive": {
+      "correct": 0,
+      "count": 39,
+      "rate": 0.0
+    },
+    "hitl": {
+      "correct": 6,
+      "count": 39,
+      "rate": 0.15384615384615385
+    },
+    "protocol_9_delta": {
+      "correct": 39,
+      "count": 39,
+      "rate": 1.0
+    }
+  },
+  "limitations": "AI candidate quality is measured separately from deterministic draft-only validation; no model output can activate or authorize authority."
+}

@@ -39,6 +39,7 @@ class FederationErrorCode(StrEnum):
     MISSING_TRUST_ANCHOR = "FEDERATION_MISSING_TRUST_ANCHOR"
     AUTHORITY_HINT_MISMATCH = "FEDERATION_AUTHORITY_HINT_MISMATCH"
     JWKS_MISMATCH = "FEDERATION_JWKS_MISMATCH"
+    METADATA_POLICY_VIOLATION = "FEDERATION_METADATA_POLICY_VIOLATION"
 
 
 class FederationTrustError(ValueError):
@@ -288,6 +289,7 @@ class ResolvedTrustChain:
     trust_anchor_id: str
     leaf_jwks: Mapping[str, Any]
     metadata: Mapping[str, Any]
+    metadata_policy: Mapping[str, Any]
     chain_sha256: str
     resolved_at: datetime
     synthetic: bool = True
@@ -299,6 +301,7 @@ class ResolvedTrustChain:
             "trust_anchor_id": self.trust_anchor_id,
             "leaf_jwks": self.leaf_jwks,
             "metadata": self.metadata,
+            "metadata_policy": self.metadata_policy,
             "chain_sha256": self.chain_sha256,
             "resolved_at": self.resolved_at.isoformat().replace("+00:00", "Z"),
             "synthetic": self.synthetic,
@@ -349,6 +352,7 @@ def issue_subordinate_statement(
     *,
     issued_at: datetime,
     lifetime: timedelta = timedelta(minutes=10),
+    metadata_policy: Mapping[str, Any] | None = None,
 ) -> str:
     issued_at = _require_aware(issued_at, "issued_at")
     if lifetime <= timedelta(0):
@@ -363,6 +367,10 @@ def issue_subordinate_statement(
         "jwks": subject.jwks,
         "metadata": dict(subject.metadata),
     }
+    if metadata_policy is not None:
+        if not isinstance(metadata_policy, Mapping):
+            raise ValueError("metadata_policy must be an object")
+        claims["metadata_policy"] = dict(metadata_policy)
     return _sign_statement(authority.active_key, claims)
 
 
@@ -470,7 +478,78 @@ def _verify_statement(
         raise FederationTrustError(
             FederationErrorCode.CLAIMS_INVALID, "metadata must be an object"
         )
+    if "metadata_policy" in claims and not isinstance(claims["metadata_policy"], dict):
+        raise FederationTrustError(
+            FederationErrorCode.CLAIMS_INVALID, "metadata_policy must be an object"
+        )
     return claims
+
+
+def apply_metadata_policy(
+    metadata: Mapping[str, Any], metadata_policy: Mapping[str, Any] | None
+) -> dict[str, Any]:
+    """Apply the bounded local metadata-policy subset used by the lab.
+
+    This is not a general OpenID Federation metadata-policy implementation. It
+    supports only `value` (replace with a signed pinned value) and `one_of`
+    (require a scalar or every array member to be allowed). Unsupported policy
+    shapes fail closed rather than silently widening metadata.
+    """
+
+    if not isinstance(metadata, Mapping):
+        raise FederationTrustError(
+            FederationErrorCode.METADATA_POLICY_VIOLATION,
+            "metadata must be an object for policy application",
+        )
+    if metadata_policy is None:
+        return json.loads(json.dumps(metadata, sort_keys=True))
+    if not isinstance(metadata_policy, Mapping):
+        raise FederationTrustError(
+            FederationErrorCode.METADATA_POLICY_VIOLATION,
+            "metadata_policy must be an object",
+        )
+    result = json.loads(json.dumps(metadata, sort_keys=True))
+    for metadata_type, type_policy in metadata_policy.items():
+        if not isinstance(metadata_type, str) or not isinstance(type_policy, Mapping):
+            raise FederationTrustError(
+                FederationErrorCode.METADATA_POLICY_VIOLATION,
+                "metadata-policy type rules must be objects",
+            )
+        target = result.get(metadata_type)
+        if not isinstance(target, dict):
+            raise FederationTrustError(
+                FederationErrorCode.METADATA_POLICY_VIOLATION,
+                "metadata policy references an unavailable metadata type",
+            )
+        for field, rule in type_policy.items():
+            if not isinstance(field, str) or not isinstance(rule, Mapping) or len(rule) != 1:
+                raise FederationTrustError(
+                    FederationErrorCode.METADATA_POLICY_VIOLATION,
+                    "metadata-policy fields require exactly one supported operator",
+                )
+            if "value" in rule:
+                target[field] = rule["value"]
+                continue
+            if "one_of" in rule:
+                allowed = rule["one_of"]
+                if not isinstance(allowed, list) or not allowed or field not in target:
+                    raise FederationTrustError(
+                        FederationErrorCode.METADATA_POLICY_VIOLATION,
+                        "one_of policy requires a nonempty list and existing metadata field",
+                    )
+                current = target[field]
+                values = current if isinstance(current, list) else [current]
+                if not all(value in allowed for value in values):
+                    raise FederationTrustError(
+                        FederationErrorCode.METADATA_POLICY_VIOLATION,
+                        "metadata value is outside the signed policy allowlist",
+                    )
+                continue
+            raise FederationTrustError(
+                FederationErrorCode.METADATA_POLICY_VIOLATION,
+                "unsupported metadata-policy operator",
+            )
+    return result
 
 
 def resolve_trust_chain(
@@ -535,6 +614,9 @@ def resolve_trust_chain(
             "anchor and leaf statements do not bind the same leaf JWKS",
         )
 
+    applied_metadata = apply_metadata_policy(
+        subordinate["metadata"], subordinate.get("metadata_policy")
+    )
     digest = hashlib.sha256(
         f"{entity_configuration}\n{subordinate_statement}".encode("ascii")
     ).hexdigest()
@@ -543,7 +625,8 @@ def resolve_trust_chain(
         leaf_entity_id=leaf_id,
         trust_anchor_id=anchor.entity_id,
         leaf_jwks=leaf["jwks"],
-        metadata=subordinate["metadata"],
+        metadata=applied_metadata,
+        metadata_policy=subordinate.get("metadata_policy", {}),
         chain_sha256=digest,
         resolved_at=_require_aware(now, "now"),
     )

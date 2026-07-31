@@ -1,0 +1,38 @@
+{
+  "allowed_actions": [
+    "schedule_appointments",
+    "view_visit_instructions"
+  ],
+  "allowed_audiences": [
+    "app:synthetic-scheduling",
+    "app:synthetic-care-portal"
+  ],
+  "allowed_purposes": [
+    "appointment_management",
+    "care_coordination"
+  ],
+  "allowed_resources": [
+    "appointments",
+    "visit_instructions"
+  ],
+  "application_decision_required": true,
+  "approval_id": "approval:synthetic-001",
+  "authority_basis": "patient_attestation",
+  "delegate_ref": "account:synthetic-leilani",
+  "excluded_resources": [
+    "billing",
+    "mental_health_records"
+  ],
+  "grant_id": "grant:synthetic-001",
+  "issued_at": "2026-07-30T10:03:01Z",
+  "issuer_ref": "org:synthetic-caretrust",
+  "legal_authority_status": "not_established",
+  "patient_ref": "patient:synthetic-001",
+  "relationship_claim_id": "relationship:synthetic-001",
+  "revoked_at": null,
+  "schema_version": "caretrust.delegation-grant.v1",
+  "status": "active",
+  "synthetic": true,
+  "valid_from": "2026-07-30",
+  "valid_until": "2026-12-31"
+}

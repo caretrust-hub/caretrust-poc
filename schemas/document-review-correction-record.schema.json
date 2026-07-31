@@ -1,0 +1,190 @@
+{
+  "$defs": {
+    "DocumentItemCorrection": {
+      "additionalProperties": false,
+      "properties": {
+        "corrected_text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Corrected Text",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "previous_text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Previous Text",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "previous_text",
+        "corrected_text",
+        "reason",
+        "evidence_refs"
+      ],
+      "title": "DocumentItemCorrection",
+      "type": "object"
+    },
+    "ReviewDecision": {
+      "enum": [
+        "approved",
+        "corrected",
+        "rejected",
+        "deferred"
+      ],
+      "title": "ReviewDecision",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "approved_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "title": "Approved Item Ids",
+      "type": "array"
+    },
+    "corrections": {
+      "items": {
+        "$ref": "#/$defs/DocumentItemCorrection"
+      },
+      "title": "Corrections",
+      "type": "array"
+    },
+    "decision": {
+      "$ref": "#/$defs/ReviewDecision"
+    },
+    "deferred_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "title": "Deferred Item Ids",
+      "type": "array"
+    },
+    "document_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "establishes_current_clinical_truth": {
+      "const": false,
+      "default": false,
+      "title": "Establishes Current Clinical Truth",
+      "type": "boolean"
+    },
+    "establishes_legal_authority": {
+      "const": false,
+      "default": false,
+      "title": "Establishes Legal Authority",
+      "type": "boolean"
+    },
+    "original_draft_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Original Draft Sha256",
+      "type": "string"
+    },
+    "rejected_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "title": "Rejected Item Ids",
+      "type": "array"
+    },
+    "review_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Review Id",
+      "type": "string"
+    },
+    "review_scope": {
+      "const": "document_statement_only",
+      "default": "document_statement_only",
+      "title": "Review Scope",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "title": "Reviewed At",
+      "type": "string"
+    },
+    "reviewer_account_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Reviewer Account Ref",
+      "type": "string"
+    },
+    "reviewer_role": {
+      "const": "accountable_reviewer",
+      "default": "accountable_reviewer",
+      "title": "Reviewer Role",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.document-review-correction-record.v1",
+      "default": "caretrust.document-review-correction-record.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "review_id",
+    "document_id",
+    "draft_id",
+    "original_draft_sha256",
+    "reviewer_account_ref",
+    "decision",
+    "approved_item_ids",
+    "rejected_item_ids",
+    "deferred_item_ids",
+    "corrections",
+    "reviewed_at"
+  ],
+  "title": "DocumentReviewCorrectionRecord",
+  "type": "object"
+}

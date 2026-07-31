@@ -1,0 +1,12 @@
+{
+  "actor_ref": "patient:synthetic-001",
+  "grant_id": "grant:synthetic-001",
+  "patient_ref": "patient:synthetic-001",
+  "reason": "Synthetic patient withdrew the bounded delegation.",
+  "reason_code": "PATIENT_REVOKED_DELEGATION",
+  "revocation_id": "delegation-revocation:synthetic-001",
+  "revoked_at": "2026-07-30T10:05:00Z",
+  "schema_version": "caretrust.delegation-revocation-record.v1",
+  "synthetic": true,
+  "target_type": "delegation_grant"
+}

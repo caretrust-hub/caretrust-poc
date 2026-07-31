@@ -1,7 +1,8 @@
 # CareTrust bounded FHIR R4 projection profile
 
-Status: **executable local projection with deterministic local tests; not an
-official FHIR conformance claim**.
+Evidence status: **`executed_local` — Executed local**. This means an
+executable local projection with deterministic local tests; it is not an
+official FHIR conformance claim.
 
 This prototype projects one active, synthetic Hawaii Certified Nurse Aide
 CareTrust claim into a FHIR R4 `Bundle` of type `collection`. The bundle carries

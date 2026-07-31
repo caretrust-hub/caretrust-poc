@@ -1,0 +1,13 @@
+{
+  "decided_at": "2026-07-30T18:00:12Z",
+  "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+  "granted_approved_item_ids": [],
+  "outcome": "deny",
+  "policy_version": "caretrust.document-share-policy.v1",
+  "reason_codes": [
+    "grant_revoked"
+  ],
+  "request_id": "document-share-request:synthetic-after-revocation-001",
+  "schema_version": "caretrust.document-share-decision.v1",
+  "supporting_grant_id": null
+}

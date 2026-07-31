@@ -1,0 +1,206 @@
+{
+  "blocking_issue_codes": [
+    "ambiguous_medication",
+    "clinical_interpretation_required"
+  ],
+  "candidate_items": [
+    {
+      "candidate_text": "The document states a discharge date of 2026-07-29.",
+      "category": "discharge-date",
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "confidence": 0.99,
+      "current_clinical_truth": false,
+      "evidence_refs": [
+        "evidence:discharge-date"
+      ],
+      "item_id": "candidate:discharge-date",
+      "kind": "fact",
+      "normalized_value": "2026-07-29",
+      "sensitivity": "restricted_health_information",
+      "shareable": false,
+      "status": "draft"
+    },
+    {
+      "candidate_text": "Schedule primary care follow-up within 7 days.",
+      "category": "follow-up-instruction",
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "confidence": 0.96,
+      "current_clinical_truth": false,
+      "evidence_refs": [
+        "evidence:follow-up"
+      ],
+      "item_id": "candidate:follow-up",
+      "kind": "instruction",
+      "normalized_value": null,
+      "sensitivity": "restricted_health_information",
+      "shareable": false,
+      "status": "draft"
+    },
+    {
+      "candidate_text": "Bring the discharge sheet and current medication list.",
+      "category": "visit-preparation",
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "confidence": 0.98,
+      "current_clinical_truth": false,
+      "evidence_refs": [
+        "evidence:bring-documents"
+      ],
+      "item_id": "candidate:bring-documents",
+      "kind": "action_item",
+      "normalized_value": null,
+      "sensitivity": "restricted_health_information",
+      "shareable": false,
+      "status": "draft"
+    },
+    {
+      "candidate_text": "Continue home medicines as previously directed.",
+      "category": "medication-instruction",
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "confidence": 0.65,
+      "current_clinical_truth": false,
+      "evidence_refs": [
+        "evidence:medication-note"
+      ],
+      "item_id": "candidate:medication",
+      "kind": "medication_candidate",
+      "normalized_value": null,
+      "sensitivity": "highly_sensitive_health_information",
+      "shareable": false,
+      "status": "draft"
+    },
+    {
+      "candidate_text": "Seek urgent care for new chest pain or severe shortness of breath.",
+      "category": "warning-sign-instruction",
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "confidence": 0.93,
+      "current_clinical_truth": false,
+      "evidence_refs": [
+        "evidence:warning-signs"
+      ],
+      "item_id": "candidate:warning-signs",
+      "kind": "instruction",
+      "normalized_value": null,
+      "sensitivity": "highly_sensitive_health_information",
+      "shareable": false,
+      "status": "draft"
+    }
+  ],
+  "clinically_authoritative": false,
+  "clinically_verified": false,
+  "created_at": "2026-07-30T18:00:02Z",
+  "current_clinical_truth": false,
+  "document_id": "document:synthetic-discharge-001",
+  "draft_id": "extraction-draft:synthetic-discharge-001",
+  "evidence_spans": [
+    {
+      "document_id": "document:synthetic-discharge-001",
+      "end_offset": 130,
+      "evidence_id": "evidence:discharge-date",
+      "exact_text": "Discharge date: 2026-07-29",
+      "page": 1,
+      "region": {
+        "height": 0.06,
+        "width": 0.84,
+        "x": 0.08,
+        "y": 0.25
+      },
+      "start_offset": 104
+    },
+    {
+      "document_id": "document:synthetic-discharge-001",
+      "end_offset": 204,
+      "evidence_id": "evidence:follow-up",
+      "exact_text": "Instructions: Schedule a follow-up visit with primary care within 7 days.",
+      "page": 1,
+      "region": {
+        "height": 0.06,
+        "width": 0.84,
+        "x": 0.08,
+        "y": 0.36
+      },
+      "start_offset": 131
+    },
+    {
+      "document_id": "document:synthetic-discharge-001",
+      "end_offset": 273,
+      "evidence_id": "evidence:bring-documents",
+      "exact_text": "Action item: Bring this discharge sheet and current medication list.",
+      "page": 1,
+      "region": {
+        "height": 0.06,
+        "width": 0.84,
+        "x": 0.08,
+        "y": 0.48
+      },
+      "start_offset": 205
+    },
+    {
+      "document_id": "document:synthetic-discharge-001",
+      "end_offset": 380,
+      "evidence_id": "evidence:medication-note",
+      "exact_text": "Medication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.",
+      "page": 1,
+      "region": {
+        "height": 0.06,
+        "width": 0.84,
+        "x": 0.08,
+        "y": 0.6
+      },
+      "start_offset": 274
+    },
+    {
+      "document_id": "document:synthetic-discharge-001",
+      "end_offset": 456,
+      "evidence_id": "evidence:warning-signs",
+      "exact_text": "Warning: Seek urgent care for new chest pain or severe shortness of breath.",
+      "page": 1,
+      "region": {
+        "height": 0.06,
+        "width": 0.84,
+        "x": 0.08,
+        "y": 0.74
+      },
+      "start_offset": 381
+    }
+  ],
+  "extraction_run_id": "extraction-run:synthetic-local-replay-001",
+  "extractor_ref": "extractor:synthetic-ai-contract",
+  "schema_version": "caretrust.document-extraction-draft.v1",
+  "shareable": false,
+  "source_pages": [
+    {
+      "page": 1,
+      "text": "SYNTHETIC TEST RECORD - NOT A REAL MEDICAL RECORD\nDISCHARGE INSTRUCTIONS\nPatient: Synthetic Patient 001\nDischarge date: 2026-07-29\nInstructions: Schedule a follow-up visit with primary care within 7 days.\nAction item: Bring this discharge sheet and current medication list.\nMedication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.\nWarning: Seek urgent care for new chest pain or severe shortness of breath.",
+      "text_sha256": "43b56416a5cc05456d998898a0b3d7c05d0a9c1824d09e99e040d2e3521aceb5"
+    }
+  ],
+  "status": "draft",
+  "synthetic_only": true,
+  "uncertainties": [
+    {
+      "blocking": true,
+      "code": "ambiguous_medication",
+      "detail": "The document does not list medication names, doses, or a current regimen.",
+      "evidence_refs": [
+        "evidence:medication-note"
+      ],
+      "item_id": "candidate:medication",
+      "uncertainty_id": "uncertainty:medication-unspecified"
+    },
+    {
+      "blocking": true,
+      "code": "clinical_interpretation_required",
+      "detail": "The warning text must remain withheld from apps until an accountable reviewer clarifies the originating clinical source and intended context.",
+      "evidence_refs": [
+        "evidence:warning-signs"
+      ],
+      "item_id": "candidate:warning-signs",
+      "uncertainty_id": "uncertainty:warning-source-clarification"
+    }
+  ]
+}

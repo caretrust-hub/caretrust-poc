@@ -1,0 +1,296 @@
+{
+  "$defs": {
+    "CareTrustClinicalContext": {
+      "additionalProperties": false,
+      "description": "Projection of CareTrust trust/delegation facts, not a disclosure grant.",
+      "properties": {
+        "allowed_data_holders": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Data Holders",
+          "type": "array"
+        },
+        "allowed_fhir_resource_types": {
+          "items": {
+            "enum": [
+              "Appointment",
+              "CarePlan",
+              "Observation"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Fhir Resource Types",
+          "type": "array"
+        },
+        "allowed_purposes": {
+          "items": {
+            "const": "care_coordination",
+            "type": "string"
+          },
+          "title": "Allowed Purposes",
+          "type": "array"
+        },
+        "allowed_scopes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Scopes",
+          "type": "array"
+        },
+        "caregiver_ref": {
+          "title": "Caregiver Ref",
+          "type": "string"
+        },
+        "caretrust_role": {
+          "const": "delegation_and_trust_context_only",
+          "title": "Caretrust Role",
+          "type": "string"
+        },
+        "context_id": {
+          "title": "Context Id",
+          "type": "string"
+        },
+        "delegation_decision_id": {
+          "title": "Delegation Decision Id",
+          "type": "string"
+        },
+        "delegation_grant_id": {
+          "title": "Delegation Grant Id",
+          "type": "string"
+        },
+        "disclosure_policy_authority": {
+          "const": "data_holder",
+          "title": "Disclosure Policy Authority",
+          "type": "string"
+        },
+        "legal_authority_status": {
+          "const": "not_established",
+          "title": "Legal Authority Status",
+          "type": "string"
+        },
+        "patient_match_authority": {
+          "const": "data_holder",
+          "title": "Patient Match Authority",
+          "type": "string"
+        },
+        "patient_ref": {
+          "title": "Patient Ref",
+          "type": "string"
+        },
+        "relationship_claim_id": {
+          "title": "Relationship Claim Id",
+          "type": "string"
+        },
+        "revoked_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revoked At"
+        },
+        "schema_version": {
+          "const": "caretrust.clinical-context.v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ClinicalContextStatus"
+        },
+        "synthetic": {
+          "const": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "valid_from": {
+          "format": "date",
+          "title": "Valid From",
+          "type": "string"
+        },
+        "valid_until": {
+          "format": "date",
+          "title": "Valid Until",
+          "type": "string"
+        },
+        "verified_at": {
+          "format": "date-time",
+          "title": "Verified At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "context_id",
+        "relationship_claim_id",
+        "delegation_grant_id",
+        "delegation_decision_id",
+        "patient_ref",
+        "caregiver_ref",
+        "status",
+        "allowed_data_holders",
+        "allowed_purposes",
+        "allowed_fhir_resource_types",
+        "allowed_scopes",
+        "valid_from",
+        "valid_until",
+        "verified_at",
+        "caretrust_role",
+        "patient_match_authority",
+        "disclosure_policy_authority",
+        "legal_authority_status",
+        "synthetic"
+      ],
+      "title": "CareTrustClinicalContext",
+      "type": "object"
+    },
+    "ClinicalContextStatus": {
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "title": "ClinicalContextStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "One fresh participant-application request delivered to a data holder.",
+  "properties": {
+    "authorized_user_ref": {
+      "title": "Authorized User Ref",
+      "type": "string"
+    },
+    "caregiver_is_requesting_actor": {
+      "const": false,
+      "title": "Caregiver Is Requesting Actor",
+      "type": "boolean"
+    },
+    "caregiver_ref": {
+      "title": "Caregiver Ref",
+      "type": "string"
+    },
+    "caretrust_context": {
+      "$ref": "#/$defs/CareTrustClinicalContext"
+    },
+    "client_id": {
+      "title": "Client Id",
+      "type": "string"
+    },
+    "clinical_data_recipient": {
+      "const": "authorized_participant_application",
+      "title": "Clinical Data Recipient",
+      "type": "string"
+    },
+    "data_holder_id": {
+      "title": "Data Holder Id",
+      "type": "string"
+    },
+    "final_disclosure_decision_requested": {
+      "const": true,
+      "title": "Final Disclosure Decision Requested",
+      "type": "boolean"
+    },
+    "participant_org_ref": {
+      "title": "Participant Org Ref",
+      "type": "string"
+    },
+    "patient_match_hint": {
+      "title": "Patient Match Hint",
+      "type": "string"
+    },
+    "patient_match_requested": {
+      "const": true,
+      "title": "Patient Match Requested",
+      "type": "boolean"
+    },
+    "prior_request_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Prior Request Id"
+    },
+    "purpose": {
+      "const": "care_coordination",
+      "title": "Purpose",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "requested_fhir_resource_types": {
+      "items": {
+        "enum": [
+          "Appointment",
+          "CarePlan",
+          "Observation"
+        ],
+        "type": "string"
+      },
+      "title": "Requested Fhir Resource Types",
+      "type": "array"
+    },
+    "requested_scopes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Requested Scopes",
+      "type": "array"
+    },
+    "requesting_actor_role": {
+      "const": "authorized_participant_user",
+      "title": "Requesting Actor Role",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.clinical-data-authorization-request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "data_holder_id",
+    "participant_org_ref",
+    "authorized_user_ref",
+    "client_id",
+    "requesting_actor_role",
+    "clinical_data_recipient",
+    "caregiver_ref",
+    "caregiver_is_requesting_actor",
+    "patient_match_hint",
+    "purpose",
+    "requested_fhir_resource_types",
+    "requested_scopes",
+    "caretrust_context",
+    "requested_at",
+    "patient_match_requested",
+    "final_disclosure_decision_requested",
+    "synthetic"
+  ],
+  "title": "ClinicalDataAuthorizationRequest",
+  "type": "object"
+}

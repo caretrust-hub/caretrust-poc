@@ -1,0 +1,65 @@
+[
+  {
+    "approval_status": "approved_for_bounded_sharing",
+    "approved_item_id": "approved:review:synthetic-discharge-001:candidate:discharge-date",
+    "category": "discharge-date",
+    "clinically_authoritative": false,
+    "current_clinical_truth": false,
+    "document_id": "document:synthetic-discharge-001",
+    "draft_id": "extraction-draft:synthetic-discharge-001",
+    "evidence_refs": [
+      "evidence:discharge-date"
+    ],
+    "kind": "fact",
+    "patient_ref": "patient:synthetic-001",
+    "requires_clinical_confirmation": false,
+    "review_id": "review:synthetic-discharge-001",
+    "reviewed_text": "The document states a discharge date of 2026-07-29.",
+    "schema_version": "caretrust.approved-document-item.v1",
+    "sensitivity": "restricted_health_information",
+    "source_assertion": "uploaded_document_statement",
+    "source_item_id": "candidate:discharge-date"
+  },
+  {
+    "approval_status": "approved_for_bounded_sharing",
+    "approved_item_id": "approved:review:synthetic-discharge-001:candidate:follow-up",
+    "category": "follow-up-instruction",
+    "clinically_authoritative": false,
+    "current_clinical_truth": false,
+    "document_id": "document:synthetic-discharge-001",
+    "draft_id": "extraction-draft:synthetic-discharge-001",
+    "evidence_refs": [
+      "evidence:follow-up"
+    ],
+    "kind": "instruction",
+    "patient_ref": "patient:synthetic-001",
+    "requires_clinical_confirmation": false,
+    "review_id": "review:synthetic-discharge-001",
+    "reviewed_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+    "schema_version": "caretrust.approved-document-item.v1",
+    "sensitivity": "restricted_health_information",
+    "source_assertion": "uploaded_document_statement",
+    "source_item_id": "candidate:follow-up"
+  },
+  {
+    "approval_status": "approved_for_bounded_sharing",
+    "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+    "category": "visit-preparation",
+    "clinically_authoritative": false,
+    "current_clinical_truth": false,
+    "document_id": "document:synthetic-discharge-001",
+    "draft_id": "extraction-draft:synthetic-discharge-001",
+    "evidence_refs": [
+      "evidence:bring-documents"
+    ],
+    "kind": "action_item",
+    "patient_ref": "patient:synthetic-001",
+    "requires_clinical_confirmation": true,
+    "review_id": "review:synthetic-discharge-001",
+    "reviewed_text": "Bring the discharge sheet and current medication list.",
+    "schema_version": "caretrust.approved-document-item.v1",
+    "sensitivity": "restricted_health_information",
+    "source_assertion": "uploaded_document_statement",
+    "source_item_id": "candidate:bring-documents"
+  }
+]

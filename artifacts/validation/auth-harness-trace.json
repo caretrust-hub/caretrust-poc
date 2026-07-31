@@ -1,0 +1,274 @@
+{
+  "application_onboarding_draft": {
+    "activation_permitted": false,
+    "application_id": "app:synthetic-scheduling",
+    "authorization_permitted": false,
+    "clarifications": [],
+    "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+    "flags": [],
+    "minimum_data_plan": [
+      {
+        "evidence_refs": [
+          "source:auth-harness-scheduling:full-text"
+        ],
+        "field": "appointment.id",
+        "rationale": "Identifies the appointment to display."
+      },
+      {
+        "evidence_refs": [
+          "source:auth-harness-scheduling:full-text"
+        ],
+        "field": "appointment.start",
+        "rationale": "Shows the scheduled time."
+      },
+      {
+        "evidence_refs": [
+          "source:auth-harness-scheduling:full-text"
+        ],
+        "field": "appointment.location",
+        "rationale": "Shows where the visit occurs."
+      },
+      {
+        "evidence_refs": [
+          "source:auth-harness-scheduling:full-text"
+        ],
+        "field": "appointment.status",
+        "rationale": "Shows cancellation or completion state."
+      }
+    ],
+    "proposed_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+    "proposed_rar": [
+      {
+        "actions": [
+          "schedule_appointments"
+        ],
+        "datatypes": [
+          "appointment.id",
+          "appointment.start",
+          "appointment.location",
+          "appointment.status"
+        ],
+        "evidence_refs": [
+          "source:auth-harness-scheduling:full-text"
+        ],
+        "locations": [
+          "https://scheduling.synthetic.example"
+        ],
+        "purpose": "appointment_management",
+        "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+      }
+    ],
+    "registration_permitted": false,
+    "schema_version": "caretrust.application-onboarding-draft.v1",
+    "source_sha256": "6e15c2e2c0780d01958b2f917b94a52fb134013fb8b39d7b59e3ad3c7cfeb5d2",
+    "status": "draft",
+    "synthetic": true
+  },
+  "authorization_code_receipt": {
+    "client_id": "client:synthetic-family-scheduling",
+    "code_id": "code-id:synthetic-001",
+    "code_sha256": "1fc1186152371e8fab1d8432bbabd838bb2c8f32772dc0545a5daa273d353946",
+    "expires_at": "2026-07-30T18:02:00Z",
+    "one_time": true,
+    "redirect_uri": "https://scheduling.synthetic.example/oauth/callback",
+    "request_id": "auth-request:synthetic-scheduling-001",
+    "schema_version": "caretrust.authorization-code-receipt.v1",
+    "state": "state:synthetic-auth-harness-001",
+    "synthetic": true,
+    "used": false
+  },
+  "authorization_code_request": {
+    "authorization_details": [
+      {
+        "actions": [
+          "schedule_appointments"
+        ],
+        "datatypes": [
+          "appointment.id",
+          "appointment.start",
+          "appointment.location",
+          "appointment.status"
+        ],
+        "locations": [
+          "https://scheduling.synthetic.example"
+        ],
+        "purpose": "appointment_management",
+        "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+      }
+    ],
+    "caregiver_ref": "account:synthetic-leilani",
+    "case_id": "case:synthetic-multi-caregiver-001",
+    "client_id": "client:synthetic-family-scheduling",
+    "code_challenge": "w1TpKUdYE9hUAcNSeeSRFioHDxfUxuHho_JHAfZ_vDM",
+    "code_challenge_method": "S256",
+    "identity_link_id": "identity-link:synthetic-caregiver-001",
+    "nonce": "nonce:synthetic-auth-harness-001",
+    "purpose": "appointment_management",
+    "redirect_uri": "https://scheduling.synthetic.example/oauth/callback",
+    "request_id": "auth-request:synthetic-scheduling-001",
+    "requested_at": "2026-07-30T18:00:00Z",
+    "resource": "https://scheduling.synthetic.example",
+    "response_type": "code",
+    "schema_version": "caretrust.oauth-authorization-code-request.v1",
+    "state": "state:synthetic-auth-harness-001",
+    "synthetic": true
+  },
+  "developer_client_metadata": {
+    "application_id": "app:synthetic-scheduling",
+    "client_id": "client:synthetic-family-scheduling",
+    "redirect_uris": [
+      "https://scheduling.synthetic.example/oauth/callback"
+    ],
+    "synthetic": true
+  },
+  "downstream_token_receipt": {
+    "decoded_claims": {
+      "aud": "https://scheduling.synthetic.example",
+      "authorization_details": [
+        "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+      ],
+      "caretrust_actions": [
+        "schedule_appointments"
+      ],
+      "caretrust_datatypes": [
+        "appointment.id",
+        "appointment.location",
+        "appointment.start",
+        "appointment.status"
+      ],
+      "client_id": "client:synthetic-family-scheduling",
+      "ct_case_decision_id": "decision:case:555526ebbd777a7b691f",
+      "ct_case_id": "case:synthetic-multi-caregiver-001",
+      "exp": 1785434700,
+      "iat": 1785434400,
+      "iss": "https://auth.caretrust.synthetic.invalid",
+      "jti": "token:synthetic-resource-001",
+      "nbf": 1785434400,
+      "purpose": "appointment_management",
+      "resource": "https://scheduling.synthetic.example",
+      "sub": "account:synthetic-leilani"
+    },
+    "evidence_status": "executed_local",
+    "expires_at": "2026-07-30T18:05:00Z",
+    "issued_at": "2026-07-30T18:00:00Z",
+    "schema_version": "caretrust.downstream-resource-token-receipt.v1",
+    "signed_with_kid": "auth-harness-synthetic-ed25519-v1",
+    "synthetic": true,
+    "token_id": "token:synthetic-resource-001",
+    "token_sha256": "afc36d2aa9dee4603ed206328a9b1d4ceae3f914727c576e642524a8232ac5d2"
+  },
+  "evidence_status": "executed_local",
+  "fresh_case_decision": {
+    "action": "schedule_appointments",
+    "application_id": "app:synthetic-scheduling",
+    "as_of": "2026-07-30T18:00:00Z",
+    "audience": "app:synthetic-scheduling",
+    "caregiver_ref": "account:synthetic-leilani",
+    "decision": "permit",
+    "decision_id": "decision:case:555526ebbd777a7b691f",
+    "evidence_status": "executed_local",
+    "minimum_data": [],
+    "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+    "policy_version": "case-access.v1",
+    "purpose": "appointment_management",
+    "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+    "request_id": "request:case:family-permit-001",
+    "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577",
+    "supporting_canonical_ids": [
+      "relationship:synthetic-001",
+      "grant:synthetic-001"
+    ]
+  },
+  "human_reviewed_registration": {
+    "allowed_actions": [
+      "schedule_appointments"
+    ],
+    "allowed_datatypes": [
+      "appointment.id",
+      "appointment.start",
+      "appointment.location",
+      "appointment.status"
+    ],
+    "allowed_purposes": [
+      "appointment_management"
+    ],
+    "allowed_resources": [
+      "https://scheduling.synthetic.example"
+    ],
+    "application_id": "app:synthetic-scheduling",
+    "client_id": "client:synthetic-family-scheduling",
+    "human_reviewer_ref": "reviewer:synthetic-org-admin-001",
+    "profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+    "redirect_uris": [
+      "https://scheduling.synthetic.example/oauth/callback"
+    ],
+    "registered_at": "2026-07-30T18:00:00Z",
+    "registration_id": "app-registration:synthetic-direct-care-001",
+    "review_decision": "approved",
+    "schema_version": "caretrust.application-registration.v1",
+    "source_draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+    "status": "active",
+    "synthetic": true
+  },
+  "introspection": {
+    "active": true,
+    "decoded_claims": {
+      "aud": "https://scheduling.synthetic.example",
+      "authorization_details": [
+        "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+      ],
+      "caretrust_actions": [
+        "schedule_appointments"
+      ],
+      "caretrust_datatypes": [
+        "appointment.id",
+        "appointment.location",
+        "appointment.start",
+        "appointment.status"
+      ],
+      "client_id": "client:synthetic-family-scheduling",
+      "ct_case_decision_id": "decision:case:555526ebbd777a7b691f",
+      "ct_case_id": "case:synthetic-multi-caregiver-001",
+      "exp": 1785434700,
+      "iat": 1785434400,
+      "iss": "https://auth.caretrust.synthetic.invalid",
+      "jti": "token:synthetic-resource-001",
+      "nbf": 1785434400,
+      "purpose": "appointment_management",
+      "resource": "https://scheduling.synthetic.example",
+      "sub": "account:synthetic-leilani"
+    }
+  },
+  "network_calls": false,
+  "non_claims": [
+    "The locally verified synthetic upstream OIDC ID token terminates at CareTrust; only a hash and identity link are retained.",
+    "No external IdP metadata, identity proofing, Cognito, Login.gov, HTTP endpoint, or production deployment was exercised.",
+    "The public trace omits upstream/downstream bearer tokens and all private key material."
+  ],
+  "public_key": {
+    "alg": "EdDSA",
+    "crv": "Ed25519",
+    "kid": "auth-harness-synthetic-ed25519-v1",
+    "kty": "OKP",
+    "use": "sig",
+    "x": "luwZpxH-C8gVrz2wXxe2O5544olJNDh3hCYe44emQZM"
+  },
+  "record_type": "caretrust.local-auth-harness-trace.v1",
+  "synthetic": true,
+  "upstream_identity_link": {
+    "assurance": "self_asserted_synthetic",
+    "caregiver_ref": "account:synthetic-leilani",
+    "external_identity_proofing_status": "planned_not_exercised",
+    "link_id": "identity-link:synthetic-caregiver-001",
+    "linked_at": "2026-07-30T18:00:00Z",
+    "oidc_id_token_verified_locally": true,
+    "oidc_nonce_sha256": "5b97df82156c9d4a14c98383afde7b75138f050be066294a3f9a00c829ba5666",
+    "schema_version": "caretrust.upstream-oidc-identity-link.v1",
+    "synthetic": true,
+    "upstream_issuer": "https://idp.synthetic.invalid",
+    "upstream_subject": "oidc-subject:synthetic-caregiver-001",
+    "upstream_token_forwarded_to_application": false,
+    "upstream_token_retained": false,
+    "upstream_token_sha256": "2288f7dcd3c97d0f04556b3e8dc351e35e14ade4460b56c9c3410dda629657df"
+  }
+}

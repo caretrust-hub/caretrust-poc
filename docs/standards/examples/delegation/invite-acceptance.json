@@ -1,0 +1,17 @@
+{
+  "acceptance_id": "invite-acceptance:synthetic-001",
+  "accepted_at": "2026-07-30T10:02:00Z",
+  "caregiver_ref": "account:synthetic-leilani",
+  "delegation_activated": false,
+  "identity_assurance": "synthetic_account_only",
+  "invite_id": "invite:synthetic-001",
+  "invite_token_sha256": "667eff78639bb145217c5a625ec85cc03d90d9e0181504c5c220c1b948ebeb2a",
+  "legal_authority_status": "not_established",
+  "nonce_sha256": "a279b165334303a3f576eb0e583db2bc4b830060ec2b9fae256acbfdbab5e049",
+  "patient_ref": "patient:synthetic-001",
+  "patient_consent_established": false,
+  "relationship_verified": false,
+  "schema_version": "caretrust.invite-acceptance.v1",
+  "status": "accepted",
+  "synthetic": true
+}

@@ -1,0 +1,15 @@
+{
+  "audience": "app:synthetic-scheduling",
+  "grant_id": "document-share-grant:synthetic-scheduling-001",
+  "include_raw_document": false,
+  "patient_ref": "patient:synthetic-001",
+  "purpose": "discharge_follow_up",
+  "request_id": "document-share-request:synthetic-after-revocation-001",
+  "requested_approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:follow-up"
+  ],
+  "requested_at": "2026-07-30T18:00:11Z",
+  "requester_ref": "app:synthetic-scheduling",
+  "schema_version": "caretrust.document-share-request.v1",
+  "synthetic_only": true
+}

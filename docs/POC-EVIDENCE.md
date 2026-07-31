@@ -25,18 +25,38 @@ inputs produce identical JSON.
 
 ## Evidence classes
 
-| Capability | Permitted description |
-| --- | --- |
-| CareTrust claim and policy | Implemented and locally tested |
-| FHIR R4 qualification projection | Executable local projection with deterministic local tests |
-| OID4VCI/OID4VP examples | Contract/artifact tested only |
-| OpenID Federation-shaped trust seam | Local synthetic trust-resolution simulation only |
-| OpenAPI 3.1 surface | Contract only; no HTTP server |
+The authoritative values and definitions are in the machine-readable
+[evidence-status registry](standards/evidence-status-registry.json). Unknown
+values are rejected by automated tests.
+
+| Capability | Evidence status | Bounded meaning |
+| --- | --- | --- |
+| AWS OCR-to-draft intake | `retained_aws` | One retained live synthetic AWS trace; it terminates at an unverified draft |
+| CareTrust claim and policy | `executed_local` | Executed in the local runtime and covered by deterministic tests |
+| FHIR R4 qualification projection | `executed_local` | Executable local projection with deterministic local tests |
+| OID4VCI/OID4VP examples | `contract_tested` | Contract/artifact tested only |
+| OpenID Federation-shaped trust seam | `local_simulation` | Local synthetic trust-resolution simulation only |
+| Synthetic clinical-data holder edge | `executed_local` | Participant-app request; data-holder-owned participant/client/user eligibility, patient match, and final disclosure; no caregiver-direct or live HIE/EHR access |
+| OpenAPI 3.1 surface | `contract_tested` | Contract tested; no HTTP server |
+| W3C VC 2.0 projection | `mapped_only` | Design mapping only; no VC artifact or conformance |
+| SMART App Launch | `planned` | Future integration direction with no implemented artifact |
 
 These classes must not be combined into a claim that CareTrust demonstrated a
 production trust hub. The post-evaluation artifacts do not establish
 cross-organization federation, FHIR conformance, OID4VC deployment, a wallet,
 live-registry integration, EHR integration, or production readiness.
+
+## Trace separation
+
+The retained AWS intake and deterministic trust lifecycle are different
+provenance families. The live AWS record stops at an unverified draft with
+blocking uncertainties. The deterministic lifecycle replays a different
+retained model response through local review, source-check, activation,
+authorization, and revocation behavior. The machine-readable
+[lineage registry](standards/provenance-lineages.json) records their distinct
+request IDs and response hashes, plus identifier reuse across standalone
+standards examples. A matching synthetic ID alone is never treated as evidence
+that two artifacts are one trace.
 
 ## Frozen evaluation separation
 

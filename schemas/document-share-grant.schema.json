@@ -1,0 +1,194 @@
+{
+  "$defs": {
+    "CandidateItemKind": {
+      "enum": [
+        "fact",
+        "instruction",
+        "action_item",
+        "medication_candidate"
+      ],
+      "title": "CandidateItemKind",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "restricted_health_information",
+        "highly_sensitive_health_information"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "ShareAudience": {
+      "enum": [
+        "app:synthetic-care-coordination",
+        "app:synthetic-scheduling",
+        "app:synthetic-direct-care-tasks"
+      ],
+      "title": "ShareAudience",
+      "type": "string"
+    },
+    "ShareGrantStatus": {
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "title": "ShareGrantStatus",
+      "type": "string"
+    },
+    "SharePurpose": {
+      "enum": [
+        "care_coordination",
+        "discharge_follow_up",
+        "visit_preparation"
+      ],
+      "title": "SharePurpose",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "allowed_audiences": {
+      "items": {
+        "$ref": "#/$defs/ShareAudience"
+      },
+      "minItems": 1,
+      "title": "Allowed Audiences",
+      "type": "array"
+    },
+    "allowed_item_kinds": {
+      "items": {
+        "$ref": "#/$defs/CandidateItemKind"
+      },
+      "minItems": 1,
+      "title": "Allowed Item Kinds",
+      "type": "array"
+    },
+    "allowed_purposes": {
+      "items": {
+        "$ref": "#/$defs/SharePurpose"
+      },
+      "minItems": 1,
+      "title": "Allowed Purposes",
+      "type": "array"
+    },
+    "approved_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Approved Item Ids",
+      "type": "array"
+    },
+    "fresh_decision_required": {
+      "const": true,
+      "default": true,
+      "title": "Fresh Decision Required",
+      "type": "boolean"
+    },
+    "grant_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "title": "Issued At",
+      "type": "string"
+    },
+    "maximum_sensitivity": {
+      "$ref": "#/$defs/SensitivityLevel"
+    },
+    "overbroad_requests_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Overbroad Requests Allowed",
+      "type": "boolean"
+    },
+    "patient_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "raw_document_sharing_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Raw Document Sharing Allowed",
+      "type": "boolean"
+    },
+    "review_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Review Id",
+      "type": "string"
+    },
+    "revoked_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revoked At"
+    },
+    "schema_version": {
+      "const": "caretrust.document-share-grant.v1",
+      "default": "caretrust.document-share-grant.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/ShareGrantStatus"
+    },
+    "synthetic_only": {
+      "const": true,
+      "default": true,
+      "title": "Synthetic Only",
+      "type": "boolean"
+    },
+    "unapproved_items_allowed": {
+      "const": false,
+      "default": false,
+      "title": "Unapproved Items Allowed",
+      "type": "boolean"
+    },
+    "valid_from": {
+      "format": "date-time",
+      "title": "Valid From",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date-time",
+      "title": "Valid Until",
+      "type": "string"
+    }
+  },
+  "required": [
+    "grant_id",
+    "patient_ref",
+    "review_id",
+    "approved_item_ids",
+    "allowed_audiences",
+    "allowed_purposes",
+    "allowed_item_kinds",
+    "maximum_sensitivity",
+    "status",
+    "valid_from",
+    "valid_until",
+    "issued_at"
+  ],
+  "title": "DocumentShareGrant",
+  "type": "object"
+}

@@ -1,0 +1,29 @@
+{
+  "allowed_audiences": [
+    "app:synthetic-direct-care-tasks"
+  ],
+  "allowed_item_kinds": [
+    "action_item"
+  ],
+  "allowed_purposes": [
+    "visit_preparation"
+  ],
+  "approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:bring-documents"
+  ],
+  "fresh_decision_required": true,
+  "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+  "issued_at": "2026-07-30T18:00:04Z",
+  "maximum_sensitivity": "restricted_health_information",
+  "overbroad_requests_allowed": false,
+  "patient_ref": "patient:synthetic-001",
+  "raw_document_sharing_allowed": false,
+  "review_id": "review:synthetic-discharge-001",
+  "revoked_at": null,
+  "schema_version": "caretrust.document-share-grant.v1",
+  "status": "active",
+  "synthetic_only": true,
+  "unapproved_items_allowed": false,
+  "valid_from": "2026-07-30T18:00:04Z",
+  "valid_until": "2026-08-06T18:00:00Z"
+}

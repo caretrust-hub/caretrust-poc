@@ -1,0 +1,364 @@
+{
+  "$defs": {
+    "DelegationAction": {
+      "description": "Patient-delegable actions in the bounded v0.3 prototype.",
+      "enum": [
+        "schedule_appointments",
+        "view_appointments",
+        "view_visit_instructions",
+        "message_care_team"
+      ],
+      "title": "DelegationAction",
+      "type": "string"
+    },
+    "DelegationAudience": {
+      "description": "Application audiences included in the bounded synthetic workflow.",
+      "enum": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "title": "DelegationAudience",
+      "type": "string"
+    },
+    "DelegationBlockingCode": {
+      "enum": [
+        "UNRESOLVED_MATERIAL_UNCERTAINTY",
+        "CONTRADICTORY_SCOPE",
+        "MISSING_DELEGATE",
+        "MISSING_DURATION",
+        "MISSING_REQUIRED_RESOURCE",
+        "UNKNOWN_AUDIENCE"
+      ],
+      "title": "DelegationBlockingCode",
+      "type": "string"
+    },
+    "DelegationPurpose": {
+      "description": "Purpose vocabulary used by local application policy.",
+      "enum": [
+        "care_coordination",
+        "appointment_management"
+      ],
+      "title": "DelegationPurpose",
+      "type": "string"
+    },
+    "DelegationResource": {
+      "description": "Resource categories understood by the bounded prototype.",
+      "enum": [
+        "appointments",
+        "visit_instructions",
+        "care_team_messages",
+        "billing",
+        "mental_health_records"
+      ],
+      "title": "DelegationResource",
+      "type": "string"
+    },
+    "DelegationUncertainty": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking": {
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "code": {
+          "$ref": "#/$defs/DelegationUncertaintyCode"
+        },
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "field_paths": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Field Paths",
+          "type": "array"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "field_paths",
+        "message",
+        "evidence_refs",
+        "blocking"
+      ],
+      "title": "DelegationUncertainty",
+      "type": "object"
+    },
+    "DelegationUncertaintyCode": {
+      "enum": [
+        "AMBIGUOUS_DELEGATE",
+        "AMBIGUOUS_RELATIONSHIP",
+        "AMBIGUOUS_ACTION",
+        "AMBIGUOUS_RESOURCE",
+        "AMBIGUOUS_AUDIENCE",
+        "AMBIGUOUS_PURPOSE",
+        "AMBIGUOUS_DATE",
+        "CONTRADICTORY_SCOPE",
+        "UNSUPPORTED_ACTION",
+        "UNSUPPORTED_RESOURCE"
+      ],
+      "title": "DelegationUncertaintyCode",
+      "type": "string"
+    },
+    "DraftEvidenceBinding": {
+      "additionalProperties": false,
+      "description": "Bind one proposed draft value to one or more intent/clarification spans.",
+      "properties": {
+        "evidence_refs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "field_path": {
+          "$ref": "#/$defs/DraftEvidenceField"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_path",
+        "value",
+        "evidence_refs"
+      ],
+      "title": "DraftEvidenceBinding",
+      "type": "object"
+    },
+    "DraftEvidenceField": {
+      "enum": [
+        "delegate_ref",
+        "relationship_code",
+        "allowed_actions",
+        "allowed_resources",
+        "excluded_resources",
+        "allowed_purposes",
+        "allowed_audiences",
+        "valid_from",
+        "valid_until"
+      ],
+      "title": "DraftEvidenceField",
+      "type": "string"
+    },
+    "RelationshipCode": {
+      "description": "Personal relationships; none of these codes establish legal authority.",
+      "enum": [
+        "child",
+        "spouse_or_partner",
+        "parent",
+        "sibling",
+        "other_family",
+        "friend",
+        "neighbor",
+        "other_personal_relationship",
+        "unspecified"
+      ],
+      "title": "RelationshipCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "The only patient-delegation object that an AI model may propose.",
+  "properties": {
+    "activation_permitted": {
+      "const": false,
+      "title": "Activation Permitted",
+      "type": "boolean"
+    },
+    "allowed_actions": {
+      "items": {
+        "$ref": "#/$defs/DelegationAction"
+      },
+      "title": "Allowed Actions",
+      "type": "array"
+    },
+    "allowed_audiences": {
+      "items": {
+        "$ref": "#/$defs/DelegationAudience"
+      },
+      "title": "Allowed Audiences",
+      "type": "array"
+    },
+    "allowed_purposes": {
+      "items": {
+        "$ref": "#/$defs/DelegationPurpose"
+      },
+      "title": "Allowed Purposes",
+      "type": "array"
+    },
+    "allowed_resources": {
+      "items": {
+        "$ref": "#/$defs/DelegationResource"
+      },
+      "title": "Allowed Resources",
+      "type": "array"
+    },
+    "authority_basis": {
+      "const": "unverified_patient_intent",
+      "title": "Authority Basis",
+      "type": "string"
+    },
+    "authorization_permitted": {
+      "const": false,
+      "title": "Authorization Permitted",
+      "type": "boolean"
+    },
+    "blocking_issues": {
+      "items": {
+        "$ref": "#/$defs/DelegationBlockingCode"
+      },
+      "title": "Blocking Issues",
+      "type": "array"
+    },
+    "delegate_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Delegate Ref"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "draft_version": {
+      "title": "Draft Version",
+      "type": "integer"
+    },
+    "evidence_bindings": {
+      "items": {
+        "$ref": "#/$defs/DraftEvidenceBinding"
+      },
+      "title": "Evidence Bindings",
+      "type": "array"
+    },
+    "excluded_resources": {
+      "items": {
+        "$ref": "#/$defs/DelegationResource"
+      },
+      "title": "Excluded Resources",
+      "type": "array"
+    },
+    "intent_id": {
+      "title": "Intent Id",
+      "type": "string"
+    },
+    "intent_sha256": {
+      "title": "Intent Sha256",
+      "type": "string"
+    },
+    "legal_authority_status": {
+      "const": "not_established",
+      "title": "Legal Authority Status",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "proposed_by": {
+      "const": "ai_model",
+      "title": "Proposed By",
+      "type": "string"
+    },
+    "relationship_code": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/RelationshipCode"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "const": "caretrust.delegation-draft.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "draft",
+      "title": "Status",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "uncertainties": {
+      "items": {
+        "$ref": "#/$defs/DelegationUncertainty"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "valid_from": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Valid From"
+    },
+    "valid_until": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Valid Until"
+    }
+  },
+  "required": [
+    "schema_version",
+    "draft_id",
+    "draft_version",
+    "intent_id",
+    "intent_sha256",
+    "patient_ref",
+    "delegate_ref",
+    "relationship_code",
+    "allowed_actions",
+    "allowed_resources",
+    "excluded_resources",
+    "allowed_purposes",
+    "allowed_audiences",
+    "valid_from",
+    "valid_until",
+    "evidence_bindings",
+    "uncertainties",
+    "blocking_issues",
+    "proposed_by",
+    "authority_basis",
+    "legal_authority_status",
+    "status",
+    "activation_permitted",
+    "authorization_permitted",
+    "synthetic"
+  ],
+  "title": "DelegationDraft",
+  "type": "object"
+}

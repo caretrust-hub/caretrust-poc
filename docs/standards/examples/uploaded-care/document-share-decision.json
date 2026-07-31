@@ -1,0 +1,15 @@
+{
+  "decided_at": "2026-07-30T18:00:06Z",
+  "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+  "granted_approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:follow-up"
+  ],
+  "outcome": "permit",
+  "policy_version": "caretrust.document-share-policy.v1",
+  "reason_codes": [
+    "policy_satisfied"
+  ],
+  "request_id": "document-share-request:synthetic-scheduling-permit-001",
+  "schema_version": "caretrust.document-share-decision.v1",
+  "supporting_grant_id": "document-share-grant:synthetic-scheduling-001"
+}

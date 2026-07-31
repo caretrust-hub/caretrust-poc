@@ -1,0 +1,36 @@
+{
+  "approved_item_ids": [
+    "candidate:discharge-date",
+    "candidate:follow-up",
+    "candidate:bring-documents"
+  ],
+  "corrections": [
+    {
+      "corrected_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+      "evidence_refs": [
+        "evidence:follow-up"
+      ],
+      "item_id": "candidate:follow-up",
+      "previous_text": "Schedule primary care follow-up within 7 days.",
+      "reason": "Preserve document-statement attribution; do not present as a current care-plan order."
+    }
+  ],
+  "decision": "corrected",
+  "deferred_item_ids": [
+    "candidate:warning-signs"
+  ],
+  "document_id": "document:synthetic-discharge-001",
+  "draft_id": "extraction-draft:synthetic-discharge-001",
+  "establishes_current_clinical_truth": false,
+  "establishes_legal_authority": false,
+  "original_draft_sha256": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+  "rejected_item_ids": [
+    "candidate:medication"
+  ],
+  "review_id": "review:synthetic-discharge-001",
+  "review_scope": "document_statement_only",
+  "reviewed_at": "2026-07-30T18:00:03Z",
+  "reviewer_account_ref": "patient:synthetic-001",
+  "reviewer_role": "accountable_reviewer",
+  "schema_version": "caretrust.document-review-correction-record.v1"
+}

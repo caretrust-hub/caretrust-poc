@@ -1,0 +1,145 @@
+{
+  "artifact_payload_sha256": "71a91b3c08a9fb52deae5848afb1e433b6c1564cce677bf2efe1882f919b9548",
+  "artifact_type": "caretrust.synthetic-two-hub-federation-lab.v1",
+  "claim_boundary": [
+    "Entity statements establish only synthetic participant/client metadata trust under separately pinned local anchors.",
+    "The caregiver decision is a separate fresh call to the existing CareTrust case policy and is not issued by federation resolution.",
+    "No live discovery, remote endpoint, operational federation, or cross-organization network exchange was performed."
+  ],
+  "evidence_status": "executed_local",
+  "fixture_sha256": "e3a26cb90af60d6243c8f92b29f3fa26d3f11195df49c91689953833251828b6",
+  "fresh_local_caregiver_decision_after_trust": {
+    "as_of": "2026-07-30T10:00:00Z",
+    "case_bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+    "case_id": "case:synthetic-multi-caregiver-001",
+    "decision": "permit",
+    "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+    "evidence_status": "executed_local",
+    "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+    "policy_version": "case-access.v1",
+    "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+    "request_id": "request:case:family-permit-001",
+    "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+  },
+  "key_rollover": {
+    "new_kids": [
+      "hub-synthetic-pacific-client-leaf-2026-01",
+      "hub-synthetic-pacific-client-leaf-2026-02"
+    ],
+    "old_kids": [
+      "hub-synthetic-pacific-client-leaf-2026-01"
+    ],
+    "resolved_with_fresh_statement": true,
+    "transition": "fresh_anchor_statement_required"
+  },
+  "negative_exercises": {
+    "expired_statement": "FEDERATION_STATEMENT_EXPIRED",
+    "stale_leaf_rollover": "FEDERATION_JWKS_MISMATCH",
+    "tampered_statement": "FEDERATION_SIGNATURE_INVALID",
+    "untrusted_anchor": "FEDERATION_MISSING_TRUST_ANCHOR"
+  },
+  "network_calls": false,
+  "participant_and_client_entity_trust": [
+    {
+      "chain_sha256": "31f36339604cc2c7c828050f55036281a66366b32622273bd5e96e5ba7fd4f5c",
+      "entity_configuration_sha256": "8d0e9f4184ab8702c6e8ec476a0e216d9eac0dda8e6f500fde08c4e3240cf04f",
+      "entity_id": "https://participant.synthetic.invalid",
+      "entity_trust_only": true,
+      "metadata_after_policy": {
+        "caretrust_participant": {
+          "organization_id": "org:synthetic-home-care-001",
+          "participant_kind": "direct-care-organization",
+          "synthetic": true
+        }
+      },
+      "metadata_policy": {
+        "caretrust_participant": {
+          "organization_id": {
+            "one_of": [
+              "org:synthetic-home-care-001"
+            ]
+          },
+          "participant_kind": {
+            "value": "direct-care-organization"
+          }
+        }
+      },
+      "public_jwks": {
+        "keys": [
+          {
+            "alg": "EdDSA",
+            "crv": "Ed25519",
+            "kid": "hub-synthetic-pacific-participant-leaf-2026-01",
+            "kty": "OKP",
+            "use": "sig",
+            "x": "_sDCLK7uunVUZjJRLuOjemHExRfGS-cmq3XXsucOdaU"
+          }
+        ]
+      },
+      "role": "participant_organization",
+      "subordinate_statement_sha256": "25985d297e2d6a659774fdac00ec161e81eff2a852ee75d3959df7a201e1b5ad",
+      "trust_anchor_id": "https://pacific-participant-anchor.synthetic.invalid"
+    },
+    {
+      "chain_sha256": "9769a9dbeec2136b9d71779b9fa804bf0b43289d214d00bc03e6bcf2a6f72bbe",
+      "entity_configuration_sha256": "ff06d568ffa2bb56c8bbd1097f0fb0be46d71e8601100379d0e653a6d38f8907",
+      "entity_id": "https://direct-care-client.synthetic.invalid",
+      "entity_trust_only": true,
+      "metadata_after_policy": {
+        "openid_relying_party": {
+          "client_id": "client:synthetic-direct-care",
+          "grant_types": [
+            "authorization_code"
+          ],
+          "redirect_uris": [
+            "https://direct-care-client.synthetic.invalid/callback"
+          ],
+          "synthetic": true
+        }
+      },
+      "metadata_policy": {
+        "openid_relying_party": {
+          "grant_types": {
+            "value": [
+              "authorization_code"
+            ]
+          },
+          "redirect_uris": {
+            "one_of": [
+              "https://direct-care-client.synthetic.invalid/callback"
+            ]
+          }
+        }
+      },
+      "public_jwks": {
+        "keys": [
+          {
+            "alg": "EdDSA",
+            "crv": "Ed25519",
+            "kid": "hub-synthetic-pacific-client-leaf-2026-01",
+            "kty": "OKP",
+            "use": "sig",
+            "x": "M0iq5VTxomE4MXbgaL5xR3DELio51SZOoo4yXi9iBmU"
+          }
+        ]
+      },
+      "role": "care_application_client",
+      "subordinate_statement_sha256": "1ecc043527bb11c36c7c4e710a8c14a98dcc7214e9580872484587ca72496663",
+      "trust_anchor_id": "https://pacific-client-anchor.synthetic.invalid"
+    }
+  ],
+  "private_key_material_in_artifact": false,
+  "synthetic_only": true,
+  "two_independent_hubs": [
+    {
+      "active_anchor_kid": "hub-synthetic-pacific-participant-anchor-2026-01",
+      "hub_id": "hub:synthetic-pacific-participant",
+      "trust_anchor_id": "https://pacific-participant-anchor.synthetic.invalid"
+    },
+    {
+      "active_anchor_kid": "hub-synthetic-pacific-client-anchor-2026-01",
+      "hub_id": "hub:synthetic-pacific-client",
+      "trust_anchor_id": "https://pacific-client-anchor.synthetic.invalid"
+    }
+  ]
+}

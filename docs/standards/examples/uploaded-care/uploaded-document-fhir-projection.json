@@ -1,0 +1,168 @@
+{
+  "candidate_only": true,
+  "clinically_authoritative": false,
+  "document_reference": {
+    "author": [
+      {
+        "display": "Synthetic document uploader",
+        "reference": "RelatedPerson/account:synthetic-leilani"
+      }
+    ],
+    "content": [
+      {
+        "attachment": {
+          "contentType": "application/pdf",
+          "title": "synthetic-discharge-instructions.pdf",
+          "url": "https://storage.synthetic.invalid/documents/document:synthetic-discharge-001"
+        }
+      }
+    ],
+    "date": "2026-07-30T18:00:01Z",
+    "id": "docref-document-synthetic-discharge-001",
+    "identifier": [
+      {
+        "system": "https://caretrust.example/synthetic/document-sha256",
+        "value": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70"
+      }
+    ],
+    "resourceType": "DocumentReference",
+    "securityLabel": [
+      {
+        "coding": [
+          {
+            "code": "R",
+            "display": "restricted",
+            "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+          }
+        ],
+        "text": null
+      }
+    ],
+    "status": "current",
+    "subject": {
+      "display": null,
+      "reference": "Patient/patient:synthetic-001"
+    },
+    "type": {
+      "coding": [
+        {
+          "code": "18842-5",
+          "display": "Discharge summary",
+          "system": "http://loinc.org"
+        }
+      ],
+      "text": "discharge_instructions"
+    }
+  },
+  "downstream_candidates": [
+    {
+      "clinically_authoritative": false,
+      "current_clinical_truth": false,
+      "emitted": false,
+      "projection_status": "draft_candidate",
+      "resource_family": "Task",
+      "source_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ]
+    },
+    {
+      "clinically_authoritative": false,
+      "current_clinical_truth": false,
+      "emitted": false,
+      "projection_status": "draft_candidate",
+      "resource_family": "CarePlan",
+      "source_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:follow-up"
+      ]
+    },
+    {
+      "clinically_authoritative": false,
+      "current_clinical_truth": false,
+      "emitted": false,
+      "projection_status": "planned",
+      "resource_family": "MedicationStatement",
+      "source_item_ids": []
+    }
+  ],
+  "fhir_server_exchange_executed": false,
+  "official_hl7_validation_executed": false,
+  "provenance": {
+    "agent": [
+      {
+        "type": {
+          "coding": [
+            {
+              "code": "assembler",
+              "display": "Assembler",
+              "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+            }
+          ],
+          "text": null
+        },
+        "who": {
+          "display": null,
+          "reference": "Practitioner/patient:synthetic-001"
+        }
+      }
+    ],
+    "entity": [
+      {
+        "role": "source",
+        "what": {
+          "display": null,
+          "reference": "DocumentReference/source-document:synthetic-discharge-001"
+        }
+      },
+      {
+        "role": "source",
+        "what": {
+          "display": null,
+          "reference": "Basic/review:synthetic-discharge-001"
+        }
+      }
+    ],
+    "id": "provenance-review-synthetic-discharge-001",
+    "recorded": "2026-07-30T18:00:09Z",
+    "resourceType": "Provenance",
+    "target": [
+      {
+        "display": null,
+        "reference": "DocumentReference/docref-document-synthetic-discharge-001"
+      }
+    ]
+  },
+  "schema_version": "caretrust.uploaded-document-fhir-r4-candidate-projection.v1",
+  "semantic_loss": [
+    {
+      "detail": "Mapped to v3 Confidentiality; CareTrust policy detail remains local.",
+      "disposition": "represented",
+      "fhir_target": "DocumentReference.securityLabel",
+      "source_field": "privacy.sensitivity"
+    },
+    {
+      "detail": "FHIR URL is a synthetic locator; the opaque retained-reference contract remains local.",
+      "disposition": "local_only",
+      "fhir_target": "DocumentReference.content.attachment.url",
+      "source_field": "original_retained_ref"
+    },
+    {
+      "detail": "Exact page, region, and text offsets are retained in CareTrust and not emitted in base R4.",
+      "disposition": "omitted",
+      "fhir_target": "none",
+      "source_field": "evidence_spans"
+    },
+    {
+      "detail": "Purpose, audience, approved-item scope, and revocation require the CareTrust policy contract.",
+      "disposition": "omitted",
+      "fhir_target": "none",
+      "source_field": "document_share_grant"
+    }
+  ],
+  "source_approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:discharge-date",
+    "approved:review:synthetic-discharge-001:candidate:follow-up",
+    "approved:review:synthetic-discharge-001:candidate:bring-documents"
+  ],
+  "source_document_id": "document:synthetic-discharge-001",
+  "source_review_id": "review:synthetic-discharge-001"
+}

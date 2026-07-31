@@ -33,13 +33,20 @@ ARTIFACT_PATTERNS = (
     "docs/standards/**/*.md",
     "schemas/*.json",
     "scripts/build_poc_evidence_manifest.py",
+    "scripts/export_clinical_edge_examples.py",
+    "src/caretrust/clinical_edge.py",
     "src/caretrust/federation.py",
     "src/caretrust/fhir_projection.py",
+    "tests/test_clinical_edge.py",
     "tests/test_federation.py",
     "tests/test_fhir_projection.py",
     "tests/test_oid4vc_artifacts.py",
     "tests/test_poc_evidence_manifest.py",
     *FROZEN_EVALUATION_REFERENCES,
+)
+
+EVIDENCE_STATUS_REGISTRY = (
+    ROOT / "docs" / "standards" / "evidence-status-registry.json"
 )
 
 EXPLICIT_NON_CLAIMS = (
@@ -52,76 +59,35 @@ EXPLICIT_NON_CLAIMS = (
     "production identity proofing, authorization, security, or readiness",
 )
 
-IMPLEMENTATION_STATUS_MATRIX: tuple[dict[str, Any], ...] = (
-    {
-        "capability_id": "caretrust-core-claim-and-policy-contract",
-        "status": "implemented_and_locally_tested",
-        "evidence": [
-            "schemas/active-credential-claim.schema.json",
-            "schemas/authorization-request.schema.json",
-            "schemas/authorization-decision.schema.json",
-            "docs/standards/lifecycle-and-reason-codes.md",
-        ],
-        "boundary": (
-            "The local claim lifecycle and deterministic policy do not establish "
-            "production authorization or trust between independent organizations."
-        ),
-    },
-    {
-        "capability_id": "fhir-r4-qualification-projection",
-        "status": "executable_local_projection_with_deterministic_local_tests",
-        "evidence": [
-            "src/caretrust/fhir_projection.py",
-            "tests/test_fhir_projection.py",
-            "docs/standards/fhir-r4-projection-profile.md",
-            "docs/standards/examples/fhir/synthetic-hawaii-cna-bundle.json",
-        ],
-        "boundary": (
-            "No official HL7 validator, FHIR server, EHR, implementation guide, "
-            "or independent FHIR implementation is used."
-        ),
-    },
-    {
-        "capability_id": "oid4vci-and-oid4vp-exchange-artifacts",
-        "status": "contract_and_artifact_tested_only",
-        "evidence": [
-            "tests/test_oid4vc_artifacts.py",
-            "docs/standards/oid4vc-exchange-profile.md",
-            "docs/standards/examples/oid4vc/credential-issuer-metadata.json",
-            "docs/standards/examples/oid4vc/presentation-request.json",
-            "docs/standards/examples/oid4vc/presentation-response.json",
-            "docs/standards/examples/oid4vc/response-decision-linkage.json",
-        ],
-        "boundary": (
-            "No OID4VC endpoint, credential issuance, valid presentation, wallet, "
-            "holder binding, cryptographic verification, or conformance test runs."
-        ),
-    },
-    {
-        "capability_id": "openid-federation-trust-resolution",
-        "status": "local_synthetic_trust_resolution_simulation_only",
-        "evidence": [
-            "src/caretrust/federation.py",
-            "tests/test_federation.py",
-            "docs/standards/openid-federation-trust-profile.md",
-            "docs/standards/examples/federation/two-care-organizations.json",
-        ],
-        "boundary": (
-            "Two synthetic entity identifiers resolve in one local process with "
-            "caller-supplied statements and a pinned anchor; there is no network "
-            "discovery, operational federation, or cross-organization test."
-        ),
-    },
-    {
-        "capability_id": "caretrust-openapi-surface",
-        "status": "contract_only",
-        "evidence": [
-            "docs/standards/caretrust-openapi-3.1.json",
-            "tests/test_interoperability_artifacts.py",
-        ],
-        "boundary": "No HTTP server or deployed Phase 1 API is represented.",
-    },
-)
+def _load_implementation_status_matrix() -> tuple[dict[str, Any], ...]:
+    registry = json.loads(EVIDENCE_STATUS_REGISTRY.read_text(encoding="utf-8"))
+    known_statuses = {
+        item["id"]
+        for item in registry["statuses"]
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    matrix: list[dict[str, Any]] = []
+    for capability in registry["capabilities"]:
+        if not capability.get("include_in_manifest", False):
+            continue
+        status = capability["evidence_status"]
+        if status not in known_statuses:
+            raise ValueError(
+                f"unknown evidence status {status!r} for "
+                f"{capability['capability_id']}"
+            )
+        matrix.append(
+            {
+                "capability_id": capability["capability_id"],
+                "status": status,
+                "evidence": capability["evidence"],
+                "boundary": capability["boundary"],
+            }
+        )
+    return tuple(matrix)
+
+
+IMPLEMENTATION_STATUS_MATRIX = _load_implementation_status_matrix()
 
 
 class ManifestBuildError(RuntimeError):

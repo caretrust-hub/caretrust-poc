@@ -1,0 +1,146 @@
+{
+  "availability": {
+    "evidence_status": "contract_tested",
+    "fhir_resources": [
+      "Schedule",
+      "Slot"
+    ],
+    "gateway_filter": [
+      "organization",
+      "service",
+      "location"
+    ],
+    "smart_scope": null,
+    "warning": "Patient-compartment scopes may not safely cover organization-level availability; user scopes are broader than this projection. Apply policy/gateway filtering by organization, service, and location."
+  },
+  "business_action_mapping": [
+    {
+      "caretrust_action": "view_appointments",
+      "delete_allowed": false,
+      "evidence_status": "contract_tested",
+      "fhir_resource": "Appointment",
+      "interactions": "read/search",
+      "smart_scope": "patient/Appointment.rs"
+    },
+    {
+      "caretrust_action": "schedule_appointments",
+      "delete_allowed": false,
+      "evidence_status": "contract_tested",
+      "fhir_resource": "Appointment",
+      "interactions": "create/update",
+      "smart_scope": "patient/Appointment.cu"
+    }
+  ],
+  "capability_matrix": [
+    {
+      "capability": "schedule_appointments",
+      "caregiver_ref": "account:synthetic-leilani",
+      "caretrust_action": "schedule_appointments",
+      "caretrust_decision": "permit",
+      "caretrust_decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+      "caretrust_request_id": "request:case:family-permit-001",
+      "evidence_status": "executed_local",
+      "patient_ref": "patient:synthetic-001",
+      "smart_scopes": [
+        "launch/patient",
+        "patient/Appointment.cu"
+      ]
+    },
+    {
+      "capability": "no_scheduling_capability",
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "caretrust_action": "perform_assigned_direct_care",
+      "caretrust_decision": "permit",
+      "caretrust_decision_id": "decision:case:c4cf8911bf9502fea692",
+      "caretrust_request_id": "request:case:cna-permit-001",
+      "evidence_status": "executed_local",
+      "patient_ref": "patient:synthetic-001",
+      "reason": "CareTrust permit is bounded to assigned direct care, not appointment viewing or scheduling.",
+      "smart_scopes": []
+    }
+  ],
+  "caretrust_permission_source": {
+    "non_claim": "SMART scopes do not encode CareTrust audience, purpose, grants, assignments, status, or revocation checks.",
+    "rar_datatypes": [
+      "appointment.id",
+      "appointment.start"
+    ],
+    "rar_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+    "rar_type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1",
+    "smart_models_underlying_permission": false,
+    "source": "CareTrust RAR-shaped authorization details plus fresh deterministic decision"
+  },
+  "case_id": "case:synthetic-multi-caregiver-001",
+  "evidence_status": "executed_local",
+  "fresh_revocation_check": {
+    "caregiver_ref": "account:synthetic-leilani",
+    "decision": "deny",
+    "decision_id": "decision:case:6adfd412726aacdea40f",
+    "evidence_status": "executed_local",
+    "fresh_request_required": true,
+    "non_claim": "This fresh denial does not terminate a real token or external session.",
+    "reason_code": "GRANT_REVOKED",
+    "request_id": "request:case:family-revoked-001",
+    "smart_scopes": []
+  },
+  "non_claims": [
+    "No external FHIR R4 server, SMART authorization server, or independent FHIR validator was executed.",
+    "This projection does not claim SMART App Launch conformance or a live appointment workflow.",
+    "No delete scope, wildcard scope, or user scope is requested or granted."
+  ],
+  "projection_sha256": "73a938df84d0523824df54d48d9017c8126718bb7c1c5214b1d9062eb78f09da",
+  "proposed_appointment_workflow": {
+    "appointment": {
+      "id": "synthetic-proposed-appointment-001",
+      "participant": [
+        {
+          "actor": {
+            "reference": "Patient/synthetic-001"
+          },
+          "status": "needs-action"
+        },
+        {
+          "actor": {
+            "reference": "Practitioner/synthetic-scheduler"
+          },
+          "status": "needs-action"
+        }
+      ],
+      "resourceType": "Appointment",
+      "status": "proposed"
+    },
+    "appointment_response": {
+      "actor": {
+        "reference": "Patient/synthetic-001"
+      },
+      "appointment": {
+        "reference": "Appointment/synthetic-proposed-appointment-001"
+      },
+      "id": "synthetic-proposed-appointment-response-001",
+      "participantStatus": "tentative",
+      "resourceType": "AppointmentResponse"
+    },
+    "encounter_boundary": {
+      "included": false,
+      "reason": "Appointment is administrative planning; Encounter is a clinical event and is not created or read by this scheduling profile.",
+      "resourceType": "Encounter"
+    },
+    "evidence_status": "contract_tested"
+  },
+  "schema_version": "caretrust.fhir-smart-scheduling-projection.v1",
+  "source_metadata": {
+    "app_compilation_sha256": "4e947fb480f12d045bdb3b788dda4936104adb0df9359d33d6b3a78c8fdd7d53",
+    "case_bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+    "external_fhir_server_executed": false,
+    "external_smart_authorization_server_executed": false,
+    "official_hl7_urls": {
+      "appointment": "https://hl7.org/fhir/R4/appointment.html",
+      "appointment_response": "https://hl7.org/fhir/R4/appointmentresponse.html",
+      "encounter": "https://hl7.org/fhir/R4/encounter.html",
+      "schedule": "https://hl7.org/fhir/R4/schedule.html",
+      "slot": "https://hl7.org/fhir/R4/slot.html",
+      "smart_scopes": "https://hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html"
+    }
+  },
+  "synthetic": true
+}

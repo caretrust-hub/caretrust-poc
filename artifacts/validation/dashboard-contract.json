@@ -1,0 +1,2584 @@
+{
+  "case_id": "case:synthetic-multi-caregiver-001",
+  "dashboard_sha256": "b00f0e9fa556c30e747810d7c77d0420b9058cf543d16a85b24f4165f3a3a296",
+  "evidence_status": "executed_local",
+  "generated_at": "2026-07-30T18:00:00Z",
+  "non_claims": [
+    "This contract is derived display data and cannot create or alter authority.",
+    "All inputs are synthetic local fixtures; no live Bedrock, application, EHR, registry, or network is represented."
+  ],
+  "schema_version": "caretrust.dashboard-contract.v1",
+  "source_hashes": {
+    "application_compilation_sha256": "4e947fb480f12d045bdb3b788dda4936104adb0df9359d33d6b3a78c8fdd7d53",
+    "application_input_sha256": "23f02e874d5a2b77329ee34a456f92a1adced41e885fa4d113c0d15d45a7d4a9",
+    "case_bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+    "core_bridge_artifact_sha256": "fe9d693c05a189e68bf761c84ab4455b422b99c755cfad11afc5e863da2ee61c",
+    "intent_compilation_sha256": "dedd14f5dc1dec3a5125a9231942f8ae706a743e8ebe9b6b394749fed2645927",
+    "intent_input_sha256": "24869fc1cd3d5668dc693eeea28de0347028f16bbf75fc370084f693995bb360"
+  },
+  "synthetic": true,
+  "views": {
+    "ai_review": {
+      "candidate_to_draft": [
+        {
+          "bounded_value": "view_appointments",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "allowed_actions",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "look at upcoming appointments",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:1",
+          "source_sha256": "034d5dcf1006acb36224175975b2d9a4c608d8e3b33d70ce3a1dbbabc3db6f31"
+        },
+        {
+          "bounded_value": "app:synthetic-scheduling",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "allowed_audiences",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "scheduling app",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:2",
+          "source_sha256": "75f5523b800dc80725b67ac4106ec12770bb48a23efd75f84584e30dc4ae626b"
+        },
+        {
+          "bounded_value": "person:synthetic-leilani-caregiver",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "delegate_ref",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "daughter Leilani",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:3",
+          "source_sha256": "065ded2855291f18a15dd8d92ddd771fcdbefffc5ea4d4d4703946711a107f72"
+        },
+        {
+          "bounded_value": "billing",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "excluded_resources",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "billing",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:4",
+          "source_sha256": "6d4aec8fbbfab067afe88d8eacff58171a4f9c0757ed44d92b757bb06e6aa75e"
+        },
+        {
+          "bounded_value": "appointment_management",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "allowed_purposes",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "appointment management",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:5",
+          "source_sha256": "192d46ae80d4bc39fc14e14ebbd0ee8d709595084c8d91fa735f4c560906f1b3"
+        },
+        {
+          "bounded_value": "child",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "relationship_code",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "daughter",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:6",
+          "source_sha256": "51c45a888db34a66d4a7286252c7b5ec585d590cb47ddf4190867442e08c6e79"
+        },
+        {
+          "bounded_value": "appointments",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "allowed_resources",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "look at upcoming appointments",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:7",
+          "source_sha256": "08208be9c53963a020e401f7b2180e145812825a3dd1a6eea56f5b92f075e9f6"
+        },
+        {
+          "bounded_value": "2026-12-31",
+          "candidate_citation_id": "intent:compiler-fixture-001:full-text",
+          "canonical_refs": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "intent",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "intent:compiler-fixture-001:full-text"
+          ],
+          "draft_binding_field": "valid_until",
+          "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "2026-12-31",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:intent:8",
+          "source_sha256": "dacdc6227c9d0d756d14a944ecc80162c6f4032855eae0ebf3b086d583052e94"
+        },
+        {
+          "bounded_value": "schedule_appointments",
+          "candidate_citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "application",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "draft_binding_field": "proposed_rar.actions",
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "\"post\"",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:application:1",
+          "source_sha256": "d704874d2b5ec31cfa58f6ffb2b03b12b8e04c4f7eac5fa91287c30e656f6e79"
+        },
+        {
+          "bounded_value": "appointment_management",
+          "candidate_citation_id": "app-source:synthetic-scheduling-001:full-text",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app-source:synthetic-scheduling-001:full-text"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "application",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "app-source:synthetic-scheduling-001:full-text"
+          ],
+          "draft_binding_field": "proposed_profile/capability",
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "scheduling application",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:application:2",
+          "source_sha256": "68af4567908e5c0b1923591bbcab565ce656f635fef6c439deea93bfc7d8f640"
+        },
+        {
+          "bounded_value": "appointment.id",
+          "candidate_citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "application",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "draft_binding_field": "minimum_data_plan",
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "/appointments",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:application:3",
+          "source_sha256": "dacd0090ed65f9bc941d479424460809d4dbe2a919755756e0eec18ff2999deb"
+        },
+        {
+          "bounded_value": "appointment.start",
+          "candidate_citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "application",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "draft_binding_field": "minimum_data_plan",
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "/appointments",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:application:4",
+          "source_sha256": "9da167506669cbedd6f5d675a6ca0b87dd761b61363e4414724978bd2e4b58ed"
+        },
+        {
+          "bounded_value": "https://scheduling.synthetic.example",
+          "candidate_citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "compilation_mode": "model_candidate_validated",
+          "compiler_kind": "application",
+          "deterministic_validation_errors": [],
+          "draft_binding_evidence_refs": [
+            "app-source:synthetic-scheduling-001:openapi"
+          ],
+          "draft_binding_field": "proposed_rar.locations",
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "exact_candidate_quote": "https://scheduling.synthetic.example",
+          "human_review_boundary": {
+            "authority_effect": "none",
+            "required": true,
+            "review_recorded_for_this_compiler_draft": false
+          },
+          "non_claims": [
+            "Candidate output is untrusted until deterministic validation and accountable review.",
+            "No live Bedrock invocation is claimed by this retained fixture."
+          ],
+          "row_id": "ai-review:application:5",
+          "source_sha256": "d4fc22743c37f760231250253c30d582d0134eb1a77d17080ec093eba09a8eea"
+        }
+      ],
+      "correction_timeline": [
+        {
+          "application_disclosure": false,
+          "candidate_ids": [
+            "candidate:discharge-date",
+            "candidate:follow-up",
+            "candidate:bring-documents",
+            "candidate:medication",
+            "candidate:warning-signs"
+          ],
+          "canonical_refs": [
+            "document:synthetic-discharge-001",
+            "extraction-draft:synthetic-discharge-001"
+          ],
+          "draft_id": "extraction-draft:synthetic-discharge-001",
+          "evidence_status": "contract_tested",
+          "extraction_run_id": "extraction-run:synthetic-local-replay-001",
+          "non_claims": [
+            "Candidate text and source pages are intentionally not present in this dashboard projection."
+          ],
+          "row_id": "ai-correction:before",
+          "source_sha256": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+          "stage": "before_accountable_review"
+        },
+        {
+          "application_disclosure": false,
+          "approved_item_ids": [
+            "candidate:discharge-date",
+            "candidate:follow-up",
+            "candidate:bring-documents"
+          ],
+          "canonical_refs": [
+            "document:synthetic-discharge-001",
+            "extraction-draft:synthetic-discharge-001",
+            "review:synthetic-discharge-001"
+          ],
+          "corrections": [
+            {
+              "corrected_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+              "evidence_refs": [
+                "evidence:follow-up"
+              ],
+              "item_id": "candidate:follow-up",
+              "previous_text": "Schedule primary care follow-up within 7 days.",
+              "reason": "Preserve document-statement attribution; do not present as a current care-plan order."
+            }
+          ],
+          "decision": "corrected",
+          "deferred_item_ids": [
+            "candidate:warning-signs"
+          ],
+          "establishes_current_clinical_truth": false,
+          "establishes_legal_authority": false,
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Accountable correction is document-statement review, not clinical truth or authorization."
+          ],
+          "rejected_item_ids": [
+            "candidate:medication"
+          ],
+          "review_id": "review:synthetic-discharge-001",
+          "row_id": "ai-correction:after",
+          "source_sha256": "665c8ac5c447aa969e8048c459d1d901e8dd8550aee7efeab771a31dd177e547",
+          "stage": "after_accountable_review"
+        }
+      ]
+    },
+    "applications_and_receipts": {
+      "applications": [
+        {
+          "application_id": "app:synthetic-scheduling",
+          "canonical_refs": [
+            "app:synthetic-scheduling"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Application registry display is not application activation or OAuth deployment."
+          ],
+          "row_id": "application:app:synthetic-scheduling",
+          "source_sha256": "e03af1b5863fcbc5d11936a5d4f89da9c362c2746908c5ef0f82122603c79eaf",
+          "supported_actions": [
+            "schedule_appointments"
+          ]
+        },
+        {
+          "application_id": "urn:caretrust:app:scheduling",
+          "canonical_refs": [
+            "urn:caretrust:app:scheduling"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Application registry display is not application activation or OAuth deployment."
+          ],
+          "row_id": "application:urn:caretrust:app:scheduling",
+          "source_sha256": "dc07c6d04844e53236c90f425510d113cb68f7a73c1befc72789f30e78490cfd",
+          "supported_actions": [
+            "perform_assigned_direct_care"
+          ]
+        },
+        {
+          "application_id": "app:synthetic-respite-community",
+          "canonical_refs": [
+            "app:synthetic-respite-community"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Application registry display is not application activation or OAuth deployment."
+          ],
+          "row_id": "application:app:synthetic-respite-community",
+          "source_sha256": "a7dcfad220c689fb077f556b22024c40f84af15ae95d0522b836ab6beda13dfe",
+          "supported_actions": [
+            "respite_visit_support",
+            "view_warning_instruction"
+          ]
+        },
+        {
+          "application_id": "app:synthetic-scheduling",
+          "canonical_refs": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "app:synthetic-scheduling"
+          ],
+          "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+          "evidence_status": "contract_tested",
+          "minimum_data_fields": [
+            "appointment.id",
+            "appointment.start"
+          ],
+          "non_claims": [
+            "This compiler proposal did not register or activate an application."
+          ],
+          "proposed_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+          "proposed_rar_type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1",
+          "row_id": "application-proposal:app:synthetic-scheduling",
+          "source_sha256": "4e947fb480f12d045bdb3b788dda4936104adb0df9359d33d6b3a78c8fdd7d53"
+        }
+      ],
+      "reference_client_receipts": [
+        {
+          "canonical_refs": [
+            "decision:case:86bce7b1e7bc61c8a0b6",
+            "request:case:family-permit-001"
+          ],
+          "disclosure": {
+            "action": "schedule_appointments",
+            "application_id": "app:synthetic-scheduling",
+            "audience": "app:synthetic-scheduling",
+            "caregiver_ref": "account:synthetic-leilani",
+            "decision": "permit",
+            "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+            "evidence_status": "executed_local",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "appointment_management",
+            "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+            "request_id": "request:case:family-permit-001",
+            "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:86bce7b1e7bc61c8a0b6",
+          "source_sha256": "51f0901308dec5eb6054a72a5436c715a6091123aabb792f8d20cd301faab63f"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:4d8aca31ad6186d83634",
+            "request:case:family-wrong-purpose-001"
+          ],
+          "disclosure": {
+            "action": "schedule_appointments",
+            "application_id": "app:synthetic-scheduling",
+            "audience": "app:synthetic-scheduling",
+            "caregiver_ref": "account:synthetic-leilani",
+            "decision": "deny",
+            "decision_id": "decision:case:4d8aca31ad6186d83634",
+            "evidence_status": "executed_local",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "discharge_follow_up",
+            "reason_code": "PURPOSE_NOT_ALLOWED",
+            "request_id": "request:case:family-wrong-purpose-001",
+            "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:4d8aca31ad6186d83634",
+          "source_sha256": "fd4d94df72d1daa81d630edda12be59f2e9dd89d8a501a4a24456fe8f3ebd0ca"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:c4cf8911bf9502fea692",
+            "request:case:cna-permit-001"
+          ],
+          "disclosure": {
+            "action": "perform_assigned_direct_care",
+            "application_id": "urn:caretrust:app:scheduling",
+            "audience": "urn:caretrust:app:scheduling",
+            "caregiver_ref": "person:synthetic-leilani-testperson",
+            "decision": "permit",
+            "decision_id": "decision:case:c4cf8911bf9502fea692",
+            "evidence_status": "executed_local",
+            "minimum_data": [
+              {
+                "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+                "category": "visit-preparation",
+                "clinically_authoritative": false,
+                "kind": "action_item",
+                "requires_clinical_confirmation": true,
+                "reviewed_text": "Bring the discharge sheet and current medication list.",
+                "source_assertion": "uploaded_document_statement"
+              }
+            ],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "shift-assignment",
+            "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+            "request_id": "request:case:cna-permit-001",
+            "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:c4cf8911bf9502fea692",
+          "source_sha256": "e4ccdc8d0307fb3e57b962251460e7e5f5f7257a9d18946a7417f98d86089537"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:d15736ff86643b32b80d",
+            "request:case:cna-missing-claim-001"
+          ],
+          "disclosure": {
+            "action": "perform_assigned_direct_care",
+            "application_id": "urn:caretrust:app:scheduling",
+            "audience": "urn:caretrust:app:scheduling",
+            "caregiver_ref": "person:synthetic-leilani-testperson",
+            "decision": "deny",
+            "decision_id": "decision:case:d15736ff86643b32b80d",
+            "evidence_status": "executed_local",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "shift-assignment",
+            "reason_code": "CLAIM_REQUIRED",
+            "request_id": "request:case:cna-missing-claim-001",
+            "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:d15736ff86643b32b80d",
+          "source_sha256": "52730a24bd462f14beee54775ac5455942cdb87286b2e6e3cc7cfc3d23e2d4de"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:fcfc1c28d460f4d249c4",
+            "request:case:respite-historical-001"
+          ],
+          "disclosure": {
+            "action": "respite_visit_support",
+            "application_id": "app:synthetic-respite-community",
+            "audience": "app:synthetic-respite-community",
+            "caregiver_ref": "caregiver:synthetic-respite-001",
+            "decision": "permit",
+            "decision_id": "decision:case:fcfc1c28d460f4d249c4",
+            "evidence_status": "contract_tested",
+            "minimum_data": [
+              {
+                "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+                "category": "visit-preparation",
+                "clinically_authoritative": false,
+                "kind": "action_item",
+                "requires_clinical_confirmation": true,
+                "reviewed_text": "Bring the discharge sheet and current medication list.",
+                "source_assertion": "uploaded_document_statement"
+              }
+            ],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "respite_visit_support",
+            "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+            "request_id": "request:case:respite-historical-001",
+            "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a"
+          },
+          "evidence_status": "contract_tested",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:fcfc1c28d460f4d249c4",
+          "source_sha256": "9690d3b30d1e323a99a577e454d3e519fdb48ca9bac6b94f12370d0f97902ba7"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:0f1638900464394d1121",
+            "request:case:respite-expired-001"
+          ],
+          "disclosure": {
+            "action": "respite_visit_support",
+            "application_id": "app:synthetic-respite-community",
+            "audience": "app:synthetic-respite-community",
+            "caregiver_ref": "caregiver:synthetic-respite-001",
+            "decision": "deny",
+            "decision_id": "decision:case:0f1638900464394d1121",
+            "evidence_status": "contract_tested",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "respite_visit_support",
+            "reason_code": "ASSIGNMENT_EXPIRED",
+            "request_id": "request:case:respite-expired-001",
+            "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62"
+          },
+          "evidence_status": "contract_tested",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:0f1638900464394d1121",
+          "source_sha256": "87d578bb4c2d4c711cd4b4398e4ea65feab35ac021c2dbc81c274b8f90a44bfc"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:cd1de9afa2afdf0f91a6",
+            "request:case:respite-clinical-block-001"
+          ],
+          "disclosure": {
+            "action": "view_warning_instruction",
+            "application_id": "app:synthetic-respite-community",
+            "audience": "app:synthetic-respite-community",
+            "caregiver_ref": "caregiver:synthetic-respite-001",
+            "decision": "deny",
+            "decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+            "evidence_status": "contract_tested",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "respite_visit_support",
+            "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+            "request_id": "request:case:respite-clinical-block-001",
+            "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d"
+          },
+          "evidence_status": "contract_tested",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:cd1de9afa2afdf0f91a6",
+          "source_sha256": "bccfb996e7a15ffb6b4827ec8e789d3a87a3822a3092eb4137a9696698c82234"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:6adfd412726aacdea40f",
+            "request:case:family-revoked-001"
+          ],
+          "disclosure": {
+            "action": "schedule_appointments",
+            "application_id": "app:synthetic-scheduling",
+            "audience": "app:synthetic-scheduling",
+            "caregiver_ref": "account:synthetic-leilani",
+            "decision": "deny",
+            "decision_id": "decision:case:6adfd412726aacdea40f",
+            "evidence_status": "executed_local",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "appointment_management",
+            "reason_code": "GRANT_REVOKED",
+            "request_id": "request:case:family-revoked-001",
+            "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:6adfd412726aacdea40f",
+          "source_sha256": "df95d2c0293ef8b157082ce686870d21386ed97eae366334db74e5ccbebfd99c"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:3d5c5a18598c8ae3d05d",
+            "request:case:cna-revoked-001"
+          ],
+          "disclosure": {
+            "action": "perform_assigned_direct_care",
+            "application_id": "urn:caretrust:app:scheduling",
+            "audience": "urn:caretrust:app:scheduling",
+            "caregiver_ref": "person:synthetic-leilani-testperson",
+            "decision": "deny",
+            "decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+            "evidence_status": "executed_local",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "shift-assignment",
+            "reason_code": "CLAIM_REVOKED",
+            "request_id": "request:case:cna-revoked-001",
+            "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb"
+          },
+          "evidence_status": "executed_local",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:3d5c5a18598c8ae3d05d",
+          "source_sha256": "9cffd42cb9cda8f6de52d114ed6edb104744eddee75452701f4958142b36c17e"
+        },
+        {
+          "canonical_refs": [
+            "decision:case:daf7feb79ade3ba12395",
+            "request:case:respite-revoked-001"
+          ],
+          "disclosure": {
+            "action": "respite_visit_support",
+            "application_id": "app:synthetic-respite-community",
+            "audience": "app:synthetic-respite-community",
+            "caregiver_ref": "caregiver:synthetic-respite-001",
+            "decision": "deny",
+            "decision_id": "decision:case:daf7feb79ade3ba12395",
+            "evidence_status": "contract_tested",
+            "minimum_data": [],
+            "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+            "policy_version": "case-access.v1",
+            "purpose": "respite_visit_support",
+            "reason_code": "GRANT_REVOKED",
+            "request_id": "request:case:respite-revoked-001",
+            "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258"
+          },
+          "evidence_status": "contract_tested",
+          "non_claims": [
+            "Reference-client disclosure is a minimum-data projection, not a source packet."
+          ],
+          "row_id": "receipt:decision:case:daf7feb79ade3ba12395",
+          "source_sha256": "4f50c8ec463e92b91f2551f0dd7e543d8d214c710602c481724967da6912ebd9"
+        }
+      ]
+    },
+    "care_team": [
+      {
+        "basis_ids": [
+          "relationship:synthetic-001",
+          "grant:synthetic-001"
+        ],
+        "canonical_refs": [
+          "account:synthetic-leilani",
+          "grant:synthetic-001",
+          "relationship:synthetic-001"
+        ],
+        "caregiver_ref": "account:synthetic-leilani",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Care-team membership display is not a permission decision."
+        ],
+        "role": "patient_invited_family_caregiver",
+        "row_id": "care-team:account:synthetic-leilani",
+        "source_sha256": "b0091c430a55f4e3c612445f0011c7aed1a1b09e5ebaf79d2b6d251ddb31d843",
+        "status": "revoked_for_future_access"
+      },
+      {
+        "basis_ids": [
+          "claim:synthetic-hi-cna-1001",
+          "assignment:synthetic-cna-direct-care-001",
+          "grant:synthetic-cna-direct-care-001"
+        ],
+        "canonical_refs": [
+          "assignment:synthetic-cna-direct-care-001",
+          "claim:synthetic-hi-cna-1001",
+          "grant:synthetic-cna-direct-care-001",
+          "person:synthetic-leilani-testperson"
+        ],
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Care-team membership display is not a permission decision."
+        ],
+        "role": "agency_cna",
+        "row_id": "care-team:person:synthetic-leilani-testperson",
+        "source_sha256": "0af833ed8495327eca21860aa7cadc75acfdd84532c932f007fd17a46d953fd9",
+        "status": "revoked_claim"
+      },
+      {
+        "basis_ids": [
+          "assignment:synthetic-respite-community-001",
+          "grant:synthetic-respite-community-001"
+        ],
+        "canonical_refs": [
+          "assignment:synthetic-respite-community-001",
+          "caregiver:synthetic-respite-001",
+          "grant:synthetic-respite-community-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Care-team membership display is not a permission decision."
+        ],
+        "role": "respite_community_caregiver",
+        "row_id": "care-team:caregiver:synthetic-respite-001",
+        "source_sha256": "8f15eb119ebbf1456cd916569c77cf8f5a8f7b16e9ece52245fbb33633dd44e9",
+        "status": "expired_then_revoked"
+      }
+    ],
+    "case_overview": {
+      "bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+      "canonical_refs": [
+        "case:synthetic-multi-caregiver-001",
+        "patient:synthetic-001"
+      ],
+      "caregiver_count": 3,
+      "decision_count": 10,
+      "evidence_status": "executed_local",
+      "non_claims": [],
+      "patient_ref": "patient:synthetic-001",
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "row_id": "case-overview",
+      "source_sha256": "e98fcf76976662d636cd6f83144a9502f126ea8211fc549d59019ce921bb4adb"
+    },
+    "evidence": [
+      {
+        "application_disclosure": false,
+        "canonical_id": "document:synthetic-discharge-001",
+        "canonical_refs": [
+          "document:synthetic-discharge-001"
+        ],
+        "evidence_class": "restricted_health_information",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Restricted evidence is represented as metadata only in this dashboard contract."
+        ],
+        "row_id": "evidence:document:synthetic-discharge-001",
+        "source_sha256": "b219f5e5c081a373c33f08ccf235ce72eb09a777b8a1e36d218233d30d04eff8"
+      },
+      {
+        "application_disclosure": false,
+        "canonical_id": "review:synthetic-discharge-001",
+        "canonical_refs": [
+          "review:synthetic-discharge-001"
+        ],
+        "evidence_class": "accountable_review_correction",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Restricted evidence is represented as metadata only in this dashboard contract."
+        ],
+        "row_id": "evidence:review:synthetic-discharge-001",
+        "source_sha256": "1c6d797521c934a338050e6f0151bec3a25035093b21c18e9bd44e11fb05c412"
+      },
+      {
+        "application_disclosure": false,
+        "canonical_id": "extraction-draft:synthetic-discharge-001",
+        "canonical_refs": [
+          "extraction-draft:synthetic-discharge-001"
+        ],
+        "evidence_class": "ai_draft_with_clinical_uncertainty",
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "Restricted evidence is represented as metadata only in this dashboard contract."
+        ],
+        "row_id": "evidence:extraction-draft:synthetic-discharge-001",
+        "source_sha256": "18dec0f5cf171cad8df69dec72102dbaff257183bd90112efc34e9c6debb9036"
+      }
+    ],
+    "history": [
+      {
+        "canonical_hash": "3d03657cd25df3777a7d2369047bda82892287058f2118a6a2ca7e4aabf75aa8",
+        "canonical_ids": {
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "canonical_refs": [
+          "event:navigator:intent:001",
+          "intent:synthetic-delegation-001"
+        ],
+        "event_id": "event:navigator:intent:001",
+        "evidence_status": "executed_local",
+        "message_type": "IntentStatement",
+        "non_claims": [],
+        "row_id": "history:event:navigator:intent:001",
+        "source_sha256": "06a864fbe6d10c78bd68471894c1fb089462c99ce3f171c8509fe8593e839f99"
+      },
+      {
+        "canonical_hash": "9c98776bb48a486985cd1dba3ac1693947028d3e2b4834e5bdbb6522189c0986",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v1",
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "canonical_refs": [
+          "delegation-draft:synthetic-001:v1",
+          "event:navigator:draft:001",
+          "intent:synthetic-delegation-001"
+        ],
+        "event_id": "event:navigator:draft:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationDraft",
+        "non_claims": [],
+        "row_id": "history:event:navigator:draft:001",
+        "source_sha256": "d0d0337570ae76b64c514399c20f8c5133c45fe8173ef682598efddda409e62f"
+      },
+      {
+        "canonical_hash": "fe99d2d6749dc04e2ac3e3ca954eeafa24b0eaea5b7f670445b58334842040a9",
+        "canonical_ids": {
+          "clarification_id": "clarification:synthetic-audience-001",
+          "draft_id": "delegation-draft:synthetic-001:v1",
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "canonical_refs": [
+          "clarification:synthetic-audience-001",
+          "delegation-draft:synthetic-001:v1",
+          "event:navigator:clarification-request:001",
+          "intent:synthetic-delegation-001"
+        ],
+        "event_id": "event:navigator:clarification-request:001",
+        "evidence_status": "executed_local",
+        "message_type": "ClarificationRequest",
+        "non_claims": [],
+        "row_id": "history:event:navigator:clarification-request:001",
+        "source_sha256": "43f4afe927b509862eb6f5376937e7c7793c5a4d15978c6f8561c05f02cac96f"
+      },
+      {
+        "canonical_hash": "8b5d3571dbdf785e00a23d0032b153c9ca19395c8be24062d9cf8c74666643ab",
+        "canonical_ids": {
+          "clarification_id": "clarification:synthetic-audience-001",
+          "intent_id": "intent:synthetic-delegation-001",
+          "response_id": "clarification-response:synthetic-001"
+        },
+        "canonical_refs": [
+          "clarification-response:synthetic-001",
+          "clarification:synthetic-audience-001",
+          "event:navigator:clarification-response:001",
+          "intent:synthetic-delegation-001"
+        ],
+        "event_id": "event:navigator:clarification-response:001",
+        "evidence_status": "executed_local",
+        "message_type": "ClarificationResponse",
+        "non_claims": [],
+        "row_id": "history:event:navigator:clarification-response:001",
+        "source_sha256": "dad437520d5ee846fee84f9fa1851838046807857f5145b573e35a7a08cd5695"
+      },
+      {
+        "canonical_hash": "16f49109a9104f5aef862a5af6013e77277fe56e2c1b76b59d3f9e98db9d2da8",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v2",
+          "intent_id": "intent:synthetic-delegation-001",
+          "supersedes_event_id": "event:navigator:draft:001"
+        },
+        "canonical_refs": [
+          "delegation-draft:synthetic-001:v2",
+          "event:navigator:draft:001",
+          "event:navigator:draft:002",
+          "intent:synthetic-delegation-001"
+        ],
+        "event_id": "event:navigator:draft:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationDraft",
+        "non_claims": [],
+        "row_id": "history:event:navigator:draft:002",
+        "source_sha256": "63662398a71d973f295eff0ebdae8e26cf38f8f3bd8175e0afc3674700789b8a"
+      },
+      {
+        "canonical_hash": "b395ce72ada6c9f1730427272931c4e18fd96ec0131b711286d886ace7257f90",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v2",
+          "invite_id": "invite:synthetic-001"
+        },
+        "canonical_refs": [
+          "delegation-draft:synthetic-001:v2",
+          "event:navigator:invite:001",
+          "invite:synthetic-001"
+        ],
+        "event_id": "event:navigator:invite:001",
+        "evidence_status": "executed_local",
+        "message_type": "PatientInvite",
+        "non_claims": [],
+        "row_id": "history:event:navigator:invite:001",
+        "source_sha256": "1f33a060d36cb7c4d397b00dfeec2ed4c9cc1cbcd7b058065a1b105d82de3f47"
+      },
+      {
+        "canonical_hash": "30d64f5726f8149831b5abcc91ad57e070c94881a1433a46d4dfc7c3a27e1ca1",
+        "canonical_ids": {
+          "acceptance_id": "invite-acceptance:synthetic-001",
+          "invite_id": "invite:synthetic-001"
+        },
+        "canonical_refs": [
+          "event:navigator:invite-acceptance:001",
+          "invite-acceptance:synthetic-001",
+          "invite:synthetic-001"
+        ],
+        "event_id": "event:navigator:invite-acceptance:001",
+        "evidence_status": "executed_local",
+        "message_type": "InviteAcceptance",
+        "non_claims": [],
+        "row_id": "history:event:navigator:invite-acceptance:001",
+        "source_sha256": "49f41d37a95ec8e23f80b06c03c3afad1b766470bb734c0f218a5ce0513adece"
+      },
+      {
+        "canonical_hash": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "canonical_ids": {
+          "acceptance_id": "invite-acceptance:synthetic-001",
+          "approval_id": "approval:synthetic-001",
+          "draft_id": "delegation-draft:synthetic-001:v2"
+        },
+        "canonical_refs": [
+          "approval:synthetic-001",
+          "delegation-draft:synthetic-001:v2",
+          "event:navigator:approval:001",
+          "invite-acceptance:synthetic-001"
+        ],
+        "event_id": "event:navigator:approval:001",
+        "evidence_status": "executed_local",
+        "message_type": "PatientApprovalRecord",
+        "non_claims": [],
+        "row_id": "history:event:navigator:approval:001",
+        "source_sha256": "4c0ddb4a411707a9028b5f6784e07b9d674d1bf1654878241d5df05d9840dae5"
+      },
+      {
+        "canonical_hash": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "canonical_ids": {
+          "approval_id": "approval:synthetic-001",
+          "relationship_claim_id": "relationship:synthetic-001"
+        },
+        "canonical_refs": [
+          "approval:synthetic-001",
+          "event:navigator:relationship:001",
+          "relationship:synthetic-001"
+        ],
+        "event_id": "event:navigator:relationship:001",
+        "evidence_status": "executed_local",
+        "message_type": "CareRelationshipClaim",
+        "non_claims": [],
+        "row_id": "history:event:navigator:relationship:001",
+        "source_sha256": "64d9f1dd321c88678e7d60f18513861f6f8533d76bb46fd1164f6d9db1089f0f"
+      },
+      {
+        "canonical_hash": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "canonical_ids": {
+          "approval_id": "approval:synthetic-001",
+          "grant_id": "grant:synthetic-001",
+          "relationship_claim_id": "relationship:synthetic-001"
+        },
+        "canonical_refs": [
+          "approval:synthetic-001",
+          "event:navigator:grant:001",
+          "grant:synthetic-001",
+          "relationship:synthetic-001"
+        ],
+        "event_id": "event:navigator:grant:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationGrant",
+        "non_claims": [],
+        "row_id": "history:event:navigator:grant:001",
+        "source_sha256": "6b0bf70580c4b42563d87b07bf8907adaa26bfd7a1389e43b3bac8a9f589a72a"
+      },
+      {
+        "canonical_hash": "45f4e6005cf4945ea48ed0318fba055aeacb5efd941f31dd61e52bbc1f6052c9",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-001"
+        },
+        "canonical_refs": [
+          "delegation-request:synthetic-001",
+          "event:navigator:request:001",
+          "grant:synthetic-001"
+        ],
+        "event_id": "event:navigator:request:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationRequest",
+        "non_claims": [],
+        "row_id": "history:event:navigator:request:001",
+        "source_sha256": "029341d0f86731f565411213dbc9bb1d4397046f3b2cea7873dbdaaa4b1c7d40"
+      },
+      {
+        "canonical_hash": "48227c708c57b6b60337b164712128bf034d2eed73dcd46b1a494231f86a4bfb",
+        "canonical_ids": {
+          "decision_id": "delegation-decision:synthetic-001",
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-001"
+        },
+        "canonical_refs": [
+          "delegation-decision:synthetic-001",
+          "delegation-request:synthetic-001",
+          "event:navigator:decision:001",
+          "grant:synthetic-001"
+        ],
+        "event_id": "event:navigator:decision:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationDecision",
+        "non_claims": [],
+        "row_id": "history:event:navigator:decision:001",
+        "source_sha256": "f9fe05168ba1e8a2958c7d9a912f3d78af8e219b0d55a76f07ba423da8918774"
+      },
+      {
+        "canonical_hash": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "revocation_id": "delegation-revocation:synthetic-001"
+        },
+        "canonical_refs": [
+          "delegation-revocation:synthetic-001",
+          "event:navigator:revocation:001",
+          "grant:synthetic-001"
+        ],
+        "event_id": "event:navigator:revocation:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationRevocationRecord",
+        "non_claims": [],
+        "row_id": "history:event:navigator:revocation:001",
+        "source_sha256": "f51c4f0dbc85b51f57d5a8fe361263eefa57a0b123a0e7f71e7e232d2f1b33cf"
+      },
+      {
+        "canonical_hash": "9e22514168e599bfac6f0bb65e4cce98e62246e52a491db61c790a6baaba04f7",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-002"
+        },
+        "canonical_refs": [
+          "delegation-request:synthetic-002",
+          "event:navigator:request:002",
+          "grant:synthetic-001"
+        ],
+        "event_id": "event:navigator:request:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationRequest",
+        "non_claims": [],
+        "row_id": "history:event:navigator:request:002",
+        "source_sha256": "9f004fb7b918b0c893498c5a9fba6c216cb7115e9f95bc4f5491da72e3368ca0"
+      },
+      {
+        "canonical_hash": "d1c1b82b73c48c02a608ce2dcfc94d84f7f216de0c289413d718562b674f3daf",
+        "canonical_ids": {
+          "decision_id": "delegation-decision:synthetic-002",
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-002",
+          "revocation_id": "delegation-revocation:synthetic-001"
+        },
+        "canonical_refs": [
+          "delegation-decision:synthetic-002",
+          "delegation-request:synthetic-002",
+          "delegation-revocation:synthetic-001",
+          "event:navigator:decision:002",
+          "grant:synthetic-001"
+        ],
+        "event_id": "event:navigator:decision:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationDecision",
+        "non_claims": [],
+        "row_id": "history:event:navigator:decision:002",
+        "source_sha256": "55fff0da811b8199ed2b3c1aaabe5db74f9936be9485cb16699c1e4ad383d0bf"
+      },
+      {
+        "canonical_hash": "73544bc3f7f3d40e0512372f7aa42da7608c446c947f198d0d7e75c53568c9ce",
+        "canonical_ids": {
+          "artifact_id": "artifact:final-01-clean-standard"
+        },
+        "canonical_refs": [
+          "artifact:final-01-clean-standard",
+          "trace:evidence:credential-001"
+        ],
+        "event_id": "trace:evidence:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "EvidenceArtifact",
+        "non_claims": [],
+        "row_id": "history:trace:evidence:credential-001",
+        "source_sha256": "28f147f38b00d594946500f59f0d71e18e831ff74941021a60e00936d1eed103"
+      },
+      {
+        "canonical_hash": "f745ad20ae217edf19ee43b52852f1f273abee795c749a998c6debc5b64df656",
+        "canonical_ids": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "draft_id": "draft:final-01-clean-standard",
+          "extraction_id": "extraction:final-01-clean-standard"
+        },
+        "canonical_refs": [
+          "artifact:final-01-clean-standard",
+          "draft:final-01-clean-standard",
+          "extraction:final-01-clean-standard",
+          "trace:extraction:credential-001"
+        ],
+        "event_id": "trace:extraction:credential-001",
+        "evidence_status": "retained_aws",
+        "message_type": "ExtractionRecord",
+        "non_claims": [],
+        "row_id": "history:trace:extraction:credential-001",
+        "source_sha256": "41286c45c5357da214fc785edabd563ca43c263daff5f2a9a11752bba90c80ab"
+      },
+      {
+        "canonical_hash": "c32448e529bba76862740aff1444f31faa1857297ad9a3921229568f8843829d",
+        "canonical_ids": {
+          "draft_id": "draft:final-01-clean-standard",
+          "review_id": "review:credential:001"
+        },
+        "canonical_refs": [
+          "draft:final-01-clean-standard",
+          "review:credential:001",
+          "trace:review:credential-001"
+        ],
+        "event_id": "trace:review:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "ReviewRecord",
+        "non_claims": [],
+        "row_id": "history:trace:review:credential-001",
+        "source_sha256": "d6ec281b4301022a873d84d58b3078ba982fd3dd64ce6050d2a5d21deb29975b"
+      },
+      {
+        "canonical_hash": "078c369ee21c64c8e84e757f01e8e163abd310f472392a2f314dd10897a84596",
+        "canonical_ids": {
+          "draft_id": "draft:final-01-clean-standard",
+          "registry_result_id": "registry:credential:001"
+        },
+        "canonical_refs": [
+          "draft:final-01-clean-standard",
+          "registry:credential:001",
+          "trace:registry:credential-001"
+        ],
+        "event_id": "trace:registry:credential-001",
+        "evidence_status": "local_simulation",
+        "message_type": "RegistryResult",
+        "non_claims": [],
+        "row_id": "history:trace:registry:credential-001",
+        "source_sha256": "5558ddc6bfdfbb03c55d504e69cf16188c0234f75bc90586b378c1894d684dde"
+      },
+      {
+        "canonical_hash": "ac54e132079e438304349936bc5691ad56c41741fc981aed02415000ad9b0757",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "draft_id": "draft:final-01-clean-standard",
+          "registry_result_id": "registry:credential:001",
+          "review_id": "review:credential:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "draft:final-01-clean-standard",
+          "registry:credential:001",
+          "review:credential:001",
+          "trace:claim:credential-001"
+        ],
+        "event_id": "trace:claim:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "ActiveCredentialClaim",
+        "non_claims": [],
+        "row_id": "history:trace:claim:credential-001",
+        "source_sha256": "9bbf1a1a35e7e9f0bb7ff3a8688be01e4836a1360cca69b51583f430141dc097"
+      },
+      {
+        "canonical_hash": "5832679ff06cf551e7293df20c13e0b418e7a17ba3a39a5552b37b7102f83254",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "token_id": "token:credential:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "token:credential:001",
+          "trace:token:credential-001"
+        ],
+        "event_id": "trace:token:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "CareTrustJwtVerificationReceipt",
+        "non_claims": [],
+        "row_id": "history:trace:token:credential-001",
+        "source_sha256": "5615c97fae7d295c08c62d72d8f667d31a2ed258054be4cd9993b13c442f06d5"
+      },
+      {
+        "canonical_hash": "d2a2932f82db2bb774d5562411df813973849c4f8485f776e689770986f221af",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-a:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "request:credential:app-a:001",
+          "trace:request:app-a:001"
+        ],
+        "event_id": "trace:request:app-a:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest",
+        "non_claims": [],
+        "row_id": "history:trace:request:app-a:001",
+        "source_sha256": "5b8ee1ebadc16d3c633c72b6142be3bc14041d9b7fdb94974c3fc4d0e7997a2d"
+      },
+      {
+        "canonical_hash": "f02448069f5d87ba95d0fa830b96f8507647ddd7be764bb536d6543e876f7da7",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-ce68334198c8069d9889",
+          "request_id": "request:credential:app-a:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "decision-ce68334198c8069d9889",
+          "request:credential:app-a:001",
+          "trace:decision:app-a:001"
+        ],
+        "event_id": "trace:decision:app-a:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision",
+        "non_claims": [],
+        "row_id": "history:trace:decision:app-a:001",
+        "source_sha256": "6d78ffb2294539044a7b79fa16e3b0582dda437f776d4444cbc04cae7afa502d"
+      },
+      {
+        "canonical_hash": "375afb447c08c4e0b3dd687bfcbc5fa06adb7861fe0f4796961a17b5907c2f26",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-b:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "request:credential:app-b:001",
+          "trace:request:app-b:001"
+        ],
+        "event_id": "trace:request:app-b:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest",
+        "non_claims": [],
+        "row_id": "history:trace:request:app-b:001",
+        "source_sha256": "5b92a4520c1ee8386ffd1d81ed031ba4817f71ddb62db9c4bee9d56c8d9aab20"
+      },
+      {
+        "canonical_hash": "05b9ee6fe8de2decc91bc820c963f57093fc904d97aa3100ac38082f524bb3a8",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-074e296ab95e39fc8a56",
+          "request_id": "request:credential:app-b:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "decision-074e296ab95e39fc8a56",
+          "request:credential:app-b:001",
+          "trace:decision:app-b:001"
+        ],
+        "event_id": "trace:decision:app-b:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision",
+        "non_claims": [],
+        "row_id": "history:trace:decision:app-b:001",
+        "source_sha256": "18fd0fbe7f24385cad71950fb5941d2d88e0cacb6ce473ceab1121e392367bb9"
+      },
+      {
+        "canonical_hash": "ac768a2b44e63102969f906f152f51f0386cb4b669b8d3de92a935e002e0747a",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "revocation_id": "revocation:credential:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "revocation:credential:001",
+          "trace:revocation:credential-001"
+        ],
+        "event_id": "trace:revocation:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "RevocationRecord",
+        "non_claims": [],
+        "row_id": "history:trace:revocation:credential-001",
+        "source_sha256": "5c061c031b1b81a79859fc4cc9b1cfd411e3c5bcf06d6bf93eb4ca48b48abc89"
+      },
+      {
+        "canonical_hash": "19416f5127fad4a948d8f927c4bbdbdf30abf4da902c9f9daf04cdeb8451eb46",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-b:002"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "request:credential:app-b:002",
+          "trace:request:app-b:002"
+        ],
+        "event_id": "trace:request:app-b:002",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest",
+        "non_claims": [],
+        "row_id": "history:trace:request:app-b:002",
+        "source_sha256": "553943526642a5327eb64c7909a13b87b2a636bacbdbfe9570205bb43bda854d"
+      },
+      {
+        "canonical_hash": "6be1dc38753553c483ff70e4ce69b5e40fecbeb756d56ea977e30eb7f3999cd4",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-830b0993aafc8190ef40",
+          "request_id": "request:credential:app-b:002",
+          "revocation_id": "revocation:credential:001"
+        },
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "decision-830b0993aafc8190ef40",
+          "request:credential:app-b:002",
+          "revocation:credential:001",
+          "trace:decision:app-b:002"
+        ],
+        "event_id": "trace:decision:app-b:002",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision",
+        "non_claims": [],
+        "row_id": "history:trace:decision:app-b:002",
+        "source_sha256": "10947587ae9f26d445b10dcc561c38b4f344c10793c2e3eedf4e2b7db86c5de5"
+      },
+      {
+        "canonical_hash": "55adfce123df2354144fb7ab1de9ecf4db23d30ebc50eb0d858e930a1d7c649a",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "invite_acceptance_id": "invite-acceptance:synthetic-001",
+          "patient_ref": "patient:synthetic-001",
+          "uploader_account_ref": "account:synthetic-leilani"
+        },
+        "canonical_refs": [
+          "account:synthetic-leilani",
+          "document:synthetic-discharge-001",
+          "event:upload-accepted",
+          "invite-acceptance:synthetic-001",
+          "patient:synthetic-001"
+        ],
+        "event_id": "event:upload-accepted",
+        "evidence_status": "executed_local",
+        "message_type": "UploadedCareDocument",
+        "non_claims": [],
+        "row_id": "history:event:upload-accepted",
+        "source_sha256": "240bb600dd3c2e49442559347d871b7f06c6fff5f6a786ae9041449f10725406"
+      },
+      {
+        "canonical_hash": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "draft_id": "extraction-draft:synthetic-discharge-001"
+        },
+        "canonical_refs": [
+          "document:synthetic-discharge-001",
+          "event:extraction-draft",
+          "extraction-draft:synthetic-discharge-001"
+        ],
+        "event_id": "event:extraction-draft",
+        "evidence_status": "contract_tested",
+        "message_type": "DocumentExtractionDraft",
+        "non_claims": [],
+        "row_id": "history:event:extraction-draft",
+        "source_sha256": "bd7358d29452504d464882f6e8525e37ad119cdcf977f98a145ecde7afc54273"
+      },
+      {
+        "canonical_hash": "665c8ac5c447aa969e8048c459d1d901e8dd8550aee7efeab771a31dd177e547",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "draft_id": "extraction-draft:synthetic-discharge-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "canonical_refs": [
+          "document:synthetic-discharge-001",
+          "event:review-correction",
+          "extraction-draft:synthetic-discharge-001",
+          "review:synthetic-discharge-001"
+        ],
+        "event_id": "event:review-correction",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentReviewCorrectionRecord",
+        "non_claims": [],
+        "row_id": "history:event:review-correction",
+        "source_sha256": "52dc42737c2aa0dac7f5cfe28188bf108cee5b8459391d685ce64f5bc2ee9cb8"
+      },
+      {
+        "canonical_hash": "1f4c9d0363bb13c7e92b238f79700ba60be1a37dc90609c9bb00916e0e4e18f4",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-scheduling-001",
+          "event:scheduling-share-grant",
+          "patient:synthetic-001",
+          "review:synthetic-discharge-001"
+        ],
+        "event_id": "event:scheduling-share-grant",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareGrant",
+        "non_claims": [],
+        "row_id": "history:event:scheduling-share-grant",
+        "source_sha256": "8bb5c9412792c75afd3ffea612b543b894f167bebb7469c127578a32fd4cc496"
+      },
+      {
+        "canonical_hash": "906796d574eb3c9bf2ca9bc9d829172fd36bcf731a2fa40dca9b41e0f9a5c971",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+          "patient_ref": "patient:synthetic-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-direct-care-task-001",
+          "event:direct-care-task-share-grant",
+          "patient:synthetic-001",
+          "review:synthetic-discharge-001"
+        ],
+        "event_id": "event:direct-care-task-share-grant",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareGrant",
+        "non_claims": [],
+        "row_id": "history:event:direct-care-task-share-grant",
+        "source_sha256": "b7d29233c6b3c5fbeefcf5fb9ba7548f035abd44f608c0232d37b5cce6f91835"
+      },
+      {
+        "canonical_hash": "b0fd2351cbe79a4d42179adb1b219080e36b6f7ae5843fd59a004fe67264cc6e",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-scheduling-permit-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-scheduling-001",
+          "document-share-request:synthetic-scheduling-permit-001",
+          "event:scheduling-share-request",
+          "patient:synthetic-001"
+        ],
+        "event_id": "event:scheduling-share-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest",
+        "non_claims": [],
+        "row_id": "history:event:scheduling-share-request",
+        "source_sha256": "eb2527f8c4137d14a53afc03a629873a75911a422c4090c0ec26152c656e6718"
+      },
+      {
+        "canonical_hash": "ebb1ac5652311edacd1607972b51696c90cc6808e4b100f54ea8538392c3bd71",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+          "request_id": "document-share-request:synthetic-scheduling-permit-001"
+        },
+        "canonical_refs": [
+          "decision:document-share-request:synthetic-scheduling-permit-001",
+          "document-share-request:synthetic-scheduling-permit-001",
+          "event:scheduling-share-permit"
+        ],
+        "event_id": "event:scheduling-share-permit",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision",
+        "non_claims": [],
+        "row_id": "history:event:scheduling-share-permit",
+        "source_sha256": "debd0e99acdb79a6e6c70ec217630b61a661967b3954e5e6123405cf892f11cd"
+      },
+      {
+        "canonical_hash": "7c835bb3f948671efde24e9968dad5489ae9a209c88524f42c6eb40dc799264a",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-direct-care-task-001",
+          "document-share-request:synthetic-direct-care-task-permit-001",
+          "event:direct-care-task-share-request",
+          "patient:synthetic-001"
+        ],
+        "event_id": "event:direct-care-task-share-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest",
+        "non_claims": [],
+        "row_id": "history:event:direct-care-task-share-request",
+        "source_sha256": "7f91a6ed8a6bb62a85d0bb4978f0f1393dfbf45449c36b537c22740192dd2afc"
+      },
+      {
+        "canonical_hash": "f6b9d6c61e989fe42cc91e5e42d627b4c4a178066d4aea0f7c32c5669cbbb1a0",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-direct-care-task-permit-001",
+          "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+        },
+        "canonical_refs": [
+          "decision:document-share-request:synthetic-direct-care-task-permit-001",
+          "document-share-request:synthetic-direct-care-task-permit-001",
+          "event:direct-care-task-share-permit"
+        ],
+        "event_id": "event:direct-care-task-share-permit",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision",
+        "non_claims": [],
+        "row_id": "history:event:direct-care-task-share-permit",
+        "source_sha256": "97986f9175c7d14c9f25719f32872fbfe7d1f0eb8fda5cdc0b47f4b715c428de"
+      },
+      {
+        "canonical_hash": "119fa24c7b13800a4b95301b9a383ebe142abf81d86b50abc0f0fac3d29ea0a4",
+        "canonical_ids": {
+          "source_document_id": "document:synthetic-discharge-001"
+        },
+        "canonical_refs": [
+          "document:synthetic-discharge-001",
+          "event:fhir-candidate-projection"
+        ],
+        "event_id": "event:fhir-candidate-projection",
+        "evidence_status": "mapped_only",
+        "message_type": "UploadedDocumentFhirProjection",
+        "non_claims": [],
+        "row_id": "history:event:fhir-candidate-projection",
+        "source_sha256": "42befa6a4098d3d0327da9d0307b452ed42269f0811e5dd9b63ba2e9487918ec"
+      },
+      {
+        "canonical_hash": "a3f99eccc0b8b6b415d555cc7440870336390e534a856ae81b139f9cb1a443cd",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-scheduling-001",
+          "event:share-revocation",
+          "patient:synthetic-001",
+          "revocation:document-share-grant:synthetic-scheduling-001"
+        ],
+        "event_id": "event:share-revocation",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRevocationRecord",
+        "non_claims": [],
+        "row_id": "history:event:share-revocation",
+        "source_sha256": "666c00a6dbd5985efb0a711079569d4a840b6990339d88f26fdd2cbd1dc930ca"
+      },
+      {
+        "canonical_hash": "963e5dc0367fba03f110851cb58884df215278ac3f6f1c99c41f2b5f9c2b11d9",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-after-revocation-001"
+        },
+        "canonical_refs": [
+          "document-share-grant:synthetic-scheduling-001",
+          "document-share-request:synthetic-after-revocation-001",
+          "event:post-revocation-request",
+          "patient:synthetic-001"
+        ],
+        "event_id": "event:post-revocation-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest",
+        "non_claims": [],
+        "row_id": "history:event:post-revocation-request",
+        "source_sha256": "94479cb310d0decaabed7d3110837613e10c11989f5bac8752e8b25660bc4afb"
+      },
+      {
+        "canonical_hash": "5be0969cac42bf841820d54ca0ecc0f208ec0f3db960d1c923f0bdf8b3f35123",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+          "request_id": "document-share-request:synthetic-after-revocation-001"
+        },
+        "canonical_refs": [
+          "decision:document-share-request:synthetic-after-revocation-001",
+          "document-share-request:synthetic-after-revocation-001",
+          "event:post-revocation-deny"
+        ],
+        "event_id": "event:post-revocation-deny",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision",
+        "non_claims": [],
+        "row_id": "history:event:post-revocation-deny",
+        "source_sha256": "712d9eb1f280d32599b1a81191839c7f5ae6e5539ae232ebf656fcf4f0594e98"
+      }
+    ],
+    "permissions": [
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:00:00Z",
+        "audience": "app:synthetic-scheduling",
+        "canonical_refs": [
+          "decision:case:86bce7b1e7bc61c8a0b6",
+          "grant:synthetic-001",
+          "relationship:synthetic-001",
+          "request:case:family-permit-001"
+        ],
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "permit",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:family-permit-001",
+        "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577",
+        "row_id": "permission:decision:case:86bce7b1e7bc61c8a0b6",
+        "source_decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+        "source_sha256": "ecc2fd422191b9471eabbd1ed1a8db8233484f7eb0140fc7af76664e1b856608",
+        "supporting_canonical_ids": [
+          "relationship:synthetic-001",
+          "grant:synthetic-001"
+        ]
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:00:00Z",
+        "audience": "app:synthetic-scheduling",
+        "canonical_refs": [
+          "decision:case:4d8aca31ad6186d83634",
+          "request:case:family-wrong-purpose-001"
+        ],
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "discharge_follow_up",
+        "reason_code": "PURPOSE_NOT_ALLOWED",
+        "request_id": "request:case:family-wrong-purpose-001",
+        "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f",
+        "row_id": "permission:decision:case:4d8aca31ad6186d83634",
+        "source_decision_id": "decision:case:4d8aca31ad6186d83634",
+        "source_sha256": "ce00b3c87e7fcd40528011e91bba1cedb59500a689c20690bf66ed598d208402",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "canonical_refs": [
+          "assignment:synthetic-cna-direct-care-001",
+          "claim:synthetic-hi-cna-1001",
+          "decision:case:c4cf8911bf9502fea692",
+          "grant:synthetic-cna-direct-care-001",
+          "request:case:cna-permit-001"
+        ],
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "permit",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:cna-permit-001",
+        "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9",
+        "row_id": "permission:decision:case:c4cf8911bf9502fea692",
+        "source_decision_id": "decision:case:c4cf8911bf9502fea692",
+        "source_sha256": "9da1a2d4cd5a1a099a177dbbfc3d6ec108e7f611f955a1dd093e050d1a1e7a7b",
+        "supporting_canonical_ids": [
+          "claim:synthetic-hi-cna-1001",
+          "assignment:synthetic-cna-direct-care-001",
+          "grant:synthetic-cna-direct-care-001"
+        ]
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "canonical_refs": [
+          "decision:case:d15736ff86643b32b80d",
+          "request:case:cna-missing-claim-001"
+        ],
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REQUIRED",
+        "request_id": "request:case:cna-missing-claim-001",
+        "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1",
+        "row_id": "permission:decision:case:d15736ff86643b32b80d",
+        "source_decision_id": "decision:case:d15736ff86643b32b80d",
+        "source_sha256": "66e1b4a28e9c8bab16a34f20d7e2c99c0abf51504eadca9f9e05a6b2be8ef86e",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:30:00Z",
+        "audience": "app:synthetic-respite-community",
+        "canonical_refs": [
+          "assignment:synthetic-respite-community-001",
+          "decision:case:fcfc1c28d460f4d249c4",
+          "grant:synthetic-respite-community-001",
+          "request:case:respite-historical-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "permit",
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:respite-historical-001",
+        "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a",
+        "row_id": "permission:decision:case:fcfc1c28d460f4d249c4",
+        "source_decision_id": "decision:case:fcfc1c28d460f4d249c4",
+        "source_sha256": "2c1b6fe81e28961150981ebe50dbbe673b1204ff2b676a550554265b309b3119",
+        "supporting_canonical_ids": [
+          "assignment:synthetic-respite-community-001",
+          "grant:synthetic-respite-community-001"
+        ]
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "app:synthetic-respite-community",
+        "canonical_refs": [
+          "decision:case:0f1638900464394d1121",
+          "request:case:respite-expired-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "ASSIGNMENT_EXPIRED",
+        "request_id": "request:case:respite-expired-001",
+        "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62",
+        "row_id": "permission:decision:case:0f1638900464394d1121",
+        "source_decision_id": "decision:case:0f1638900464394d1121",
+        "source_sha256": "3d3ba8dcccb312921970aeebc03b577abdccdd9481fc72527583a2dbdb59245c",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "view_warning_instruction",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:30:00Z",
+        "audience": "app:synthetic-respite-community",
+        "canonical_refs": [
+          "decision:case:cd1de9afa2afdf0f91a6",
+          "request:case:respite-clinical-block-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+        "request_id": "request:case:respite-clinical-block-001",
+        "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d",
+        "row_id": "permission:decision:case:cd1de9afa2afdf0f91a6",
+        "source_decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+        "source_sha256": "1150435723697770d2044e2c075b706a93ea48a49a7455c5207a202563011ff2",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:06:00Z",
+        "audience": "app:synthetic-scheduling",
+        "canonical_refs": [
+          "decision:case:6adfd412726aacdea40f",
+          "request:case:family-revoked-001"
+        ],
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:family-revoked-001",
+        "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1",
+        "row_id": "permission:decision:case:6adfd412726aacdea40f",
+        "source_decision_id": "decision:case:6adfd412726aacdea40f",
+        "source_sha256": "872fe33593b77854b04c2cad13bfc78ed95afa33b01f4e4c79be0a2882730cf9",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:11Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "canonical_refs": [
+          "decision:case:3d5c5a18598c8ae3d05d",
+          "request:case:cna-revoked-001"
+        ],
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REVOKED",
+        "request_id": "request:case:cna-revoked-001",
+        "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb",
+        "row_id": "permission:decision:case:3d5c5a18598c8ae3d05d",
+        "source_decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+        "source_sha256": "0b28143389f938fccc5c14fd83a26bea2c8c427482b7b6907f3512571c9cc4d1",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:46:00Z",
+        "audience": "app:synthetic-respite-community",
+        "canonical_refs": [
+          "decision:case:daf7feb79ade3ba12395",
+          "request:case:respite-revoked-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "This row renders an already-issued canonical decision; it does not decide access."
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:respite-revoked-001",
+        "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258",
+        "row_id": "permission:decision:case:daf7feb79ade3ba12395",
+        "source_decision_id": "decision:case:daf7feb79ade3ba12395",
+        "source_sha256": "49df27468382e1a4c7b650aa9d7b5c344519605806ddc6d3ee96c1965b0ddb39",
+        "supporting_canonical_ids": []
+      }
+    ],
+    "revocation_timeline": [
+      {
+        "after_decision_id": "decision:case:6adfd412726aacdea40f",
+        "after_request_id": "request:case:family-revoked-001",
+        "before_decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+        "before_request_id": "request:case:family-permit-001",
+        "canonical_refs": [
+          "decision:case:6adfd412726aacdea40f",
+          "decision:case:86bce7b1e7bc61c8a0b6",
+          "delegation-revocation:synthetic-001",
+          "grant:synthetic-001"
+        ],
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Revocation timeline displays canonical status effects; the dashboard cannot revoke anything."
+        ],
+        "reason_code": "GRANT_REVOKED",
+        "revocation_id": "delegation-revocation:synthetic-001",
+        "revoked_at": "2026-07-30T10:05:00Z",
+        "row_id": "revocation:delegation",
+        "source_sha256": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89",
+        "target_id": "grant:synthetic-001"
+      },
+      {
+        "after_decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+        "after_request_id": "request:case:cna-revoked-001",
+        "before_decision_id": "decision:case:c4cf8911bf9502fea692",
+        "before_request_id": "request:case:cna-permit-001",
+        "canonical_refs": [
+          "claim:synthetic-hi-cna-1001",
+          "decision:case:3d5c5a18598c8ae3d05d",
+          "decision:case:c4cf8911bf9502fea692",
+          "revocation:credential:001"
+        ],
+        "evidence_status": "executed_local",
+        "non_claims": [
+          "Revocation timeline displays canonical status effects; the dashboard cannot revoke anything."
+        ],
+        "reason_code": "CLAIM_REVOKED",
+        "revocation_id": "revocation:credential:001",
+        "revoked_at": "2026-07-30T18:00:10Z",
+        "row_id": "revocation:credential",
+        "source_sha256": "ac768a2b44e63102969f906f152f51f0386cb4b669b8d3de92a935e002e0747a",
+        "target_id": "claim:synthetic-hi-cna-1001"
+      },
+      {
+        "after_decision_id": "decision:case:daf7feb79ade3ba12395",
+        "after_request_id": "request:case:respite-revoked-001",
+        "before_decision_id": "decision:case:fcfc1c28d460f4d249c4",
+        "before_request_id": "request:case:respite-historical-001",
+        "canonical_refs": [
+          "decision:case:daf7feb79ade3ba12395",
+          "decision:case:fcfc1c28d460f4d249c4",
+          "grant:synthetic-respite-community-001"
+        ],
+        "evidence_status": "contract_tested",
+        "non_claims": [
+          "Revocation timeline displays canonical status effects; the dashboard cannot revoke anything."
+        ],
+        "reason_code": "GRANT_REVOKED",
+        "revocation_id": null,
+        "revoked_at": "2026-07-30T16:45:00Z",
+        "row_id": "revocation:respite",
+        "source_sha256": "aa5b4ad4a1431497ad89ef58b6ebd6fe1c074059467dff3de277c3fe84614507",
+        "target_id": "grant:synthetic-respite-community-001"
+      },
+      {
+        "after_decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+        "after_request_id": "document-share-request:synthetic-after-revocation-001",
+        "before_decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+        "before_request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "canonical_fresh_deny_available": true,
+        "canonical_refs": [
+          "decision:document-share-request:synthetic-after-revocation-001",
+          "decision:document-share-request:synthetic-scheduling-permit-001",
+          "document-share-grant:synthetic-scheduling-001",
+          "document-share-request:synthetic-after-revocation-001",
+          "document-share-request:synthetic-scheduling-permit-001",
+          "revocation:document-share-grant:synthetic-scheduling-001"
+        ],
+        "evidence_status": "executed_local",
+        "gap": null,
+        "linkage_type": "canonical_document_share",
+        "non_claims": [
+          "Document-share post-revocation denial is a canonical document-share decision, not a case-permission decision."
+        ],
+        "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001",
+        "revoked_at": "2026-07-30T18:00:10Z",
+        "row_id": "revocation:document-share",
+        "source_sha256": "564d7d79ace1ce0fa29bdb4a2c2b0508e1670c0459c09e37c46ecdea6fb1fbb8",
+        "target_id": "document-share-grant:synthetic-scheduling-001"
+      }
+    ],
+    "standards_messages_mappings_gaps": {
+      "gaps": [
+        "Core bridge mappings are mapped_only; no independent profile conformance is claimed.",
+        "No live OAuth/OIDC, EHR/HIE, Bedrock, registry, or federation deployment is evidenced."
+      ],
+      "mappings": [
+        {
+          "bridge_generated_fields": [
+            "issuer_ref=service:caretrust-core-bridge",
+            "status_checked_at=decided_at",
+            "expires_at=decided_at+5 minutes"
+          ],
+          "canonical_refs": [
+            "delegation-request:synthetic-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "delegation_authorization_decision",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:delegation_authorization_decision",
+          "semantic_loss": [],
+          "source_schema_version": "caretrust.delegation-authorization-decision.v1",
+          "source_sha256": "7c3da978b6312b6a84466787fc266c2db44a01d8e33078fc2bc1e7846c4ee31d",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "expires_at=requested_at+5 minutes",
+            "nonce",
+            "idempotency_key"
+          ],
+          "canonical_refs": [
+            "delegation-request:synthetic-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "delegation_authorization_request",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:delegation_authorization_request",
+          "semantic_loss": [],
+          "source_schema_version": "caretrust.delegation-authorization-request.v1",
+          "source_sha256": "ebaa59aa3c0a0fc26d480e90e0914a07a1a118ea3b1e21ca2163a50dffc6d7f4",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "version=1",
+            "valid_from at 00:00:00Z",
+            "valid_until as the first instant after the inclusive legacy date",
+            "Core provenance hash"
+          ],
+          "canonical_refs": [
+            "grant:synthetic-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "delegation_grant_artifact",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:delegation_grant_artifact",
+          "semantic_loss": [],
+          "source_schema_version": "caretrust.delegation-grant.v1",
+          "source_sha256": "c9090ed9c7a5c69b98e1b788c1381c627a19810d27ec9db42eb239a4e8859330",
+          "target_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "sequence=1",
+            "actor_role=patient",
+            "previous_status=active"
+          ],
+          "canonical_refs": [
+            "delegation-revocation:synthetic-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "delegation_revocation_status",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:delegation_revocation_status",
+          "semantic_loss": [
+            "The legacy revocation record has no ordered Core status-event history; sequence=1 begins a bridge-local event stream and previous_status=active is derived from the supplied pre-revocation artifact."
+          ],
+          "source_schema_version": "caretrust.delegation-revocation-record.v1",
+          "source_sha256": "c840355477b2188d5dc480163a225f7a753b112e7778549f1df6fafb38ae2f27",
+          "target_schema_uri": "urn:caretrust:schema:core:status-event:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "issuer_ref=service:caretrust-core-bridge",
+            "status_checked_at=decided_at",
+            "expires_at=decided_at+5 minutes"
+          ],
+          "canonical_refs": [
+            "document-share-request:synthetic-scheduling-permit-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_decision",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_decision",
+          "semantic_loss": [
+            "Granted approved-item IDs are intentionally not copied into Core AuthorizationDecision; applications must use the legacy minimum-data projection/receipt for item-level disclosure."
+          ],
+          "source_schema_version": "caretrust.document-share-decision.v1",
+          "source_sha256": "1fee87b5c3a2b5f9cded32e55ac29578f0bf62d0abfc45bcbf2d829975ad479a",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "issuer_ref=service:caretrust-core-bridge",
+            "version=1",
+            "Core provenance hash"
+          ],
+          "canonical_refs": [
+            "document-share-grant:synthetic-scheduling-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_grant_artifact",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_grant_artifact",
+          "semantic_loss": [],
+          "source_schema_version": "caretrust.document-share-grant.v1",
+          "source_sha256": "506691afbd26fb9b9d9b8b6079fded4a3c03976fd1b04e39765245ce882027b3",
+          "target_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "issuer_ref=service:caretrust-core-bridge",
+            "status_checked_at=decided_at",
+            "expires_at=decided_at+5 minutes"
+          ],
+          "canonical_refs": [
+            "document-share-request:synthetic-after-revocation-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_post_revocation_decision",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_post_revocation_decision",
+          "semantic_loss": [],
+          "source_schema_version": "caretrust.document-share-decision.v1",
+          "source_sha256": "670d6ae740dc07c33ab80ad2ac5427b45909a026ac485c32faa6d009b13874f8",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "expires_at=requested_at+5 minutes",
+            "nonce",
+            "idempotency_key",
+            "resource-set SHA-256 URI"
+          ],
+          "canonical_refs": [
+            "document-share-request:synthetic-after-revocation-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_post_revocation_request",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_post_revocation_request",
+          "semantic_loss": [
+            "Core 0.1 has one resource URI; the ordered approved-item IDs are represented by a canonical hash-bound resource-set URI and remain inspectable in the legacy request.",
+            "include_raw_document is not a Core request field; the legacy request remains authoritative for that explicit prohibition."
+          ],
+          "source_schema_version": "caretrust.document-share-request.v1",
+          "source_sha256": "8815184bbbb8f625d02f2cb006b8f5f63708b546a0e3ae94461e5a000256be4b",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "expires_at=requested_at+5 minutes",
+            "nonce",
+            "idempotency_key",
+            "resource-set SHA-256 URI"
+          ],
+          "canonical_refs": [
+            "document-share-request:synthetic-scheduling-permit-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_request",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_request",
+          "semantic_loss": [
+            "Core 0.1 has one resource URI; the ordered approved-item IDs are represented by a canonical hash-bound resource-set URI and remain inspectable in the legacy request.",
+            "include_raw_document is not a Core request field; the legacy request remains authoritative for that explicit prohibition."
+          ],
+          "source_schema_version": "caretrust.document-share-request.v1",
+          "source_sha256": "a41cca7b9bda5d58becf6e1c14e1a2f20c1a8db62c6f7d63c8dfac4b0e32ff57",
+          "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+        },
+        {
+          "bridge_generated_fields": [
+            "sequence=1",
+            "actor_role=patient",
+            "previous_status=active"
+          ],
+          "canonical_refs": [
+            "revocation:document-share-grant:synthetic-scheduling-001"
+          ],
+          "conformance": "mapped_only",
+          "evidence_status": "mapped_only",
+          "mapping_name": "document_share_revocation_status",
+          "non_claims": [
+            "Mapping status is not independent conformance or deployed interoperability."
+          ],
+          "row_id": "core-mapping:document_share_revocation_status",
+          "semantic_loss": [
+            "The legacy revocation record has no ordered Core status-event history; sequence=1 begins a bridge-local event stream and previous_status=active is derived from the supplied pre-revocation artifact."
+          ],
+          "source_schema_version": "caretrust.document-share-revocation-record.v1",
+          "source_sha256": "d7bc90d6517016bc56c2d832fba851d9ddf50f9a464fe81c01f32be23d56c9b1",
+          "target_schema_uri": "urn:caretrust:schema:core:status-event:0.1"
+        }
+      ],
+      "messages": [
+        {
+          "canonical_refs": [
+            "3ef89f4d79b0e79297cb9602df06c0ef8dcf31014991894670706574cd69ba4d",
+            "urn:caretrust:message:core-bridge:delegation_authorization_decision"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:delegation_authorization_decision",
+          "message_type": "urn:caretrust:message-type:delegation-authorization-decision",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+          "payload_sha256": "3ef89f4d79b0e79297cb9602df06c0ef8dcf31014991894670706574cd69ba4d",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:delegation_authorization_decision",
+          "source_sha256": "b28e73eba4229651ff8760208754e406cbde4c630bebc2a4097346fae164dc56",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "6f8770d34e3105c9b8734afcb3f8e3f66e74d7831278d1927d8e32ebf599de35",
+            "urn:caretrust:message:core-bridge:delegation_authorization_request"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:delegation_authorization_request",
+          "message_type": "urn:caretrust:message-type:delegation-authorization-request",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+          "payload_sha256": "6f8770d34e3105c9b8734afcb3f8e3f66e74d7831278d1927d8e32ebf599de35",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:delegation_authorization_request",
+          "source_sha256": "ceaf364206b94eda1987a38231ca44f82bba8042352b6ef17048c18688fbaba8",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "8c3e62b4c3fd73ad3ee59ab6795948934c82fece712acfd659782202881ffb52",
+            "urn:caretrust:message:core-bridge:delegation_grant_artifact"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:delegation_grant_artifact",
+          "message_type": "urn:caretrust:message-type:delegation-grant-artifact",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+          "payload_sha256": "8c3e62b4c3fd73ad3ee59ab6795948934c82fece712acfd659782202881ffb52",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:delegation_grant_artifact",
+          "source_sha256": "d9e8ec7c090c5a680a532cfe84bed92a045bfe9ea8ccfdb066490d5b5e6556a6",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "d7c2d34784c48e0c1095c338dc986c8a133f7df6d3a80bf435ff1b2795a544eb",
+            "urn:caretrust:message:core-bridge:delegation_revocation_status"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:delegation_revocation_status",
+          "message_type": "urn:caretrust:message-type:delegation-revocation-status",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+          "payload_sha256": "d7c2d34784c48e0c1095c338dc986c8a133f7df6d3a80bf435ff1b2795a544eb",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:delegation_revocation_status",
+          "source_sha256": "99dab01133c41d8f9b211b289a72edb832f3bb237005223f2386403c7b908ad2",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "16bf743c10d34230fe20edd14fa925d7a65ef16609f20276ecdbb099c500076d",
+            "urn:caretrust:message:core-bridge:document_share_decision"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_decision",
+          "message_type": "urn:caretrust:message-type:document-share-decision",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+          "payload_sha256": "16bf743c10d34230fe20edd14fa925d7a65ef16609f20276ecdbb099c500076d",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_decision",
+          "source_sha256": "4e58137110860a36acccc85227f56882d0daafc12dbe7234d7baa8bc14cba54b",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "cd953d1dd4de7eeb0b22916745e893163461f9309c30b5eb6eb069e944426925",
+            "urn:caretrust:message:core-bridge:document_share_grant_artifact"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_grant_artifact",
+          "message_type": "urn:caretrust:message-type:document-share-grant-artifact",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+          "payload_sha256": "cd953d1dd4de7eeb0b22916745e893163461f9309c30b5eb6eb069e944426925",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_grant_artifact",
+          "source_sha256": "832f61729b64da3ed139d3a12063908f0bd0dce45a0a31aa5c14a215a4949f7b",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "dc009fa03a642d2fd49ded4bcc25f4bbdd8bf3be75223525774f7b9d8607e90b",
+            "urn:caretrust:message:core-bridge:document_share_post_revocation_decision"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_post_revocation_decision",
+          "message_type": "urn:caretrust:message-type:document-share-post-revocation-decision",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+          "payload_sha256": "dc009fa03a642d2fd49ded4bcc25f4bbdd8bf3be75223525774f7b9d8607e90b",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_post_revocation_decision",
+          "source_sha256": "944ae3753679f2c5e1a3797d5ed6947eecc7e7d3fb54f23c58465aec156a4cf7",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "4a179668bb4e3c68c3f02b2120dbc7ae665390b5ddd6f0e0369e457dc87b5751",
+            "urn:caretrust:message:core-bridge:document_share_post_revocation_request"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_post_revocation_request",
+          "message_type": "urn:caretrust:message-type:document-share-post-revocation-request",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+          "payload_sha256": "4a179668bb4e3c68c3f02b2120dbc7ae665390b5ddd6f0e0369e457dc87b5751",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_post_revocation_request",
+          "source_sha256": "2ed8773b194bbe98eee24a58c32e029d582d9ea38d3210f0aa74d03385b7f106",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "a4b199c9c8f40c085dcfdea5321d39d0f95a978f06dd8f66e8773f02e279d930",
+            "urn:caretrust:message:core-bridge:document_share_request"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_request",
+          "message_type": "urn:caretrust:message-type:document-share-request",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+          "payload_sha256": "a4b199c9c8f40c085dcfdea5321d39d0f95a978f06dd8f66e8773f02e279d930",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_request",
+          "source_sha256": "fe82742d51c9ba22c42c7d27ad2f141df0380fc4274c7bbfe2e027f5cbfb2d49",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        },
+        {
+          "canonical_refs": [
+            "74a2a310646d00a9577e663de2020731d517e8f219f11e2b9cf8630b354daac3",
+            "urn:caretrust:message:core-bridge:document_share_revocation_status"
+          ],
+          "evidence_status": "executed_local",
+          "message_id": "urn:caretrust:message:core-bridge:document_share_revocation_status",
+          "message_type": "urn:caretrust:message-type:document-share-revocation-status",
+          "non_claims": [
+            "Core envelope is a local bridge artifact, not a deployed network message."
+          ],
+          "payload_schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+          "payload_sha256": "74a2a310646d00a9577e663de2020731d517e8f219f11e2b9cf8630b354daac3",
+          "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+          "row_id": "core-message:urn:caretrust:message:core-bridge:document_share_revocation_status",
+          "source_sha256": "5c37b7b21bd391ac29ab64f485fde7507597054b407767b09ad2d1b67e00cc85",
+          "trace_id": "trace:synthetic-core-v0.1-bridge"
+        }
+      ],
+      "standards": [
+        {
+          "canonical_id": "grant:synthetic-001",
+          "canonical_refs": [
+            "grant:synthetic-001"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [],
+          "row_id": "standard:grant:synthetic-001",
+          "source_sha256": "314819e57ad75f01d52dba72f7b3a0671daee8a661ad9763e44e03ac2fc7ced2",
+          "standard": "CareTrust delegation v1",
+          "standard_non_claim": null
+        },
+        {
+          "canonical_id": "claim:synthetic-hi-cna-1001",
+          "canonical_refs": [
+            "claim:synthetic-hi-cna-1001"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [],
+          "row_id": "standard:claim:synthetic-hi-cna-1001",
+          "source_sha256": "0505089e0d79b077737df80ae54cf5166196d9193651593e45b31dab82f398f9",
+          "standard": "CareTrust active credential claim v1",
+          "standard_non_claim": null
+        },
+        {
+          "canonical_id": "document-share-grant:synthetic-direct-care-task-001",
+          "canonical_refs": [
+            "document-share-grant:synthetic-direct-care-task-001"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [],
+          "row_id": "standard:document-share-grant:synthetic-direct-care-task-001",
+          "source_sha256": "49976608aa667b5d5222408dca74a5f1078bbf8e8dcacd7dad0716a61ca1e8fc",
+          "standard": "CareTrust document share v1",
+          "standard_non_claim": null
+        },
+        {
+          "canonical_id": "decision:clinical:f3dd980fc1b221df9b9b",
+          "canonical_refs": [
+            "decision:clinical:f3dd980fc1b221df9b9b"
+          ],
+          "evidence_status": "executed_local",
+          "non_claims": [],
+          "row_id": "standard:decision:clinical:f3dd980fc1b221df9b9b",
+          "source_sha256": "9134cc6645bbd33fcf3eb8fdb36c3e64efef0d2286c3132627d81900d0761bb2",
+          "standard": "FHIR R4-shaped local holder exchange",
+          "standard_non_claim": "No live EHR, HIE, or network edge was used."
+        }
+      ]
+    }
+  }
+}

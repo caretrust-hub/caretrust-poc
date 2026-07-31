@@ -1,0 +1,72 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "future_requests_require_fresh_denial": {
+      "const": true,
+      "default": true,
+      "title": "Future Requests Require Fresh Denial",
+      "type": "boolean"
+    },
+    "grant_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "historical_decisions_retained": {
+      "const": true,
+      "default": true,
+      "title": "Historical Decisions Retained",
+      "type": "boolean"
+    },
+    "patient_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "revocation_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Revocation Id",
+      "type": "string"
+    },
+    "revoked_at": {
+      "format": "date-time",
+      "title": "Revoked At",
+      "type": "string"
+    },
+    "revoked_by_account_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Revoked By Account Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.document-share-revocation-record.v1",
+      "default": "caretrust.document-share-revocation-record.v1",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "revocation_id",
+    "grant_id",
+    "patient_ref",
+    "revoked_by_account_ref",
+    "reason",
+    "revoked_at"
+  ],
+  "title": "DocumentShareRevocationRecord",
+  "type": "object"
+}

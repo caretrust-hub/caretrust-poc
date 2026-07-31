@@ -4,7 +4,7 @@
 
 This profile is an **illustrative, contract-tested exchange sketch** for a
 future CareTrust credential flow. Its implementation status is
-**contract/artifact tested only**. It is not runtime behavior, not an
+**`contract_tested` — Contract tested**. It is not runtime behavior, not an
 interoperability certification, and not a conformance claim.
 
 The examples show how a future credential issuer, wallet, verifier, and the

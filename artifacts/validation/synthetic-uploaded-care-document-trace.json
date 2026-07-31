@@ -1,0 +1,936 @@
+{
+  "events": [
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "device-to-intake",
+      "event_id": "event:upload-accepted",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "document_id": "document:synthetic-discharge-001",
+        "invite_acceptance_id": "invite-acceptance:synthetic-001",
+        "patient_ref": "patient:synthetic-001",
+        "uploader_account_ref": "account:synthetic-leilani"
+      },
+      "message_type": "UploadedCareDocument",
+      "non_claims": [
+        "The existing accepted invite is referenced by identifier; this trace does not re-adjudicate delegation authority.",
+        "No production malware service or real patient content was used."
+      ],
+      "occurred_at": "2026-07-30T18:00:01Z",
+      "payload": {
+        "classification": "discharge_instructions",
+        "clinically_authoritative": false,
+        "content_sha256": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70",
+        "content_type": "application/pdf",
+        "document_id": "document:synthetic-discharge-001",
+        "file_validation": {
+          "active_content_detected": false,
+          "file_validation_status": "valid",
+          "malware_scan_status": "clean",
+          "malware_scanner": "scanner:synthetic-clamav-contract",
+          "password_protected": false,
+          "reason_codes": [
+            "magic-bytes-contract-checked",
+            "active-content-not-detected"
+          ],
+          "scanned_at": "2026-07-30T18:00:00Z",
+          "validated_content_type": "application/pdf",
+          "validated_size_bytes": 457
+        },
+        "filename": "synthetic-discharge-instructions.pdf",
+        "intake_status": "accepted",
+        "invite_acceptance_id": "invite-acceptance:synthetic-001",
+        "original_retained_ref": "artifact:synthetic-upload-original-001",
+        "page_count": 1,
+        "patient_ref": "patient:synthetic-001",
+        "privacy": {
+          "contains_health_information": true,
+          "contains_real_phi": false,
+          "minimum_necessary_required": true,
+          "redisclosure_requires_new_decision": true,
+          "sensitivity": "restricted_health_information",
+          "synthetic_only": true
+        },
+        "schema_version": "caretrust.uploaded-care-document.v1",
+        "uploaded_at": "2026-07-30T18:00:01Z",
+        "uploader_account_ref": "account:synthetic-leilani",
+        "uploader_role": "invited_relative"
+      },
+      "payload_sha256": "55adfce123df2354144fb7ab1de9ecf4db23d30ebc50eb0d858e930a1d7c649a",
+      "receiver_ref": "service:caretrust-document-intake",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 1,
+      "standard_refs": [
+        "CareTrust uploaded-care-document.v1",
+        "CareTrust invite-acceptance.v1",
+        "OWASP File Upload Cheat Sheet"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "service:synthetic-ai-extractor",
+      "boundary": "untrusted-ai-to-accountable-review",
+      "event_id": "event:extraction-draft",
+      "evidence_status": "contract_tested",
+      "linked_ids": {
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001"
+      },
+      "message_type": "DocumentExtractionDraft",
+      "non_claims": [
+        "This deterministic synthetic replay is not a retained Bedrock inference."
+      ],
+      "occurred_at": "2026-07-30T18:00:02Z",
+      "payload": {
+        "blocking_issue_codes": [
+          "ambiguous_medication",
+          "clinical_interpretation_required"
+        ],
+        "candidate_items": [
+          {
+            "candidate_text": "The document states a discharge date of 2026-07-29.",
+            "category": "discharge-date",
+            "clinically_authoritative": false,
+            "clinically_verified": false,
+            "confidence": 0.99,
+            "current_clinical_truth": false,
+            "evidence_refs": [
+              "evidence:discharge-date"
+            ],
+            "item_id": "candidate:discharge-date",
+            "kind": "fact",
+            "normalized_value": "2026-07-29",
+            "sensitivity": "restricted_health_information",
+            "shareable": false,
+            "status": "draft"
+          },
+          {
+            "candidate_text": "Schedule primary care follow-up within 7 days.",
+            "category": "follow-up-instruction",
+            "clinically_authoritative": false,
+            "clinically_verified": false,
+            "confidence": 0.96,
+            "current_clinical_truth": false,
+            "evidence_refs": [
+              "evidence:follow-up"
+            ],
+            "item_id": "candidate:follow-up",
+            "kind": "instruction",
+            "normalized_value": null,
+            "sensitivity": "restricted_health_information",
+            "shareable": false,
+            "status": "draft"
+          },
+          {
+            "candidate_text": "Bring the discharge sheet and current medication list.",
+            "category": "visit-preparation",
+            "clinically_authoritative": false,
+            "clinically_verified": false,
+            "confidence": 0.98,
+            "current_clinical_truth": false,
+            "evidence_refs": [
+              "evidence:bring-documents"
+            ],
+            "item_id": "candidate:bring-documents",
+            "kind": "action_item",
+            "normalized_value": null,
+            "sensitivity": "restricted_health_information",
+            "shareable": false,
+            "status": "draft"
+          },
+          {
+            "candidate_text": "Continue home medicines as previously directed.",
+            "category": "medication-instruction",
+            "clinically_authoritative": false,
+            "clinically_verified": false,
+            "confidence": 0.65,
+            "current_clinical_truth": false,
+            "evidence_refs": [
+              "evidence:medication-note"
+            ],
+            "item_id": "candidate:medication",
+            "kind": "medication_candidate",
+            "normalized_value": null,
+            "sensitivity": "highly_sensitive_health_information",
+            "shareable": false,
+            "status": "draft"
+          },
+          {
+            "candidate_text": "Seek urgent care for new chest pain or severe shortness of breath.",
+            "category": "warning-sign-instruction",
+            "clinically_authoritative": false,
+            "clinically_verified": false,
+            "confidence": 0.93,
+            "current_clinical_truth": false,
+            "evidence_refs": [
+              "evidence:warning-signs"
+            ],
+            "item_id": "candidate:warning-signs",
+            "kind": "instruction",
+            "normalized_value": null,
+            "sensitivity": "highly_sensitive_health_information",
+            "shareable": false,
+            "status": "draft"
+          }
+        ],
+        "clinically_authoritative": false,
+        "clinically_verified": false,
+        "created_at": "2026-07-30T18:00:02Z",
+        "current_clinical_truth": false,
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "evidence_spans": [
+          {
+            "document_id": "document:synthetic-discharge-001",
+            "end_offset": 130,
+            "evidence_id": "evidence:discharge-date",
+            "exact_text": "Discharge date: 2026-07-29",
+            "page": 1,
+            "region": {
+              "height": 0.06,
+              "width": 0.84,
+              "x": 0.08,
+              "y": 0.25
+            },
+            "start_offset": 104
+          },
+          {
+            "document_id": "document:synthetic-discharge-001",
+            "end_offset": 204,
+            "evidence_id": "evidence:follow-up",
+            "exact_text": "Instructions: Schedule a follow-up visit with primary care within 7 days.",
+            "page": 1,
+            "region": {
+              "height": 0.06,
+              "width": 0.84,
+              "x": 0.08,
+              "y": 0.36
+            },
+            "start_offset": 131
+          },
+          {
+            "document_id": "document:synthetic-discharge-001",
+            "end_offset": 273,
+            "evidence_id": "evidence:bring-documents",
+            "exact_text": "Action item: Bring this discharge sheet and current medication list.",
+            "page": 1,
+            "region": {
+              "height": 0.06,
+              "width": 0.84,
+              "x": 0.08,
+              "y": 0.48
+            },
+            "start_offset": 205
+          },
+          {
+            "document_id": "document:synthetic-discharge-001",
+            "end_offset": 380,
+            "evidence_id": "evidence:medication-note",
+            "exact_text": "Medication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.",
+            "page": 1,
+            "region": {
+              "height": 0.06,
+              "width": 0.84,
+              "x": 0.08,
+              "y": 0.6
+            },
+            "start_offset": 274
+          },
+          {
+            "document_id": "document:synthetic-discharge-001",
+            "end_offset": 456,
+            "evidence_id": "evidence:warning-signs",
+            "exact_text": "Warning: Seek urgent care for new chest pain or severe shortness of breath.",
+            "page": 1,
+            "region": {
+              "height": 0.06,
+              "width": 0.84,
+              "x": 0.08,
+              "y": 0.74
+            },
+            "start_offset": 381
+          }
+        ],
+        "extraction_run_id": "extraction-run:synthetic-local-replay-001",
+        "extractor_ref": "extractor:synthetic-ai-contract",
+        "schema_version": "caretrust.document-extraction-draft.v1",
+        "shareable": false,
+        "source_pages": [
+          {
+            "page": 1,
+            "text": "SYNTHETIC TEST RECORD - NOT A REAL MEDICAL RECORD\nDISCHARGE INSTRUCTIONS\nPatient: Synthetic Patient 001\nDischarge date: 2026-07-29\nInstructions: Schedule a follow-up visit with primary care within 7 days.\nAction item: Bring this discharge sheet and current medication list.\nMedication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.\nWarning: Seek urgent care for new chest pain or severe shortness of breath.",
+            "text_sha256": "43b56416a5cc05456d998898a0b3d7c05d0a9c1824d09e99e040d2e3521aceb5"
+          }
+        ],
+        "status": "draft",
+        "synthetic_only": true,
+        "uncertainties": [
+          {
+            "blocking": true,
+            "code": "ambiguous_medication",
+            "detail": "The document does not list medication names, doses, or a current regimen.",
+            "evidence_refs": [
+              "evidence:medication-note"
+            ],
+            "item_id": "candidate:medication",
+            "uncertainty_id": "uncertainty:medication-unspecified"
+          },
+          {
+            "blocking": true,
+            "code": "clinical_interpretation_required",
+            "detail": "The warning text must remain withheld from apps until an accountable reviewer clarifies the originating clinical source and intended context.",
+            "evidence_refs": [
+              "evidence:warning-signs"
+            ],
+            "item_id": "candidate:warning-signs",
+            "uncertainty_id": "uncertainty:warning-source-clarification"
+          }
+        ]
+      },
+      "payload_sha256": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+      "receiver_ref": "service:caretrust-review-queue",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 2,
+      "standard_refs": [
+        "CareTrust document-extraction-draft.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "accountable-review-to-approved-projection",
+      "event_id": "event:review-correction",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "review_id": "review:synthetic-discharge-001"
+      },
+      "message_type": "DocumentReviewCorrectionRecord",
+      "non_claims": [
+        "Review confirms document wording only, not current clinical truth."
+      ],
+      "occurred_at": "2026-07-30T18:00:03Z",
+      "payload": {
+        "approved_item_ids": [
+          "candidate:discharge-date",
+          "candidate:follow-up",
+          "candidate:bring-documents"
+        ],
+        "corrections": [
+          {
+            "corrected_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+            "evidence_refs": [
+              "evidence:follow-up"
+            ],
+            "item_id": "candidate:follow-up",
+            "previous_text": "Schedule primary care follow-up within 7 days.",
+            "reason": "Preserve document-statement attribution; do not present as a current care-plan order."
+          }
+        ],
+        "decision": "corrected",
+        "deferred_item_ids": [
+          "candidate:warning-signs"
+        ],
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "establishes_current_clinical_truth": false,
+        "establishes_legal_authority": false,
+        "original_draft_sha256": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+        "rejected_item_ids": [
+          "candidate:medication"
+        ],
+        "review_id": "review:synthetic-discharge-001",
+        "review_scope": "document_statement_only",
+        "reviewed_at": "2026-07-30T18:00:03Z",
+        "reviewer_account_ref": "patient:synthetic-001",
+        "reviewer_role": "accountable_reviewer",
+        "schema_version": "caretrust.document-review-correction-record.v1"
+      },
+      "payload_sha256": "665c8ac5c447aa969e8048c459d1d901e8dd8550aee7efeab771a31dd177e547",
+      "receiver_ref": "service:caretrust-approved-item-projector",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 3,
+      "standard_refs": [
+        "CareTrust document-review-correction-record.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "patient-to-policy",
+      "event_id": "event:scheduling-share-grant",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "patient_ref": "patient:synthetic-001",
+        "review_id": "review:synthetic-discharge-001"
+      },
+      "message_type": "DocumentShareGrant",
+      "non_claims": [
+        "No raw document sharing is authorized."
+      ],
+      "occurred_at": "2026-07-30T18:00:04Z",
+      "payload": {
+        "allowed_audiences": [
+          "app:synthetic-scheduling"
+        ],
+        "allowed_item_kinds": [
+          "instruction"
+        ],
+        "allowed_purposes": [
+          "discharge_follow_up"
+        ],
+        "approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:follow-up"
+        ],
+        "fresh_decision_required": true,
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "issued_at": "2026-07-30T18:00:04Z",
+        "maximum_sensitivity": "restricted_health_information",
+        "overbroad_requests_allowed": false,
+        "patient_ref": "patient:synthetic-001",
+        "raw_document_sharing_allowed": false,
+        "review_id": "review:synthetic-discharge-001",
+        "revoked_at": null,
+        "schema_version": "caretrust.document-share-grant.v1",
+        "status": "active",
+        "synthetic_only": true,
+        "unapproved_items_allowed": false,
+        "valid_from": "2026-07-30T18:00:04Z",
+        "valid_until": "2026-08-06T18:00:00Z"
+      },
+      "payload_sha256": "1f4c9d0363bb13c7e92b238f79700ba60be1a37dc90609c9bb00916e0e4e18f4",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 4,
+      "standard_refs": [
+        "CareTrust document-share-grant.v1",
+        "NIST SP 800-162 ABAC"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "patient-to-policy",
+      "event_id": "event:direct-care-task-share-grant",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+        "patient_ref": "patient:synthetic-001",
+        "review_id": "review:synthetic-discharge-001"
+      },
+      "message_type": "DocumentShareGrant",
+      "non_claims": [
+        "Only the reviewed bring-documents reminder is in scope; raw and clinical content are withheld."
+      ],
+      "occurred_at": "2026-07-30T18:00:04Z",
+      "payload": {
+        "allowed_audiences": [
+          "app:synthetic-direct-care-tasks"
+        ],
+        "allowed_item_kinds": [
+          "action_item"
+        ],
+        "allowed_purposes": [
+          "visit_preparation"
+        ],
+        "approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ],
+        "fresh_decision_required": true,
+        "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+        "issued_at": "2026-07-30T18:00:04Z",
+        "maximum_sensitivity": "restricted_health_information",
+        "overbroad_requests_allowed": false,
+        "patient_ref": "patient:synthetic-001",
+        "raw_document_sharing_allowed": false,
+        "review_id": "review:synthetic-discharge-001",
+        "revoked_at": null,
+        "schema_version": "caretrust.document-share-grant.v1",
+        "status": "active",
+        "synthetic_only": true,
+        "unapproved_items_allowed": false,
+        "valid_from": "2026-07-30T18:00:04Z",
+        "valid_until": "2026-08-06T18:00:00Z"
+      },
+      "payload_sha256": "906796d574eb3c9bf2ca9bc9d829172fd36bcf731a2fa40dca9b41e0f9a5c971",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 5,
+      "standard_refs": [
+        "CareTrust document-share-grant.v1",
+        "NIST SP 800-162 ABAC"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling",
+      "boundary": "application-to-policy",
+      "event_id": "event:scheduling-share-request",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "patient_ref": "patient:synthetic-001",
+        "request_id": "document-share-request:synthetic-scheduling-permit-001"
+      },
+      "message_type": "DocumentShareRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T18:00:05Z",
+      "payload": {
+        "audience": "app:synthetic-scheduling",
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "include_raw_document": false,
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "discharge_follow_up",
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:follow-up"
+        ],
+        "requested_at": "2026-07-30T18:00:05Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "schema_version": "caretrust.document-share-request.v1",
+        "synthetic_only": true
+      },
+      "payload_sha256": "b0fd2351cbe79a4d42179adb1b219080e36b6f7ae5843fd59a004fe67264cc6e",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 6,
+      "standard_refs": [
+        "CareTrust document-share-request.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "service:caretrust-policy",
+      "boundary": "policy-to-application",
+      "event_id": "event:scheduling-share-permit",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+        "request_id": "document-share-request:synthetic-scheduling-permit-001"
+      },
+      "message_type": "DocumentShareDecision",
+      "non_claims": [
+        "The scheduling app receives only the reviewed follow-up/window statement, not the raw upload."
+      ],
+      "occurred_at": "2026-07-30T18:00:06Z",
+      "payload": {
+        "decided_at": "2026-07-30T18:00:06Z",
+        "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+        "granted_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:follow-up"
+        ],
+        "outcome": "permit",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "reason_codes": [
+          "policy_satisfied"
+        ],
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "schema_version": "caretrust.document-share-decision.v1",
+        "supporting_grant_id": "document-share-grant:synthetic-scheduling-001"
+      },
+      "payload_sha256": "ebb1ac5652311edacd1607972b51696c90cc6808e4b100f54ea8538392c3bd71",
+      "receiver_ref": "app:synthetic-scheduling",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 7,
+      "standard_refs": [
+        "CareTrust document-share-policy.v1",
+        "NIST SP 800-162 ABAC"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "app:synthetic-direct-care-tasks",
+      "boundary": "application-to-policy",
+      "event_id": "event:direct-care-task-share-request",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+        "patient_ref": "patient:synthetic-001",
+        "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+      },
+      "message_type": "DocumentShareRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T18:00:07Z",
+      "payload": {
+        "audience": "app:synthetic-direct-care-tasks",
+        "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+        "include_raw_document": false,
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "visit_preparation",
+        "request_id": "document-share-request:synthetic-direct-care-task-permit-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ],
+        "requested_at": "2026-07-30T18:00:07Z",
+        "requester_ref": "app:synthetic-direct-care-tasks",
+        "schema_version": "caretrust.document-share-request.v1",
+        "synthetic_only": true
+      },
+      "payload_sha256": "7c835bb3f948671efde24e9968dad5489ae9a209c88524f42c6eb40dc799264a",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 8,
+      "standard_refs": [
+        "CareTrust document-share-request.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "service:caretrust-policy",
+      "boundary": "policy-to-application",
+      "event_id": "event:direct-care-task-share-permit",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "decision_id": "decision:document-share-request:synthetic-direct-care-task-permit-001",
+        "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+      },
+      "message_type": "DocumentShareDecision",
+      "non_claims": [
+        "The task app receives only the reviewed bring-documents reminder; medication and warning text remain withheld."
+      ],
+      "occurred_at": "2026-07-30T18:00:08Z",
+      "payload": {
+        "decided_at": "2026-07-30T18:00:08Z",
+        "decision_id": "decision:document-share-request:synthetic-direct-care-task-permit-001",
+        "granted_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ],
+        "outcome": "permit",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "reason_codes": [
+          "policy_satisfied"
+        ],
+        "request_id": "document-share-request:synthetic-direct-care-task-permit-001",
+        "schema_version": "caretrust.document-share-decision.v1",
+        "supporting_grant_id": "document-share-grant:synthetic-direct-care-task-001"
+      },
+      "payload_sha256": "f6b9d6c61e989fe42cc91e5e42d627b4c4a178066d4aea0f7c32c5669cbbb1a0",
+      "receiver_ref": "app:synthetic-direct-care-tasks",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 9,
+      "standard_refs": [
+        "CareTrust document-share-policy.v1",
+        "NIST SP 800-162 ABAC"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "service:caretrust-fhir-projector",
+      "boundary": "caretrust-to-fhir-r4-candidate",
+      "event_id": "event:fhir-candidate-projection",
+      "evidence_status": "mapped_only",
+      "linked_ids": {
+        "source_document_id": "document:synthetic-discharge-001"
+      },
+      "message_type": "UploadedDocumentFhirProjection",
+      "non_claims": [
+        "No FHIR server exchange or official HL7 validator was executed.",
+        "Task, CarePlan, and MedicationStatement resources are not emitted."
+      ],
+      "occurred_at": "2026-07-30T18:00:09Z",
+      "payload": {
+        "candidate_only": true,
+        "clinically_authoritative": false,
+        "document_reference": {
+          "author": [
+            {
+              "display": "Synthetic document uploader",
+              "reference": "RelatedPerson/account:synthetic-leilani"
+            }
+          ],
+          "content": [
+            {
+              "attachment": {
+                "contentType": "application/pdf",
+                "title": "synthetic-discharge-instructions.pdf",
+                "url": "https://storage.synthetic.invalid/documents/document:synthetic-discharge-001"
+              }
+            }
+          ],
+          "date": "2026-07-30T18:00:01Z",
+          "id": "docref-document-synthetic-discharge-001",
+          "identifier": [
+            {
+              "system": "https://caretrust.example/synthetic/document-sha256",
+              "value": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70"
+            }
+          ],
+          "resourceType": "DocumentReference",
+          "securityLabel": [
+            {
+              "coding": [
+                {
+                  "code": "R",
+                  "display": "restricted",
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality"
+                }
+              ],
+              "text": null
+            }
+          ],
+          "status": "current",
+          "subject": {
+            "display": null,
+            "reference": "Patient/patient:synthetic-001"
+          },
+          "type": {
+            "coding": [
+              {
+                "code": "18842-5",
+                "display": "Discharge summary",
+                "system": "http://loinc.org"
+              }
+            ],
+            "text": "discharge_instructions"
+          }
+        },
+        "downstream_candidates": [
+          {
+            "clinically_authoritative": false,
+            "current_clinical_truth": false,
+            "emitted": false,
+            "projection_status": "draft_candidate",
+            "resource_family": "Task",
+            "source_item_ids": [
+              "approved:review:synthetic-discharge-001:candidate:bring-documents"
+            ]
+          },
+          {
+            "clinically_authoritative": false,
+            "current_clinical_truth": false,
+            "emitted": false,
+            "projection_status": "draft_candidate",
+            "resource_family": "CarePlan",
+            "source_item_ids": [
+              "approved:review:synthetic-discharge-001:candidate:follow-up"
+            ]
+          },
+          {
+            "clinically_authoritative": false,
+            "current_clinical_truth": false,
+            "emitted": false,
+            "projection_status": "planned",
+            "resource_family": "MedicationStatement",
+            "source_item_ids": []
+          }
+        ],
+        "fhir_server_exchange_executed": false,
+        "official_hl7_validation_executed": false,
+        "provenance": {
+          "agent": [
+            {
+              "type": {
+                "coding": [
+                  {
+                    "code": "assembler",
+                    "display": "Assembler",
+                    "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+                  }
+                ],
+                "text": null
+              },
+              "who": {
+                "display": null,
+                "reference": "Practitioner/patient:synthetic-001"
+              }
+            }
+          ],
+          "entity": [
+            {
+              "role": "source",
+              "what": {
+                "display": null,
+                "reference": "DocumentReference/source-document:synthetic-discharge-001"
+              }
+            },
+            {
+              "role": "source",
+              "what": {
+                "display": null,
+                "reference": "Basic/review:synthetic-discharge-001"
+              }
+            }
+          ],
+          "id": "provenance-review-synthetic-discharge-001",
+          "recorded": "2026-07-30T18:00:09Z",
+          "resourceType": "Provenance",
+          "target": [
+            {
+              "display": null,
+              "reference": "DocumentReference/docref-document-synthetic-discharge-001"
+            }
+          ]
+        },
+        "schema_version": "caretrust.uploaded-document-fhir-r4-candidate-projection.v1",
+        "semantic_loss": [
+          {
+            "detail": "Mapped to v3 Confidentiality; CareTrust policy detail remains local.",
+            "disposition": "represented",
+            "fhir_target": "DocumentReference.securityLabel",
+            "source_field": "privacy.sensitivity"
+          },
+          {
+            "detail": "FHIR URL is a synthetic locator; the opaque retained-reference contract remains local.",
+            "disposition": "local_only",
+            "fhir_target": "DocumentReference.content.attachment.url",
+            "source_field": "original_retained_ref"
+          },
+          {
+            "detail": "Exact page, region, and text offsets are retained in CareTrust and not emitted in base R4.",
+            "disposition": "omitted",
+            "fhir_target": "none",
+            "source_field": "evidence_spans"
+          },
+          {
+            "detail": "Purpose, audience, approved-item scope, and revocation require the CareTrust policy contract.",
+            "disposition": "omitted",
+            "fhir_target": "none",
+            "source_field": "document_share_grant"
+          }
+        ],
+        "source_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:discharge-date",
+          "approved:review:synthetic-discharge-001:candidate:follow-up",
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ],
+        "source_document_id": "document:synthetic-discharge-001",
+        "source_review_id": "review:synthetic-discharge-001"
+      },
+      "payload_sha256": "119fa24c7b13800a4b95301b9a383ebe142abf81d86b50abc0f0fac3d29ea0a4",
+      "receiver_ref": "adapter:synthetic-fhir-boundary",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 10,
+      "standard_refs": [
+        "HL7 FHIR R4 DocumentReference",
+        "HL7 FHIR R4 Provenance"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "patient-to-policy",
+      "event_id": "event:share-revocation",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "patient_ref": "patient:synthetic-001",
+        "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001"
+      },
+      "message_type": "DocumentShareRevocationRecord",
+      "non_claims": [
+        "Historical decisions remain append-only; future requests are reevaluated."
+      ],
+      "occurred_at": "2026-07-30T18:00:10Z",
+      "payload": {
+        "future_requests_require_fresh_denial": true,
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "historical_decisions_retained": true,
+        "patient_ref": "patient:synthetic-001",
+        "reason": "Synthetic patient withdrew future scheduling-app sharing.",
+        "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001",
+        "revoked_at": "2026-07-30T18:00:10Z",
+        "revoked_by_account_ref": "patient:synthetic-001",
+        "schema_version": "caretrust.document-share-revocation-record.v1"
+      },
+      "payload_sha256": "a3f99eccc0b8b6b415d555cc7440870336390e534a856ae81b139f9cb1a443cd",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 11,
+      "standard_refs": [
+        "CareTrust document-share-revocation-record.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling",
+      "boundary": "application-to-policy",
+      "event_id": "event:post-revocation-request",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "patient_ref": "patient:synthetic-001",
+        "request_id": "document-share-request:synthetic-after-revocation-001"
+      },
+      "message_type": "DocumentShareRequest",
+      "non_claims": [],
+      "occurred_at": "2026-07-30T18:00:11Z",
+      "payload": {
+        "audience": "app:synthetic-scheduling",
+        "grant_id": "document-share-grant:synthetic-scheduling-001",
+        "include_raw_document": false,
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "discharge_follow_up",
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:follow-up"
+        ],
+        "requested_at": "2026-07-30T18:00:11Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "schema_version": "caretrust.document-share-request.v1",
+        "synthetic_only": true
+      },
+      "payload_sha256": "963e5dc0367fba03f110851cb58884df215278ac3f6f1c99c41f2b5f9c2b11d9",
+      "receiver_ref": "service:caretrust-policy",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 12,
+      "standard_refs": [
+        "CareTrust document-share-request.v1"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    },
+    {
+      "actor_ref": "service:caretrust-policy",
+      "boundary": "policy-to-application",
+      "event_id": "event:post-revocation-deny",
+      "evidence_status": "executed_local",
+      "linked_ids": {
+        "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+        "request_id": "document-share-request:synthetic-after-revocation-001"
+      },
+      "message_type": "DocumentShareDecision",
+      "non_claims": [
+        "A prior permit is not replayed after revocation."
+      ],
+      "occurred_at": "2026-07-30T18:00:12Z",
+      "payload": {
+        "decided_at": "2026-07-30T18:00:12Z",
+        "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+        "granted_approved_item_ids": [],
+        "outcome": "deny",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "reason_codes": [
+          "grant_revoked"
+        ],
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "schema_version": "caretrust.document-share-decision.v1",
+        "supporting_grant_id": null
+      },
+      "payload_sha256": "5be0969cac42bf841820d54ca0ecc0f208ec0f3db960d1c923f0bdf8b3f35123",
+      "receiver_ref": "app:synthetic-scheduling",
+      "schema_version": "caretrust.trace-envelope.v1",
+      "sequence": 13,
+      "standard_refs": [
+        "CareTrust document-share-policy.v1",
+        "NIST SP 800-162 ABAC"
+      ],
+      "trace_id": "trace:synthetic-uploaded-care-document-001"
+    }
+  ],
+  "fixture_refs": [
+    "fixtures/documents/synthetic-discharge-instructions.txt",
+    "docs/standards/examples/delegation/invite-acceptance.json"
+  ],
+  "limitations": [
+    "Synthetic-only fixture: do not upload real PHI to this proof of concept.",
+    "AI extraction is a deterministic contract replay, not a claim of clinical correctness.",
+    "Review establishes document wording only; it does not establish current clinical truth.",
+    "FHIR R4 DocumentReference and Provenance are candidate mappings with explicit semantic loss.",
+    "HIE and EHR retrieval remain planned future integrations and are not dependencies of this trace."
+  ],
+  "schema_version": "caretrust.trace-bundle.v1",
+  "synthetic_only": true,
+  "title": "Synthetic uploaded discharge document: evidence, review, bounded sharing, revocation",
+  "trace_id": "trace:synthetic-uploaded-care-document-001"
+}

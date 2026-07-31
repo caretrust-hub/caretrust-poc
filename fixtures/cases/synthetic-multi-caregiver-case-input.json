@@ -1,0 +1,6 @@
+{
+  "case_id": "case:synthetic-multi-caregiver-001",
+  "patient_ref": "patient:synthetic-001",
+  "synthetic": true,
+  "purpose": "Input identity only; executable modules derive grants, claims, decisions, and projections."
+}

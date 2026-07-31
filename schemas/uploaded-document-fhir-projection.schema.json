@@ -1,0 +1,538 @@
+{
+  "$defs": {
+    "DownstreamCandidateStatus": {
+      "additionalProperties": false,
+      "properties": {
+        "clinically_authoritative": {
+          "const": false,
+          "default": false,
+          "title": "Clinically Authoritative",
+          "type": "boolean"
+        },
+        "current_clinical_truth": {
+          "const": false,
+          "default": false,
+          "title": "Current Clinical Truth",
+          "type": "boolean"
+        },
+        "emitted": {
+          "const": false,
+          "default": false,
+          "title": "Emitted",
+          "type": "boolean"
+        },
+        "projection_status": {
+          "enum": [
+            "planned",
+            "draft_candidate"
+          ],
+          "title": "Projection Status",
+          "type": "string"
+        },
+        "resource_family": {
+          "$ref": "#/$defs/DownstreamResourceFamily"
+        },
+        "source_item_ids": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+            "type": "string"
+          },
+          "title": "Source Item Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resource_family",
+        "source_item_ids",
+        "projection_status"
+      ],
+      "title": "DownstreamCandidateStatus",
+      "type": "object"
+    },
+    "DownstreamResourceFamily": {
+      "enum": [
+        "Task",
+        "CarePlan",
+        "MedicationStatement"
+      ],
+      "title": "DownstreamResourceFamily",
+      "type": "string"
+    },
+    "FhirAttachment": {
+      "additionalProperties": false,
+      "properties": {
+        "contentType": {
+          "enum": [
+            "application/pdf",
+            "image/png",
+            "image/jpeg"
+          ],
+          "title": "Contenttype",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contentType",
+        "url",
+        "title"
+      ],
+      "title": "FhirAttachment",
+      "type": "object"
+    },
+    "FhirCodeableConcept": {
+      "additionalProperties": false,
+      "properties": {
+        "coding": {
+          "items": {
+            "$ref": "#/$defs/FhirCoding"
+          },
+          "minItems": 1,
+          "title": "Coding",
+          "type": "array"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Text"
+        }
+      },
+      "required": [
+        "coding"
+      ],
+      "title": "FhirCodeableConcept",
+      "type": "object"
+    },
+    "FhirCoding": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "display": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Display"
+        },
+        "system": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "System",
+          "type": "string"
+        }
+      },
+      "required": [
+        "system",
+        "code"
+      ],
+      "title": "FhirCoding",
+      "type": "object"
+    },
+    "FhirDocumentReferenceCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "items": {
+            "$ref": "#/$defs/FhirReference"
+          },
+          "minItems": 1,
+          "title": "Author",
+          "type": "array"
+        },
+        "content": {
+          "items": {
+            "$ref": "#/$defs/FhirDocumentReferenceContent"
+          },
+          "minItems": 1,
+          "title": "Content",
+          "type": "array"
+        },
+        "date": {
+          "format": "date-time",
+          "title": "Date",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "identifier": {
+          "items": {
+            "$ref": "#/$defs/FhirIdentifier"
+          },
+          "minItems": 1,
+          "title": "Identifier",
+          "type": "array"
+        },
+        "resourceType": {
+          "const": "DocumentReference",
+          "default": "DocumentReference",
+          "title": "Resourcetype",
+          "type": "string"
+        },
+        "securityLabel": {
+          "items": {
+            "$ref": "#/$defs/FhirCodeableConcept"
+          },
+          "minItems": 1,
+          "title": "Securitylabel",
+          "type": "array"
+        },
+        "status": {
+          "const": "current",
+          "default": "current",
+          "title": "Status",
+          "type": "string"
+        },
+        "subject": {
+          "$ref": "#/$defs/FhirReference"
+        },
+        "type": {
+          "$ref": "#/$defs/FhirCodeableConcept"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "subject",
+        "date",
+        "author",
+        "securityLabel",
+        "identifier",
+        "content"
+      ],
+      "title": "FhirDocumentReferenceCandidate",
+      "type": "object"
+    },
+    "FhirDocumentReferenceContent": {
+      "additionalProperties": false,
+      "properties": {
+        "attachment": {
+          "$ref": "#/$defs/FhirAttachment"
+        }
+      },
+      "required": [
+        "attachment"
+      ],
+      "title": "FhirDocumentReferenceContent",
+      "type": "object"
+    },
+    "FhirIdentifier": {
+      "additionalProperties": false,
+      "properties": {
+        "system": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "System",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "system",
+        "value"
+      ],
+      "title": "FhirIdentifier",
+      "type": "object"
+    },
+    "FhirProvenanceAgent": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "#/$defs/FhirCodeableConcept"
+        },
+        "who": {
+          "$ref": "#/$defs/FhirReference"
+        }
+      },
+      "required": [
+        "type",
+        "who"
+      ],
+      "title": "FhirProvenanceAgent",
+      "type": "object"
+    },
+    "FhirProvenanceCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "agent": {
+          "items": {
+            "$ref": "#/$defs/FhirProvenanceAgent"
+          },
+          "minItems": 1,
+          "title": "Agent",
+          "type": "array"
+        },
+        "entity": {
+          "items": {
+            "$ref": "#/$defs/FhirProvenanceEntity"
+          },
+          "minItems": 1,
+          "title": "Entity",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "recorded": {
+          "format": "date-time",
+          "title": "Recorded",
+          "type": "string"
+        },
+        "resourceType": {
+          "const": "Provenance",
+          "default": "Provenance",
+          "title": "Resourcetype",
+          "type": "string"
+        },
+        "target": {
+          "items": {
+            "$ref": "#/$defs/FhirReference"
+          },
+          "minItems": 1,
+          "title": "Target",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "target",
+        "recorded",
+        "agent",
+        "entity"
+      ],
+      "title": "FhirProvenanceCandidate",
+      "type": "object"
+    },
+    "FhirProvenanceEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "const": "source",
+          "default": "source",
+          "title": "Role",
+          "type": "string"
+        },
+        "what": {
+          "$ref": "#/$defs/FhirReference"
+        }
+      },
+      "required": [
+        "what"
+      ],
+      "title": "FhirProvenanceEntity",
+      "type": "object"
+    },
+    "FhirReference": {
+      "additionalProperties": false,
+      "properties": {
+        "display": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Display"
+        },
+        "reference": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reference"
+      ],
+      "title": "FhirReference",
+      "type": "object"
+    },
+    "FhirSemanticLoss": {
+      "additionalProperties": false,
+      "properties": {
+        "detail": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Detail",
+          "type": "string"
+        },
+        "disposition": {
+          "$ref": "#/$defs/SemanticLossDisposition"
+        },
+        "fhir_target": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Fhir Target",
+          "type": "string"
+        },
+        "source_field": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Source Field",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_field",
+        "fhir_target",
+        "disposition",
+        "detail"
+      ],
+      "title": "FhirSemanticLoss",
+      "type": "object"
+    },
+    "SemanticLossDisposition": {
+      "enum": [
+        "represented",
+        "local_only",
+        "omitted"
+      ],
+      "title": "SemanticLossDisposition",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "candidate_only": {
+      "const": true,
+      "default": true,
+      "title": "Candidate Only",
+      "type": "boolean"
+    },
+    "clinically_authoritative": {
+      "const": false,
+      "default": false,
+      "title": "Clinically Authoritative",
+      "type": "boolean"
+    },
+    "document_reference": {
+      "$ref": "#/$defs/FhirDocumentReferenceCandidate"
+    },
+    "downstream_candidates": {
+      "items": {
+        "$ref": "#/$defs/DownstreamCandidateStatus"
+      },
+      "minItems": 3,
+      "title": "Downstream Candidates",
+      "type": "array"
+    },
+    "fhir_server_exchange_executed": {
+      "const": false,
+      "default": false,
+      "title": "Fhir Server Exchange Executed",
+      "type": "boolean"
+    },
+    "official_hl7_validation_executed": {
+      "const": false,
+      "default": false,
+      "title": "Official Hl7 Validation Executed",
+      "type": "boolean"
+    },
+    "provenance": {
+      "$ref": "#/$defs/FhirProvenanceCandidate"
+    },
+    "schema_version": {
+      "const": "caretrust.uploaded-document-fhir-r4-candidate-projection.v1",
+      "default": "caretrust.uploaded-document-fhir-r4-candidate-projection.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "semantic_loss": {
+      "items": {
+        "$ref": "#/$defs/FhirSemanticLoss"
+      },
+      "minItems": 1,
+      "title": "Semantic Loss",
+      "type": "array"
+    },
+    "source_approved_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "title": "Source Approved Item Ids",
+      "type": "array"
+    },
+    "source_document_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Source Document Id",
+      "type": "string"
+    },
+    "source_review_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Source Review Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_document_id",
+    "source_review_id",
+    "source_approved_item_ids",
+    "document_reference",
+    "provenance",
+    "semantic_loss",
+    "downstream_candidates"
+  ],
+  "title": "UploadedDocumentFhirProjection",
+  "type": "object"
+}

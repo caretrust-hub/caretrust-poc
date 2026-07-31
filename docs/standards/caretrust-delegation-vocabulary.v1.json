@@ -1,0 +1,112 @@
+{
+  "actions": [
+    {
+      "code": "schedule_appointments",
+      "required_resources": [
+        "appointments"
+      ]
+    },
+    {
+      "code": "view_appointments",
+      "required_resources": [
+        "appointments"
+      ]
+    },
+    {
+      "code": "view_visit_instructions",
+      "required_resources": [
+        "visit_instructions"
+      ]
+    },
+    {
+      "code": "message_care_team",
+      "required_resources": [
+        "care_team_messages"
+      ]
+    }
+  ],
+  "authority_bases": [
+    {
+      "code": "unverified_patient_intent",
+      "meaning": "AI-drafted intent only; cannot activate a relationship or grant."
+    },
+    {
+      "code": "patient_attestation",
+      "meaning": "Explicit patient approval in this synthetic prototype; not legal authority."
+    }
+  ],
+  "audiences": [
+    {
+      "code": "app:synthetic-scheduling",
+      "meaning": "Synthetic scheduling application."
+    },
+    {
+      "code": "app:synthetic-care-portal",
+      "meaning": "Synthetic patient and caregiver portal."
+    }
+  ],
+  "implementation_status": "executed_local_tested",
+  "legal_authority_statuses": [
+    {
+      "code": "not_established",
+      "meaning": "No identity proofing, legal review, MPOA, guardianship, or other legal authority determination is represented."
+    }
+  ],
+  "purposes": [
+    {
+      "code": "care_coordination",
+      "meaning": "Coordinate bounded non-clinical or patient-directed care activities."
+    },
+    {
+      "code": "appointment_management",
+      "meaning": "Manage appointment-related activity within an allowed application."
+    }
+  ],
+  "relationship_codes": [
+    "child",
+    "spouse_or_partner",
+    "parent",
+    "sibling",
+    "other_family",
+    "friend",
+    "neighbor",
+    "other_personal_relationship",
+    "unspecified"
+  ],
+  "resources": [
+    {
+      "code": "appointments",
+      "sensitivity": "ordinary"
+    },
+    {
+      "code": "visit_instructions",
+      "sensitivity": "health_information"
+    },
+    {
+      "code": "care_team_messages",
+      "sensitivity": "health_information"
+    },
+    {
+      "code": "billing",
+      "sensitivity": "financial"
+    },
+    {
+      "code": "mental_health_records",
+      "sensitivity": "sensitive_health_information"
+    }
+  ],
+  "schema_version": "caretrust.delegation-vocabulary.v1",
+  "semantic_invariants": [
+    "AI output is always draft and can never be active, approved, or authorized.",
+    "A patient invite proves only control of a synthetic invited account.",
+    "Invite acceptance alone does not establish patient consent or activate a delegation.",
+    "A personal relationship assertion does not grant application permission.",
+    "A patient-approved delegation grant does not establish legal authority.",
+    "RelatedPerson-like relationship semantics remain separate from consent and delegation scope.",
+    "Excluded resources can never also be allowed; exclusions win.",
+    "Every action requires its declared resource category.",
+    "Every application applies its own audience, purpose, action, resource, validity, and status policy.",
+    "Recipient contact values are never retained in plaintext by the invite contract."
+  ],
+  "synthetic_only": true
+}

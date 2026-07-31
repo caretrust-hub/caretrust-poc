@@ -2,27 +2,70 @@
 
 **Interoperable Care Trust Hub — open-source TRL 3 proof of concept**
 
-CareTrust tests one bounded proposition: AI can help turn synthetic caregiver
-credential evidence into a structured **draft**, while people and deterministic
-policy retain every authority-bearing decision. The Phase 1 profile is a
-synthetic Hawaii Certified Nurse Aide (CNA) workflow.
+CareTrust tests a bounded platform proposition: AI can help turn messy caregiver
+intent and patient-provided documents into evidence-linked **drafts**, while
+people, accountable organizations, and deterministic application policy retain
+every authority-bearing decision.
 
 The larger concept is a neutral, federated trust hub that care organizations,
-nonprofits, and government programs could adopt without locking caregiver claims
-inside one application. This repository demonstrates the safety-critical core;
-it does not claim that the larger ecosystem already exists.
+nonprofits, and government programs could adopt without locking caregiver
+relationships, delegations, credentials, and coordination items inside one
+application. This repository demonstrates bounded pieces of that safety-critical
+core; it does not claim that the larger ecosystem already exists.
 
-## What the prototype demonstrates
+The v0.4 judge release centers one synthetic provider activation:
 
 ```text
-synthetic Hawaii CNA credential image
-  -> Amazon Textract OCR evidence with text, confidence, and location
-  -> Bedrock/Qwen structured draft linked to that retained evidence
-  -> authorized human approve / correct / reject / defer
-  -> synthetic registry match / mismatch / not-found / unavailable
-  -> short-lived Ed25519-signed claim token
-  -> independent App A + App B audience/purpose decisions
-  -> revocation and denial of a fresh request
+organization accepts a synthetic referral
+  -> patient states bounded caregiver intent
+  -> AI drafts permissions and clarification questions
+  -> patient invites caregiver and approves exact final scope
+  -> separate identity, relationship, credential, assignment, and delegation records
+  -> organization console projects support team, permissions, and case history
+  -> relative supplies a synthetic discharge scan
+  -> AI drafts source-linked coordination items
+  -> patient and accountable staff apply distinct review gates
+  -> AI drafts a minimum-data app profile from synthetic app requirements
+  -> human reviewer registers the bounded client
+  -> caregiver authenticates through a local OIDC + PKCE + RAR harness
+  -> independent apps receive disjoint, purpose-minimized items
+  -> revocation blocks fresh requests while preserving history
+  -> two synthetic hubs exercise federation metadata and local-policy failures
+```
+
+CareTrust is a governed trust compiler, not a document summarizer or another
+all-in-one care-management application. Its intent, evidence, and
+application-requirements compilers produce reviewable drafts; humans approve
+authority-bearing records; deterministic policy returns permit or deny.
+Uploading a record establishes only who supplied that copy; it does not
+establish authorship, clinical accuracy, currentness, patient matching, or legal
+authority. Medication and warning-sign content cannot be promoted into orders
+or clinical assertions by the model or a consumer reviewer.
+
+Live HIE/EHR connectivity is a longer-term network seam. A local synthetic
+data-holder adapter tests authority boundaries, but there is no connection,
+agreement, patient match, data exchange, partnership, or endorsement involving
+Hawaiʻi HIE or any production clinical system.
+
+## Frozen v0.2 credential evidence lane
+
+Two separately identified evidence traces demonstrate the boundaries:
+
+```text
+Retained AWS intake (`retained_aws`)
+  synthetic Hawaii CNA image
+    -> Amazon Textract OCR evidence
+    -> Bedrock/Qwen unverified draft with blocking uncertainties
+    -> STOP: no review, activation, token, or authorization
+
+Deterministic trust lifecycle (`executed_local`)
+  different retained clean model response
+    -> authorized human review and correction
+    -> synthetic source check
+    -> active claim + short-lived Ed25519-signed token
+    -> deterministic authorization
+    -> in-memory revocation
+    -> fresh request denied with TOKEN_REVOKED
 ```
 
 OCR extracts evidence; it does not establish truth or authority. Only draft
@@ -30,6 +73,11 @@ structuring uses a language model. A model cannot create an active claim, sign
 a token, override review, perform a source check, or return a permit. The
 registry is a network-free simulator and all identities and evidence are
 synthetic.
+
+The traces share some synthetic fixture identifiers but are not one execution.
+Their request IDs, response hashes, terminal states, and cross-artifact
+identifier reuse are recorded in the machine-readable
+[provenance-lineage registry](docs/standards/provenance-lineages.json).
 
 The implementation is deliberately provider-neutral:
 
@@ -47,6 +95,7 @@ Textract and model calls; the demo, retained replay, and automated tests run
 locally.
 
 ```powershell
+git clone https://github.com/caretrust-hub/caretrust-spec.git
 git clone https://github.com/caretrust-hub/caretrust-poc.git
 cd caretrust-poc
 py -3.13 -m venv .venv
@@ -56,29 +105,48 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python -m pytest -q
 ```
 
-Release `trl3-poc-v0.2.0` passes 144 tests covering OCR normalization and
-failure isolation, post-audit contracts, complete signed claims, reviewer
-authorization, app-specific decisions, revocation, standards artifacts,
-federation simulation, and the browser flow.
+The repositories should remain siblings unless `CARETRUST_SPEC_ROOT` points to
+the `caretrust-spec` checkout. The POC validates its Core 0.1 mappings against
+the public draft schemas rather than maintaining a second private copy.
 
-### Interactive browser demonstration
+Release `trl3-poc-v0.4.0` passes **331 tests** covering schemas, OCR
+normalization and failure isolation, evidence-linked AI drafts, human review,
+signed claims, multi-caregiver policy, app onboarding, OIDC/PKCE/RAR
+authentication and authorization, FHIR/SMART scheduling projections,
+minimum-disclosure document routing, MCP inspection, Core 0.1 bridges,
+two-hub federation, browser behavior, and revocation.
 
-The dependency-free [demonstration surface](demo/index.html) is keyboard
-accessible and does not call a live service. A login-free copy is available at
+### Interactive browser demonstrations
+
+The dependency-free [landing and credential surface](demo/index.html) and
+[v0.4 organization console](demo/network.html) are keyboard accessible and do
+not call a live service. A login-free copy of the deployed release is available at
 **https://caretrust-hub.github.io/caretrust-poc/**.
 
 ```powershell
 .\.venv\Scripts\python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/demo/`. The primary path visibly replays
-retained Textract evidence and a retained Bedrock/Qwen draft, requires separate
+Then open `http://localhost:8000/demo/`. The v0.4 console makes the larger
+platform concrete: a synthetic operator can browse one patient's support team,
+permission matrix, append-only case history, and patient-provided care packet;
+every material row opens an inspectable local message view and its evidence
+boundary. It also exposes the AI-assisted application-registration draft,
+reviewed client profile, local OIDC/PKCE/RAR exchange, bounded FHIR/SMART
+scheduling projection, MCP contract, and two-hub federation laboratory. The
+generated `network-data.js` bundle is checked for drift against the retained
+machine-readable artifacts.
+
+The separate frozen credential path visibly replays retained Textract evidence
+and a retained Bedrock/Qwen draft, requires separate
 human-review, source-check, and signing actions, then shows two applications
 making distinct decisions from the same stable claim. Revocation preserves the
 historical receipts and denies a fresh App B request. Human correction,
 ambiguous-evidence deferral, registry mismatch, and prompt-injection containment
 remain selectable scenarios. Status and reasons are communicated in text, not
-color alone. The retained
+color alone. This dependency-free browser is an interaction replay, not a
+claim that its screens are one retained AWS-to-authorization execution. The
+retained
 [v0.2 browser QA manifest](artifacts/validation/screenshots-v0.2/manifest.json)
 hashes four judge-readable screenshots from OCR evidence through a fresh
 post-revocation denial.
@@ -107,7 +175,9 @@ The successful live synthetic run is retained at
 [vertical-slice.json](artifacts/ocr/20260730T171807.004134Z/vertical-slice.json);
 the credential-free replay is
 [retained-offline-vertical-slice.json](artifacts/ocr/retained-offline-vertical-slice.json).
-Repeating the live path may incur AWS charges.
+The live same-run artifact is `retained_aws` evidence and terminates at its
+unverified draft with blocking uncertainties. It did not proceed through the
+deterministic lifecycle. Repeating the live path may incur AWS charges.
 
 ### Deterministic command-line demonstration
 
@@ -118,7 +188,8 @@ Repeating the live path may incur AWS charges.
 This replays the retained clean Bedrock result through evidence intake,
 schema validation, authorized human correction, registry simulation,
 activation, complete-claim signing, authorization, revocation, and the
-subsequent denial. It does not make a new model call. The current
+subsequent denial. It does not make a new model call and does not use the live
+AWS trace's model response. This behavior is `executed_local`. The current
 machine-readable record is
 [connected-vertical-slice.json](artifacts/validation/connected-vertical-slice.json);
 the earlier milestone record remains
@@ -184,6 +255,9 @@ incur model charges.
 
 ## Interoperability artifacts
 
+- [Machine-readable evidence-status registry](docs/standards/evidence-status-registry.json)
+- [Machine-readable provenance and identifier lineages](docs/standards/provenance-lineages.json)
+- [Apache-2.0 CareTrust Core 0.1 standards repository](https://github.com/caretrust-hub/caretrust-spec)
 - [Standards implementation status](docs/standards/standards-status.md)
 - [Claim lifecycle and reason codes](docs/standards/lifecycle-and-reason-codes.md)
 - [OpenAPI 3.1 contract-only Phase 2 surface](docs/standards/caretrust-openapi-3.1.json)

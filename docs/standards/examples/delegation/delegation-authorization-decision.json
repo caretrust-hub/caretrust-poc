@@ -1,0 +1,15 @@
+{
+  "decided_at": "2026-07-30T10:04:01Z",
+  "decision": "permit",
+  "decision_id": "delegation-decision:synthetic-001",
+  "policy_version": "caretrust.delegation-authorization.v1",
+  "reason_codes": [
+    "POLICY_REQUIREMENTS_SATISFIED"
+  ],
+  "request_id": "delegation-request:synthetic-001",
+  "schema_version": "caretrust.delegation-authorization-decision.v1",
+  "supporting_grant_ids": [
+    "grant:synthetic-001"
+  ],
+  "synthetic": true
+}

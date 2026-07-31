@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-07-30T10:01:00Z",
+  "delivery_channel": "synthetic_out_of_band",
+  "draft_id": "delegation-draft:synthetic-001:v2",
+  "expires_at": "2026-07-30T11:01:00Z",
+  "invite_id": "invite:synthetic-001",
+  "invite_token_sha256": "667eff78639bb145217c5a625ec85cc03d90d9e0181504c5c220c1b948ebeb2a",
+  "nonce_sha256": "a279b165334303a3f576eb0e583db2bc4b830060ec2b9fae256acbfdbab5e049",
+  "patient_ref": "patient:synthetic-001",
+  "recipient_hint_sha256": "fcd4304af64f47429d3faf287ee7594ac92f6dfb8b614bfecd901bca3b5d62f2",
+  "schema_version": "caretrust.patient-invite.v1",
+  "single_use": true,
+  "status": "pending",
+  "synthetic": true
+}

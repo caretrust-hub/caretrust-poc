@@ -1,0 +1,114 @@
+{
+  "$defs": {
+    "EvidenceStatus": {
+      "description": "Bounded evidence classes used across runtime, UI, and documentation.",
+      "enum": [
+        "retained_aws",
+        "executed_local",
+        "contract_tested",
+        "local_simulation",
+        "mapped_only",
+        "planned"
+      ],
+      "title": "EvidenceStatus",
+      "type": "string"
+    },
+    "JsonValue": {}
+  },
+  "additionalProperties": false,
+  "description": "One immutable message crossing a named trust or implementation boundary.",
+  "properties": {
+    "actor_ref": {
+      "title": "Actor Ref",
+      "type": "string"
+    },
+    "boundary": {
+      "title": "Boundary",
+      "type": "string"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "evidence_status": {
+      "$ref": "#/$defs/EvidenceStatus"
+    },
+    "linked_ids": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Linked Ids",
+      "type": "object"
+    },
+    "message_type": {
+      "title": "Message Type",
+      "type": "string"
+    },
+    "non_claims": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Non Claims",
+      "type": "array"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "payload": {
+      "additionalProperties": {
+        "$ref": "#/$defs/JsonValue"
+      },
+      "title": "Payload",
+      "type": "object"
+    },
+    "payload_sha256": {
+      "title": "Payload Sha256",
+      "type": "string"
+    },
+    "receiver_ref": {
+      "title": "Receiver Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.trace-envelope.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "sequence": {
+      "title": "Sequence",
+      "type": "integer"
+    },
+    "standard_refs": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Standard Refs",
+      "type": "array"
+    },
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "trace_id",
+    "event_id",
+    "sequence",
+    "occurred_at",
+    "actor_ref",
+    "receiver_ref",
+    "boundary",
+    "message_type",
+    "evidence_status",
+    "standard_refs",
+    "linked_ids",
+    "payload",
+    "payload_sha256"
+  ],
+  "title": "TraceEnvelope",
+  "type": "object"
+}

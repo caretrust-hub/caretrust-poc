@@ -1,0 +1,92 @@
+{
+  "$defs": {
+    "DelegationDecisionValue": {
+      "enum": [
+        "permit",
+        "deny"
+      ],
+      "title": "DelegationDecisionValue",
+      "type": "string"
+    },
+    "DelegationReasonCode": {
+      "enum": [
+        "POLICY_REQUIREMENTS_SATISFIED",
+        "GRANT_REQUIRED",
+        "GRANT_NOT_ACTIVE",
+        "PATIENT_MISMATCH",
+        "DELEGATE_MISMATCH",
+        "AUDIENCE_NOT_ALLOWED",
+        "PURPOSE_NOT_ALLOWED",
+        "ACTION_NOT_ALLOWED",
+        "RESOURCE_NOT_ALLOWED",
+        "RESOURCE_EXCLUDED",
+        "GRANT_NOT_YET_VALID",
+        "GRANT_EXPIRED",
+        "GRANT_REVOKED"
+      ],
+      "title": "DelegationReasonCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    },
+    "decision": {
+      "$ref": "#/$defs/DelegationDecisionValue"
+    },
+    "decision_id": {
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "policy_version": {
+      "const": "caretrust.delegation-authorization.v1",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "reason_codes": {
+      "items": {
+        "$ref": "#/$defs/DelegationReasonCode"
+      },
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.delegation-authorization-decision.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "supporting_grant_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supporting Grant Ids",
+      "type": "array"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "decision_id",
+    "request_id",
+    "decision",
+    "reason_codes",
+    "supporting_grant_ids",
+    "policy_version",
+    "decided_at",
+    "synthetic"
+  ],
+  "title": "DelegationAuthorizationDecision",
+  "type": "object"
+}

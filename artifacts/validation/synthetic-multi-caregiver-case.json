@@ -1,0 +1,2161 @@
+{
+  "applications": [
+    {
+      "application_id": "app:synthetic-scheduling",
+      "supported_actions": [
+        "schedule_appointments"
+      ]
+    },
+    {
+      "application_id": "urn:caretrust:app:scheduling",
+      "supported_actions": [
+        "perform_assigned_direct_care"
+      ]
+    },
+    {
+      "application_id": "app:synthetic-respite-community",
+      "supported_actions": [
+        "respite_visit_support",
+        "view_warning_instruction"
+      ]
+    }
+  ],
+  "bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+  "canonical_objects": {
+    "agency_assignment": {
+      "allowed_actions": [
+        "perform_assigned_direct_care"
+      ],
+      "assignment_id": "assignment:synthetic-cna-direct-care-001",
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "evidence_status": "executed_local",
+      "organization_ref": "org:synthetic-home-care-001",
+      "patient_ref": "patient:synthetic-001",
+      "role": "agency_cna",
+      "status": "active",
+      "valid_from": "2026-07-30T17:00:00Z",
+      "valid_until": "2026-07-31T01:00:00Z"
+    },
+    "agency_service_grant": {
+      "allowed_actions": [
+        "perform_assigned_direct_care"
+      ],
+      "allowed_audiences": [
+        "urn:caretrust:app:scheduling"
+      ],
+      "allowed_purposes": [
+        "shift-assignment"
+      ],
+      "approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "evidence_status": "executed_local",
+      "grant_id": "grant:synthetic-cna-direct-care-001",
+      "patient_ref": "patient:synthetic-001",
+      "source_document_share_grant_id": "document-share-grant:synthetic-direct-care-task-001",
+      "status": "active",
+      "valid_from": "2026-07-30T17:00:00Z",
+      "valid_until": "2026-07-31T01:00:00Z"
+    },
+    "approved_document_items": [
+      {
+        "approval_status": "approved_for_bounded_sharing",
+        "approved_item_id": "approved:review:synthetic-discharge-001:candidate:discharge-date",
+        "category": "discharge-date",
+        "clinically_authoritative": false,
+        "current_clinical_truth": false,
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "evidence_refs": [
+          "evidence:discharge-date"
+        ],
+        "kind": "fact",
+        "patient_ref": "patient:synthetic-001",
+        "requires_clinical_confirmation": false,
+        "review_id": "review:synthetic-discharge-001",
+        "reviewed_text": "The document states a discharge date of 2026-07-29.",
+        "schema_version": "caretrust.approved-document-item.v1",
+        "sensitivity": "restricted_health_information",
+        "source_assertion": "uploaded_document_statement",
+        "source_item_id": "candidate:discharge-date"
+      },
+      {
+        "approval_status": "approved_for_bounded_sharing",
+        "approved_item_id": "approved:review:synthetic-discharge-001:candidate:follow-up",
+        "category": "follow-up-instruction",
+        "clinically_authoritative": false,
+        "current_clinical_truth": false,
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "evidence_refs": [
+          "evidence:follow-up"
+        ],
+        "kind": "instruction",
+        "patient_ref": "patient:synthetic-001",
+        "requires_clinical_confirmation": false,
+        "review_id": "review:synthetic-discharge-001",
+        "reviewed_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+        "schema_version": "caretrust.approved-document-item.v1",
+        "sensitivity": "restricted_health_information",
+        "source_assertion": "uploaded_document_statement",
+        "source_item_id": "candidate:follow-up"
+      },
+      {
+        "approval_status": "approved_for_bounded_sharing",
+        "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+        "category": "visit-preparation",
+        "clinically_authoritative": false,
+        "current_clinical_truth": false,
+        "document_id": "document:synthetic-discharge-001",
+        "draft_id": "extraction-draft:synthetic-discharge-001",
+        "evidence_refs": [
+          "evidence:bring-documents"
+        ],
+        "kind": "action_item",
+        "patient_ref": "patient:synthetic-001",
+        "requires_clinical_confirmation": true,
+        "review_id": "review:synthetic-discharge-001",
+        "reviewed_text": "Bring the discharge sheet and current medication list.",
+        "schema_version": "caretrust.approved-document-item.v1",
+        "sensitivity": "restricted_health_information",
+        "source_assertion": "uploaded_document_statement",
+        "source_item_id": "candidate:bring-documents"
+      }
+    ],
+    "clinical_holder_revocation_deny": {
+      "decision": {
+        "authorized_user_ref": "user:synthetic-care-coordinator-001",
+        "caretrust_role": "delegation_and_trust_context_only",
+        "client_id": "https://care-app.synthetic.invalid",
+        "data_holder_id": "https://ehr.synthetic.invalid",
+        "decided_at": "2026-07-30T18:00:00Z",
+        "decision": "deny",
+        "decision_id": "decision:clinical:f3dd980fc1b221df9b9b",
+        "disclosure_policy_authority": "data_holder",
+        "fhir_bundle_included": false,
+        "granted_fhir_resource_types": [],
+        "granted_scopes": [],
+        "participant_org_ref": "org:synthetic-participating-provider-001",
+        "patient_match_authority": "data_holder",
+        "patient_match_id": "match:clinical:revoked-fresh-001",
+        "policy_version": "synthetic.data-holder.disclosure.v1",
+        "reason_codes": [
+          "CARETRUST_CONTEXT_REVOKED"
+        ],
+        "request_id": "request:clinical:revoked-fresh-001",
+        "requesting_party_eligibility_authority": "data_holder",
+        "schema_version": "caretrust.clinical-data-authorization-decision.v1",
+        "supporting_caretrust_context_ids": [],
+        "synthetic": true
+      },
+      "live_hie_or_ehr_connected": false,
+      "network_calls": false,
+      "patient_match": {
+        "authority": "data_holder",
+        "data_holder_id": "https://ehr.synthetic.invalid",
+        "local_patient_ref": null,
+        "match_id": "match:clinical:revoked-fresh-001",
+        "match_inputs_disclosed_to_caretrust": false,
+        "method": "not_attempted_caretrust_context_gate",
+        "performed_at": "2026-07-30T18:00:00Z",
+        "request_id": "request:clinical:revoked-fresh-001",
+        "schema_version": "caretrust.patient-match-result.v1",
+        "status": "not_attempted",
+        "synthetic": true
+      },
+      "record_type": "caretrust.synthetic-clinical-data-edge.v1",
+      "request": {
+        "authorized_user_ref": "user:synthetic-care-coordinator-001",
+        "caregiver_is_requesting_actor": false,
+        "caregiver_ref": "caregiver:synthetic-001",
+        "caretrust_context": {
+          "allowed_data_holders": [
+            "https://ehr.synthetic.invalid"
+          ],
+          "allowed_fhir_resource_types": [
+            "CarePlan"
+          ],
+          "allowed_purposes": [
+            "care_coordination"
+          ],
+          "allowed_scopes": [
+            "patient/CarePlan.rs"
+          ],
+          "caregiver_ref": "caregiver:synthetic-001",
+          "caretrust_role": "delegation_and_trust_context_only",
+          "context_id": "context:clinical:revoked-fresh-001",
+          "delegation_decision_id": "decision:delegation:revoked-fresh-001",
+          "delegation_grant_id": "grant:delegation:revoked-fresh-001",
+          "disclosure_policy_authority": "data_holder",
+          "legal_authority_status": "not_established",
+          "patient_match_authority": "data_holder",
+          "patient_ref": "patient:synthetic-001",
+          "relationship_claim_id": "claim:relationship:revoked-fresh-001",
+          "revoked_at": "2026-07-30T18:00:00Z",
+          "schema_version": "caretrust.clinical-context.v1",
+          "status": "revoked",
+          "synthetic": true,
+          "valid_from": "2026-07-01",
+          "valid_until": "2026-12-31",
+          "verified_at": "2026-07-30T18:00:00Z"
+        },
+        "client_id": "https://care-app.synthetic.invalid",
+        "clinical_data_recipient": "authorized_participant_application",
+        "data_holder_id": "https://ehr.synthetic.invalid",
+        "final_disclosure_decision_requested": true,
+        "participant_org_ref": "org:synthetic-participating-provider-001",
+        "patient_match_hint": "patient:synthetic-001",
+        "patient_match_requested": true,
+        "prior_request_id": "request:clinical:permit-001",
+        "purpose": "care_coordination",
+        "request_id": "request:clinical:revoked-fresh-001",
+        "requested_at": "2026-07-30T18:00:00Z",
+        "requested_fhir_resource_types": [
+          "CarePlan"
+        ],
+        "requested_scopes": [
+          "patient/CarePlan.rs"
+        ],
+        "requesting_actor_role": "authorized_participant_user",
+        "schema_version": "caretrust.clinical-data-authorization-request.v1",
+        "synthetic": true
+      },
+      "returned_fhir_bundle": null,
+      "synthetic": true
+    },
+    "credential_claim": {
+      "allowed_audiences": [
+        "urn:caretrust:app:onboarding",
+        "urn:caretrust:app:scheduling"
+      ],
+      "allowed_purposes": [
+        "workforce-onboarding",
+        "shift-assignment"
+      ],
+      "claim_id": "claim:synthetic-hi-cna-1001",
+      "claim_type": "professional_credential",
+      "credential_profile": "hawaii_cna_smoke_v1",
+      "credential_type": "Certified Nurse Aide",
+      "evidence_refs": [
+        "final-01-evidence"
+      ],
+      "issued_at": "2026-07-30T18:00:04Z",
+      "issuer_ref": "https://issuer.synthetic.caretrust.example",
+      "jurisdiction": "HI",
+      "registry_id": "SYN-CNA-FINAL-2001",
+      "registry_result_id": "registry:credential:001",
+      "review_id": "review:credential:001",
+      "revoked_at": null,
+      "schema_version": "caretrust.active-credential-claim.v1",
+      "status": "active",
+      "subject_ref": "person:synthetic-leilani-testperson",
+      "valid_from": "2024-04-15",
+      "valid_until": "2028-04-15"
+    },
+    "credential_revocation": {
+      "actor_ref": "reviewer:synthetic-authorized",
+      "claim_id": "claim:synthetic-hi-cna-1001",
+      "reason": "Synthetic authorized reviewer revoked the reusable credential claim.",
+      "reason_code": "CLAIM_REVOKED",
+      "revocation_id": "revocation:credential:001",
+      "revoked_at": "2026-07-30T18:00:10Z",
+      "schema_version": "caretrust.revocation-record.v1",
+      "synthetic": true,
+      "target_id": "claim:synthetic-hi-cna-1001",
+      "target_type": "claim"
+    },
+    "delegation_grant": {
+      "allowed_actions": [
+        "schedule_appointments",
+        "view_visit_instructions"
+      ],
+      "allowed_audiences": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "allowed_purposes": [
+        "appointment_management",
+        "care_coordination"
+      ],
+      "allowed_resources": [
+        "appointments",
+        "visit_instructions"
+      ],
+      "application_decision_required": true,
+      "approval_id": "approval:synthetic-001",
+      "authority_basis": "patient_attestation",
+      "delegate_ref": "account:synthetic-leilani",
+      "excluded_resources": [
+        "billing",
+        "mental_health_records"
+      ],
+      "grant_id": "grant:synthetic-001",
+      "issued_at": "2026-07-30T10:03:01Z",
+      "issuer_ref": "org:synthetic-caretrust",
+      "legal_authority_status": "not_established",
+      "patient_ref": "patient:synthetic-001",
+      "relationship_claim_id": "relationship:synthetic-001",
+      "revoked_at": null,
+      "schema_version": "caretrust.delegation-grant.v1",
+      "status": "active",
+      "synthetic": true,
+      "valid_from": "2026-07-30",
+      "valid_until": "2026-12-31"
+    },
+    "delegation_revocation": {
+      "actor_ref": "patient:synthetic-001",
+      "grant_id": "grant:synthetic-001",
+      "patient_ref": "patient:synthetic-001",
+      "reason": "Synthetic patient withdrew the bounded delegation.",
+      "reason_code": "PATIENT_REVOKED_DELEGATION",
+      "revocation_id": "delegation-revocation:synthetic-001",
+      "revoked_at": "2026-07-30T10:05:00Z",
+      "schema_version": "caretrust.delegation-revocation-record.v1",
+      "synthetic": true,
+      "target_type": "delegation_grant"
+    },
+    "direct_care_document_share_decision": {
+      "decided_at": "2026-07-30T18:00:08Z",
+      "decision_id": "decision:document-share-request:synthetic-direct-care-task-permit-001",
+      "granted_approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "outcome": "permit",
+      "policy_version": "caretrust.document-share-policy.v1",
+      "reason_codes": [
+        "policy_satisfied"
+      ],
+      "request_id": "document-share-request:synthetic-direct-care-task-permit-001",
+      "schema_version": "caretrust.document-share-decision.v1",
+      "supporting_grant_id": "document-share-grant:synthetic-direct-care-task-001"
+    },
+    "direct_care_document_share_grant": {
+      "allowed_audiences": [
+        "app:synthetic-direct-care-tasks"
+      ],
+      "allowed_item_kinds": [
+        "action_item"
+      ],
+      "allowed_purposes": [
+        "visit_preparation"
+      ],
+      "approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "fresh_decision_required": true,
+      "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+      "issued_at": "2026-07-30T18:00:04Z",
+      "maximum_sensitivity": "restricted_health_information",
+      "overbroad_requests_allowed": false,
+      "patient_ref": "patient:synthetic-001",
+      "raw_document_sharing_allowed": false,
+      "review_id": "review:synthetic-discharge-001",
+      "revoked_at": null,
+      "schema_version": "caretrust.document-share-grant.v1",
+      "status": "active",
+      "synthetic_only": true,
+      "unapproved_items_allowed": false,
+      "valid_from": "2026-07-30T18:00:04Z",
+      "valid_until": "2026-08-06T18:00:00Z"
+    },
+    "direct_care_document_share_request": {
+      "audience": "app:synthetic-direct-care-tasks",
+      "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+      "include_raw_document": false,
+      "patient_ref": "patient:synthetic-001",
+      "purpose": "visit_preparation",
+      "request_id": "document-share-request:synthetic-direct-care-task-permit-001",
+      "requested_approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "requested_at": "2026-07-30T18:00:07Z",
+      "requester_ref": "app:synthetic-direct-care-tasks",
+      "schema_version": "caretrust.document-share-request.v1",
+      "synthetic_only": true
+    },
+    "document_share_decision": {
+      "decided_at": "2026-07-30T18:00:06Z",
+      "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+      "granted_approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:follow-up"
+      ],
+      "outcome": "permit",
+      "policy_version": "caretrust.document-share-policy.v1",
+      "reason_codes": [
+        "policy_satisfied"
+      ],
+      "request_id": "document-share-request:synthetic-scheduling-permit-001",
+      "schema_version": "caretrust.document-share-decision.v1",
+      "supporting_grant_id": "document-share-grant:synthetic-scheduling-001"
+    },
+    "document_share_grant": {
+      "allowed_audiences": [
+        "app:synthetic-scheduling"
+      ],
+      "allowed_item_kinds": [
+        "instruction"
+      ],
+      "allowed_purposes": [
+        "discharge_follow_up"
+      ],
+      "approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:follow-up"
+      ],
+      "fresh_decision_required": true,
+      "grant_id": "document-share-grant:synthetic-scheduling-001",
+      "issued_at": "2026-07-30T18:00:04Z",
+      "maximum_sensitivity": "restricted_health_information",
+      "overbroad_requests_allowed": false,
+      "patient_ref": "patient:synthetic-001",
+      "raw_document_sharing_allowed": false,
+      "review_id": "review:synthetic-discharge-001",
+      "revoked_at": null,
+      "schema_version": "caretrust.document-share-grant.v1",
+      "status": "active",
+      "synthetic_only": true,
+      "unapproved_items_allowed": false,
+      "valid_from": "2026-07-30T18:00:04Z",
+      "valid_until": "2026-08-06T18:00:00Z"
+    },
+    "document_share_request": {
+      "audience": "app:synthetic-scheduling",
+      "grant_id": "document-share-grant:synthetic-scheduling-001",
+      "include_raw_document": false,
+      "patient_ref": "patient:synthetic-001",
+      "purpose": "discharge_follow_up",
+      "request_id": "document-share-request:synthetic-scheduling-permit-001",
+      "requested_approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:follow-up"
+      ],
+      "requested_at": "2026-07-30T18:00:05Z",
+      "requester_ref": "app:synthetic-scheduling",
+      "schema_version": "caretrust.document-share-request.v1",
+      "synthetic_only": true
+    },
+    "document_share_revocation": {
+      "future_requests_require_fresh_denial": true,
+      "grant_id": "document-share-grant:synthetic-scheduling-001",
+      "historical_decisions_retained": true,
+      "patient_ref": "patient:synthetic-001",
+      "reason": "Synthetic patient withdrew future scheduling-app sharing.",
+      "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001",
+      "revoked_at": "2026-07-30T18:00:10Z",
+      "revoked_by_account_ref": "patient:synthetic-001",
+      "schema_version": "caretrust.document-share-revocation-record.v1"
+    },
+    "permission_requests": [
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "authority_path": "family_delegation_v1",
+        "caregiver_ref": "account:synthetic-leilani",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "appointment_management",
+        "request_id": "request:case:family-permit-001",
+        "requested_approved_item_ids": []
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "authority_path": "family_delegation_v1",
+        "caregiver_ref": "account:synthetic-leilani",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "discharge_follow_up",
+        "request_id": "request:case:family-wrong-purpose-001",
+        "requested_approved_item_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "authority_path": "workforce_assignment_v1",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "shift-assignment",
+        "request_id": "request:case:cna-permit-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "authority_path": "workforce_assignment_v1",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "shift-assignment",
+        "request_id": "request:case:cna-missing-claim-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "authority_path": "community_respite_v1",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "clinical_clarification_required": false,
+        "evidence_status": "contract_tested",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "respite_visit_support",
+        "request_id": "request:case:respite-historical-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "authority_path": "community_respite_v1",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "clinical_clarification_required": false,
+        "evidence_status": "contract_tested",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "respite_visit_support",
+        "request_id": "request:case:respite-expired-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      },
+      {
+        "action": "view_warning_instruction",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "authority_path": "community_respite_v1",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "clinical_clarification_required": true,
+        "evidence_status": "contract_tested",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "respite_visit_support",
+        "request_id": "request:case:respite-clinical-block-001",
+        "requested_approved_item_ids": []
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "authority_path": "family_delegation_v1",
+        "caregiver_ref": "account:synthetic-leilani",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "appointment_management",
+        "request_id": "request:case:family-revoked-001",
+        "requested_approved_item_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "authority_path": "workforce_assignment_v1",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "clinical_clarification_required": false,
+        "evidence_status": "executed_local",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "shift-assignment",
+        "request_id": "request:case:cna-revoked-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "authority_path": "community_respite_v1",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "clinical_clarification_required": false,
+        "evidence_status": "contract_tested",
+        "patient_ref": "patient:synthetic-001",
+        "purpose": "respite_visit_support",
+        "request_id": "request:case:respite-revoked-001",
+        "requested_approved_item_ids": [
+          "approved:review:synthetic-discharge-001:candidate:bring-documents"
+        ]
+      }
+    ],
+    "post_revocation_document_share_decision": {
+      "decided_at": "2026-07-30T18:00:12Z",
+      "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+      "granted_approved_item_ids": [],
+      "outcome": "deny",
+      "policy_version": "caretrust.document-share-policy.v1",
+      "reason_codes": [
+        "grant_revoked"
+      ],
+      "request_id": "document-share-request:synthetic-after-revocation-001",
+      "schema_version": "caretrust.document-share-decision.v1",
+      "supporting_grant_id": null
+    },
+    "post_revocation_document_share_request": {
+      "audience": "app:synthetic-scheduling",
+      "grant_id": "document-share-grant:synthetic-scheduling-001",
+      "include_raw_document": false,
+      "patient_ref": "patient:synthetic-001",
+      "purpose": "discharge_follow_up",
+      "request_id": "document-share-request:synthetic-after-revocation-001",
+      "requested_approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:follow-up"
+      ],
+      "requested_at": "2026-07-30T18:00:11Z",
+      "requester_ref": "app:synthetic-scheduling",
+      "schema_version": "caretrust.document-share-request.v1",
+      "synthetic_only": true
+    },
+    "relationship_claim": {
+      "approval_id": "approval:synthetic-001",
+      "caregiver_ref": "account:synthetic-leilani",
+      "invite_acceptance_id": "invite-acceptance:synthetic-001",
+      "issued_at": "2026-07-30T10:03:01Z",
+      "issuer_ref": "org:synthetic-caretrust",
+      "legal_authority_status": "not_established",
+      "patient_ref": "patient:synthetic-001",
+      "relationship_assertion_only": true,
+      "relationship_basis": "patient_attestation",
+      "relationship_claim_id": "relationship:synthetic-001",
+      "relationship_code": "child",
+      "revoked_at": null,
+      "schema_version": "caretrust.care-relationship-claim.v1",
+      "status": "active",
+      "synthetic": true,
+      "valid_from": "2026-07-30",
+      "valid_until": "2026-12-31"
+    },
+    "respite_assignment": {
+      "allowed_actions": [
+        "respite_visit_support"
+      ],
+      "assignment_id": "assignment:synthetic-respite-community-001",
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "evidence_status": "contract_tested",
+      "organization_ref": "org:synthetic-community-respite-001",
+      "patient_ref": "patient:synthetic-001",
+      "role": "respite_community_caregiver",
+      "status": "active",
+      "valid_from": "2026-07-30T16:00:00Z",
+      "valid_until": "2026-07-30T17:00:00Z"
+    },
+    "respite_service_grant": {
+      "allowed_actions": [
+        "respite_visit_support"
+      ],
+      "allowed_audiences": [
+        "app:synthetic-respite-community"
+      ],
+      "allowed_purposes": [
+        "respite_visit_support"
+      ],
+      "approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "evidence_status": "contract_tested",
+      "grant_id": "grant:synthetic-respite-community-001",
+      "patient_ref": "patient:synthetic-001",
+      "status": "active",
+      "valid_from": "2026-07-30T16:00:00Z",
+      "valid_until": "2026-07-30T17:00:00Z"
+    },
+    "respite_service_grant_revocation": {
+      "allowed_actions": [
+        "respite_visit_support"
+      ],
+      "allowed_audiences": [
+        "app:synthetic-respite-community"
+      ],
+      "allowed_purposes": [
+        "respite_visit_support"
+      ],
+      "approved_item_ids": [
+        "approved:review:synthetic-discharge-001:candidate:bring-documents"
+      ],
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "evidence_status": "contract_tested",
+      "grant_id": "grant:synthetic-respite-community-001",
+      "patient_ref": "patient:synthetic-001",
+      "revoked_at": "2026-07-30T16:45:00Z",
+      "status": "revoked",
+      "valid_from": "2026-07-30T16:00:00Z",
+      "valid_until": "2026-07-30T17:00:00Z"
+    },
+    "uploaded_document": {
+      "classification": "discharge_instructions",
+      "clinically_authoritative": false,
+      "content_sha256": "db444a0f9e12490ec0db0f0cad94efdd3ec154248b7f21d2681438e41882db70",
+      "content_type": "application/pdf",
+      "document_id": "document:synthetic-discharge-001",
+      "file_validation": {
+        "active_content_detected": false,
+        "file_validation_status": "valid",
+        "malware_scan_status": "clean",
+        "malware_scanner": "scanner:synthetic-clamav-contract",
+        "password_protected": false,
+        "reason_codes": [
+          "magic-bytes-contract-checked",
+          "active-content-not-detected"
+        ],
+        "scanned_at": "2026-07-30T18:00:00Z",
+        "validated_content_type": "application/pdf",
+        "validated_size_bytes": 457
+      },
+      "filename": "synthetic-discharge-instructions.pdf",
+      "intake_status": "accepted",
+      "invite_acceptance_id": "invite-acceptance:synthetic-001",
+      "original_retained_ref": "artifact:synthetic-upload-original-001",
+      "page_count": 1,
+      "patient_ref": "patient:synthetic-001",
+      "privacy": {
+        "contains_health_information": true,
+        "contains_real_phi": false,
+        "minimum_necessary_required": true,
+        "redisclosure_requires_new_decision": true,
+        "sensitivity": "restricted_health_information",
+        "synthetic_only": true
+      },
+      "schema_version": "caretrust.uploaded-care-document.v1",
+      "uploaded_at": "2026-07-30T18:00:01Z",
+      "uploader_account_ref": "account:synthetic-leilani",
+      "uploader_role": "invited_relative"
+    },
+    "uploaded_extraction_draft": {
+      "blocking_issue_codes": [
+        "ambiguous_medication",
+        "clinical_interpretation_required"
+      ],
+      "candidate_items": [
+        {
+          "candidate_text": "The document states a discharge date of 2026-07-29.",
+          "category": "discharge-date",
+          "clinically_authoritative": false,
+          "clinically_verified": false,
+          "confidence": 0.99,
+          "current_clinical_truth": false,
+          "evidence_refs": [
+            "evidence:discharge-date"
+          ],
+          "item_id": "candidate:discharge-date",
+          "kind": "fact",
+          "normalized_value": "2026-07-29",
+          "sensitivity": "restricted_health_information",
+          "shareable": false,
+          "status": "draft"
+        },
+        {
+          "candidate_text": "Schedule primary care follow-up within 7 days.",
+          "category": "follow-up-instruction",
+          "clinically_authoritative": false,
+          "clinically_verified": false,
+          "confidence": 0.96,
+          "current_clinical_truth": false,
+          "evidence_refs": [
+            "evidence:follow-up"
+          ],
+          "item_id": "candidate:follow-up",
+          "kind": "instruction",
+          "normalized_value": null,
+          "sensitivity": "restricted_health_information",
+          "shareable": false,
+          "status": "draft"
+        },
+        {
+          "candidate_text": "Bring the discharge sheet and current medication list.",
+          "category": "visit-preparation",
+          "clinically_authoritative": false,
+          "clinically_verified": false,
+          "confidence": 0.98,
+          "current_clinical_truth": false,
+          "evidence_refs": [
+            "evidence:bring-documents"
+          ],
+          "item_id": "candidate:bring-documents",
+          "kind": "action_item",
+          "normalized_value": null,
+          "sensitivity": "restricted_health_information",
+          "shareable": false,
+          "status": "draft"
+        },
+        {
+          "candidate_text": "Continue home medicines as previously directed.",
+          "category": "medication-instruction",
+          "clinically_authoritative": false,
+          "clinically_verified": false,
+          "confidence": 0.65,
+          "current_clinical_truth": false,
+          "evidence_refs": [
+            "evidence:medication-note"
+          ],
+          "item_id": "candidate:medication",
+          "kind": "medication_candidate",
+          "normalized_value": null,
+          "sensitivity": "highly_sensitive_health_information",
+          "shareable": false,
+          "status": "draft"
+        },
+        {
+          "candidate_text": "Seek urgent care for new chest pain or severe shortness of breath.",
+          "category": "warning-sign-instruction",
+          "clinically_authoritative": false,
+          "clinically_verified": false,
+          "confidence": 0.93,
+          "current_clinical_truth": false,
+          "evidence_refs": [
+            "evidence:warning-signs"
+          ],
+          "item_id": "candidate:warning-signs",
+          "kind": "instruction",
+          "normalized_value": null,
+          "sensitivity": "highly_sensitive_health_information",
+          "shareable": false,
+          "status": "draft"
+        }
+      ],
+      "clinically_authoritative": false,
+      "clinically_verified": false,
+      "created_at": "2026-07-30T18:00:02Z",
+      "current_clinical_truth": false,
+      "document_id": "document:synthetic-discharge-001",
+      "draft_id": "extraction-draft:synthetic-discharge-001",
+      "evidence_spans": [
+        {
+          "document_id": "document:synthetic-discharge-001",
+          "end_offset": 130,
+          "evidence_id": "evidence:discharge-date",
+          "exact_text": "Discharge date: 2026-07-29",
+          "page": 1,
+          "region": {
+            "height": 0.06,
+            "width": 0.84,
+            "x": 0.08,
+            "y": 0.25
+          },
+          "start_offset": 104
+        },
+        {
+          "document_id": "document:synthetic-discharge-001",
+          "end_offset": 204,
+          "evidence_id": "evidence:follow-up",
+          "exact_text": "Instructions: Schedule a follow-up visit with primary care within 7 days.",
+          "page": 1,
+          "region": {
+            "height": 0.06,
+            "width": 0.84,
+            "x": 0.08,
+            "y": 0.36
+          },
+          "start_offset": 131
+        },
+        {
+          "document_id": "document:synthetic-discharge-001",
+          "end_offset": 273,
+          "evidence_id": "evidence:bring-documents",
+          "exact_text": "Action item: Bring this discharge sheet and current medication list.",
+          "page": 1,
+          "region": {
+            "height": 0.06,
+            "width": 0.84,
+            "x": 0.08,
+            "y": 0.48
+          },
+          "start_offset": 205
+        },
+        {
+          "document_id": "document:synthetic-discharge-001",
+          "end_offset": 380,
+          "evidence_id": "evidence:medication-note",
+          "exact_text": "Medication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.",
+          "page": 1,
+          "region": {
+            "height": 0.06,
+            "width": 0.84,
+            "x": 0.08,
+            "y": 0.6
+          },
+          "start_offset": 274
+        },
+        {
+          "document_id": "document:synthetic-discharge-001",
+          "end_offset": 456,
+          "evidence_id": "evidence:warning-signs",
+          "exact_text": "Warning: Seek urgent care for new chest pain or severe shortness of breath.",
+          "page": 1,
+          "region": {
+            "height": 0.06,
+            "width": 0.84,
+            "x": 0.08,
+            "y": 0.74
+          },
+          "start_offset": 381
+        }
+      ],
+      "extraction_run_id": "extraction-run:synthetic-local-replay-001",
+      "extractor_ref": "extractor:synthetic-ai-contract",
+      "schema_version": "caretrust.document-extraction-draft.v1",
+      "shareable": false,
+      "source_pages": [
+        {
+          "page": 1,
+          "text": "SYNTHETIC TEST RECORD - NOT A REAL MEDICAL RECORD\nDISCHARGE INSTRUCTIONS\nPatient: Synthetic Patient 001\nDischarge date: 2026-07-29\nInstructions: Schedule a follow-up visit with primary care within 7 days.\nAction item: Bring this discharge sheet and current medication list.\nMedication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.\nWarning: Seek urgent care for new chest pain or severe shortness of breath.",
+          "text_sha256": "43b56416a5cc05456d998898a0b3d7c05d0a9c1824d09e99e040d2e3521aceb5"
+        }
+      ],
+      "status": "draft",
+      "synthetic_only": true,
+      "uncertainties": [
+        {
+          "blocking": true,
+          "code": "ambiguous_medication",
+          "detail": "The document does not list medication names, doses, or a current regimen.",
+          "evidence_refs": [
+            "evidence:medication-note"
+          ],
+          "item_id": "candidate:medication",
+          "uncertainty_id": "uncertainty:medication-unspecified"
+        },
+        {
+          "blocking": true,
+          "code": "clinical_interpretation_required",
+          "detail": "The warning text must remain withheld from apps until an accountable reviewer clarifies the originating clinical source and intended context.",
+          "evidence_refs": [
+            "evidence:warning-signs"
+          ],
+          "item_id": "candidate:warning-signs",
+          "uncertainty_id": "uncertainty:warning-source-clarification"
+        }
+      ]
+    },
+    "uploaded_review_correction": {
+      "approved_item_ids": [
+        "candidate:discharge-date",
+        "candidate:follow-up",
+        "candidate:bring-documents"
+      ],
+      "corrections": [
+        {
+          "corrected_text": "The uploaded document says to schedule primary care follow-up within 7 days.",
+          "evidence_refs": [
+            "evidence:follow-up"
+          ],
+          "item_id": "candidate:follow-up",
+          "previous_text": "Schedule primary care follow-up within 7 days.",
+          "reason": "Preserve document-statement attribution; do not present as a current care-plan order."
+        }
+      ],
+      "decision": "corrected",
+      "deferred_item_ids": [
+        "candidate:warning-signs"
+      ],
+      "document_id": "document:synthetic-discharge-001",
+      "draft_id": "extraction-draft:synthetic-discharge-001",
+      "establishes_current_clinical_truth": false,
+      "establishes_legal_authority": false,
+      "original_draft_sha256": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+      "rejected_item_ids": [
+        "candidate:medication"
+      ],
+      "review_id": "review:synthetic-discharge-001",
+      "review_scope": "document_statement_only",
+      "reviewed_at": "2026-07-30T18:00:03Z",
+      "reviewer_account_ref": "patient:synthetic-001",
+      "reviewer_role": "accountable_reviewer",
+      "schema_version": "caretrust.document-review-correction-record.v1"
+    }
+  },
+  "caregivers": [
+    {
+      "basis_ids": [
+        "relationship:synthetic-001",
+        "grant:synthetic-001"
+      ],
+      "caregiver_ref": "account:synthetic-leilani",
+      "role": "patient_invited_family_caregiver",
+      "status": "revoked_for_future_access"
+    },
+    {
+      "basis_ids": [
+        "claim:synthetic-hi-cna-1001",
+        "assignment:synthetic-cna-direct-care-001",
+        "grant:synthetic-cna-direct-care-001"
+      ],
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "role": "agency_cna",
+      "status": "revoked_claim"
+    },
+    {
+      "basis_ids": [
+        "assignment:synthetic-respite-community-001",
+        "grant:synthetic-respite-community-001"
+      ],
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "role": "respite_community_caregiver",
+      "status": "expired_then_revoked"
+    }
+  ],
+  "case_id": "case:synthetic-multi-caregiver-001",
+  "decisions": [
+    {
+      "action": "schedule_appointments",
+      "application_id": "app:synthetic-scheduling",
+      "as_of": "2026-07-30T10:00:00Z",
+      "audience": "app:synthetic-scheduling",
+      "caregiver_ref": "account:synthetic-leilani",
+      "decision": "permit",
+      "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+      "evidence_status": "executed_local",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "appointment_management",
+      "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+      "request_id": "request:case:family-permit-001",
+      "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577",
+      "supporting_canonical_ids": [
+        "relationship:synthetic-001",
+        "grant:synthetic-001"
+      ]
+    },
+    {
+      "action": "schedule_appointments",
+      "application_id": "app:synthetic-scheduling",
+      "as_of": "2026-07-30T10:00:00Z",
+      "audience": "app:synthetic-scheduling",
+      "caregiver_ref": "account:synthetic-leilani",
+      "decision": "deny",
+      "decision_id": "decision:case:4d8aca31ad6186d83634",
+      "evidence_status": "executed_local",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "discharge_follow_up",
+      "reason_code": "PURPOSE_NOT_ALLOWED",
+      "request_id": "request:case:family-wrong-purpose-001",
+      "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "perform_assigned_direct_care",
+      "application_id": "urn:caretrust:app:scheduling",
+      "as_of": "2026-07-30T18:00:00Z",
+      "audience": "urn:caretrust:app:scheduling",
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "decision": "permit",
+      "decision_id": "decision:case:c4cf8911bf9502fea692",
+      "evidence_status": "executed_local",
+      "minimum_data": [
+        {
+          "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+          "category": "visit-preparation",
+          "clinically_authoritative": false,
+          "kind": "action_item",
+          "requires_clinical_confirmation": true,
+          "reviewed_text": "Bring the discharge sheet and current medication list.",
+          "source_assertion": "uploaded_document_statement"
+        }
+      ],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "shift-assignment",
+      "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+      "request_id": "request:case:cna-permit-001",
+      "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9",
+      "supporting_canonical_ids": [
+        "claim:synthetic-hi-cna-1001",
+        "assignment:synthetic-cna-direct-care-001",
+        "grant:synthetic-cna-direct-care-001"
+      ]
+    },
+    {
+      "action": "perform_assigned_direct_care",
+      "application_id": "urn:caretrust:app:scheduling",
+      "as_of": "2026-07-30T18:00:00Z",
+      "audience": "urn:caretrust:app:scheduling",
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "decision": "deny",
+      "decision_id": "decision:case:d15736ff86643b32b80d",
+      "evidence_status": "executed_local",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "shift-assignment",
+      "reason_code": "CLAIM_REQUIRED",
+      "request_id": "request:case:cna-missing-claim-001",
+      "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "respite_visit_support",
+      "application_id": "app:synthetic-respite-community",
+      "as_of": "2026-07-30T16:30:00Z",
+      "audience": "app:synthetic-respite-community",
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "decision": "permit",
+      "decision_id": "decision:case:fcfc1c28d460f4d249c4",
+      "evidence_status": "contract_tested",
+      "minimum_data": [
+        {
+          "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+          "category": "visit-preparation",
+          "clinically_authoritative": false,
+          "kind": "action_item",
+          "requires_clinical_confirmation": true,
+          "reviewed_text": "Bring the discharge sheet and current medication list.",
+          "source_assertion": "uploaded_document_statement"
+        }
+      ],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "respite_visit_support",
+      "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+      "request_id": "request:case:respite-historical-001",
+      "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a",
+      "supporting_canonical_ids": [
+        "assignment:synthetic-respite-community-001",
+        "grant:synthetic-respite-community-001"
+      ]
+    },
+    {
+      "action": "respite_visit_support",
+      "application_id": "app:synthetic-respite-community",
+      "as_of": "2026-07-30T18:00:00Z",
+      "audience": "app:synthetic-respite-community",
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "decision": "deny",
+      "decision_id": "decision:case:0f1638900464394d1121",
+      "evidence_status": "contract_tested",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "respite_visit_support",
+      "reason_code": "ASSIGNMENT_EXPIRED",
+      "request_id": "request:case:respite-expired-001",
+      "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "view_warning_instruction",
+      "application_id": "app:synthetic-respite-community",
+      "as_of": "2026-07-30T16:30:00Z",
+      "audience": "app:synthetic-respite-community",
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "decision": "deny",
+      "decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+      "evidence_status": "contract_tested",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "respite_visit_support",
+      "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+      "request_id": "request:case:respite-clinical-block-001",
+      "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "schedule_appointments",
+      "application_id": "app:synthetic-scheduling",
+      "as_of": "2026-07-30T10:06:00Z",
+      "audience": "app:synthetic-scheduling",
+      "caregiver_ref": "account:synthetic-leilani",
+      "decision": "deny",
+      "decision_id": "decision:case:6adfd412726aacdea40f",
+      "evidence_status": "executed_local",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "appointment_management",
+      "reason_code": "GRANT_REVOKED",
+      "request_id": "request:case:family-revoked-001",
+      "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "perform_assigned_direct_care",
+      "application_id": "urn:caretrust:app:scheduling",
+      "as_of": "2026-07-30T18:00:11Z",
+      "audience": "urn:caretrust:app:scheduling",
+      "caregiver_ref": "person:synthetic-leilani-testperson",
+      "decision": "deny",
+      "decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+      "evidence_status": "executed_local",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "shift-assignment",
+      "reason_code": "CLAIM_REVOKED",
+      "request_id": "request:case:cna-revoked-001",
+      "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb",
+      "supporting_canonical_ids": []
+    },
+    {
+      "action": "respite_visit_support",
+      "application_id": "app:synthetic-respite-community",
+      "as_of": "2026-07-30T16:46:00Z",
+      "audience": "app:synthetic-respite-community",
+      "caregiver_ref": "caregiver:synthetic-respite-001",
+      "decision": "deny",
+      "decision_id": "decision:case:daf7feb79ade3ba12395",
+      "evidence_status": "contract_tested",
+      "minimum_data": [],
+      "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+      "policy_version": "case-access.v1",
+      "purpose": "respite_visit_support",
+      "reason_code": "GRANT_REVOKED",
+      "request_id": "request:case:respite-revoked-001",
+      "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258",
+      "supporting_canonical_ids": []
+    }
+  ],
+  "generated_at": "2026-07-30T18:00:00Z",
+  "limitations": [
+    "Synthetic local fixtures only; no live applications, EHR, registry, or identity proofing.",
+    "Application projections omit raw packets, extraction text, unrelated claims, and clinical-holder payloads.",
+    "Clinical clarification is a block, not a clinical determination or authorization."
+  ],
+  "patient": {
+    "not_clinical_chart": true,
+    "patient_ref": "patient:synthetic-001"
+  },
+  "policy": {
+    "authority_path_requirements": {
+      "community_respite_v1": [
+        "assignment",
+        "service_grant"
+      ],
+      "family_delegation_v1": [
+        "delegation",
+        "relationship"
+      ],
+      "workforce_assignment_v1": [
+        "assignment",
+        "credential",
+        "service_grant"
+      ]
+    },
+    "clinical_uncertainty_rule": "unresolved clinical interpretation denies before projection",
+    "default": "deny",
+    "document_projection_rule": "approved items require a service_grant and are projected as minimum-data source assertions, never clinical truth",
+    "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+    "policy_version": "case-access.v1",
+    "temporal_semantics": {
+      "revoked_at": "effective at the stated instant",
+      "valid_from": "inclusive",
+      "valid_until": "exclusive; a bare date means the first instant of the following UTC day"
+    }
+  },
+  "projections": {
+    "applications": [
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "permit",
+        "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:family-permit-001",
+        "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "decision_id": "decision:case:4d8aca31ad6186d83634",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "discharge_follow_up",
+        "reason_code": "PURPOSE_NOT_ALLOWED",
+        "request_id": "request:case:family-wrong-purpose-001",
+        "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f"
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "permit",
+        "decision_id": "decision:case:c4cf8911bf9502fea692",
+        "evidence_status": "executed_local",
+        "minimum_data": [
+          {
+            "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+            "category": "visit-preparation",
+            "clinically_authoritative": false,
+            "kind": "action_item",
+            "requires_clinical_confirmation": true,
+            "reviewed_text": "Bring the discharge sheet and current medication list.",
+            "source_assertion": "uploaded_document_statement"
+          }
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:cna-permit-001",
+        "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9"
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "decision_id": "decision:case:d15736ff86643b32b80d",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REQUIRED",
+        "request_id": "request:case:cna-missing-claim-001",
+        "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1"
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "permit",
+        "decision_id": "decision:case:fcfc1c28d460f4d249c4",
+        "evidence_status": "contract_tested",
+        "minimum_data": [
+          {
+            "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+            "category": "visit-preparation",
+            "clinically_authoritative": false,
+            "kind": "action_item",
+            "requires_clinical_confirmation": true,
+            "reviewed_text": "Bring the discharge sheet and current medication list.",
+            "source_assertion": "uploaded_document_statement"
+          }
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:respite-historical-001",
+        "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a"
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:0f1638900464394d1121",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "ASSIGNMENT_EXPIRED",
+        "request_id": "request:case:respite-expired-001",
+        "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62"
+      },
+      {
+        "action": "view_warning_instruction",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+        "request_id": "request:case:respite-clinical-block-001",
+        "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d"
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "decision_id": "decision:case:6adfd412726aacdea40f",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:family-revoked-001",
+        "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1"
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REVOKED",
+        "request_id": "request:case:cna-revoked-001",
+        "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb"
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:daf7feb79ade3ba12395",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:respite-revoked-001",
+        "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258"
+      }
+    ],
+    "care_team": [
+      {
+        "basis_ids": [
+          "relationship:synthetic-001",
+          "grant:synthetic-001"
+        ],
+        "caregiver_ref": "account:synthetic-leilani",
+        "role": "patient_invited_family_caregiver",
+        "status": "revoked_for_future_access"
+      },
+      {
+        "basis_ids": [
+          "claim:synthetic-hi-cna-1001",
+          "assignment:synthetic-cna-direct-care-001",
+          "grant:synthetic-cna-direct-care-001"
+        ],
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "role": "agency_cna",
+        "status": "revoked_claim"
+      },
+      {
+        "basis_ids": [
+          "assignment:synthetic-respite-community-001",
+          "grant:synthetic-respite-community-001"
+        ],
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "role": "respite_community_caregiver",
+        "status": "expired_then_revoked"
+      }
+    ],
+    "evidence": [
+      {
+        "application_disclosure": false,
+        "canonical_id": "document:synthetic-discharge-001",
+        "class": "restricted_health_information",
+        "status": "executed_local"
+      },
+      {
+        "application_disclosure": false,
+        "canonical_id": "review:synthetic-discharge-001",
+        "class": "accountable_review_correction",
+        "status": "executed_local"
+      },
+      {
+        "application_disclosure": false,
+        "canonical_id": "extraction-draft:synthetic-discharge-001",
+        "class": "ai_draft_with_clinical_uncertainty",
+        "status": "contract_tested"
+      }
+    ],
+    "history": [
+      {
+        "canonical_hash": "3d03657cd25df3777a7d2369047bda82892287058f2118a6a2ca7e4aabf75aa8",
+        "canonical_ids": {
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "event_id": "event:navigator:intent:001",
+        "evidence_status": "executed_local",
+        "message_type": "IntentStatement"
+      },
+      {
+        "canonical_hash": "9c98776bb48a486985cd1dba3ac1693947028d3e2b4834e5bdbb6522189c0986",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v1",
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "event_id": "event:navigator:draft:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationDraft"
+      },
+      {
+        "canonical_hash": "fe99d2d6749dc04e2ac3e3ca954eeafa24b0eaea5b7f670445b58334842040a9",
+        "canonical_ids": {
+          "clarification_id": "clarification:synthetic-audience-001",
+          "draft_id": "delegation-draft:synthetic-001:v1",
+          "intent_id": "intent:synthetic-delegation-001"
+        },
+        "event_id": "event:navigator:clarification-request:001",
+        "evidence_status": "executed_local",
+        "message_type": "ClarificationRequest"
+      },
+      {
+        "canonical_hash": "8b5d3571dbdf785e00a23d0032b153c9ca19395c8be24062d9cf8c74666643ab",
+        "canonical_ids": {
+          "clarification_id": "clarification:synthetic-audience-001",
+          "intent_id": "intent:synthetic-delegation-001",
+          "response_id": "clarification-response:synthetic-001"
+        },
+        "event_id": "event:navigator:clarification-response:001",
+        "evidence_status": "executed_local",
+        "message_type": "ClarificationResponse"
+      },
+      {
+        "canonical_hash": "16f49109a9104f5aef862a5af6013e77277fe56e2c1b76b59d3f9e98db9d2da8",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v2",
+          "intent_id": "intent:synthetic-delegation-001",
+          "supersedes_event_id": "event:navigator:draft:001"
+        },
+        "event_id": "event:navigator:draft:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationDraft"
+      },
+      {
+        "canonical_hash": "b395ce72ada6c9f1730427272931c4e18fd96ec0131b711286d886ace7257f90",
+        "canonical_ids": {
+          "draft_id": "delegation-draft:synthetic-001:v2",
+          "invite_id": "invite:synthetic-001"
+        },
+        "event_id": "event:navigator:invite:001",
+        "evidence_status": "executed_local",
+        "message_type": "PatientInvite"
+      },
+      {
+        "canonical_hash": "30d64f5726f8149831b5abcc91ad57e070c94881a1433a46d4dfc7c3a27e1ca1",
+        "canonical_ids": {
+          "acceptance_id": "invite-acceptance:synthetic-001",
+          "invite_id": "invite:synthetic-001"
+        },
+        "event_id": "event:navigator:invite-acceptance:001",
+        "evidence_status": "executed_local",
+        "message_type": "InviteAcceptance"
+      },
+      {
+        "canonical_hash": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "canonical_ids": {
+          "acceptance_id": "invite-acceptance:synthetic-001",
+          "approval_id": "approval:synthetic-001",
+          "draft_id": "delegation-draft:synthetic-001:v2"
+        },
+        "event_id": "event:navigator:approval:001",
+        "evidence_status": "executed_local",
+        "message_type": "PatientApprovalRecord"
+      },
+      {
+        "canonical_hash": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "canonical_ids": {
+          "approval_id": "approval:synthetic-001",
+          "relationship_claim_id": "relationship:synthetic-001"
+        },
+        "event_id": "event:navigator:relationship:001",
+        "evidence_status": "executed_local",
+        "message_type": "CareRelationshipClaim"
+      },
+      {
+        "canonical_hash": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "canonical_ids": {
+          "approval_id": "approval:synthetic-001",
+          "grant_id": "grant:synthetic-001",
+          "relationship_claim_id": "relationship:synthetic-001"
+        },
+        "event_id": "event:navigator:grant:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationGrant"
+      },
+      {
+        "canonical_hash": "45f4e6005cf4945ea48ed0318fba055aeacb5efd941f31dd61e52bbc1f6052c9",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-001"
+        },
+        "event_id": "event:navigator:request:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationRequest"
+      },
+      {
+        "canonical_hash": "48227c708c57b6b60337b164712128bf034d2eed73dcd46b1a494231f86a4bfb",
+        "canonical_ids": {
+          "decision_id": "delegation-decision:synthetic-001",
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-001"
+        },
+        "event_id": "event:navigator:decision:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationDecision"
+      },
+      {
+        "canonical_hash": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "revocation_id": "delegation-revocation:synthetic-001"
+        },
+        "event_id": "event:navigator:revocation:001",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationRevocationRecord"
+      },
+      {
+        "canonical_hash": "9e22514168e599bfac6f0bb65e4cce98e62246e52a491db61c790a6baaba04f7",
+        "canonical_ids": {
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-002"
+        },
+        "event_id": "event:navigator:request:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationRequest"
+      },
+      {
+        "canonical_hash": "d1c1b82b73c48c02a608ce2dcfc94d84f7f216de0c289413d718562b674f3daf",
+        "canonical_ids": {
+          "decision_id": "delegation-decision:synthetic-002",
+          "grant_id": "grant:synthetic-001",
+          "request_id": "delegation-request:synthetic-002",
+          "revocation_id": "delegation-revocation:synthetic-001"
+        },
+        "event_id": "event:navigator:decision:002",
+        "evidence_status": "executed_local",
+        "message_type": "DelegationAuthorizationDecision"
+      },
+      {
+        "canonical_hash": "73544bc3f7f3d40e0512372f7aa42da7608c446c947f198d0d7e75c53568c9ce",
+        "canonical_ids": {
+          "artifact_id": "artifact:final-01-clean-standard"
+        },
+        "event_id": "trace:evidence:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "EvidenceArtifact"
+      },
+      {
+        "canonical_hash": "f745ad20ae217edf19ee43b52852f1f273abee795c749a998c6debc5b64df656",
+        "canonical_ids": {
+          "artifact_id": "artifact:final-01-clean-standard",
+          "draft_id": "draft:final-01-clean-standard",
+          "extraction_id": "extraction:final-01-clean-standard"
+        },
+        "event_id": "trace:extraction:credential-001",
+        "evidence_status": "retained_aws",
+        "message_type": "ExtractionRecord"
+      },
+      {
+        "canonical_hash": "c32448e529bba76862740aff1444f31faa1857297ad9a3921229568f8843829d",
+        "canonical_ids": {
+          "draft_id": "draft:final-01-clean-standard",
+          "review_id": "review:credential:001"
+        },
+        "event_id": "trace:review:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "ReviewRecord"
+      },
+      {
+        "canonical_hash": "078c369ee21c64c8e84e757f01e8e163abd310f472392a2f314dd10897a84596",
+        "canonical_ids": {
+          "draft_id": "draft:final-01-clean-standard",
+          "registry_result_id": "registry:credential:001"
+        },
+        "event_id": "trace:registry:credential-001",
+        "evidence_status": "local_simulation",
+        "message_type": "RegistryResult"
+      },
+      {
+        "canonical_hash": "ac54e132079e438304349936bc5691ad56c41741fc981aed02415000ad9b0757",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "draft_id": "draft:final-01-clean-standard",
+          "registry_result_id": "registry:credential:001",
+          "review_id": "review:credential:001"
+        },
+        "event_id": "trace:claim:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "ActiveCredentialClaim"
+      },
+      {
+        "canonical_hash": "5832679ff06cf551e7293df20c13e0b418e7a17ba3a39a5552b37b7102f83254",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "token_id": "token:credential:001"
+        },
+        "event_id": "trace:token:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "CareTrustJwtVerificationReceipt"
+      },
+      {
+        "canonical_hash": "d2a2932f82db2bb774d5562411df813973849c4f8485f776e689770986f221af",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-a:001"
+        },
+        "event_id": "trace:request:app-a:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest"
+      },
+      {
+        "canonical_hash": "f02448069f5d87ba95d0fa830b96f8507647ddd7be764bb536d6543e876f7da7",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-ce68334198c8069d9889",
+          "request_id": "request:credential:app-a:001"
+        },
+        "event_id": "trace:decision:app-a:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision"
+      },
+      {
+        "canonical_hash": "375afb447c08c4e0b3dd687bfcbc5fa06adb7861fe0f4796961a17b5907c2f26",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-b:001"
+        },
+        "event_id": "trace:request:app-b:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest"
+      },
+      {
+        "canonical_hash": "05b9ee6fe8de2decc91bc820c963f57093fc904d97aa3100ac38082f524bb3a8",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-074e296ab95e39fc8a56",
+          "request_id": "request:credential:app-b:001"
+        },
+        "event_id": "trace:decision:app-b:001",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision"
+      },
+      {
+        "canonical_hash": "ac768a2b44e63102969f906f152f51f0386cb4b669b8d3de92a935e002e0747a",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "revocation_id": "revocation:credential:001"
+        },
+        "event_id": "trace:revocation:credential-001",
+        "evidence_status": "executed_local",
+        "message_type": "RevocationRecord"
+      },
+      {
+        "canonical_hash": "19416f5127fad4a948d8f927c4bbdbdf30abf4da902c9f9daf04cdeb8451eb46",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "request_id": "request:credential:app-b:002"
+        },
+        "event_id": "trace:request:app-b:002",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationRequest"
+      },
+      {
+        "canonical_hash": "6be1dc38753553c483ff70e4ce69b5e40fecbeb756d56ea977e30eb7f3999cd4",
+        "canonical_ids": {
+          "claim_id": "claim:synthetic-hi-cna-1001",
+          "decision_id": "decision-830b0993aafc8190ef40",
+          "request_id": "request:credential:app-b:002",
+          "revocation_id": "revocation:credential:001"
+        },
+        "event_id": "trace:decision:app-b:002",
+        "evidence_status": "executed_local",
+        "message_type": "AuthorizationDecision"
+      },
+      {
+        "canonical_hash": "55adfce123df2354144fb7ab1de9ecf4db23d30ebc50eb0d858e930a1d7c649a",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "invite_acceptance_id": "invite-acceptance:synthetic-001",
+          "patient_ref": "patient:synthetic-001",
+          "uploader_account_ref": "account:synthetic-leilani"
+        },
+        "event_id": "event:upload-accepted",
+        "evidence_status": "executed_local",
+        "message_type": "UploadedCareDocument"
+      },
+      {
+        "canonical_hash": "3b770f67e009dca85c97e47a548f58df113a836c7852d6365d13532f18f0611b",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "draft_id": "extraction-draft:synthetic-discharge-001"
+        },
+        "event_id": "event:extraction-draft",
+        "evidence_status": "contract_tested",
+        "message_type": "DocumentExtractionDraft"
+      },
+      {
+        "canonical_hash": "665c8ac5c447aa969e8048c459d1d901e8dd8550aee7efeab771a31dd177e547",
+        "canonical_ids": {
+          "document_id": "document:synthetic-discharge-001",
+          "draft_id": "extraction-draft:synthetic-discharge-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "event_id": "event:review-correction",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentReviewCorrectionRecord"
+      },
+      {
+        "canonical_hash": "1f4c9d0363bb13c7e92b238f79700ba60be1a37dc90609c9bb00916e0e4e18f4",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "event_id": "event:scheduling-share-grant",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareGrant"
+      },
+      {
+        "canonical_hash": "906796d574eb3c9bf2ca9bc9d829172fd36bcf731a2fa40dca9b41e0f9a5c971",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+          "patient_ref": "patient:synthetic-001",
+          "review_id": "review:synthetic-discharge-001"
+        },
+        "event_id": "event:direct-care-task-share-grant",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareGrant"
+      },
+      {
+        "canonical_hash": "b0fd2351cbe79a4d42179adb1b219080e36b6f7ae5843fd59a004fe67264cc6e",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-scheduling-permit-001"
+        },
+        "event_id": "event:scheduling-share-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest"
+      },
+      {
+        "canonical_hash": "ebb1ac5652311edacd1607972b51696c90cc6808e4b100f54ea8538392c3bd71",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+          "request_id": "document-share-request:synthetic-scheduling-permit-001"
+        },
+        "event_id": "event:scheduling-share-permit",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision"
+      },
+      {
+        "canonical_hash": "7c835bb3f948671efde24e9968dad5489ae9a209c88524f42c6eb40dc799264a",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-direct-care-task-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+        },
+        "event_id": "event:direct-care-task-share-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest"
+      },
+      {
+        "canonical_hash": "f6b9d6c61e989fe42cc91e5e42d627b4c4a178066d4aea0f7c32c5669cbbb1a0",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-direct-care-task-permit-001",
+          "request_id": "document-share-request:synthetic-direct-care-task-permit-001"
+        },
+        "event_id": "event:direct-care-task-share-permit",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision"
+      },
+      {
+        "canonical_hash": "119fa24c7b13800a4b95301b9a383ebe142abf81d86b50abc0f0fac3d29ea0a4",
+        "canonical_ids": {
+          "source_document_id": "document:synthetic-discharge-001"
+        },
+        "event_id": "event:fhir-candidate-projection",
+        "evidence_status": "mapped_only",
+        "message_type": "UploadedDocumentFhirProjection"
+      },
+      {
+        "canonical_hash": "a3f99eccc0b8b6b415d555cc7440870336390e534a856ae81b139f9cb1a443cd",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001"
+        },
+        "event_id": "event:share-revocation",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRevocationRecord"
+      },
+      {
+        "canonical_hash": "963e5dc0367fba03f110851cb58884df215278ac3f6f1c99c41f2b5f9c2b11d9",
+        "canonical_ids": {
+          "grant_id": "document-share-grant:synthetic-scheduling-001",
+          "patient_ref": "patient:synthetic-001",
+          "request_id": "document-share-request:synthetic-after-revocation-001"
+        },
+        "event_id": "event:post-revocation-request",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareRequest"
+      },
+      {
+        "canonical_hash": "5be0969cac42bf841820d54ca0ecc0f208ec0f3db960d1c923f0bdf8b3f35123",
+        "canonical_ids": {
+          "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+          "request_id": "document-share-request:synthetic-after-revocation-001"
+        },
+        "event_id": "event:post-revocation-deny",
+        "evidence_status": "executed_local",
+        "message_type": "DocumentShareDecision"
+      }
+    ],
+    "permissions": [
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:00:00Z",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "permit",
+        "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:family-permit-001",
+        "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577",
+        "supporting_canonical_ids": [
+          "relationship:synthetic-001",
+          "grant:synthetic-001"
+        ]
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:00:00Z",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "decision_id": "decision:case:4d8aca31ad6186d83634",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "discharge_follow_up",
+        "reason_code": "PURPOSE_NOT_ALLOWED",
+        "request_id": "request:case:family-wrong-purpose-001",
+        "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "permit",
+        "decision_id": "decision:case:c4cf8911bf9502fea692",
+        "evidence_status": "executed_local",
+        "minimum_data": [
+          {
+            "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+            "category": "visit-preparation",
+            "clinically_authoritative": false,
+            "kind": "action_item",
+            "requires_clinical_confirmation": true,
+            "reviewed_text": "Bring the discharge sheet and current medication list.",
+            "source_assertion": "uploaded_document_statement"
+          }
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:cna-permit-001",
+        "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9",
+        "supporting_canonical_ids": [
+          "claim:synthetic-hi-cna-1001",
+          "assignment:synthetic-cna-direct-care-001",
+          "grant:synthetic-cna-direct-care-001"
+        ]
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "decision_id": "decision:case:d15736ff86643b32b80d",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REQUIRED",
+        "request_id": "request:case:cna-missing-claim-001",
+        "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:30:00Z",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "permit",
+        "decision_id": "decision:case:fcfc1c28d460f4d249c4",
+        "evidence_status": "contract_tested",
+        "minimum_data": [
+          {
+            "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+            "category": "visit-preparation",
+            "clinically_authoritative": false,
+            "kind": "action_item",
+            "requires_clinical_confirmation": true,
+            "reviewed_text": "Bring the discharge sheet and current medication list.",
+            "source_assertion": "uploaded_document_statement"
+          }
+        ],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+        "request_id": "request:case:respite-historical-001",
+        "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a",
+        "supporting_canonical_ids": [
+          "assignment:synthetic-respite-community-001",
+          "grant:synthetic-respite-community-001"
+        ]
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T18:00:00Z",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:0f1638900464394d1121",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "ASSIGNMENT_EXPIRED",
+        "request_id": "request:case:respite-expired-001",
+        "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "view_warning_instruction",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:30:00Z",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+        "request_id": "request:case:respite-clinical-block-001",
+        "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "schedule_appointments",
+        "application_id": "app:synthetic-scheduling",
+        "as_of": "2026-07-30T10:06:00Z",
+        "audience": "app:synthetic-scheduling",
+        "caregiver_ref": "account:synthetic-leilani",
+        "decision": "deny",
+        "decision_id": "decision:case:6adfd412726aacdea40f",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "appointment_management",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:family-revoked-001",
+        "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "perform_assigned_direct_care",
+        "application_id": "urn:caretrust:app:scheduling",
+        "as_of": "2026-07-30T18:00:11Z",
+        "audience": "urn:caretrust:app:scheduling",
+        "caregiver_ref": "person:synthetic-leilani-testperson",
+        "decision": "deny",
+        "decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+        "evidence_status": "executed_local",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "shift-assignment",
+        "reason_code": "CLAIM_REVOKED",
+        "request_id": "request:case:cna-revoked-001",
+        "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb",
+        "supporting_canonical_ids": []
+      },
+      {
+        "action": "respite_visit_support",
+        "application_id": "app:synthetic-respite-community",
+        "as_of": "2026-07-30T16:46:00Z",
+        "audience": "app:synthetic-respite-community",
+        "caregiver_ref": "caregiver:synthetic-respite-001",
+        "decision": "deny",
+        "decision_id": "decision:case:daf7feb79ade3ba12395",
+        "evidence_status": "contract_tested",
+        "minimum_data": [],
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+        "policy_version": "case-access.v1",
+        "purpose": "respite_visit_support",
+        "reason_code": "GRANT_REVOKED",
+        "request_id": "request:case:respite-revoked-001",
+        "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258",
+        "supporting_canonical_ids": []
+      }
+    ],
+    "standards": [
+      {
+        "canonical_id": "grant:synthetic-001",
+        "evidence_status": "executed_local",
+        "standard": "CareTrust delegation v1"
+      },
+      {
+        "canonical_id": "claim:synthetic-hi-cna-1001",
+        "evidence_status": "executed_local",
+        "standard": "CareTrust active credential claim v1"
+      },
+      {
+        "canonical_id": "document-share-grant:synthetic-direct-care-task-001",
+        "evidence_status": "executed_local",
+        "standard": "CareTrust document share v1"
+      },
+      {
+        "canonical_id": "decision:clinical:f3dd980fc1b221df9b9b",
+        "evidence_status": "executed_local",
+        "non_claim": "No live EHR, HIE, or network edge was used.",
+        "standard": "FHIR R4-shaped local holder exchange"
+      }
+    ]
+  },
+  "schema_version": "caretrust.synthetic-case-bundle.v1",
+  "synthetic": true
+}

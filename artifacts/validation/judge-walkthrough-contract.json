@@ -1,0 +1,628 @@
+{
+  "case_id": "case:synthetic-multi-caregiver-001",
+  "non_claims": [
+    "This is a deterministic local walkthrough contract, not a UI state machine or deployment claim."
+  ],
+  "schema_version": "caretrust.judge-walkthrough-contract.v1",
+  "steps": [
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "caregivers": [
+          {
+            "basis_ids": [
+              "relationship:synthetic-001",
+              "grant:synthetic-001"
+            ],
+            "caregiver_ref": "account:synthetic-leilani",
+            "role": "patient_invited_family_caregiver",
+            "status": "revoked_for_future_access"
+          },
+          {
+            "basis_ids": [
+              "claim:synthetic-hi-cna-1001",
+              "assignment:synthetic-cna-direct-care-001",
+              "grant:synthetic-cna-direct-care-001"
+            ],
+            "caregiver_ref": "person:synthetic-leilani-testperson",
+            "role": "agency_cna",
+            "status": "revoked_claim"
+          },
+          {
+            "basis_ids": [
+              "assignment:synthetic-respite-community-001",
+              "grant:synthetic-respite-community-001"
+            ],
+            "caregiver_ref": "caregiver:synthetic-respite-001",
+            "role": "respite_community_caregiver",
+            "status": "expired_then_revoked"
+          }
+        ],
+        "patient_ref": "patient:synthetic-001",
+        "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1"
+      },
+      "non_claims": [
+        "Care-team display is not authority; all inputs are synthetic."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/synthetic-multi-caregiver-case.json",
+          "artifact_sha256": "e98fcf76976662d636cd6f83144a9502f126ea8211fc549d59019ce921bb4adb",
+          "canonical_ids": [
+            "case:synthetic-multi-caregiver-001",
+            "patient:synthetic-001",
+            "account:synthetic-leilani",
+            "person:synthetic-leilani-testperson",
+            "caregiver:synthetic-respite-001"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "CareTrust synthetic case bundle v1",
+        "Core decisions are independently source-bound."
+      ],
+      "step_id": "01-case-context",
+      "suggested_elapsed_seconds": 35,
+      "title": "One synthetic patient, three different caregiver contexts"
+    },
+    {
+      "evidence_status": "contract_tested",
+      "facts": {
+        "candidate_actions": [
+          {
+            "bounded_value": "view_appointments",
+            "citation_id": "intent:compiler-fixture-001:full-text",
+            "draft_id": "delegation-draft:intent:compiler-fixture-001:v1",
+            "exact_quote": "look at upcoming appointments"
+          }
+        ],
+        "compilation_mode": "model_candidate_validated",
+        "draft_sha256": "dce3d4037c5f724fdfc5926486e2759e3d6ba445faa0e1cb783918354caefd4f",
+        "draft_status": "draft",
+        "human_approval_boundary": {
+          "authority_effect": "none",
+          "recorded_for_this_draft": false,
+          "required": true
+        }
+      },
+      "non_claims": [
+        "Candidate output is not approval, activation, or authorization.",
+        "No live Bedrock call is claimed by retained compiler fixtures."
+      ],
+      "source_refs": [
+        {
+          "artifact": "fixtures/compiler/intent-input.json",
+          "artifact_sha256": "24869fc1cd3d5668dc693eeea28de0347028f16bbf75fc370084f693995bb360",
+          "canonical_ids": [
+            "intent:compiler-fixture-001"
+          ]
+        },
+        {
+          "artifact": "fixtures/compiler/intent-compilation.json",
+          "artifact_sha256": "dedd14f5dc1dec3a5125a9231942f8ae706a743e8ebe9b6b394749fed2645927",
+          "canonical_ids": [
+            "delegation-draft:intent:compiler-fixture-001:v1",
+            "compiler-run:intent:compiler-fixture-001:bedrock"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "CareTrust delegation draft v1",
+        "Exact retained source-span citation"
+      ],
+      "step_id": "02-ai-intent",
+      "suggested_elapsed_seconds": 45,
+      "title": "AI intent candidate is exact-evidence cited and remains a draft"
+    },
+    {
+      "evidence_status": "contract_tested",
+      "facts": {
+        "capability_candidate": [
+          {
+            "bounded_value": "appointment_management",
+            "citation_id": "app-source:synthetic-scheduling-001:full-text",
+            "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "exact_quote": "scheduling application"
+          }
+        ],
+        "data_candidates": [
+          {
+            "bounded_value": "appointment.id",
+            "citation_id": "app-source:synthetic-scheduling-001:openapi",
+            "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "exact_quote": "/appointments"
+          },
+          {
+            "bounded_value": "appointment.start",
+            "citation_id": "app-source:synthetic-scheduling-001:openapi",
+            "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "exact_quote": "/appointments"
+          }
+        ],
+        "minimum_data_plan": [
+          {
+            "evidence_refs": [
+              "app-source:synthetic-scheduling-001:openapi"
+            ],
+            "field": "appointment.id",
+            "rationale": "Identifies the appointment to display."
+          },
+          {
+            "evidence_refs": [
+              "app-source:synthetic-scheduling-001:openapi"
+            ],
+            "field": "appointment.start",
+            "rationale": "Shows the scheduled time."
+          }
+        ],
+        "proposed_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+        "proposed_rar": [
+          {
+            "actions": [
+              "schedule_appointments"
+            ],
+            "datatypes": [
+              "appointment.id",
+              "appointment.start"
+            ],
+            "evidence_refs": [
+              "app-source:synthetic-scheduling-001:full-text",
+              "app-source:synthetic-scheduling-001:openapi"
+            ],
+            "locations": [
+              "https://scheduling.synthetic.example"
+            ],
+            "purpose": "appointment_management",
+            "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+          }
+        ]
+      },
+      "non_claims": [
+        "The proposal does not register, activate, or authorize an application."
+      ],
+      "source_refs": [
+        {
+          "artifact": "fixtures/compiler/application-input.json",
+          "artifact_sha256": "23f02e874d5a2b77329ee34a456f92a1adced41e885fa4d113c0d15d45a7d4a9",
+          "canonical_ids": [
+            "app:synthetic-scheduling",
+            "app-source:synthetic-scheduling-001"
+          ]
+        },
+        {
+          "artifact": "fixtures/compiler/application-compilation.json",
+          "artifact_sha256": "4e947fb480f12d045bdb3b788dda4936104adb0df9359d33d6b3a78c8fdd7d53",
+          "canonical_ids": [
+            "app-onboarding-draft:app:synthetic-scheduling:v1",
+            "compiler-run:app:synthetic-scheduling:bedrock"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "CareTrust RAR-shaped authorization details",
+        "CareTrust application onboarding draft v1"
+      ],
+      "step_id": "03-ai-app-onboarding",
+      "suggested_elapsed_seconds": 45,
+      "title": "AI application candidate proposes a bounded RAR/profile/minimum-data plan"
+    },
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "fresh_decision": {
+          "action": "schedule_appointments",
+          "application_id": "app:synthetic-scheduling",
+          "as_of": "2026-07-30T18:00:00Z",
+          "audience": "app:synthetic-scheduling",
+          "caregiver_ref": "account:synthetic-leilani",
+          "decision": "permit",
+          "decision_id": "decision:case:555526ebbd777a7b691f",
+          "evidence_status": "executed_local",
+          "minimum_data": [],
+          "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+          "policy_version": "case-access.v1",
+          "purpose": "appointment_management",
+          "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+          "request_id": "request:case:family-permit-001",
+          "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577",
+          "supporting_canonical_ids": [
+            "relationship:synthetic-001",
+            "grant:synthetic-001"
+          ]
+        },
+        "oidc_identity_link": {
+          "link_id": "identity-link:synthetic-caregiver-001",
+          "upstream_token_forwarded": false,
+          "verified_locally": true
+        },
+        "pkce": {
+          "method": "S256",
+          "state": "state:synthetic-auth-harness-001"
+        },
+        "rar": [
+          {
+            "actions": [
+              "schedule_appointments"
+            ],
+            "datatypes": [
+              "appointment.id",
+              "appointment.start",
+              "appointment.location",
+              "appointment.status"
+            ],
+            "locations": [
+              "https://scheduling.synthetic.example"
+            ],
+            "purpose": "appointment_management",
+            "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+          }
+        ],
+        "registration": {
+          "registration_id": "app-registration:synthetic-direct-care-001",
+          "review_decision": "approved"
+        },
+        "resource_token_receipt": {
+          "expires_at": "2026-07-30T18:05:00Z",
+          "token_id": "token:synthetic-resource-001",
+          "token_sha256": "afc36d2aa9dee4603ed206328a9b1d4ceae3f914727c576e642524a8232ac5d2"
+        }
+      },
+      "non_claims": [
+        "The locally verified synthetic upstream OIDC ID token terminates at CareTrust; only a hash and identity link are retained.",
+        "No external IdP metadata, identity proofing, Cognito, Login.gov, HTTP endpoint, or production deployment was exercised.",
+        "The public trace omits upstream/downstream bearer tokens and all private key material."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/auth-harness-trace.json",
+          "artifact_sha256": "a8497f04b8eb100866603870942a14c35683f9580564df12a492aab59665e7ac",
+          "canonical_ids": [
+            "identity-link:synthetic-caregiver-001",
+            "app-registration:synthetic-direct-care-001",
+            "auth-request:synthetic-scheduling-001",
+            "code-id:synthetic-001",
+            "token:synthetic-resource-001",
+            "decision:case:555526ebbd777a7b691f"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "OIDC identity-link contract",
+        "OAuth authorization code with PKCE",
+        "OAuth RAR-shaped authorization details"
+      ],
+      "step_id": "04-oidc-pkce-rar-token",
+      "suggested_elapsed_seconds": 70,
+      "title": "Synthetic OIDC link, reviewed registration, PKCE/RAR, fresh decision, and resource-token receipt"
+    },
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "appointment_workflow": {
+          "appointment": {
+            "id": "synthetic-proposed-appointment-001",
+            "participant": [
+              {
+                "actor": {
+                  "reference": "Patient/synthetic-001"
+                },
+                "status": "needs-action"
+              },
+              {
+                "actor": {
+                  "reference": "Practitioner/synthetic-scheduler"
+                },
+                "status": "needs-action"
+              }
+            ],
+            "resourceType": "Appointment",
+            "status": "proposed"
+          },
+          "appointment_response": {
+            "actor": {
+              "reference": "Patient/synthetic-001"
+            },
+            "appointment": {
+              "reference": "Appointment/synthetic-proposed-appointment-001"
+            },
+            "id": "synthetic-proposed-appointment-response-001",
+            "participantStatus": "tentative",
+            "resourceType": "AppointmentResponse"
+          },
+          "encounter_boundary": {
+            "included": false,
+            "reason": "Appointment is administrative planning; Encounter is a clinical event and is not created or read by this scheduling profile.",
+            "resourceType": "Encounter"
+          },
+          "evidence_status": "contract_tested"
+        },
+        "availability_boundary": {
+          "evidence_status": "contract_tested",
+          "fhir_resources": [
+            "Schedule",
+            "Slot"
+          ],
+          "gateway_filter": [
+            "organization",
+            "service",
+            "location"
+          ],
+          "smart_scope": null,
+          "warning": "Patient-compartment scopes may not safely cover organization-level availability; user scopes are broader than this projection. Apply policy/gateway filtering by organization, service, and location."
+        },
+        "business_action_mapping": [
+          {
+            "caretrust_action": "view_appointments",
+            "delete_allowed": false,
+            "evidence_status": "contract_tested",
+            "fhir_resource": "Appointment",
+            "interactions": "read/search",
+            "smart_scope": "patient/Appointment.rs"
+          },
+          {
+            "caretrust_action": "schedule_appointments",
+            "delete_allowed": false,
+            "evidence_status": "contract_tested",
+            "fhir_resource": "Appointment",
+            "interactions": "create/update",
+            "smart_scope": "patient/Appointment.cu"
+          }
+        ],
+        "caregiver_capabilities": [
+          {
+            "capability": "schedule_appointments",
+            "caregiver_ref": "account:synthetic-leilani",
+            "caretrust_action": "schedule_appointments",
+            "caretrust_decision": "permit",
+            "caretrust_decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+            "caretrust_request_id": "request:case:family-permit-001",
+            "evidence_status": "executed_local",
+            "patient_ref": "patient:synthetic-001",
+            "smart_scopes": [
+              "launch/patient",
+              "patient/Appointment.cu"
+            ]
+          },
+          {
+            "capability": "no_scheduling_capability",
+            "caregiver_ref": "person:synthetic-leilani-testperson",
+            "caretrust_action": "perform_assigned_direct_care",
+            "caretrust_decision": "permit",
+            "caretrust_decision_id": "decision:case:c4cf8911bf9502fea692",
+            "caretrust_request_id": "request:case:cna-permit-001",
+            "evidence_status": "executed_local",
+            "patient_ref": "patient:synthetic-001",
+            "reason": "CareTrust permit is bounded to assigned direct care, not appointment viewing or scheduling.",
+            "smart_scopes": []
+          }
+        ],
+        "reference_app_result": {
+          "external_fhir_server_executed": false,
+          "fresh_decision_id": "decision:case:555526ebbd777a7b691f",
+          "token_receipt_id": "token:synthetic-resource-001"
+        }
+      },
+      "non_claims": [
+        "No external FHIR R4 server, SMART authorization server, or independent FHIR validator was executed.",
+        "This projection does not claim SMART App Launch conformance or a live appointment workflow.",
+        "No delete scope, wildcard scope, or user scope is requested or granted."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/fhir-smart-scheduling-projection.json",
+          "artifact_sha256": "443e979910070ada203b43b3d5a2c0a5cce26b08986d35bf227398ff9ece49bb",
+          "canonical_ids": [
+            "case:synthetic-multi-caregiver-001",
+            "decision:case:6adfd412726aacdea40f",
+            "decision:case:86bce7b1e7bc61c8a0b6",
+            "decision:case:c4cf8911bf9502fea692"
+          ]
+        },
+        {
+          "artifact": "artifacts/validation/auth-harness-trace.json",
+          "artifact_sha256": "a8497f04b8eb100866603870942a14c35683f9580564df12a492aab59665e7ac",
+          "canonical_ids": [
+            "token:synthetic-resource-001",
+            "decision:case:555526ebbd777a7b691f"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "FHIR R4 Appointment",
+        "FHIR R4 AppointmentResponse",
+        "SMART App Launch 2.2 resource scopes"
+      ],
+      "step_id": "05-fhir-smart-reference-app",
+      "suggested_elapsed_seconds": 45,
+      "title": "FHIR Appointment/SMART least privilege and synthetic reference-app result"
+    },
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "after_fresh_request": {
+          "decision": "deny",
+          "decision_id": "decision:case:6adfd412726aacdea40f",
+          "reason_code": "GRANT_REVOKED"
+        },
+        "before": {
+          "decision": "permit",
+          "decision_id": "decision:case:86bce7b1e7bc61c8a0b6"
+        },
+        "revocation": {
+          "actor_ref": "patient:synthetic-001",
+          "grant_id": "grant:synthetic-001",
+          "patient_ref": "patient:synthetic-001",
+          "reason": "Synthetic patient withdrew the bounded delegation.",
+          "reason_code": "PATIENT_REVOKED_DELEGATION",
+          "revocation_id": "delegation-revocation:synthetic-001",
+          "revoked_at": "2026-07-30T10:05:00Z",
+          "schema_version": "caretrust.delegation-revocation-record.v1",
+          "synthetic": true,
+          "target_type": "delegation_grant"
+        }
+      },
+      "non_claims": [
+        "The trace demonstrates a fresh local decision, not external token termination."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/synthetic-multi-caregiver-case.json",
+          "artifact_sha256": "e98fcf76976662d636cd6f83144a9502f126ea8211fc549d59019ce921bb4adb",
+          "canonical_ids": [
+            "decision:case:86bce7b1e7bc61c8a0b6",
+            "request:case:family-permit-001",
+            "decision:case:6adfd412726aacdea40f",
+            "request:case:family-revoked-001",
+            "delegation-revocation:synthetic-001"
+          ]
+        },
+        {
+          "artifact": "artifacts/validation/core-v0.1/core-runtime-bridge-validation.json",
+          "artifact_sha256": "fe9d693c05a189e68bf761c84ab4455b422b99c755cfad11afc5e863da2ee61c",
+          "canonical_ids": [
+            "urn:caretrust:message:core-bridge:delegation_revocation_status"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "CareTrust delegation revocation record",
+        "urn:caretrust:message-type:delegation-revocation-status"
+      ],
+      "step_id": "06-revocation-fresh-deny",
+      "suggested_elapsed_seconds": 40,
+      "title": "Revocation changes a fresh request into a deterministic deny"
+    },
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "canonical_state_hash_after": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+        "canonical_state_hash_before": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+        "network_calls": false,
+        "state_mutated": false,
+        "transport": "local_stdio_jsonrpc_2_0"
+      },
+      "non_claims": [
+        "The server process was executed only over local stdio; no HTTP listener, OAuth server, or protected-resource metadata endpoint was deployed.",
+        "The adapter exposes draft, read, validate, explain, and simulation behavior only; it does not approve, activate, register, issue authority, revoke, mint tokens, or mutate canonical state.",
+        "Simulation re-runs existing deterministic case policy and is not a durable decision, token, or disclosure receipt.",
+        "Read responses are allowlisted projections; raw source documents, extraction packets, and unrelated canonical objects are excluded."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/mcp-adapter-contract.json",
+          "artifact_sha256": "4df0da022bca26775e5298bf34a76cdd5ab208a5480fd72025f460692eff4e81",
+          "canonical_ids": [
+            "case:synthetic-multi-caregiver-001",
+            "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+            "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "MCP local stdio JSON-RPC adapter contract"
+      ],
+      "step_id": "07-mcp-inspection",
+      "suggested_elapsed_seconds": 30,
+      "title": "MCP inspects, validates, and simulates without changing authority"
+    },
+    {
+      "evidence_status": "executed_local",
+      "facts": {
+        "artifact_payload_sha256": "71a91b3c08a9fb52deae5848afb1e433b6c1564cce677bf2efe1882f919b9548",
+        "fresh_local_caregiver_decision": {
+          "as_of": "2026-07-30T10:00:00Z",
+          "case_bundle_sha256": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+          "case_id": "case:synthetic-multi-caregiver-001",
+          "decision": "permit",
+          "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+          "evidence_status": "executed_local",
+          "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+          "policy_version": "case-access.v1",
+          "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+          "request_id": "request:case:family-permit-001",
+          "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+        },
+        "metadata_policy_applied": [
+          {
+            "caretrust_participant": {
+              "organization_id": {
+                "one_of": [
+                  "org:synthetic-home-care-001"
+                ]
+              },
+              "participant_kind": {
+                "value": "direct-care-organization"
+              }
+            }
+          },
+          {
+            "openid_relying_party": {
+              "grant_types": {
+                "value": [
+                  "authorization_code"
+                ]
+              },
+              "redirect_uris": {
+                "one_of": [
+                  "https://direct-care-client.synthetic.invalid/callback"
+                ]
+              }
+            }
+          }
+        ],
+        "negative_exercises": {
+          "expired_statement": "FEDERATION_STATEMENT_EXPIRED",
+          "stale_leaf_rollover": "FEDERATION_JWKS_MISMATCH",
+          "tampered_statement": "FEDERATION_SIGNATURE_INVALID",
+          "untrusted_anchor": "FEDERATION_MISSING_TRUST_ANCHOR"
+        },
+        "participant_and_client_trust": [
+          {
+            "chain_sha256": "31f36339604cc2c7c828050f55036281a66366b32622273bd5e96e5ba7fd4f5c",
+            "entity_id": "https://participant.synthetic.invalid",
+            "entity_trust_only": true,
+            "role": "participant_organization",
+            "trust_anchor_id": "https://pacific-participant-anchor.synthetic.invalid"
+          },
+          {
+            "chain_sha256": "9769a9dbeec2136b9d71779b9fa804bf0b43289d214d00bc03e6bcf2a6f72bbe",
+            "entity_id": "https://direct-care-client.synthetic.invalid",
+            "entity_trust_only": true,
+            "role": "care_application_client",
+            "trust_anchor_id": "https://pacific-client-anchor.synthetic.invalid"
+          }
+        ],
+        "segment_skipped": false,
+        "status": "executed_local"
+      },
+      "non_claims": [
+        "Entity statements establish only synthetic participant/client metadata trust under separately pinned local anchors.",
+        "The caregiver decision is a separate fresh call to the existing CareTrust case policy and is not issued by federation resolution.",
+        "No live discovery, remote endpoint, operational federation, or cross-organization network exchange was performed.",
+        "Federation entity trust is not caregiver permission, token issuance, or a live network deployment."
+      ],
+      "source_refs": [
+        {
+          "artifact": "artifacts/validation/federation-two-hub-lab.json",
+          "artifact_sha256": "a70d5e767a94ddf5fb1e94a6d131b02762965865ff254fd8fe9a8464919df3b2",
+          "canonical_ids": [
+            "https://participant.synthetic.invalid",
+            "https://direct-care-client.synthetic.invalid",
+            "request:case:family-permit-001",
+            "decision:case:86bce7b1e7bc61c8a0b6"
+          ]
+        }
+      ],
+      "standards_messages": [
+        "OpenID Federation 1.0 entity statement/trust-anchor concepts",
+        "Separate fresh CareTrust local authorization decision"
+      ],
+      "step_id": "08-two-hub-federation",
+      "suggested_elapsed_seconds": 30,
+      "title": "Two independently configured hubs establish entity trust; local policy decides caregiver access"
+    }
+  ],
+  "suggested_total_seconds": 340,
+  "synthetic": true,
+  "walkthrough_sha256": "25ea1f4764bef0910e674fcc23e0d5f846baed0d5d8d884aca8c415f0792f9d4"
+}

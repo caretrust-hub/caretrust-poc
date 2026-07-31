@@ -1,0 +1,93 @@
+{
+  "$defs": {
+    "IntentSpan": {
+      "additionalProperties": false,
+      "description": "Exact character evidence within one natural-language intent statement.",
+      "properties": {
+        "end_char": {
+          "title": "End Char",
+          "type": "integer"
+        },
+        "intent_id": {
+          "title": "Intent Id",
+          "type": "string"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "span_id": {
+          "title": "Span Id",
+          "type": "string"
+        },
+        "start_char": {
+          "title": "Start Char",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "span_id",
+        "intent_id",
+        "quote",
+        "start_char",
+        "end_char"
+      ],
+      "title": "IntentSpan",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Synthetic patient intent accepted as untrusted input.",
+  "properties": {
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "intent_id": {
+      "title": "Intent Id",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.intent-statement.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "spans": {
+      "items": {
+        "$ref": "#/$defs/IntentSpan"
+      },
+      "title": "Spans",
+      "type": "array"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "utterance": {
+      "title": "Utterance",
+      "type": "string"
+    },
+    "utterance_sha256": {
+      "title": "Utterance Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "intent_id",
+    "patient_ref",
+    "utterance",
+    "utterance_sha256",
+    "spans",
+    "created_at",
+    "synthetic"
+  ],
+  "title": "IntentStatement",
+  "type": "object"
+}

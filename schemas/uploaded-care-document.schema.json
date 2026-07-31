@@ -1,0 +1,290 @@
+{
+  "$defs": {
+    "DocumentClassification": {
+      "enum": [
+        "discharge_instructions",
+        "after_visit_summary",
+        "medication_list",
+        "care_plan_excerpt",
+        "other_medical_record"
+      ],
+      "title": "DocumentClassification",
+      "type": "string"
+    },
+    "DocumentFileValidation": {
+      "additionalProperties": false,
+      "properties": {
+        "active_content_detected": {
+          "title": "Active Content Detected",
+          "type": "boolean"
+        },
+        "file_validation_status": {
+          "$ref": "#/$defs/FileValidationStatus"
+        },
+        "malware_scan_status": {
+          "$ref": "#/$defs/MalwareScanStatus"
+        },
+        "malware_scanner": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Malware Scanner",
+          "type": "string"
+        },
+        "password_protected": {
+          "title": "Password Protected",
+          "type": "boolean"
+        },
+        "reason_codes": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+            "type": "string"
+          },
+          "title": "Reason Codes",
+          "type": "array"
+        },
+        "scanned_at": {
+          "format": "date-time",
+          "title": "Scanned At",
+          "type": "string"
+        },
+        "validated_content_type": {
+          "enum": [
+            "application/pdf",
+            "image/png",
+            "image/jpeg"
+          ],
+          "title": "Validated Content Type",
+          "type": "string"
+        },
+        "validated_size_bytes": {
+          "maximum": 25000000,
+          "minimum": 1,
+          "title": "Validated Size Bytes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "malware_scan_status",
+        "malware_scanner",
+        "file_validation_status",
+        "validated_content_type",
+        "validated_size_bytes",
+        "active_content_detected",
+        "password_protected",
+        "reason_codes",
+        "scanned_at"
+      ],
+      "title": "DocumentFileValidation",
+      "type": "object"
+    },
+    "DocumentIntakeStatus": {
+      "enum": [
+        "accepted",
+        "rejected"
+      ],
+      "title": "DocumentIntakeStatus",
+      "type": "string"
+    },
+    "DocumentPrivacyMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "contains_health_information": {
+          "const": true,
+          "default": true,
+          "title": "Contains Health Information",
+          "type": "boolean"
+        },
+        "contains_real_phi": {
+          "const": false,
+          "default": false,
+          "title": "Contains Real Phi",
+          "type": "boolean"
+        },
+        "minimum_necessary_required": {
+          "const": true,
+          "default": true,
+          "title": "Minimum Necessary Required",
+          "type": "boolean"
+        },
+        "redisclosure_requires_new_decision": {
+          "const": true,
+          "default": true,
+          "title": "Redisclosure Requires New Decision",
+          "type": "boolean"
+        },
+        "sensitivity": {
+          "$ref": "#/$defs/SensitivityLevel"
+        },
+        "synthetic_only": {
+          "const": true,
+          "default": true,
+          "title": "Synthetic Only",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sensitivity"
+      ],
+      "title": "DocumentPrivacyMetadata",
+      "type": "object"
+    },
+    "FileValidationStatus": {
+      "enum": [
+        "valid",
+        "invalid"
+      ],
+      "title": "FileValidationStatus",
+      "type": "string"
+    },
+    "MalwareScanStatus": {
+      "enum": [
+        "clean",
+        "blocked"
+      ],
+      "title": "MalwareScanStatus",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "restricted_health_information",
+        "highly_sensitive_health_information"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    },
+    "UploaderRole": {
+      "enum": [
+        "patient",
+        "invited_relative"
+      ],
+      "title": "UploaderRole",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "classification": {
+      "$ref": "#/$defs/DocumentClassification"
+    },
+    "clinically_authoritative": {
+      "const": false,
+      "default": false,
+      "title": "Clinically Authoritative",
+      "type": "boolean"
+    },
+    "content_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Content Sha256",
+      "type": "string"
+    },
+    "content_type": {
+      "enum": [
+        "application/pdf",
+        "image/png",
+        "image/jpeg"
+      ],
+      "title": "Content Type",
+      "type": "string"
+    },
+    "document_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "file_validation": {
+      "$ref": "#/$defs/DocumentFileValidation"
+    },
+    "filename": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "^[^/\\\\]+$",
+      "title": "Filename",
+      "type": "string"
+    },
+    "intake_status": {
+      "$ref": "#/$defs/DocumentIntakeStatus"
+    },
+    "invite_acceptance_id": {
+      "anyOf": [
+        {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Invite Acceptance Id"
+    },
+    "original_retained_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Original Retained Ref",
+      "type": "string"
+    },
+    "page_count": {
+      "maximum": 500,
+      "minimum": 1,
+      "title": "Page Count",
+      "type": "integer"
+    },
+    "patient_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "privacy": {
+      "$ref": "#/$defs/DocumentPrivacyMetadata"
+    },
+    "schema_version": {
+      "const": "caretrust.uploaded-care-document.v1",
+      "default": "caretrust.uploaded-care-document.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "uploaded_at": {
+      "format": "date-time",
+      "title": "Uploaded At",
+      "type": "string"
+    },
+    "uploader_account_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Uploader Account Ref",
+      "type": "string"
+    },
+    "uploader_role": {
+      "$ref": "#/$defs/UploaderRole"
+    }
+  },
+  "required": [
+    "document_id",
+    "patient_ref",
+    "uploader_account_ref",
+    "uploader_role",
+    "original_retained_ref",
+    "content_sha256",
+    "filename",
+    "content_type",
+    "page_count",
+    "classification",
+    "privacy",
+    "file_validation",
+    "intake_status",
+    "uploaded_at"
+  ],
+  "title": "UploadedCareDocument",
+  "type": "object"
+}

@@ -5,6 +5,26 @@ import json
 import re
 from pathlib import Path
 
+from caretrust.clinical_edge import (
+    ClinicalDataAuthorizationDecision,
+    ClinicalDataAuthorizationRequest,
+    ClinicalDataExchangeRecord,
+    PatientMatchResult,
+)
+from caretrust.delegation import (
+    CareRelationshipClaim,
+    ClarificationRequest,
+    ClarificationResponse,
+    DelegationAuthorizationDecision,
+    DelegationAuthorizationRequest,
+    DelegationDraft,
+    DelegationGrant,
+    DelegationRevocationRecord,
+    IntentStatement,
+    InviteAcceptance,
+    PatientApprovalRecord,
+    PatientInvite,
+)
 from caretrust.models import (
     ActiveCredentialClaim,
     AuditEvent,
@@ -17,7 +37,9 @@ from caretrust.models import (
     ReviewRecord,
     RevocationRecord,
 )
+from caretrust.navigator import PatientNavigatorProjection
 from caretrust.security import TokenErrorCode
+from caretrust.trace import TraceBundle, TraceEnvelope
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas"
@@ -39,6 +61,29 @@ EXPORTS = {
     "authorization-decision.schema.json": AuthorizationDecision,
     "revocation-record.schema.json": RevocationRecord,
     "audit-event.schema.json": AuditEvent,
+    "trace-envelope.schema.json": TraceEnvelope,
+    "trace-bundle.schema.json": TraceBundle,
+    "intent-statement.schema.json": IntentStatement,
+    "delegation-draft.schema.json": DelegationDraft,
+    "clarification-request.schema.json": ClarificationRequest,
+    "clarification-response.schema.json": ClarificationResponse,
+    "patient-invite.schema.json": PatientInvite,
+    "invite-acceptance.schema.json": InviteAcceptance,
+    "patient-approval-record.schema.json": PatientApprovalRecord,
+    "care-relationship-claim.schema.json": CareRelationshipClaim,
+    "delegation-grant.schema.json": DelegationGrant,
+    "delegation-authorization-request.schema.json": DelegationAuthorizationRequest,
+    "delegation-authorization-decision.schema.json": DelegationAuthorizationDecision,
+    "delegation-revocation-record.schema.json": DelegationRevocationRecord,
+    "clinical-data-authorization-request.schema.json": (
+        ClinicalDataAuthorizationRequest
+    ),
+    "patient-match-result.schema.json": PatientMatchResult,
+    "clinical-data-authorization-decision.schema.json": (
+        ClinicalDataAuthorizationDecision
+    ),
+    "clinical-data-exchange-record.schema.json": ClinicalDataExchangeRecord,
+    "patient-navigator-projection.schema.json": PatientNavigatorProjection,
 }
 
 
@@ -68,6 +113,18 @@ def test_synthetic_examples_validate() -> None:
         "authorization-decision-deny.json": AuthorizationDecision,
         "revocation-record.json": RevocationRecord,
         "audit-event.json": AuditEvent,
+        "delegation/intent-statement.json": IntentStatement,
+        "delegation/delegation-draft.json": DelegationDraft,
+        "delegation/clarification-request.json": ClarificationRequest,
+        "delegation/clarification-response.json": ClarificationResponse,
+        "delegation/patient-invite.json": PatientInvite,
+        "delegation/invite-acceptance.json": InviteAcceptance,
+        "delegation/patient-approval-record.json": PatientApprovalRecord,
+        "delegation/care-relationship-claim.json": CareRelationshipClaim,
+        "delegation/delegation-grant.json": DelegationGrant,
+        "delegation/delegation-authorization-request.json": DelegationAuthorizationRequest,
+        "delegation/delegation-authorization-decision.json": DelegationAuthorizationDecision,
+        "delegation/delegation-revocation-record.json": DelegationRevocationRecord,
     }
     for filename, model in examples.items():
         payload = json.loads((EXAMPLES / filename).read_text(encoding="utf-8"))
@@ -291,16 +348,18 @@ def test_reason_catalog_contains_every_implemented_code() -> None:
 def test_status_labels_and_nonconformance_boundary_are_explicit() -> None:
     status = (STANDARDS / "standards-status.md").read_text(encoding="utf-8")
     for label in (
-        "Implemented and tested",
-        "Mapped only — not implemented",
-        "Planned / not implemented",
-        "Out of scope / not implemented",
+        "`retained_aws` — Retained AWS trace",
+        "`executed_local` — Executed local",
+        "`contract_tested` — Contract tested",
+        "`local_simulation` — Local simulation",
+        "`mapped_only` — Mapped only",
+        "`planned` — Planned",
     ):
         assert label in status
     for boundary in (
-        "no FHIR resource",
+        "No official HL7 validator",
         "no VC document",
-        "no entity statements",
+        "There is no discovery",
         "no driver-license",
         "no screen scraping",
     ):

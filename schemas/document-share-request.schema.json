@@ -1,0 +1,104 @@
+{
+  "$defs": {
+    "ShareAudience": {
+      "enum": [
+        "app:synthetic-care-coordination",
+        "app:synthetic-scheduling",
+        "app:synthetic-direct-care-tasks"
+      ],
+      "title": "ShareAudience",
+      "type": "string"
+    },
+    "SharePurpose": {
+      "enum": [
+        "care_coordination",
+        "discharge_follow_up",
+        "visit_preparation"
+      ],
+      "title": "SharePurpose",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "audience": {
+      "$ref": "#/$defs/ShareAudience"
+    },
+    "grant_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "include_raw_document": {
+      "title": "Include Raw Document",
+      "type": "boolean"
+    },
+    "patient_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "purpose": {
+      "$ref": "#/$defs/SharePurpose"
+    },
+    "request_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "requested_approved_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Requested Approved Item Ids",
+      "type": "array"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "requester_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Requester Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.document-share-request.v1",
+      "default": "caretrust.document-share-request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic_only": {
+      "const": true,
+      "default": true,
+      "title": "Synthetic Only",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "request_id",
+    "grant_id",
+    "patient_ref",
+    "requester_ref",
+    "audience",
+    "purpose",
+    "requested_approved_item_ids",
+    "include_raw_document",
+    "requested_at"
+  ],
+  "title": "DocumentShareRequest",
+  "type": "object"
+}

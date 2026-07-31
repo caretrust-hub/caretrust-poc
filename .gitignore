@@ -39,7 +39,13 @@ tmp/
 private/
 submission/
 submission-private/
+scripts/build_submission_draft.py
+scripts/build_auth_messaging_appendix.py
+scripts/build_wilcore_support_letter.py
 artifacts/private/
+artifacts/submission_qa/
+artifacts/submission-docx-qa-*/
+artifacts/wilcore_letter_qa/
 
 # Editors and operating systems
 .idea/

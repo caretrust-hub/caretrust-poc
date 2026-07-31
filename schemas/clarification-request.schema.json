@@ -1,0 +1,89 @@
+{
+  "$defs": {
+    "ClarificationCode": {
+      "enum": [
+        "IDENTIFY_DELEGATE",
+        "CONFIRM_RELATIONSHIP",
+        "CHOOSE_ACTION",
+        "CHOOSE_RESOURCE",
+        "CHOOSE_AUDIENCE",
+        "CHOOSE_PURPOSE",
+        "SET_END_DATE",
+        "RESOLVE_CONTRADICTION"
+      ],
+      "title": "ClarificationCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "clarification_id": {
+      "title": "Clarification Id",
+      "type": "string"
+    },
+    "code": {
+      "$ref": "#/$defs/ClarificationCode"
+    },
+    "draft_id": {
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "field_paths": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Field Paths",
+      "type": "array"
+    },
+    "intent_id": {
+      "title": "Intent Id",
+      "type": "string"
+    },
+    "options": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Options",
+      "type": "array"
+    },
+    "question": {
+      "title": "Question",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "required": {
+      "const": true,
+      "title": "Required",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "caretrust.clarification-request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "clarification_id",
+    "intent_id",
+    "draft_id",
+    "code",
+    "field_paths",
+    "question",
+    "options",
+    "required",
+    "requested_at",
+    "synthetic"
+  ],
+  "title": "ClarificationRequest",
+  "type": "object"
+}

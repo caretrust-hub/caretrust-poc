@@ -1,0 +1,873 @@
+{
+  "artifact_type": "caretrust.mcp-adapter-contract.v1",
+  "canonical_state_hash_after": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+  "canonical_state_hash_before": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+  "claim_boundary": [
+    "The server process was executed only over local stdio; no HTTP listener, OAuth server, or protected-resource metadata endpoint was deployed.",
+    "The adapter exposes draft, read, validate, explain, and simulation behavior only; it does not approve, activate, register, issue authority, revoke, mint tokens, or mutate canonical state.",
+    "Simulation re-runs existing deterministic case policy and is not a durable decision, token, or disclosure receipt.",
+    "Read responses are allowlisted projections; raw source documents, extraction packets, and unrelated canonical objects are excluded."
+  ],
+  "evidence_status": "executed_local",
+  "http_oauth_protected_resource": "planned_only",
+  "network_calls": false,
+  "state_mutated": false,
+  "synthetic_only": true,
+  "transcript": {
+    "requests": [
+      {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "initialize",
+        "params": {
+          "capabilities": {},
+          "clientInfo": {
+            "name": "caretrust-contract-artifact",
+            "version": "0.4.0"
+          },
+          "protocolVersion": "2025-11-25"
+        }
+      },
+      {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized",
+        "params": {}
+      },
+      {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "tools/list",
+        "params": {}
+      },
+      {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {
+            "created_at": "2026-07-30T10:00:00Z",
+            "intent_id": "intent:mcp-transcript-001",
+            "patient_ref": "patient:synthetic-001",
+            "utterance": "Let my daughter Leilani schedule appointments through 2026-12-31 in the scheduling app for appointment management."
+          },
+          "name": "caretrust_draft_delegation"
+        }
+      },
+      {
+        "id": 4,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {
+            "application_id": "app:mcp-transcript",
+            "created_at": "2026-07-30T10:00:00Z",
+            "description": "Synthetic scheduling application at https://mcp-transcript.synthetic.example reads appointments for care coordination.",
+            "source_id": "source:mcp-transcript"
+          },
+          "name": "caretrust_propose_app_profile"
+        }
+      },
+      {
+        "id": 5,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {},
+          "name": "caretrust_list_case_permissions"
+        }
+      },
+      {
+        "id": 6,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {
+            "decision_id": "decision:case:86bce7b1e7bc61c8a0b6"
+          },
+          "name": "caretrust_explain_decision"
+        }
+      },
+      {
+        "id": 7,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {
+            "request_id": "request:case:family-permit-001"
+          },
+          "name": "caretrust_simulate_access"
+        }
+      },
+      {
+        "id": 8,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {},
+          "name": "caretrust_validate_case"
+        }
+      },
+      {
+        "id": 9,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {},
+          "name": "caretrust_project_standards"
+        }
+      },
+      {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "method": "tools/call",
+        "params": {
+          "arguments": {},
+          "name": "caretrust_approve_delegation"
+        }
+      }
+    ],
+    "responses": [
+      {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": {
+          "capabilities": {
+            "tools": {
+              "listChanged": false
+            }
+          },
+          "instructions": "Read-only CareTrust adapter: draft, read, validate, explain, and simulate only. No authority-changing operations are available.",
+          "protocolVersion": "2025-11-25",
+          "serverInfo": {
+            "name": "caretrust-local-mcp",
+            "version": "0.4.0"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "result": {
+          "tools": [
+            {
+              "description": "Compile synthetic patient language into an evidence-linked, non-activatable delegation draft.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "intent_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "patient_ref": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "utterance": {
+                    "maxLength": 4000,
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "intent_id",
+                  "patient_ref",
+                  "utterance",
+                  "created_at"
+                ],
+                "type": "object"
+              },
+              "name": "caretrust_draft_delegation"
+            },
+            {
+              "description": "Compile synthetic application material into a reviewable RAR/profile and minimum-data proposal; never registration.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "application_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "description": {
+                    "maxLength": 8000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "openapi": {
+                    "type": "object"
+                  },
+                  "source_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "application_id",
+                  "source_id",
+                  "description",
+                  "created_at"
+                ],
+                "type": "object"
+              },
+              "name": "caretrust_propose_app_profile"
+            },
+            {
+              "description": "Read the minimum-data permission projection for the fixed synthetic case, optionally for one caregiver.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "caregiver_ref": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "type": "object"
+              },
+              "name": "caretrust_list_case_permissions"
+            },
+            {
+              "description": "Explain one canonical case decision using policy/reason and minimum-data receipt fields only.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "decision_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "decision_id"
+                ],
+                "type": "object"
+              },
+              "name": "caretrust_explain_decision"
+            },
+            {
+              "description": "Run the existing synthetic-case contract/linkage validator; this is not external conformance certification.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {},
+                "required": [],
+                "type": "object"
+              },
+              "name": "caretrust_validate_case"
+            },
+            {
+              "description": "Re-run existing deterministic case policy for one canonical request without creating a token, receipt, or disclosure.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "as_of": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "request_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "request_id"
+                ],
+                "type": "object"
+              },
+              "name": "caretrust_simulate_access"
+            },
+            {
+              "description": "Read published standards projection metadata and stated semantic/non-claim boundaries for the synthetic case.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "canonical_id": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "type": "object"
+              },
+              "name": "caretrust_project_standards"
+            }
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"clarifications\":[],\"draft\":{\"activation_permitted\":false,\"allowed_actions\":[\"schedule_appointments\"],\"allowed_audiences\":[\"app:synthetic-scheduling\"],\"allowed_purposes\":[\"appointment_management\"],\"allowed_resources\":[\"appointments\"],\"authority_basis\":\"unverified_patient_intent\",\"authorization_permitted\":false,\"blocking_issues\":[],\"delegate_ref\":\"person:synthetic-leilani-caregiver\",\"draft_id\":\"delegation-draft:intent:mcp-transcript-001:v1\",\"draft_version\":1,\"evidence_bindings\":[{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"delegate_ref\",\"value\":\"person:synthetic-leilani-caregiver\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"relationship_code\",\"value\":\"child\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"allowed_actions\",\"value\":\"schedule_appointments\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"allowed_resources\",\"value\":\"appointments\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"allowed_audiences\",\"value\":\"app:synthetic-scheduling\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"allowed_purposes\",\"value\":\"appointment_management\"},{\"evidence_refs\":[\"intent:mcp-transcript-001:full-text\"],\"field_path\":\"valid_until\",\"value\":\"2026-12-31\"}],\"excluded_resources\":[],\"intent_id\":\"intent:mcp-transcript-001\",\"intent_sha256\":\"593f5701cf521228248a305fe8c0fd89ba416467d33b5ca08b307427ad9c56ff\",\"legal_authority_status\":\"not_established\",\"patient_ref\":\"patient:synthetic-001\",\"proposed_by\":\"ai_model\",\"relationship_code\":\"child\",\"schema_version\":\"caretrust.delegation-draft.v1\",\"status\":\"draft\",\"synthetic\":true,\"uncertainties\":[],\"valid_from\":null,\"valid_until\":\"2026-12-31\"},\"evidence_status\":\"executed_local\",\"non_claims\":[\"This compilation is an unverified draft and cannot create authority.\"],\"operation\":\"draft_delegation\",\"safety_flags\":[]}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "clarifications": [],
+            "draft": {
+              "activation_permitted": false,
+              "allowed_actions": [
+                "schedule_appointments"
+              ],
+              "allowed_audiences": [
+                "app:synthetic-scheduling"
+              ],
+              "allowed_purposes": [
+                "appointment_management"
+              ],
+              "allowed_resources": [
+                "appointments"
+              ],
+              "authority_basis": "unverified_patient_intent",
+              "authorization_permitted": false,
+              "blocking_issues": [],
+              "delegate_ref": "person:synthetic-leilani-caregiver",
+              "draft_id": "delegation-draft:intent:mcp-transcript-001:v1",
+              "draft_version": 1,
+              "evidence_bindings": [
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "delegate_ref",
+                  "value": "person:synthetic-leilani-caregiver"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "relationship_code",
+                  "value": "child"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "allowed_actions",
+                  "value": "schedule_appointments"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "allowed_resources",
+                  "value": "appointments"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "allowed_audiences",
+                  "value": "app:synthetic-scheduling"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "allowed_purposes",
+                  "value": "appointment_management"
+                },
+                {
+                  "evidence_refs": [
+                    "intent:mcp-transcript-001:full-text"
+                  ],
+                  "field_path": "valid_until",
+                  "value": "2026-12-31"
+                }
+              ],
+              "excluded_resources": [],
+              "intent_id": "intent:mcp-transcript-001",
+              "intent_sha256": "593f5701cf521228248a305fe8c0fd89ba416467d33b5ca08b307427ad9c56ff",
+              "legal_authority_status": "not_established",
+              "patient_ref": "patient:synthetic-001",
+              "proposed_by": "ai_model",
+              "relationship_code": "child",
+              "schema_version": "caretrust.delegation-draft.v1",
+              "status": "draft",
+              "synthetic": true,
+              "uncertainties": [],
+              "valid_from": null,
+              "valid_until": "2026-12-31"
+            },
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "This compilation is an unverified draft and cannot create authority."
+            ],
+            "operation": "draft_delegation",
+            "safety_flags": []
+          }
+        }
+      },
+      {
+        "id": 4,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"draft\":{\"activation_permitted\":false,\"application_id\":\"app:mcp-transcript\",\"authorization_permitted\":false,\"clarifications\":[],\"draft_id\":\"app-onboarding-draft:app:mcp-transcript:v1\",\"flags\":[],\"minimum_data_plan\":[{\"evidence_refs\":[\"source:mcp-transcript:full-text\"],\"field\":\"appointment.id\",\"rationale\":\"Identifies the appointment to display.\"},{\"evidence_refs\":[\"source:mcp-transcript:full-text\"],\"field\":\"appointment.start\",\"rationale\":\"Shows the scheduled time.\"},{\"evidence_refs\":[\"source:mcp-transcript:full-text\"],\"field\":\"appointment.location\",\"rationale\":\"Shows where the visit occurs.\"},{\"evidence_refs\":[\"source:mcp-transcript:full-text\"],\"field\":\"appointment.status\",\"rationale\":\"Shows cancellation or completion state.\"}],\"proposed_profile\":\"https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1\",\"proposed_rar\":[{\"actions\":[\"view_appointments\"],\"datatypes\":[\"appointment.id\",\"appointment.start\",\"appointment.location\",\"appointment.status\"],\"evidence_refs\":[\"source:mcp-transcript:full-text\"],\"locations\":[\"https://mcp-transcript.synthetic.example\"],\"purpose\":\"appointment_management\",\"type\":\"https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1\"}],\"registration_permitted\":false,\"schema_version\":\"caretrust.application-onboarding-draft.v1\",\"source_sha256\":\"8502df65697cb8079f4c8542a8289fa4d0ef8522c938e5fbe9642a26c3f568bd\",\"status\":\"draft\",\"synthetic\":true},\"evidence_status\":\"executed_local\",\"non_claims\":[\"This is a proposed application profile and does not register an application or authorize access.\"],\"operation\":\"propose_app_profile\",\"safety_flags\":[]}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "draft": {
+              "activation_permitted": false,
+              "application_id": "app:mcp-transcript",
+              "authorization_permitted": false,
+              "clarifications": [],
+              "draft_id": "app-onboarding-draft:app:mcp-transcript:v1",
+              "flags": [],
+              "minimum_data_plan": [
+                {
+                  "evidence_refs": [
+                    "source:mcp-transcript:full-text"
+                  ],
+                  "field": "appointment.id",
+                  "rationale": "Identifies the appointment to display."
+                },
+                {
+                  "evidence_refs": [
+                    "source:mcp-transcript:full-text"
+                  ],
+                  "field": "appointment.start",
+                  "rationale": "Shows the scheduled time."
+                },
+                {
+                  "evidence_refs": [
+                    "source:mcp-transcript:full-text"
+                  ],
+                  "field": "appointment.location",
+                  "rationale": "Shows where the visit occurs."
+                },
+                {
+                  "evidence_refs": [
+                    "source:mcp-transcript:full-text"
+                  ],
+                  "field": "appointment.status",
+                  "rationale": "Shows cancellation or completion state."
+                }
+              ],
+              "proposed_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+              "proposed_rar": [
+                {
+                  "actions": [
+                    "view_appointments"
+                  ],
+                  "datatypes": [
+                    "appointment.id",
+                    "appointment.start",
+                    "appointment.location",
+                    "appointment.status"
+                  ],
+                  "evidence_refs": [
+                    "source:mcp-transcript:full-text"
+                  ],
+                  "locations": [
+                    "https://mcp-transcript.synthetic.example"
+                  ],
+                  "purpose": "appointment_management",
+                  "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+                }
+              ],
+              "registration_permitted": false,
+              "schema_version": "caretrust.application-onboarding-draft.v1",
+              "source_sha256": "8502df65697cb8079f4c8542a8289fa4d0ef8522c938e5fbe9642a26c3f568bd",
+              "status": "draft",
+              "synthetic": true
+            },
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "This is a proposed application profile and does not register an application or authorize access."
+            ],
+            "operation": "propose_app_profile",
+            "safety_flags": []
+          }
+        }
+      },
+      {
+        "id": 5,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"case_hash\":\"2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953\",\"case_id\":\"case:synthetic-multi-caregiver-001\",\"evidence_status\":\"executed_local\",\"non_claims\":[\"This is a minimum-data application projection, not the raw trust graph or source packet.\"],\"operation\":\"read_permissions\",\"permissions\":[{\"action\":\"schedule_appointments\",\"application_id\":\"app:synthetic-scheduling\",\"audience\":\"app:synthetic-scheduling\",\"caregiver_ref\":\"account:synthetic-leilani\",\"decision\":\"permit\",\"decision_id\":\"decision:case:86bce7b1e7bc61c8a0b6\",\"evidence_status\":\"executed_local\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"appointment_management\",\"reason_code\":\"POLICY_REQUIREMENTS_SATISFIED\",\"request_id\":\"request:case:family-permit-001\",\"request_sha256\":\"525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577\"},{\"action\":\"schedule_appointments\",\"application_id\":\"app:synthetic-scheduling\",\"audience\":\"app:synthetic-scheduling\",\"caregiver_ref\":\"account:synthetic-leilani\",\"decision\":\"deny\",\"decision_id\":\"decision:case:4d8aca31ad6186d83634\",\"evidence_status\":\"executed_local\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"discharge_follow_up\",\"reason_code\":\"PURPOSE_NOT_ALLOWED\",\"request_id\":\"request:case:family-wrong-purpose-001\",\"request_sha256\":\"da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f\"},{\"action\":\"perform_assigned_direct_care\",\"application_id\":\"urn:caretrust:app:scheduling\",\"audience\":\"urn:caretrust:app:scheduling\",\"caregiver_ref\":\"person:synthetic-leilani-testperson\",\"decision\":\"permit\",\"decision_id\":\"decision:case:c4cf8911bf9502fea692\",\"evidence_status\":\"executed_local\",\"minimum_data\":[{\"approved_item_id\":\"approved:review:synthetic-discharge-001:candidate:bring-documents\",\"category\":\"visit-preparation\",\"clinically_authoritative\":false,\"kind\":\"action_item\",\"requires_clinical_confirmation\":true,\"reviewed_text\":\"Bring the discharge sheet and current medication list.\",\"source_assertion\":\"uploaded_document_statement\"}],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"shift-assignment\",\"reason_code\":\"POLICY_REQUIREMENTS_SATISFIED\",\"request_id\":\"request:case:cna-permit-001\",\"request_sha256\":\"971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9\"},{\"action\":\"perform_assigned_direct_care\",\"application_id\":\"urn:caretrust:app:scheduling\",\"audience\":\"urn:caretrust:app:scheduling\",\"caregiver_ref\":\"person:synthetic-leilani-testperson\",\"decision\":\"deny\",\"decision_id\":\"decision:case:d15736ff86643b32b80d\",\"evidence_status\":\"executed_local\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"shift-assignment\",\"reason_code\":\"CLAIM_REQUIRED\",\"request_id\":\"request:case:cna-missing-claim-001\",\"request_sha256\":\"1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1\"},{\"action\":\"respite_visit_support\",\"application_id\":\"app:synthetic-respite-community\",\"audience\":\"app:synthetic-respite-community\",\"caregiver_ref\":\"caregiver:synthetic-respite-001\",\"decision\":\"permit\",\"decision_id\":\"decision:case:fcfc1c28d460f4d249c4\",\"evidence_status\":\"contract_tested\",\"minimum_data\":[{\"approved_item_id\":\"approved:review:synthetic-discharge-001:candidate:bring-documents\",\"category\":\"visit-preparation\",\"clinically_authoritative\":false,\"kind\":\"action_item\",\"requires_clinical_confirmation\":true,\"reviewed_text\":\"Bring the discharge sheet and current medication list.\",\"source_assertion\":\"uploaded_document_statement\"}],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"respite_visit_support\",\"reason_code\":\"POLICY_REQUIREMENTS_SATISFIED\",\"request_id\":\"request:case:respite-historical-001\",\"request_sha256\":\"f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a\"},{\"action\":\"respite_visit_support\",\"application_id\":\"app:synthetic-respite-community\",\"audience\":\"app:synthetic-respite-community\",\"caregiver_ref\":\"caregiver:synthetic-respite-001\",\"decision\":\"deny\",\"decision_id\":\"decision:case:0f1638900464394d1121\",\"evidence_status\":\"contract_tested\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"respite_visit_support\",\"reason_code\":\"ASSIGNMENT_EXPIRED\",\"request_id\":\"request:case:respite-expired-001\",\"request_sha256\":\"a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62\"},{\"action\":\"view_warning_instruction\",\"application_id\":\"app:synthetic-respite-community\",\"audience\":\"app:synthetic-respite-community\",\"caregiver_ref\":\"caregiver:synthetic-respite-001\",\"decision\":\"deny\",\"decision_id\":\"decision:case:cd1de9afa2afdf0f91a6\",\"evidence_status\":\"contract_tested\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"respite_visit_support\",\"reason_code\":\"CLINICAL_CLARIFICATION_REQUIRED\",\"request_id\":\"request:case:respite-clinical-block-001\",\"request_sha256\":\"736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d\"},{\"action\":\"schedule_appointments\",\"application_id\":\"app:synthetic-scheduling\",\"audience\":\"app:synthetic-scheduling\",\"caregiver_ref\":\"account:synthetic-leilani\",\"decision\":\"deny\",\"decision_id\":\"decision:case:6adfd412726aacdea40f\",\"evidence_status\":\"executed_local\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"appointment_management\",\"reason_code\":\"GRANT_REVOKED\",\"request_id\":\"request:case:family-revoked-001\",\"request_sha256\":\"67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1\"},{\"action\":\"perform_assigned_direct_care\",\"application_id\":\"urn:caretrust:app:scheduling\",\"audience\":\"urn:caretrust:app:scheduling\",\"caregiver_ref\":\"person:synthetic-leilani-testperson\",\"decision\":\"deny\",\"decision_id\":\"decision:case:3d5c5a18598c8ae3d05d\",\"evidence_status\":\"executed_local\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"shift-assignment\",\"reason_code\":\"CLAIM_REVOKED\",\"request_id\":\"request:case:cna-revoked-001\",\"request_sha256\":\"8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb\"},{\"action\":\"respite_visit_support\",\"application_id\":\"app:synthetic-respite-community\",\"audience\":\"app:synthetic-respite-community\",\"caregiver_ref\":\"caregiver:synthetic-respite-001\",\"decision\":\"deny\",\"decision_id\":\"decision:case:daf7feb79ade3ba12395\",\"evidence_status\":\"contract_tested\",\"minimum_data\":[],\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"respite_visit_support\",\"reason_code\":\"GRANT_REVOKED\",\"request_id\":\"request:case:respite-revoked-001\",\"request_sha256\":\"6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258\"}]}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "case_hash": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+            "case_id": "case:synthetic-multi-caregiver-001",
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "This is a minimum-data application projection, not the raw trust graph or source packet."
+            ],
+            "operation": "read_permissions",
+            "permissions": [
+              {
+                "action": "schedule_appointments",
+                "application_id": "app:synthetic-scheduling",
+                "audience": "app:synthetic-scheduling",
+                "caregiver_ref": "account:synthetic-leilani",
+                "decision": "permit",
+                "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+                "evidence_status": "executed_local",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "appointment_management",
+                "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+                "request_id": "request:case:family-permit-001",
+                "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+              },
+              {
+                "action": "schedule_appointments",
+                "application_id": "app:synthetic-scheduling",
+                "audience": "app:synthetic-scheduling",
+                "caregiver_ref": "account:synthetic-leilani",
+                "decision": "deny",
+                "decision_id": "decision:case:4d8aca31ad6186d83634",
+                "evidence_status": "executed_local",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "discharge_follow_up",
+                "reason_code": "PURPOSE_NOT_ALLOWED",
+                "request_id": "request:case:family-wrong-purpose-001",
+                "request_sha256": "da29f7b12299b37d2e93a399bc8f76d91e82741618dc96dc29a254bc8a7a140f"
+              },
+              {
+                "action": "perform_assigned_direct_care",
+                "application_id": "urn:caretrust:app:scheduling",
+                "audience": "urn:caretrust:app:scheduling",
+                "caregiver_ref": "person:synthetic-leilani-testperson",
+                "decision": "permit",
+                "decision_id": "decision:case:c4cf8911bf9502fea692",
+                "evidence_status": "executed_local",
+                "minimum_data": [
+                  {
+                    "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+                    "category": "visit-preparation",
+                    "clinically_authoritative": false,
+                    "kind": "action_item",
+                    "requires_clinical_confirmation": true,
+                    "reviewed_text": "Bring the discharge sheet and current medication list.",
+                    "source_assertion": "uploaded_document_statement"
+                  }
+                ],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "shift-assignment",
+                "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+                "request_id": "request:case:cna-permit-001",
+                "request_sha256": "971f0cc6e0bcc1cab19f9c2150732b15b3b8877d839d8cde8b708eeadc16caa9"
+              },
+              {
+                "action": "perform_assigned_direct_care",
+                "application_id": "urn:caretrust:app:scheduling",
+                "audience": "urn:caretrust:app:scheduling",
+                "caregiver_ref": "person:synthetic-leilani-testperson",
+                "decision": "deny",
+                "decision_id": "decision:case:d15736ff86643b32b80d",
+                "evidence_status": "executed_local",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "shift-assignment",
+                "reason_code": "CLAIM_REQUIRED",
+                "request_id": "request:case:cna-missing-claim-001",
+                "request_sha256": "1025b407c126231ca407c53c00ac4712910bb8b0b455b61f35b7ea5869fba5f1"
+              },
+              {
+                "action": "respite_visit_support",
+                "application_id": "app:synthetic-respite-community",
+                "audience": "app:synthetic-respite-community",
+                "caregiver_ref": "caregiver:synthetic-respite-001",
+                "decision": "permit",
+                "decision_id": "decision:case:fcfc1c28d460f4d249c4",
+                "evidence_status": "contract_tested",
+                "minimum_data": [
+                  {
+                    "approved_item_id": "approved:review:synthetic-discharge-001:candidate:bring-documents",
+                    "category": "visit-preparation",
+                    "clinically_authoritative": false,
+                    "kind": "action_item",
+                    "requires_clinical_confirmation": true,
+                    "reviewed_text": "Bring the discharge sheet and current medication list.",
+                    "source_assertion": "uploaded_document_statement"
+                  }
+                ],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "respite_visit_support",
+                "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+                "request_id": "request:case:respite-historical-001",
+                "request_sha256": "f821873f209e0fc9ca4b4949b4d2b779178e2ab6a968ac3d47dfe9729809ec6a"
+              },
+              {
+                "action": "respite_visit_support",
+                "application_id": "app:synthetic-respite-community",
+                "audience": "app:synthetic-respite-community",
+                "caregiver_ref": "caregiver:synthetic-respite-001",
+                "decision": "deny",
+                "decision_id": "decision:case:0f1638900464394d1121",
+                "evidence_status": "contract_tested",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "respite_visit_support",
+                "reason_code": "ASSIGNMENT_EXPIRED",
+                "request_id": "request:case:respite-expired-001",
+                "request_sha256": "a185b9556029cbdd57a5810bcc9fd18a518461513fa0170bdcd6900b5a62af62"
+              },
+              {
+                "action": "view_warning_instruction",
+                "application_id": "app:synthetic-respite-community",
+                "audience": "app:synthetic-respite-community",
+                "caregiver_ref": "caregiver:synthetic-respite-001",
+                "decision": "deny",
+                "decision_id": "decision:case:cd1de9afa2afdf0f91a6",
+                "evidence_status": "contract_tested",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "respite_visit_support",
+                "reason_code": "CLINICAL_CLARIFICATION_REQUIRED",
+                "request_id": "request:case:respite-clinical-block-001",
+                "request_sha256": "736d23fae99256cc03f0b3669840aed2041b80387711ef2d26eba0a8df04614d"
+              },
+              {
+                "action": "schedule_appointments",
+                "application_id": "app:synthetic-scheduling",
+                "audience": "app:synthetic-scheduling",
+                "caregiver_ref": "account:synthetic-leilani",
+                "decision": "deny",
+                "decision_id": "decision:case:6adfd412726aacdea40f",
+                "evidence_status": "executed_local",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "appointment_management",
+                "reason_code": "GRANT_REVOKED",
+                "request_id": "request:case:family-revoked-001",
+                "request_sha256": "67fc3b1c3e19707039a8854ffc7ffcaa922287714cc08ff2d599dca6e7b335d1"
+              },
+              {
+                "action": "perform_assigned_direct_care",
+                "application_id": "urn:caretrust:app:scheduling",
+                "audience": "urn:caretrust:app:scheduling",
+                "caregiver_ref": "person:synthetic-leilani-testperson",
+                "decision": "deny",
+                "decision_id": "decision:case:3d5c5a18598c8ae3d05d",
+                "evidence_status": "executed_local",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "shift-assignment",
+                "reason_code": "CLAIM_REVOKED",
+                "request_id": "request:case:cna-revoked-001",
+                "request_sha256": "8f93bce6576196198131cdf01963e16c840054d58bff6c4dd7a9bc520137ebfb"
+              },
+              {
+                "action": "respite_visit_support",
+                "application_id": "app:synthetic-respite-community",
+                "audience": "app:synthetic-respite-community",
+                "caregiver_ref": "caregiver:synthetic-respite-001",
+                "decision": "deny",
+                "decision_id": "decision:case:daf7feb79ade3ba12395",
+                "evidence_status": "contract_tested",
+                "minimum_data": [],
+                "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+                "policy_version": "case-access.v1",
+                "purpose": "respite_visit_support",
+                "reason_code": "GRANT_REVOKED",
+                "request_id": "request:case:respite-revoked-001",
+                "request_sha256": "6e03cdde690c60817c8dbf433941336fd958084dccd0af0b49d194fca1270258"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 6,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"case_id\":\"case:synthetic-multi-caregiver-001\",\"decision\":{\"as_of\":\"2026-07-30T10:00:00Z\",\"decision\":\"permit\",\"decision_id\":\"decision:case:86bce7b1e7bc61c8a0b6\",\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"reason_code\":\"POLICY_REQUIREMENTS_SATISFIED\",\"request_id\":\"request:case:family-permit-001\",\"supporting_canonical_ids\":[\"relationship:synthetic-001\",\"grant:synthetic-001\"]},\"evidence_status\":\"executed_local\",\"minimum_data_receipt\":[],\"non_claims\":[\"Explanation does not issue a token, replay a prior permit, or authorize a new request.\"],\"operation\":\"read_decision\",\"withheld\":[\"source_document_packet\",\"unreviewed_extraction\",\"unrelated_claims\",\"clinical_holder_payload\"]}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "case_id": "case:synthetic-multi-caregiver-001",
+            "decision": {
+              "as_of": "2026-07-30T10:00:00Z",
+              "decision": "permit",
+              "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+              "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+              "policy_version": "case-access.v1",
+              "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+              "request_id": "request:case:family-permit-001",
+              "supporting_canonical_ids": [
+                "relationship:synthetic-001",
+                "grant:synthetic-001"
+              ]
+            },
+            "evidence_status": "executed_local",
+            "minimum_data_receipt": [],
+            "non_claims": [
+              "Explanation does not issue a token, replay a prior permit, or authorize a new request."
+            ],
+            "operation": "read_decision",
+            "withheld": [
+              "source_document_packet",
+              "unreviewed_extraction",
+              "unrelated_claims",
+              "clinical_holder_payload"
+            ]
+          }
+        }
+      },
+      {
+        "id": 7,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"authority_changed\":false,\"canonical_request_id\":\"request:case:family-permit-001\",\"disclosure_returned\":false,\"evidence_status\":\"executed_local\",\"non_claims\":[\"A simulation calls the existing deterministic policy but is not an authorization decision, token, or disclosure receipt.\"],\"operation\":\"simulate_authorization\",\"simulation\":{\"action\":\"schedule_appointments\",\"application_id\":\"app:synthetic-scheduling\",\"as_of\":\"2026-07-30T10:00:00Z\",\"audience\":\"app:synthetic-scheduling\",\"caregiver_ref\":\"account:synthetic-leilani\",\"decision\":\"permit\",\"decision_id\":\"decision:case:86bce7b1e7bc61c8a0b6\",\"evidence_status\":\"executed_local\",\"policy_id\":\"https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1\",\"policy_version\":\"case-access.v1\",\"purpose\":\"appointment_management\",\"reason_code\":\"POLICY_REQUIREMENTS_SATISFIED\",\"request_id\":\"request:case:family-permit-001\",\"request_sha256\":\"525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577\"},\"simulation_only\":true,\"token_issued\":false}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "authority_changed": false,
+            "canonical_request_id": "request:case:family-permit-001",
+            "disclosure_returned": false,
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "A simulation calls the existing deterministic policy but is not an authorization decision, token, or disclosure receipt."
+            ],
+            "operation": "simulate_authorization",
+            "simulation": {
+              "action": "schedule_appointments",
+              "application_id": "app:synthetic-scheduling",
+              "as_of": "2026-07-30T10:00:00Z",
+              "audience": "app:synthetic-scheduling",
+              "caregiver_ref": "account:synthetic-leilani",
+              "decision": "permit",
+              "decision_id": "decision:case:86bce7b1e7bc61c8a0b6",
+              "evidence_status": "executed_local",
+              "policy_id": "https://caretrust-hub.github.io/caretrust-spec/policies/case-access/v1",
+              "policy_version": "case-access.v1",
+              "purpose": "appointment_management",
+              "reason_code": "POLICY_REQUIREMENTS_SATISFIED",
+              "request_id": "request:case:family-permit-001",
+              "request_sha256": "525d4e9b0e1efdc769d27f7a94de106b72437673e9c3054a14b4522d34ced577"
+            },
+            "simulation_only": true,
+            "token_issued": false
+          }
+        }
+      },
+      {
+        "id": 8,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"case_hash\":\"2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953\",\"case_id\":\"case:synthetic-multi-caregiver-001\",\"evidence_status\":\"executed_local\",\"non_claims\":[\"Local validation is not external standards conformance certification.\"],\"operation\":\"validate_contract\",\"valid\":true,\"validated_contract\":\"caretrust.synthetic-case-bundle.v1\"}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "case_hash": "2728db31b81899eedb06ef5edc3804ffb262f072e048a838c3a2e83814731953",
+            "case_id": "case:synthetic-multi-caregiver-001",
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "Local validation is not external standards conformance certification."
+            ],
+            "operation": "validate_contract",
+            "valid": true,
+            "validated_contract": "caretrust.synthetic-case-bundle.v1"
+          }
+        }
+      },
+      {
+        "id": 9,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"case_id\":\"case:synthetic-multi-caregiver-001\",\"evidence_status\":\"executed_local\",\"non_claims\":[\"No FHIR server, HIE, production identity provider, or external conformance service was contacted.\"],\"operation\":\"read_projection\",\"semantic_loss\":[\"The projection is synthetic/local and does not represent a live standards exchange.\"],\"standards_projection\":[{\"canonical_id\":\"grant:synthetic-001\",\"evidence_status\":\"executed_local\",\"standard\":\"CareTrust delegation v1\"},{\"canonical_id\":\"claim:synthetic-hi-cna-1001\",\"evidence_status\":\"executed_local\",\"standard\":\"CareTrust active credential claim v1\"},{\"canonical_id\":\"document-share-grant:synthetic-direct-care-task-001\",\"evidence_status\":\"executed_local\",\"standard\":\"CareTrust document share v1\"},{\"canonical_id\":\"decision:clinical:f3dd980fc1b221df9b9b\",\"evidence_status\":\"executed_local\",\"non_claim\":\"No live EHR, HIE, or network edge was used.\",\"standard\":\"FHIR R4-shaped local holder exchange\"}]}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "case_id": "case:synthetic-multi-caregiver-001",
+            "evidence_status": "executed_local",
+            "non_claims": [
+              "No FHIR server, HIE, production identity provider, or external conformance service was contacted."
+            ],
+            "operation": "read_projection",
+            "semantic_loss": [
+              "The projection is synthetic/local and does not represent a live standards exchange."
+            ],
+            "standards_projection": [
+              {
+                "canonical_id": "grant:synthetic-001",
+                "evidence_status": "executed_local",
+                "standard": "CareTrust delegation v1"
+              },
+              {
+                "canonical_id": "claim:synthetic-hi-cna-1001",
+                "evidence_status": "executed_local",
+                "standard": "CareTrust active credential claim v1"
+              },
+              {
+                "canonical_id": "document-share-grant:synthetic-direct-care-task-001",
+                "evidence_status": "executed_local",
+                "standard": "CareTrust document share v1"
+              },
+              {
+                "canonical_id": "decision:clinical:f3dd980fc1b221df9b9b",
+                "evidence_status": "executed_local",
+                "non_claim": "No live EHR, HIE, or network edge was used.",
+                "standard": "FHIR R4-shaped local holder exchange"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": 10,
+        "jsonrpc": "2.0",
+        "result": {
+          "content": [
+            {
+              "text": "{\"error_code\":\"TOOL_NOT_ALLOWED\",\"evidence_status\":\"executed_local\",\"non_claim\":\"This adapter exposes no authority-changing or unknown tools.\"}",
+              "type": "text"
+            }
+          ],
+          "isError": true,
+          "structuredContent": {
+            "error_code": "TOOL_NOT_ALLOWED",
+            "evidence_status": "executed_local",
+            "non_claim": "This adapter exposes no authority-changing or unknown tools."
+          }
+        }
+      }
+    ]
+  },
+  "transport": "local_stdio_jsonrpc_2_0"
+}

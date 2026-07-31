@@ -1,0 +1,106 @@
+{
+  "$defs": {
+    "DelegationAction": {
+      "description": "Patient-delegable actions in the bounded v0.3 prototype.",
+      "enum": [
+        "schedule_appointments",
+        "view_appointments",
+        "view_visit_instructions",
+        "message_care_team"
+      ],
+      "title": "DelegationAction",
+      "type": "string"
+    },
+    "DelegationAudience": {
+      "description": "Application audiences included in the bounded synthetic workflow.",
+      "enum": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "title": "DelegationAudience",
+      "type": "string"
+    },
+    "DelegationPurpose": {
+      "description": "Purpose vocabulary used by local application policy.",
+      "enum": [
+        "care_coordination",
+        "appointment_management"
+      ],
+      "title": "DelegationPurpose",
+      "type": "string"
+    },
+    "DelegationResource": {
+      "description": "Resource categories understood by the bounded prototype.",
+      "enum": [
+        "appointments",
+        "visit_instructions",
+        "care_team_messages",
+        "billing",
+        "mental_health_records"
+      ],
+      "title": "DelegationResource",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "$ref": "#/$defs/DelegationAction"
+    },
+    "audience": {
+      "$ref": "#/$defs/DelegationAudience"
+    },
+    "delegate_ref": {
+      "title": "Delegate Ref",
+      "type": "string"
+    },
+    "grant_id": {
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "purpose": {
+      "$ref": "#/$defs/DelegationPurpose"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "requested_at": {
+      "format": "date-time",
+      "title": "Requested At",
+      "type": "string"
+    },
+    "resource": {
+      "$ref": "#/$defs/DelegationResource"
+    },
+    "schema_version": {
+      "const": "caretrust.delegation-authorization-request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "grant_id",
+    "patient_ref",
+    "delegate_ref",
+    "audience",
+    "purpose",
+    "action",
+    "resource",
+    "requested_at",
+    "synthetic"
+  ],
+  "title": "DelegationAuthorizationRequest",
+  "type": "object"
+}

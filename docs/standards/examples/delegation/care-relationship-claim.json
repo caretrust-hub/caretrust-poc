@@ -1,0 +1,19 @@
+{
+  "approval_id": "approval:synthetic-001",
+  "caregiver_ref": "account:synthetic-leilani",
+  "invite_acceptance_id": "invite-acceptance:synthetic-001",
+  "issued_at": "2026-07-30T10:03:01Z",
+  "issuer_ref": "org:synthetic-caretrust",
+  "legal_authority_status": "not_established",
+  "patient_ref": "patient:synthetic-001",
+  "relationship_assertion_only": true,
+  "relationship_basis": "patient_attestation",
+  "relationship_claim_id": "relationship:synthetic-001",
+  "relationship_code": "child",
+  "revoked_at": null,
+  "schema_version": "caretrust.care-relationship-claim.v1",
+  "status": "active",
+  "synthetic": true,
+  "valid_from": "2026-07-30",
+  "valid_until": "2026-12-31"
+}

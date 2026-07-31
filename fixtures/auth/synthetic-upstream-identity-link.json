@@ -1,0 +1,7 @@
+{
+  "caregiver_ref": "account:synthetic-leilani",
+  "issuer": "https://idp.synthetic.invalid",
+  "subject": "oidc-subject:synthetic-caregiver-001",
+  "assurance": "self_asserted_synthetic",
+  "token_fixture_policy": "No OIDC bearer token is persisted in a checked fixture; the local harness constructs and verifies its deterministic synthetic token in memory."
+}

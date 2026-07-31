@@ -2,17 +2,21 @@
 
 ## Status and boundary
 
-This is an executable **local synthetic trust-resolution simulation only**. It
-is not an OpenID Federation conformance claim and it is not an operational
-federation. It uses only synthetic `.invalid` Entity Identifiers, ephemeral
-in-memory Ed25519 private keys, caller-supplied statements, and a locally pinned
-trust anchor. It performs no HTTP, discovery, registry, identity-proofing, or
-other network call.
+Evidence status: **`local_simulation` — Local simulation**. This is an
+executable local synthetic trust-resolution simulation only. It is not an
+OpenID Federation conformance claim and it is not an operational federation.
+It uses only synthetic `.invalid` Entity Identifiers, ephemeral in-memory
+Ed25519 private keys, caller-supplied statements, and a locally pinned trust
+anchor. It performs no HTTP, discovery, registry, identity-proofing, or other
+network call.
 
 The implementation is in `src/caretrust/federation.py`; its machine-readable
 example is
 [`examples/federation/two-care-organizations.json`](examples/federation/two-care-organizations.json).
 That example contains public JWKs and signed JWTs but no private key material.
+The executable two-hub laboratory is in `src/caretrust/federation_lab.py`, with
+public configuration in `fixtures/federation/two-hub-lab.json` and generated
+public-key-safe output in `artifacts/validation/federation-two-hub-lab.json`.
 
 ## Standards vocabulary used
 
@@ -77,6 +81,31 @@ does not authorize an application request or prove a real organization. Running
 two synthetic entity paths in one local process does not demonstrate
 cross-organization federation.
 
+## Two-hub local laboratory
+
+The laboratory constructs two separately configured local hubs, each with its
+own synthetic trust-anchor Entity Identifier and independently generated
+Ed25519 signing key. One resolves a participant organization and the other a
+care-application client. The combined local trust store merely holds both
+anchors; it does not connect hubs or make a network request.
+
+For reproducibility the synthetic lab derives fixture-only in-memory keys from
+public fixture labels. That mechanism is deliberately not production key
+management and no private key material is serialized into the public artifact.
+
+Each anchor signs a subordinate statement and each leaf self-signs an Entity
+Configuration. The laboratory applies a deliberately narrow local
+metadata-policy subset from the signed subordinate statement: `value` pins a
+metadata field and `one_of` rejects metadata outside a bounded allowlist.
+This is executable policy application inspired by OpenID Federation 1.0
+concepts, not a claim of complete metadata-policy operator support.
+
+After both entity chains resolve, the laboratory invokes a separate, fresh
+CareTrust case-policy evaluation for a canonical caregiver request. Federation
+output is not passed in as a grant, claim, assignment, or permit; it establishes
+synthetic participant/client metadata trust only. The public artifact records
+only public JWKs and statement hashes, never private key material.
+
 ## Rotation behavior
 
 Leaf rotation is accepted only when:
@@ -101,8 +130,8 @@ seam. The prototype does **not** implement:
 - `/.well-known/openid-federation` publication or retrieval;
 - Federation Entity Discovery, Fetch, List, or Resolve endpoints;
 - intermediate authorities or multi-path trust-chain selection;
-- metadata-policy operators, constraints, critical extensions, or policy
-  application;
+- metadata-policy operators beyond the lab's `value` and `one_of` subset,
+  constraints, or critical extensions;
 - trust marks, trust-mark issuers, or trust-mark status;
 - automatic algorithm negotiation or algorithms other than EdDSA;
 - TLS/Web PKI transport decisions, caching, refresh, replay storage, or

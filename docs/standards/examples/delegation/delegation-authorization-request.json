@@ -1,0 +1,13 @@
+{
+  "action": "schedule_appointments",
+  "audience": "app:synthetic-scheduling",
+  "delegate_ref": "account:synthetic-leilani",
+  "grant_id": "grant:synthetic-001",
+  "patient_ref": "patient:synthetic-001",
+  "purpose": "appointment_management",
+  "request_id": "delegation-request:synthetic-001",
+  "requested_at": "2026-07-30T10:04:00Z",
+  "resource": "appointments",
+  "schema_version": "caretrust.delegation-authorization-request.v1",
+  "synthetic": true
+}

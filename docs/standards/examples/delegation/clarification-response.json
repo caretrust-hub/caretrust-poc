@@ -1,0 +1,15 @@
+{
+  "clarification_id": "clarification:synthetic-audience-001",
+  "intent_id": "intent:synthetic-delegation-001",
+  "patient_ref": "patient:synthetic-001",
+  "responded_at": "2026-07-30T10:00:10Z",
+  "response_id": "clarification-response:synthetic-001",
+  "response_sha256": "ad65b0cec76088dbd75579c157acf0bd753d1a904bb2a41c753663483c1fc83d",
+  "response_text": "Use the scheduling app and care portal.",
+  "schema_version": "caretrust.clarification-response.v1",
+  "selected_values": [
+    "app:synthetic-scheduling",
+    "app:synthetic-care-portal"
+  ],
+  "synthetic": true
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": "caretrust.evidence-status-registry.v1",
+  "statuses": [
+    {
+      "description": "A retained record from an actual AWS service call using synthetic data. The retained record proves only the bounded call and output that it contains.",
+      "display_label": "Retained AWS trace",
+      "id": "retained_aws"
+    },
+    {
+      "description": "Behavior executed in the local CareTrust runtime and covered by deterministic automated tests. It does not imply production deployment or independent interoperability.",
+      "display_label": "Executed local",
+      "id": "executed_local"
+    },
+    {
+      "description": "A machine-readable contract or protocol-shaped artifact checked by automated tests. No deployed endpoint or end-to-end protocol exchange is implied.",
+      "display_label": "Contract tested",
+      "id": "contract_tested"
+    },
+    {
+      "description": "Executable behavior limited to one local synthetic process or trust store. It does not establish an operational network or cross-organization result.",
+      "display_label": "Local simulation",
+      "id": "local_simulation"
+    },
+    {
+      "description": "A documented field or concept mapping with no implemented exchange or conformance claim.",
+      "display_label": "Mapped only",
+      "id": "mapped_only"
+    },
+    {
+      "description": "Design intent or future work for which no executable or contract-tested artifact is claimed.",
+      "display_label": "Planned",
+      "id": "planned"
+    }
+  ],
+  "capabilities": [
+    {
+      "boundary": "The retained live AWS record stops at an unverified draft and performs no review, activation, signing, authorization, or revocation.",
+      "capability_id": "aws-ocr-bedrock-intake",
+      "evidence": [
+        "artifacts/ocr/20260730T171807.004134Z/vertical-slice.json",
+        "src/caretrust/adapters/ocr.py",
+        "scripts/run_ocr_vertical_slice.py",
+        "tests/test_ocr_adapter.py",
+        "tests/test_ocr_vertical_slice.py"
+      ],
+      "evidence_status": "retained_aws",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "The local claim lifecycle and deterministic policy do not establish production authorization or trust between independent organizations.",
+      "capability_id": "caretrust-core-claim-and-policy-contract",
+      "evidence": [
+        "schemas/active-credential-claim.schema.json",
+        "schemas/authorization-request.schema.json",
+        "schemas/authorization-decision.schema.json",
+        "docs/standards/lifecycle-and-reason-codes.md",
+        "artifacts/validation/connected-vertical-slice.json"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "Revocation is enforced by an in-memory runtime registry. The checked record contract is not emitted or distributed by a durable status service.",
+      "capability_id": "caretrust-revocation",
+      "evidence": [
+        "schemas/revocation-record.schema.json",
+        "docs/standards/examples/revocation-record.json",
+        "tests/test_security_authorization.py"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": false
+    },
+    {
+      "boundary": "No official HL7 validator, FHIR server, EHR, implementation guide, or independent FHIR implementation is used.",
+      "capability_id": "fhir-r4-qualification-projection",
+      "evidence": [
+        "src/caretrust/fhir_projection.py",
+        "tests/test_fhir_projection.py",
+        "docs/standards/fhir-r4-projection-profile.md",
+        "docs/standards/examples/fhir/synthetic-hawaii-cna-bundle.json"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "No OID4VC endpoint, credential issuance, valid presentation, wallet, holder binding, cryptographic verification, or conformance test runs.",
+      "capability_id": "oid4vci-and-oid4vp-exchange-artifacts",
+      "evidence": [
+        "tests/test_oid4vc_artifacts.py",
+        "docs/standards/oid4vc-exchange-profile.md",
+        "docs/standards/examples/oid4vc/credential-issuer-metadata.json",
+        "docs/standards/examples/oid4vc/presentation-request.json",
+        "docs/standards/examples/oid4vc/presentation-response.json",
+        "docs/standards/examples/oid4vc/response-decision-linkage.json"
+      ],
+      "evidence_status": "contract_tested",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "Two synthetic entity identifiers resolve in one local process with caller-supplied statements and a pinned anchor; there is no network discovery, operational federation, or cross-organization test.",
+      "capability_id": "openid-federation-trust-resolution",
+      "evidence": [
+        "src/caretrust/federation.py",
+        "tests/test_federation.py",
+        "docs/standards/openid-federation-trust-profile.md",
+        "docs/standards/examples/federation/two-care-organizations.json"
+      ],
+      "evidence_status": "local_simulation",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "No HTTP server or deployed Phase 1 API is represented.",
+      "capability_id": "caretrust-openapi-surface",
+      "evidence": [
+        "docs/standards/caretrust-openapi-3.1.json",
+        "tests/test_interoperability_artifacts.py"
+      ],
+      "evidence_status": "contract_tested",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "An authorized synthetic participating-organization user/client supplies CareTrust caregiver delegation/trust context; the caregiver does not query the holder. The synthetic data holder owns participant/client/user eligibility, patient matching, and final disclosure policy. No live HIE/EHR, MPI, SMART/OAuth, FHIR server, legal determination, or independent interoperability test is represented.",
+      "capability_id": "synthetic-clinical-data-holder-edge",
+      "evidence": [
+        "src/caretrust/clinical_edge.py",
+        "scripts/export_clinical_edge_examples.py",
+        "tests/test_clinical_edge.py",
+        "docs/standards/clinical-data-holder-edge.md",
+        "docs/standards/examples/clinical-edge/permit.json",
+        "docs/standards/examples/clinical-edge/deny-unregistered-client.json",
+        "docs/standards/examples/clinical-edge/deny-no-patient-match.json",
+        "docs/standards/examples/clinical-edge/deny-insufficient-scope.json",
+        "docs/standards/examples/clinical-edge/deny-revoked-fresh-request.json",
+        "schemas/clinical-data-authorization-request.schema.json",
+        "schemas/clinical-data-authorization-decision.schema.json",
+        "schemas/clinical-data-exchange-record.schema.json"
+      ],
+      "evidence_status": "executed_local",
+      "include_in_manifest": true
+    },
+    {
+      "boundary": "No VC document, JSON-LD processing, VC securing mechanism, credential-status method, wallet, or VC conformance suite is implemented.",
+      "capability_id": "w3c-vc-2.0-projection",
+      "evidence": [
+        "docs/standards/w3c-vc-2.0-mapping.md"
+      ],
+      "evidence_status": "mapped_only",
+      "include_in_manifest": false
+    },
+    {
+      "boundary": "No FHIR authorization server, SMART scopes, launch context, EHR integration, or SMART conformance test is implemented.",
+      "capability_id": "smart-app-launch",
+      "evidence": [
+        "docs/standards/standards-status.md"
+      ],
+      "evidence_status": "planned",
+      "include_in_manifest": false
+    }
+  ]
+}

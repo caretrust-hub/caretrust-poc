@@ -1,0 +1,53 @@
+{
+  "application_id": "app:synthetic-scheduling",
+  "description": "Synthetic scheduling application that creates and reschedules caregiver appointments.",
+  "description_sha256": "0fd26020199dd3efc3bb8c41fda031b33b22a36d13b9d7ee51c894c069029f1c",
+  "openapi": {
+    "info": {
+      "title": "Synthetic Scheduling",
+      "version": "1"
+    },
+    "openapi": "3.1.0",
+    "paths": {
+      "/appointments": {
+        "get": {
+          "operationId": "listAppointments"
+        },
+        "post": {
+          "operationId": "createAppointment"
+        }
+      },
+      "/appointments/{id}": {
+        "patch": {
+          "operationId": "rescheduleAppointment"
+        }
+      }
+    },
+    "servers": [
+      {
+        "url": "https://scheduling.synthetic.example"
+      }
+    ]
+  },
+  "schema_version": "caretrust.application-description.v1",
+  "source_citations": [
+    {
+      "citation_id": "app-source:synthetic-scheduling-001:full-text",
+      "end_char": 85,
+      "quote": "Synthetic scheduling application that creates and reschedules caregiver appointments.",
+      "source_id": "app-source:synthetic-scheduling-001",
+      "source_kind": "description",
+      "start_char": 0
+    },
+    {
+      "citation_id": "app-source:synthetic-scheduling-001:openapi",
+      "end_char": 315,
+      "quote": "{\"info\":{\"title\":\"Synthetic Scheduling\",\"version\":\"1\"},\"openapi\":\"3.1.0\",\"paths\":{\"/appointments\":{\"get\":{\"operationId\":\"listAppointments\"},\"post\":{\"operationId\":\"createAppointment\"}},\"/appointments/{id}\":{\"patch\":{\"operationId\":\"rescheduleAppointment\"}}},\"servers\":[{\"url\":\"https://scheduling.synthetic.example\"}]}",
+      "source_id": "app-source:synthetic-scheduling-001",
+      "source_kind": "openapi",
+      "start_char": 0
+    }
+  ],
+  "source_id": "app-source:synthetic-scheduling-001",
+  "synthetic": true
+}

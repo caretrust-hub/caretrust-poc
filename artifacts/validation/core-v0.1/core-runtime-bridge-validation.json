@@ -1,0 +1,1153 @@
+{
+  "artifact_type": "caretrust.core-runtime-bridge-validation.v1",
+  "checks": {
+    "delegation_permit_request_hash_valid": true,
+    "document_permit_request_hash_valid": true,
+    "document_post_revocation_is_deny": true,
+    "published_schema_validation": true,
+    "revocations_are_status_events": true
+  },
+  "claim_boundary": [
+    "This is a deterministic local mapping and validation artifact, not a native Core profile conformance assertion.",
+    "The bridge maps already-existing legacy grants and decisions; it does not create, approve, activate, authorize, or revoke authority.",
+    "Document approved-item sets and raw-document flags remain in the experimental legacy request/receipt path and are listed as semantic loss in the Core mapping metadata.",
+    "All data is synthetic; no external endpoint, patient identity system, or production record was used."
+  ],
+  "evidence_status": "executed_local",
+  "mappings": {
+    "delegation_authorization_decision": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "issuer_ref=service:caretrust-core-bridge",
+          "status_checked_at=decided_at",
+          "expires_at=decided_at+5 minutes"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [],
+        "source_schema_version": "caretrust.delegation-authorization-decision.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+      },
+      "target": {
+        "decided_at": "2026-07-30T10:04:01Z",
+        "decision": "permit",
+        "decision_id": "delegation-decision:synthetic-001",
+        "expires_at": "2026-07-30T10:09:01Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:delegation-authorization",
+        "policy_version": "caretrust.delegation-authorization.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:delegation:policy-requirements-satisfied"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "6f8770d34e3105c9b8734afcb3f8e3f66e74d7831278d1927d8e32ebf599de35"
+        },
+        "request_id": "delegation-request:synthetic-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T10:04:01Z",
+        "supporting_artifact_refs": [
+          {
+            "artifact_id": "grant:synthetic-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+            },
+            "version": 1
+          }
+        ]
+      }
+    },
+    "delegation_authorization_request": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "expires_at=requested_at+5 minutes",
+          "nonce",
+          "idempotency_key"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [],
+        "source_schema_version": "caretrust.delegation-authorization-request.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+      },
+      "target": {
+        "action": "urn:caretrust:action:delegation:schedule-appointments",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T10:09:00Z",
+        "idempotency_key": "55a21b578bbe2b45f9850c995562aedf94ac79ac01952fbe54bfb0b7bf36d387",
+        "nonce": "0305d19510faf7b9bc1b3318c9b492908d9e53123818d1e5b0a950280f8075d9",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:delegation:appointment-management",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "grant:synthetic-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "delegation-request:synthetic-001",
+        "requested_at": "2026-07-30T10:04:00Z",
+        "requester_ref": "account:synthetic-leilani",
+        "resource": "urn:caretrust:resource:delegation:appointments",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      }
+    },
+    "delegation_grant_artifact": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "version=1",
+          "valid_from at 00:00:00Z",
+          "valid_until as the first instant after the inclusive legacy date",
+          "Core provenance hash"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [],
+        "source_schema_version": "caretrust.delegation-grant.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1"
+      },
+      "target": {
+        "artifact_id": "grant:synthetic-001",
+        "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+        "issued_at": "2026-07-30T10:03:01Z",
+        "issuer_ref": "org:synthetic-caretrust",
+        "payload": {
+          "bridge": {
+            "experimental_profile": true,
+            "mapping_status": "mapped_only",
+            "semantic_loss": []
+          },
+          "legacy_contract": {
+            "allowed_actions": [
+              "schedule_appointments",
+              "view_visit_instructions"
+            ],
+            "allowed_audiences": [
+              "app:synthetic-scheduling",
+              "app:synthetic-care-portal"
+            ],
+            "allowed_purposes": [
+              "appointment_management",
+              "care_coordination"
+            ],
+            "allowed_resources": [
+              "appointments",
+              "visit_instructions"
+            ],
+            "application_decision_required": true,
+            "approval_id": "approval:synthetic-001",
+            "authority_basis": "patient_attestation",
+            "delegate_ref": "account:synthetic-leilani",
+            "excluded_resources": [
+              "billing",
+              "mental_health_records"
+            ],
+            "grant_id": "grant:synthetic-001",
+            "issued_at": "2026-07-30T10:03:01Z",
+            "issuer_ref": "org:synthetic-caretrust",
+            "legal_authority_status": "not_established",
+            "patient_ref": "patient:synthetic-001",
+            "relationship_claim_id": "relationship:synthetic-001",
+            "revoked_at": null,
+            "schema_version": "caretrust.delegation-grant.v1",
+            "status": "active",
+            "synthetic": true,
+            "valid_from": "2026-07-30",
+            "valid_until": "2026-12-31"
+          }
+        },
+        "payload_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+        },
+        "payload_schema_uri": "urn:caretrust:schema:experimental:legacy-delegation-grant-payload:0.1",
+        "profile_uri": "urn:caretrust:profile:experimental:legacy-delegation-grant:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096"
+            },
+            "recorded_at": "2026-07-30T10:03:01Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "grant:synthetic-001"
+          }
+        ],
+        "schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+        "spec_version": "0.1",
+        "status": "active",
+        "status_ref": "urn:caretrust:status:legacy-delegation:active",
+        "subject_refs": [
+          "patient:synthetic-001",
+          "account:synthetic-leilani"
+        ],
+        "valid_from": "2026-07-30T00:00:00Z",
+        "valid_until": "2027-01-01T00:00:00Z",
+        "version": 1
+      }
+    },
+    "delegation_revocation_status": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "sequence=1",
+          "actor_role=patient",
+          "previous_status=active"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [
+          "The legacy revocation record has no ordered Core status-event history; sequence=1 begins a bridge-local event stream and previous_status=active is derived from the supplied pre-revocation artifact."
+        ],
+        "source_schema_version": "caretrust.delegation-revocation-record.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:status-event:0.1"
+      },
+      "target": {
+        "actor_ref": "patient:synthetic-001",
+        "actor_role": "urn:caretrust:role:patient",
+        "artifact_ref": {
+          "artifact_id": "grant:synthetic-001",
+          "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+          "content_hash": {
+            "algorithm": "sha-256",
+            "canonicalization": "urn:ietf:rfc:8785",
+            "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+          },
+          "version": 1
+        },
+        "effective_at": "2026-07-30T10:05:00Z",
+        "event_id": "delegation-revocation:synthetic-001",
+        "issuer_ref": "org:synthetic-caretrust",
+        "new_status": "revoked",
+        "previous_status": "active",
+        "profile_uri": "urn:caretrust:profile:core:artifact-status:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+            },
+            "recorded_at": "2026-07-30T10:05:00Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "delegation-revocation:synthetic-001"
+          }
+        ],
+        "reason_code": "urn:caretrust:reason:delegation:patient-revoked-delegation",
+        "recorded_at": "2026-07-30T10:05:00Z",
+        "schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+        "sequence": 1,
+        "spec_version": "0.1"
+      }
+    },
+    "document_share_decision": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "issuer_ref=service:caretrust-core-bridge",
+          "status_checked_at=decided_at",
+          "expires_at=decided_at+5 minutes"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [
+          "Granted approved-item IDs are intentionally not copied into Core AuthorizationDecision; applications must use the legacy minimum-data projection/receipt for item-level disclosure."
+        ],
+        "source_schema_version": "caretrust.document-share-decision.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+      },
+      "target": {
+        "decided_at": "2026-07-30T18:00:06Z",
+        "decision": "permit",
+        "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+        "expires_at": "2026-07-30T18:05:06Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:document-share",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:document-share:policy-satisfied"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "a4b199c9c8f40c085dcfdea5321d39d0f95a978f06dd8f66e8773f02e279d930"
+        },
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T18:00:06Z",
+        "supporting_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ]
+      }
+    },
+    "document_share_grant_artifact": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "issuer_ref=service:caretrust-core-bridge",
+          "version=1",
+          "Core provenance hash"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [],
+        "source_schema_version": "caretrust.document-share-grant.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1"
+      },
+      "target": {
+        "artifact_id": "document-share-grant:synthetic-scheduling-001",
+        "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+        "issued_at": "2026-07-30T18:00:04Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "payload": {
+          "bridge": {
+            "experimental_profile": true,
+            "mapping_status": "mapped_only",
+            "semantic_loss": []
+          },
+          "legacy_contract": {
+            "allowed_audiences": [
+              "app:synthetic-scheduling"
+            ],
+            "allowed_item_kinds": [
+              "instruction"
+            ],
+            "allowed_purposes": [
+              "discharge_follow_up"
+            ],
+            "approved_item_ids": [
+              "approved:review:synthetic-discharge-001:candidate:follow-up"
+            ],
+            "fresh_decision_required": true,
+            "grant_id": "document-share-grant:synthetic-scheduling-001",
+            "issued_at": "2026-07-30T18:00:04Z",
+            "maximum_sensitivity": "restricted_health_information",
+            "overbroad_requests_allowed": false,
+            "patient_ref": "patient:synthetic-001",
+            "raw_document_sharing_allowed": false,
+            "review_id": "review:synthetic-discharge-001",
+            "revoked_at": null,
+            "schema_version": "caretrust.document-share-grant.v1",
+            "status": "active",
+            "synthetic_only": true,
+            "unapproved_items_allowed": false,
+            "valid_from": "2026-07-30T18:00:04Z",
+            "valid_until": "2026-08-06T18:00:00Z"
+          }
+        },
+        "payload_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+        },
+        "payload_schema_uri": "urn:caretrust:schema:experimental:legacy-document-share-grant-payload:0.1",
+        "profile_uri": "urn:caretrust:profile:experimental:legacy-document-share-grant:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "1f4c9d0363bb13c7e92b238f79700ba60be1a37dc90609c9bb00916e0e4e18f4"
+            },
+            "recorded_at": "2026-07-30T18:00:04Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "document-share-grant:synthetic-scheduling-001"
+          }
+        ],
+        "schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+        "spec_version": "0.1",
+        "status": "active",
+        "status_ref": "urn:caretrust:status:legacy-document-share:active",
+        "subject_refs": [
+          "patient:synthetic-001"
+        ],
+        "valid_from": "2026-07-30T18:00:04Z",
+        "valid_until": "2026-08-06T18:00:00Z",
+        "version": 1
+      }
+    },
+    "document_share_post_revocation_decision": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "issuer_ref=service:caretrust-core-bridge",
+          "status_checked_at=decided_at",
+          "expires_at=decided_at+5 minutes"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [],
+        "source_schema_version": "caretrust.document-share-decision.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1"
+      },
+      "target": {
+        "decided_at": "2026-07-30T18:00:12Z",
+        "decision": "deny",
+        "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+        "expires_at": "2026-07-30T18:05:12Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:document-share",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:document-share:grant-revoked"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "4a179668bb4e3c68c3f02b2120dbc7ae665390b5ddd6f0e0369e457dc87b5751"
+        },
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T18:00:12Z",
+        "supporting_artifact_refs": []
+      }
+    },
+    "document_share_post_revocation_request": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "expires_at=requested_at+5 minutes",
+          "nonce",
+          "idempotency_key",
+          "resource-set SHA-256 URI"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [
+          "Core 0.1 has one resource URI; the ordered approved-item IDs are represented by a canonical hash-bound resource-set URI and remain inspectable in the legacy request.",
+          "include_raw_document is not a Core request field; the legacy request remains authoritative for that explicit prohibition."
+        ],
+        "source_schema_version": "caretrust.document-share-request.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+      },
+      "target": {
+        "action": "urn:caretrust:action:document-share:read-approved-items",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T18:05:11Z",
+        "idempotency_key": "23651d98d7d8db07a4589578453520cd2343a2014635bf35a3c1f2fffd2ba3cd",
+        "nonce": "ad87d60e162e417b5746b5404793d0267f5191910e4909a132f3cae66ad0cfd8",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:document-share:discharge-follow-up",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "requested_at": "2026-07-30T18:00:11Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "resource": "urn:caretrust:resource-set:document-share:ef96022ed97f04327f5bc9b816dddeafa3dfb5d8c7d641046cbb18d8975fff8a",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      }
+    },
+    "document_share_request": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "expires_at=requested_at+5 minutes",
+          "nonce",
+          "idempotency_key",
+          "resource-set SHA-256 URI"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [
+          "Core 0.1 has one resource URI; the ordered approved-item IDs are represented by a canonical hash-bound resource-set URI and remain inspectable in the legacy request.",
+          "include_raw_document is not a Core request field; the legacy request remains authoritative for that explicit prohibition."
+        ],
+        "source_schema_version": "caretrust.document-share-request.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1"
+      },
+      "target": {
+        "action": "urn:caretrust:action:document-share:read-approved-items",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T18:05:05Z",
+        "idempotency_key": "1c40860a4976c66910cafcc8debf182b32cb9d3ae593cd11025fca59076de501",
+        "nonce": "fef855b1f894f5005f6e9a5944e6800de8e82228ad0ea43038d5d5a0d98601ba",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:document-share:discharge-follow-up",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "requested_at": "2026-07-30T18:00:05Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "resource": "urn:caretrust:resource-set:document-share:ef96022ed97f04327f5bc9b816dddeafa3dfb5d8c7d641046cbb18d8975fff8a",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      }
+    },
+    "document_share_revocation_status": {
+      "metadata": {
+        "bridge_generated_fields": [
+          "sequence=1",
+          "actor_role=patient",
+          "previous_status=active"
+        ],
+        "conformance": "mapped_only",
+        "semantic_loss": [
+          "The legacy revocation record has no ordered Core status-event history; sequence=1 begins a bridge-local event stream and previous_status=active is derived from the supplied pre-revocation artifact."
+        ],
+        "source_schema_version": "caretrust.document-share-revocation-record.v1",
+        "target_schema_uri": "urn:caretrust:schema:core:status-event:0.1"
+      },
+      "target": {
+        "actor_ref": "patient:synthetic-001",
+        "actor_role": "urn:caretrust:role:patient",
+        "artifact_ref": {
+          "artifact_id": "document-share-grant:synthetic-scheduling-001",
+          "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+          "content_hash": {
+            "algorithm": "sha-256",
+            "canonicalization": "urn:ietf:rfc:8785",
+            "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+          },
+          "version": 1
+        },
+        "effective_at": "2026-07-30T18:00:10Z",
+        "event_id": "revocation:document-share-grant:synthetic-scheduling-001",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "new_status": "revoked",
+        "previous_status": "active",
+        "profile_uri": "urn:caretrust:profile:core:artifact-status:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "a3f99eccc0b8b6b415d555cc7440870336390e534a856ae81b139f9cb1a443cd"
+            },
+            "recorded_at": "2026-07-30T18:00:10Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "revocation:document-share-grant:synthetic-scheduling-001"
+          }
+        ],
+        "reason_code": "urn:caretrust:reason:document-share:patient-revoked-sharing",
+        "recorded_at": "2026-07-30T18:00:10Z",
+        "schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+        "sequence": 1,
+        "spec_version": "0.1"
+      }
+    }
+  },
+  "message_envelopes": {
+    "delegation_authorization_decision": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:delegation_authorization_decision",
+      "message_type": "urn:caretrust:message-type:delegation-authorization-decision",
+      "payload": {
+        "decided_at": "2026-07-30T10:04:01Z",
+        "decision": "permit",
+        "decision_id": "delegation-decision:synthetic-001",
+        "expires_at": "2026-07-30T10:09:01Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:delegation-authorization",
+        "policy_version": "caretrust.delegation-authorization.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:delegation:policy-requirements-satisfied"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "6f8770d34e3105c9b8734afcb3f8e3f66e74d7831278d1927d8e32ebf599de35"
+        },
+        "request_id": "delegation-request:synthetic-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T10:04:01Z",
+        "supporting_artifact_refs": [
+          {
+            "artifact_id": "grant:synthetic-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+            },
+            "version": 1
+          }
+        ]
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "3ef89f4d79b0e79297cb9602df06c0ef8dcf31014991894670706574cd69ba4d"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T10:04:01Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "delegation_authorization_request": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:delegation_authorization_request",
+      "message_type": "urn:caretrust:message-type:delegation-authorization-request",
+      "payload": {
+        "action": "urn:caretrust:action:delegation:schedule-appointments",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T10:09:00Z",
+        "idempotency_key": "55a21b578bbe2b45f9850c995562aedf94ac79ac01952fbe54bfb0b7bf36d387",
+        "nonce": "0305d19510faf7b9bc1b3318c9b492908d9e53123818d1e5b0a950280f8075d9",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:delegation:appointment-management",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "grant:synthetic-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "delegation-request:synthetic-001",
+        "requested_at": "2026-07-30T10:04:00Z",
+        "requester_ref": "account:synthetic-leilani",
+        "resource": "urn:caretrust:resource:delegation:appointments",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "6f8770d34e3105c9b8734afcb3f8e3f66e74d7831278d1927d8e32ebf599de35"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T10:04:00Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "delegation_grant_artifact": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:delegation_grant_artifact",
+      "message_type": "urn:caretrust:message-type:delegation-grant-artifact",
+      "payload": {
+        "artifact_id": "grant:synthetic-001",
+        "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+        "issued_at": "2026-07-30T10:03:01Z",
+        "issuer_ref": "org:synthetic-caretrust",
+        "payload": {
+          "bridge": {
+            "experimental_profile": true,
+            "mapping_status": "mapped_only",
+            "semantic_loss": []
+          },
+          "legacy_contract": {
+            "allowed_actions": [
+              "schedule_appointments",
+              "view_visit_instructions"
+            ],
+            "allowed_audiences": [
+              "app:synthetic-scheduling",
+              "app:synthetic-care-portal"
+            ],
+            "allowed_purposes": [
+              "appointment_management",
+              "care_coordination"
+            ],
+            "allowed_resources": [
+              "appointments",
+              "visit_instructions"
+            ],
+            "application_decision_required": true,
+            "approval_id": "approval:synthetic-001",
+            "authority_basis": "patient_attestation",
+            "delegate_ref": "account:synthetic-leilani",
+            "excluded_resources": [
+              "billing",
+              "mental_health_records"
+            ],
+            "grant_id": "grant:synthetic-001",
+            "issued_at": "2026-07-30T10:03:01Z",
+            "issuer_ref": "org:synthetic-caretrust",
+            "legal_authority_status": "not_established",
+            "patient_ref": "patient:synthetic-001",
+            "relationship_claim_id": "relationship:synthetic-001",
+            "revoked_at": null,
+            "schema_version": "caretrust.delegation-grant.v1",
+            "status": "active",
+            "synthetic": true,
+            "valid_from": "2026-07-30",
+            "valid_until": "2026-12-31"
+          }
+        },
+        "payload_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+        },
+        "payload_schema_uri": "urn:caretrust:schema:experimental:legacy-delegation-grant-payload:0.1",
+        "profile_uri": "urn:caretrust:profile:experimental:legacy-delegation-grant:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096"
+            },
+            "recorded_at": "2026-07-30T10:03:01Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "grant:synthetic-001"
+          }
+        ],
+        "schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+        "spec_version": "0.1",
+        "status": "active",
+        "status_ref": "urn:caretrust:status:legacy-delegation:active",
+        "subject_refs": [
+          "patient:synthetic-001",
+          "account:synthetic-leilani"
+        ],
+        "valid_from": "2026-07-30T00:00:00Z",
+        "valid_until": "2027-01-01T00:00:00Z",
+        "version": 1
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "8c3e62b4c3fd73ad3ee59ab6795948934c82fece712acfd659782202881ffb52"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T10:03:01Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "delegation_revocation_status": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:delegation_revocation_status",
+      "message_type": "urn:caretrust:message-type:delegation-revocation-status",
+      "payload": {
+        "actor_ref": "patient:synthetic-001",
+        "actor_role": "urn:caretrust:role:patient",
+        "artifact_ref": {
+          "artifact_id": "grant:synthetic-001",
+          "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-delegation-grant",
+          "content_hash": {
+            "algorithm": "sha-256",
+            "canonicalization": "urn:ietf:rfc:8785",
+            "value": "f9fd0beaec9892100ac9c1cc99c2016dbbddc66e7bc2e5bb2ad17d690148266b"
+          },
+          "version": 1
+        },
+        "effective_at": "2026-07-30T10:05:00Z",
+        "event_id": "delegation-revocation:synthetic-001",
+        "issuer_ref": "org:synthetic-caretrust",
+        "new_status": "revoked",
+        "previous_status": "active",
+        "profile_uri": "urn:caretrust:profile:core:artifact-status:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+            },
+            "recorded_at": "2026-07-30T10:05:00Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "delegation-revocation:synthetic-001"
+          }
+        ],
+        "reason_code": "urn:caretrust:reason:delegation:patient-revoked-delegation",
+        "recorded_at": "2026-07-30T10:05:00Z",
+        "schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+        "sequence": 1,
+        "spec_version": "0.1"
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "d7c2d34784c48e0c1095c338dc986c8a133f7df6d3a80bf435ff1b2795a544eb"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T10:05:00Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_decision": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_decision",
+      "message_type": "urn:caretrust:message-type:document-share-decision",
+      "payload": {
+        "decided_at": "2026-07-30T18:00:06Z",
+        "decision": "permit",
+        "decision_id": "decision:document-share-request:synthetic-scheduling-permit-001",
+        "expires_at": "2026-07-30T18:05:06Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:document-share",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:document-share:policy-satisfied"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "a4b199c9c8f40c085dcfdea5321d39d0f95a978f06dd8f66e8773f02e279d930"
+        },
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T18:00:06Z",
+        "supporting_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ]
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "16bf743c10d34230fe20edd14fa925d7a65ef16609f20276ecdbb099c500076d"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:06Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_grant_artifact": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_grant_artifact",
+      "message_type": "urn:caretrust:message-type:document-share-grant-artifact",
+      "payload": {
+        "artifact_id": "document-share-grant:synthetic-scheduling-001",
+        "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+        "issued_at": "2026-07-30T18:00:04Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "payload": {
+          "bridge": {
+            "experimental_profile": true,
+            "mapping_status": "mapped_only",
+            "semantic_loss": []
+          },
+          "legacy_contract": {
+            "allowed_audiences": [
+              "app:synthetic-scheduling"
+            ],
+            "allowed_item_kinds": [
+              "instruction"
+            ],
+            "allowed_purposes": [
+              "discharge_follow_up"
+            ],
+            "approved_item_ids": [
+              "approved:review:synthetic-discharge-001:candidate:follow-up"
+            ],
+            "fresh_decision_required": true,
+            "grant_id": "document-share-grant:synthetic-scheduling-001",
+            "issued_at": "2026-07-30T18:00:04Z",
+            "maximum_sensitivity": "restricted_health_information",
+            "overbroad_requests_allowed": false,
+            "patient_ref": "patient:synthetic-001",
+            "raw_document_sharing_allowed": false,
+            "review_id": "review:synthetic-discharge-001",
+            "revoked_at": null,
+            "schema_version": "caretrust.document-share-grant.v1",
+            "status": "active",
+            "synthetic_only": true,
+            "unapproved_items_allowed": false,
+            "valid_from": "2026-07-30T18:00:04Z",
+            "valid_until": "2026-08-06T18:00:00Z"
+          }
+        },
+        "payload_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+        },
+        "payload_schema_uri": "urn:caretrust:schema:experimental:legacy-document-share-grant-payload:0.1",
+        "profile_uri": "urn:caretrust:profile:experimental:legacy-document-share-grant:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "1f4c9d0363bb13c7e92b238f79700ba60be1a37dc90609c9bb00916e0e4e18f4"
+            },
+            "recorded_at": "2026-07-30T18:00:04Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "document-share-grant:synthetic-scheduling-001"
+          }
+        ],
+        "schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+        "spec_version": "0.1",
+        "status": "active",
+        "status_ref": "urn:caretrust:status:legacy-document-share:active",
+        "subject_refs": [
+          "patient:synthetic-001"
+        ],
+        "valid_from": "2026-07-30T18:00:04Z",
+        "valid_until": "2026-08-06T18:00:00Z",
+        "version": 1
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "cd953d1dd4de7eeb0b22916745e893163461f9309c30b5eb6eb069e944426925"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:trust-artifact:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:04Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_post_revocation_decision": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_post_revocation_decision",
+      "message_type": "urn:caretrust:message-type:document-share-post-revocation-decision",
+      "payload": {
+        "decided_at": "2026-07-30T18:00:12Z",
+        "decision": "deny",
+        "decision_id": "decision:document-share-request:synthetic-after-revocation-001",
+        "expires_at": "2026-07-30T18:05:12Z",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "policy_uri": "urn:caretrust:policy:document-share",
+        "policy_version": "caretrust.document-share-policy.v1",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "reason_codes": [
+          "urn:caretrust:reason:document-share:grant-revoked"
+        ],
+        "request_hash": {
+          "algorithm": "sha-256",
+          "canonicalization": "urn:ietf:rfc:8785",
+          "value": "4a179668bb4e3c68c3f02b2120dbc7ae665390b5ddd6f0e0369e457dc87b5751"
+        },
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+        "spec_version": "0.1",
+        "status_checked_at": "2026-07-30T18:00:12Z",
+        "supporting_artifact_refs": []
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "dc009fa03a642d2fd49ded4bcc25f4bbdd8bf3be75223525774f7b9d8607e90b"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-decision:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:12Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_post_revocation_request": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_post_revocation_request",
+      "message_type": "urn:caretrust:message-type:document-share-post-revocation-request",
+      "payload": {
+        "action": "urn:caretrust:action:document-share:read-approved-items",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T18:05:11Z",
+        "idempotency_key": "23651d98d7d8db07a4589578453520cd2343a2014635bf35a3c1f2fffd2ba3cd",
+        "nonce": "ad87d60e162e417b5746b5404793d0267f5191910e4909a132f3cae66ad0cfd8",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:document-share:discharge-follow-up",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "document-share-request:synthetic-after-revocation-001",
+        "requested_at": "2026-07-30T18:00:11Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "resource": "urn:caretrust:resource-set:document-share:ef96022ed97f04327f5bc9b816dddeafa3dfb5d8c7d641046cbb18d8975fff8a",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "4a179668bb4e3c68c3f02b2120dbc7ae665390b5ddd6f0e0369e457dc87b5751"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:11Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_request": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_request",
+      "message_type": "urn:caretrust:message-type:document-share-request",
+      "payload": {
+        "action": "urn:caretrust:action:document-share:read-approved-items",
+        "audience": "app:synthetic-scheduling",
+        "expires_at": "2026-07-30T18:05:05Z",
+        "idempotency_key": "1c40860a4976c66910cafcc8debf182b32cb9d3ae593cd11025fca59076de501",
+        "nonce": "fef855b1f894f5005f6e9a5944e6800de8e82228ad0ea43038d5d5a0d98601ba",
+        "profile_uri": "urn:caretrust:profile:core:authorization:0.1",
+        "purpose": "urn:caretrust:purpose:document-share:discharge-follow-up",
+        "referenced_artifact_refs": [
+          {
+            "artifact_id": "document-share-grant:synthetic-scheduling-001",
+            "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+            },
+            "version": 1
+          }
+        ],
+        "request_id": "document-share-request:synthetic-scheduling-permit-001",
+        "requested_at": "2026-07-30T18:00:05Z",
+        "requester_ref": "app:synthetic-scheduling",
+        "resource": "urn:caretrust:resource-set:document-share:ef96022ed97f04327f5bc9b816dddeafa3dfb5d8c7d641046cbb18d8975fff8a",
+        "schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+        "spec_version": "0.1",
+        "subject_ref": "patient:synthetic-001"
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "a4b199c9c8f40c085dcfdea5321d39d0f95a978f06dd8f66e8773f02e279d930"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:authorization-request:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:05Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    },
+    "document_share_revocation_status": {
+      "correlation_id": "case:synthetic-multi-caregiver",
+      "message_id": "urn:caretrust:message:core-bridge:document_share_revocation_status",
+      "message_type": "urn:caretrust:message-type:document-share-revocation-status",
+      "payload": {
+        "actor_ref": "patient:synthetic-001",
+        "actor_role": "urn:caretrust:role:patient",
+        "artifact_ref": {
+          "artifact_id": "document-share-grant:synthetic-scheduling-001",
+          "artifact_type": "urn:caretrust:artifact-type:experimental:legacy-document-share-grant",
+          "content_hash": {
+            "algorithm": "sha-256",
+            "canonicalization": "urn:ietf:rfc:8785",
+            "value": "f1adaacaade76253263dae8c56e99fc84adaa7215be2d223e0221fd2b726a89a"
+          },
+          "version": 1
+        },
+        "effective_at": "2026-07-30T18:00:10Z",
+        "event_id": "revocation:document-share-grant:synthetic-scheduling-001",
+        "issuer_ref": "service:caretrust-core-bridge",
+        "new_status": "revoked",
+        "previous_status": "active",
+        "profile_uri": "urn:caretrust:profile:core:artifact-status:0.1",
+        "provenance_refs": [
+          {
+            "content_hash": {
+              "algorithm": "sha-256",
+              "canonicalization": "urn:ietf:rfc:8785",
+              "value": "a3f99eccc0b8b6b415d555cc7440870336390e534a856ae81b139f9cb1a443cd"
+            },
+            "recorded_at": "2026-07-30T18:00:10Z",
+            "relationship": "urn:caretrust:relationship:derived-from-legacy-contract",
+            "source_ref": "revocation:document-share-grant:synthetic-scheduling-001"
+          }
+        ],
+        "reason_code": "urn:caretrust:reason:document-share:patient-revoked-sharing",
+        "recorded_at": "2026-07-30T18:00:10Z",
+        "schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+        "sequence": 1,
+        "spec_version": "0.1"
+      },
+      "payload_hash": {
+        "algorithm": "sha-256",
+        "canonicalization": "urn:ietf:rfc:8785",
+        "value": "74a2a310646d00a9577e663de2020731d517e8f219f11e2b9cf8630b354daac3"
+      },
+      "payload_schema_uri": "urn:caretrust:schema:core:status-event:0.1",
+      "profile_uri": "urn:caretrust:profile:core:message-envelope:0.1",
+      "receiver_ref": "service:caretrust-core-validation",
+      "schema_uri": "urn:caretrust:schema:core:message-envelope:0.1",
+      "sender_ref": "service:caretrust-core-bridge",
+      "sent_at": "2026-07-30T18:00:10Z",
+      "spec_version": "0.1",
+      "trace_id": "trace:synthetic-core-v0.1-bridge"
+    }
+  },
+  "native_core_profile_conformance_claimed": false,
+  "network_calls": false,
+  "published_schema_commit": "cbef37a7d8a2b46bf37f6c144800a8a92581eefa",
+  "published_schema_source": "https://github.com/caretrust-hub/caretrust-spec/tree/main/schemas/core/v0.1",
+  "synthetic_only": true
+}

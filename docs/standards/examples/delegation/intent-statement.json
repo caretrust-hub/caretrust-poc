@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-07-30T10:00:00Z",
+  "intent_id": "intent:synthetic-delegation-001",
+  "patient_ref": "patient:synthetic-001",
+  "schema_version": "caretrust.intent-statement.v1",
+  "spans": [
+    {
+      "end_char": 23,
+      "intent_id": "intent:synthetic-delegation-001",
+      "quote": "my daughter Leilani",
+      "span_id": "intent-span:synthetic-delegate",
+      "start_char": 4
+    },
+    {
+      "end_char": 45,
+      "intent_id": "intent:synthetic-delegation-001",
+      "quote": "schedule appointments",
+      "span_id": "intent-span:synthetic-scheduling",
+      "start_char": 24
+    },
+    {
+      "end_char": 72,
+      "intent_id": "intent:synthetic-delegation-001",
+      "quote": "see visit instructions",
+      "span_id": "intent-span:synthetic-instructions",
+      "start_char": 50
+    },
+    {
+      "end_char": 91,
+      "intent_id": "intent:synthetic-delegation-001",
+      "quote": "through 2026-12-31",
+      "span_id": "intent-span:synthetic-expiration",
+      "start_char": 73
+    },
+    {
+      "end_char": 133,
+      "intent_id": "intent:synthetic-delegation-001",
+      "quote": "not billing or mental health records",
+      "span_id": "intent-span:synthetic-exclusions",
+      "start_char": 97
+    }
+  ],
+  "synthetic": true,
+  "utterance": "Let my daughter Leilani schedule appointments and see visit instructions through 2026-12-31, but not billing or mental health records.",
+  "utterance_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4"
+}

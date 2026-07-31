@@ -1,6 +1,6 @@
 # Design mapping to W3C Verifiable Credentials Data Model 2.0
 
-Status: **Mapped only — not implemented**.
+Evidence status: **`mapped_only` — Mapped only**.
 
 The target is the
 [W3C Verifiable Credentials Data Model 2.0](https://www.w3.org/TR/vc-data-model-2.0/).

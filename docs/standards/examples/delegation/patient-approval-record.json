@@ -1,0 +1,21 @@
+{
+  "activation_permitted": false,
+  "approval_basis": "patient_attestation",
+  "approval_id": "approval:synthetic-001",
+  "approved_at": "2026-07-30T10:03:00Z",
+  "authorization_permitted": false,
+  "clarification_bundle_sha256": "fa0dea711bd1d9e4f7b9a15edf8a05f17793ed5a1d823811db9c86992cf6c2b6",
+  "clarification_response_ids": [
+    "clarification-response:synthetic-001"
+  ],
+  "decision": "approved",
+  "explicit_patient_action": true,
+  "final_draft_id": "delegation-draft:synthetic-001:v2",
+  "final_draft_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "intent_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
+  "invite_acceptance_id": "invite-acceptance:synthetic-001",
+  "legal_authority_status": "not_established",
+  "patient_ref": "patient:synthetic-001",
+  "schema_version": "caretrust.patient-approval-record.v1",
+  "synthetic": true
+}

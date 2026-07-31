@@ -1,0 +1,115 @@
+{
+  "candidate_validation_errors": [],
+  "compilation_mode": "model_candidate_validated",
+  "draft": {
+    "activation_permitted": false,
+    "application_id": "app:synthetic-scheduling",
+    "authorization_permitted": false,
+    "clarifications": [],
+    "draft_id": "app-onboarding-draft:app:synthetic-scheduling:v1",
+    "flags": [],
+    "minimum_data_plan": [
+      {
+        "evidence_refs": [
+          "app-source:synthetic-scheduling-001:openapi"
+        ],
+        "field": "appointment.id",
+        "rationale": "Identifies the appointment to display."
+      },
+      {
+        "evidence_refs": [
+          "app-source:synthetic-scheduling-001:openapi"
+        ],
+        "field": "appointment.start",
+        "rationale": "Shows the scheduled time."
+      }
+    ],
+    "proposed_profile": "https://caretrust-hub.github.io/caretrust-spec/profiles/appointment_management/v1",
+    "proposed_rar": [
+      {
+        "actions": [
+          "schedule_appointments"
+        ],
+        "datatypes": [
+          "appointment.id",
+          "appointment.start"
+        ],
+        "evidence_refs": [
+          "app-source:synthetic-scheduling-001:full-text",
+          "app-source:synthetic-scheduling-001:openapi"
+        ],
+        "locations": [
+          "https://scheduling.synthetic.example"
+        ],
+        "purpose": "appointment_management",
+        "type": "https://caretrust-hub.github.io/caretrust-spec/rar/care-data/v1"
+      }
+    ],
+    "registration_permitted": false,
+    "schema_version": "caretrust.application-onboarding-draft.v1",
+    "source_sha256": "0fd26020199dd3efc3bb8c41fda031b33b22a36d13b9d7ee51c894c069029f1c",
+    "status": "draft",
+    "synthetic": true
+  },
+  "evidence_status": "contract_tested",
+  "model_candidate": {
+    "action": {
+      "citation": {
+        "citation_id": "app-source:synthetic-scheduling-001:openapi",
+        "quote": "\"post\""
+      },
+      "value": "schedule_appointments"
+    },
+    "capability": {
+      "citation": {
+        "citation_id": "app-source:synthetic-scheduling-001:full-text",
+        "quote": "scheduling application"
+      },
+      "value": "appointment_management"
+    },
+    "data_fields": [
+      {
+        "citation": {
+          "citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "quote": "/appointments"
+        },
+        "value": "appointment.id"
+      },
+      {
+        "citation": {
+          "citation_id": "app-source:synthetic-scheduling-001:openapi",
+          "quote": "/appointments"
+        },
+        "value": "appointment.start"
+      }
+    ],
+    "location": {
+      "citation": {
+        "citation_id": "app-source:synthetic-scheduling-001:openapi",
+        "quote": "https://scheduling.synthetic.example"
+      },
+      "value": "https://scheduling.synthetic.example"
+    }
+  },
+  "non_claims": [
+    "This is a proposed application profile and does not register an application or authorize access."
+  ],
+  "run": {
+    "authority_actions_available": false,
+    "compiler_version": "caretrust.application-onboarding-compiler.v1",
+    "completed_at": "2026-07-30T10:00:00Z",
+    "draft_only": true,
+    "estimated_cost_usd": 0.0,
+    "input_sha256": "0fd26020199dd3efc3bb8c41fda031b33b22a36d13b9d7ee51c894c069029f1c",
+    "latency_ms": 0,
+    "model_id": "recorded-structured-output-v1",
+    "prompt_sha256": "fee73e72e25c8f6f1ca70cf59e696636c9391d9c2e8a34c699a334ef65b09302",
+    "provider": "recorded_contract_fixture",
+    "response_sha256": "057131d89e5cbd572fdc376085acb7802f93231c4bbfc26fb22ccd1be0691361",
+    "run_id": "compiler-run:app:synthetic-scheduling:bedrock",
+    "schema_version": "caretrust.compiler-run.v1",
+    "started_at": "2026-07-30T10:00:00Z"
+  },
+  "safety_flags": [],
+  "schema_version": "caretrust.application-compilation.v1"
+}

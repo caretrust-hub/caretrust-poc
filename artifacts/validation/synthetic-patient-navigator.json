@@ -1,0 +1,818 @@
+{
+  "care_team_rows": [
+    {
+      "authority_basis": "patient_attestation",
+      "caregiver_ref": "account:synthetic-leilani",
+      "grant_history": [
+        {
+          "grant_event_id": "event:navigator:grant:001",
+          "grant_id": "grant:synthetic-001",
+          "grant_payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "revocation_event_id": "event:navigator:revocation:001",
+          "revocation_id": "delegation-revocation:synthetic-001",
+          "state": "revoked",
+          "was_ever_active": true
+        }
+      ],
+      "legal_authority_status": "not_established",
+      "patient_ref": "patient:synthetic-001",
+      "relationship_claim_id": "relationship:synthetic-001",
+      "relationship_code": "child",
+      "relationship_status": "active",
+      "relationship_valid_from": "2026-07-30",
+      "relationship_valid_until": "2026-12-31",
+      "role_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "role",
+          "payload_path": "relationship_code",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "relationship:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "child"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "approval",
+          "payload_path": "approval_id",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "approval:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "approval:synthetic-001"
+        }
+      ],
+      "row_id": "navigator-care-team:8e40794ef17860b81179b81e",
+      "source_event_ids": [
+        "event:navigator:relationship:001",
+        "event:navigator:grant:001",
+        "event:navigator:revocation:001"
+      ],
+      "source_payload_sha256s": [
+        "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+      ]
+    }
+  ],
+  "case_history_rows": [
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "untrusted_patient_intent",
+      "evidence_status": "executed_local",
+      "message_type": "IntentStatement",
+      "occurred_at": "2026-07-30T10:00:00Z",
+      "receiver_ref": "caretrust:intent-intake",
+      "record_state": "current",
+      "row_id": "navigator-history:ef81fafac7e17811abbe7837",
+      "source_event_id": "event:navigator:intent:001",
+      "source_ids": [
+        {
+          "name": "intent_id",
+          "value": "intent:synthetic-delegation-001"
+        }
+      ],
+      "source_payload_sha256": "3d03657cd25df3777a7d2369047bda82892287058f2118a6a2ca7e4aabf75aa8",
+      "summary_code": "intent_statement",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 1
+    },
+    {
+      "actor_ref": "caretrust:intent-model-adapter",
+      "boundary": "untrusted_model_output",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationDraft",
+      "occurred_at": "2026-07-30T10:00:01Z",
+      "receiver_ref": "caretrust:draft-validator",
+      "record_state": "superseded",
+      "row_id": "navigator-history:6f31f761b8ba46b5ea2c452c",
+      "source_event_id": "event:navigator:draft:001",
+      "source_ids": [
+        {
+          "name": "draft_id",
+          "value": "delegation-draft:synthetic-001:v1"
+        },
+        {
+          "name": "intent_id",
+          "value": "intent:synthetic-delegation-001"
+        }
+      ],
+      "source_payload_sha256": "9c98776bb48a486985cd1dba3ac1693947028d3e2b4834e5bdbb6522189c0986",
+      "summary_code": "delegation_draft_blocked",
+      "superseded_by_event_id": "event:navigator:draft:002",
+      "supersedes_event_id": null,
+      "trace_sequence": 2
+    },
+    {
+      "actor_ref": "caretrust:clarification-policy",
+      "boundary": "material_ambiguity_gate",
+      "evidence_status": "executed_local",
+      "message_type": "ClarificationRequest",
+      "occurred_at": "2026-07-30T10:00:05Z",
+      "receiver_ref": "patient:synthetic-001",
+      "record_state": "current",
+      "row_id": "navigator-history:b7490258f0c044fc35c589e6",
+      "source_event_id": "event:navigator:clarification-request:001",
+      "source_ids": [
+        {
+          "name": "clarification_id",
+          "value": "clarification:synthetic-audience-001"
+        },
+        {
+          "name": "draft_id",
+          "value": "delegation-draft:synthetic-001:v1"
+        },
+        {
+          "name": "intent_id",
+          "value": "intent:synthetic-delegation-001"
+        }
+      ],
+      "source_payload_sha256": "fe99d2d6749dc04e2ac3e3ca954eeafa24b0eaea5b7f670445b58334842040a9",
+      "summary_code": "clarification_request",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 3
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "explicit_patient_clarification",
+      "evidence_status": "executed_local",
+      "message_type": "ClarificationResponse",
+      "occurred_at": "2026-07-30T10:00:10Z",
+      "receiver_ref": "caretrust:clarification-policy",
+      "record_state": "current",
+      "row_id": "navigator-history:dc534e63cfce7963051275f5",
+      "source_event_id": "event:navigator:clarification-response:001",
+      "source_ids": [
+        {
+          "name": "clarification_id",
+          "value": "clarification:synthetic-audience-001"
+        },
+        {
+          "name": "intent_id",
+          "value": "intent:synthetic-delegation-001"
+        },
+        {
+          "name": "response_id",
+          "value": "clarification-response:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "8b5d3571dbdf785e00a23d0032b153c9ca19395c8be24062d9cf8c74666643ab",
+      "summary_code": "clarification_response",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 4
+    },
+    {
+      "actor_ref": "caretrust:intent-model-adapter",
+      "boundary": "corrected_draft_version",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationDraft",
+      "occurred_at": "2026-07-30T10:00:11Z",
+      "receiver_ref": "caretrust:draft-validator",
+      "record_state": "current",
+      "row_id": "navigator-history:80d5cbd9953ae7bcd6972540",
+      "source_event_id": "event:navigator:draft:002",
+      "source_ids": [
+        {
+          "name": "draft_id",
+          "value": "delegation-draft:synthetic-001:v2"
+        },
+        {
+          "name": "intent_id",
+          "value": "intent:synthetic-delegation-001"
+        }
+      ],
+      "source_payload_sha256": "16f49109a9104f5aef862a5af6013e77277fe56e2c1b76b59d3f9e98db9d2da8",
+      "summary_code": "delegation_draft_ready_for_review",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": "event:navigator:draft:001",
+      "trace_sequence": 5
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "hashed_single_use_invite",
+      "evidence_status": "executed_local",
+      "message_type": "PatientInvite",
+      "occurred_at": "2026-07-30T10:01:00Z",
+      "receiver_ref": "caretrust:invite-service",
+      "record_state": "current",
+      "row_id": "navigator-history:3351b42cf5307d4a1e84d404",
+      "source_event_id": "event:navigator:invite:001",
+      "source_ids": [
+        {
+          "name": "draft_id",
+          "value": "delegation-draft:synthetic-001:v2"
+        },
+        {
+          "name": "invite_id",
+          "value": "invite:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "b395ce72ada6c9f1730427272931c4e18fd96ec0131b711286d886ace7257f90",
+      "summary_code": "patient_invite",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 6
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "synthetic_account_acceptance",
+      "evidence_status": "executed_local",
+      "message_type": "InviteAcceptance",
+      "occurred_at": "2026-07-30T10:02:00Z",
+      "receiver_ref": "caretrust:invite-service",
+      "record_state": "current",
+      "row_id": "navigator-history:b7b9b8f4c1ec64d34b1954c0",
+      "source_event_id": "event:navigator:invite-acceptance:001",
+      "source_ids": [
+        {
+          "name": "acceptance_id",
+          "value": "invite-acceptance:synthetic-001"
+        },
+        {
+          "name": "invite_id",
+          "value": "invite:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "30d64f5726f8149831b5abcc91ad57e070c94881a1433a46d4dfc7c3a27e1ca1",
+      "summary_code": "invite_acceptance",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 7
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "explicit_patient_approval",
+      "evidence_status": "executed_local",
+      "message_type": "PatientApprovalRecord",
+      "occurred_at": "2026-07-30T10:03:00Z",
+      "receiver_ref": "caretrust:approval-service",
+      "record_state": "current",
+      "row_id": "navigator-history:fe23f49739fa92d21d3fa8a9",
+      "source_event_id": "event:navigator:approval:001",
+      "source_ids": [
+        {
+          "name": "acceptance_id",
+          "value": "invite-acceptance:synthetic-001"
+        },
+        {
+          "name": "approval_id",
+          "value": "approval:synthetic-001"
+        },
+        {
+          "name": "draft_id",
+          "value": "delegation-draft:synthetic-001:v2"
+        }
+      ],
+      "source_payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+      "summary_code": "patient_approval_record",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 8
+    },
+    {
+      "actor_ref": "caretrust:relationship-activation-policy",
+      "boundary": "relationship_assertion_activation",
+      "evidence_status": "executed_local",
+      "message_type": "CareRelationshipClaim",
+      "occurred_at": "2026-07-30T10:03:01Z",
+      "receiver_ref": "caretrust:relationship-store",
+      "record_state": "current",
+      "row_id": "navigator-history:c1cb4638122d7799040b377c",
+      "source_event_id": "event:navigator:relationship:001",
+      "source_ids": [
+        {
+          "name": "approval_id",
+          "value": "approval:synthetic-001"
+        },
+        {
+          "name": "relationship_claim_id",
+          "value": "relationship:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+      "summary_code": "care_relationship_claim",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 9
+    },
+    {
+      "actor_ref": "caretrust:delegation-activation-policy",
+      "boundary": "least_privilege_delegation_activation",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationGrant",
+      "occurred_at": "2026-07-30T10:03:02Z",
+      "receiver_ref": "caretrust:delegation-store",
+      "record_state": "current",
+      "row_id": "navigator-history:0d3064230578367d0cdefe5d",
+      "source_event_id": "event:navigator:grant:001",
+      "source_ids": [
+        {
+          "name": "approval_id",
+          "value": "approval:synthetic-001"
+        },
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "relationship_claim_id",
+          "value": "relationship:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+      "summary_code": "delegation_grant",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 10
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "application_specific_request",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationAuthorizationRequest",
+      "occurred_at": "2026-07-30T10:04:00Z",
+      "receiver_ref": "app:synthetic-scheduling-policy",
+      "record_state": "current",
+      "row_id": "navigator-history:952aac76781d8720651be4dc",
+      "source_event_id": "event:navigator:request:001",
+      "source_ids": [
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "request_id",
+          "value": "delegation-request:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "45f4e6005cf4945ea48ed0318fba055aeacb5efd941f31dd61e52bbc1f6052c9",
+      "summary_code": "delegation_authorization_request",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 11
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling-policy",
+      "boundary": "application_local_authorization",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationAuthorizationDecision",
+      "occurred_at": "2026-07-30T10:04:01Z",
+      "receiver_ref": "account:synthetic-leilani",
+      "record_state": "current",
+      "row_id": "navigator-history:0e6439b7fd98bdf3e9f290b6",
+      "source_event_id": "event:navigator:decision:001",
+      "source_ids": [
+        {
+          "name": "decision_id",
+          "value": "delegation-decision:synthetic-001"
+        },
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "request_id",
+          "value": "delegation-request:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "48227c708c57b6b60337b164712128bf034d2eed73dcd46b1a494231f86a4bfb",
+      "summary_code": "authorization_permit",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 12
+    },
+    {
+      "actor_ref": "patient:synthetic-001",
+      "boundary": "patient_directed_revocation",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationRevocationRecord",
+      "occurred_at": "2026-07-30T10:05:00Z",
+      "receiver_ref": "caretrust:delegation-status-seam",
+      "record_state": "current",
+      "row_id": "navigator-history:31c7b6a1fe9719f5b516495b",
+      "source_event_id": "event:navigator:revocation:001",
+      "source_ids": [
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "revocation_id",
+          "value": "delegation-revocation:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89",
+      "summary_code": "delegation_revoked",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 13
+    },
+    {
+      "actor_ref": "account:synthetic-leilani",
+      "boundary": "fresh_post_revocation_request",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationAuthorizationRequest",
+      "occurred_at": "2026-07-30T10:05:01Z",
+      "receiver_ref": "app:synthetic-scheduling-policy",
+      "record_state": "current",
+      "row_id": "navigator-history:ba4199e5b466b35ccb6c32a2",
+      "source_event_id": "event:navigator:request:002",
+      "source_ids": [
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "request_id",
+          "value": "delegation-request:synthetic-002"
+        }
+      ],
+      "source_payload_sha256": "9e22514168e599bfac6f0bb65e4cce98e62246e52a491db61c790a6baaba04f7",
+      "summary_code": "delegation_authorization_request",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 14
+    },
+    {
+      "actor_ref": "app:synthetic-scheduling-policy",
+      "boundary": "application_local_authorization",
+      "evidence_status": "executed_local",
+      "message_type": "DelegationAuthorizationDecision",
+      "occurred_at": "2026-07-30T10:05:02Z",
+      "receiver_ref": "account:synthetic-leilani",
+      "record_state": "current",
+      "row_id": "navigator-history:e449425fca32ec7bd72d08ec",
+      "source_event_id": "event:navigator:decision:002",
+      "source_ids": [
+        {
+          "name": "decision_id",
+          "value": "delegation-decision:synthetic-002"
+        },
+        {
+          "name": "grant_id",
+          "value": "grant:synthetic-001"
+        },
+        {
+          "name": "request_id",
+          "value": "delegation-request:synthetic-002"
+        },
+        {
+          "name": "revocation_id",
+          "value": "delegation-revocation:synthetic-001"
+        }
+      ],
+      "source_payload_sha256": "d1c1b82b73c48c02a608ce2dcfc94d84f7f216de0c289413d718562b674f3daf",
+      "summary_code": "authorization_deny",
+      "superseded_by_event_id": null,
+      "supersedes_event_id": null,
+      "trace_sequence": 15
+    }
+  ],
+  "metadata": {
+    "clinical_chart_status": "not_a_clinical_chart",
+    "limitations": [
+      "Administrative trust projection only; not a clinical chart.",
+      "Rows derive from synthetic trace messages and are not authoritative records.",
+      "Relationship, patient approval, delegation, and legal authority remain separate."
+    ],
+    "not_clinical_chart": true,
+    "patient_ref": "patient:synthetic-001",
+    "projected_as_of": "2026-07-30T10:05:02Z",
+    "schema_version": "caretrust.navigator-metadata.v1",
+    "source_event_ids": [
+      "event:navigator:intent:001",
+      "event:navigator:draft:001",
+      "event:navigator:clarification-request:001",
+      "event:navigator:clarification-response:001",
+      "event:navigator:draft:002",
+      "event:navigator:invite:001",
+      "event:navigator:invite-acceptance:001",
+      "event:navigator:approval:001",
+      "event:navigator:relationship:001",
+      "event:navigator:grant:001",
+      "event:navigator:request:001",
+      "event:navigator:decision:001",
+      "event:navigator:revocation:001",
+      "event:navigator:request:002",
+      "event:navigator:decision:002"
+    ],
+    "source_trace_id": "trace:synthetic-patient-navigator-001",
+    "source_trace_sha256": "49a59ce88f84de9aac39da14e2170469f11984a81f4388acfeccd58ed69e3fe5",
+    "synthetic_only": true
+  },
+  "permission_matrix_rows": [
+    {
+      "action": null,
+      "approval_id": "approval:synthetic-001",
+      "audiences": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "currently_effective": false,
+      "delegate_ref": "account:synthetic-leilani",
+      "effect": "exclude",
+      "grant_id": "grant:synthetic-001",
+      "grant_state": "revoked",
+      "patient_ref": "patient:synthetic-001",
+      "purpose_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "appointment_management"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "care_coordination"
+        }
+      ],
+      "purposes": [
+        "appointment_management",
+        "care_coordination"
+      ],
+      "relationship_claim_id": "relationship:synthetic-001",
+      "resource": "billing",
+      "role_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "role",
+          "payload_path": "relationship_claim_id",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "relationship:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "relationship:synthetic-001"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "approval",
+          "payload_path": "approval_id",
+          "payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+          "source_event_id": "event:navigator:approval:001",
+          "source_id": "approval:synthetic-001",
+          "source_message_type": "PatientApprovalRecord",
+          "value": "approval:synthetic-001"
+        }
+      ],
+      "row_id": "navigator-permission:3d81e1a9c955cbcc5f5df2ed",
+      "source_event_ids": [
+        "event:navigator:approval:001",
+        "event:navigator:relationship:001",
+        "event:navigator:grant:001",
+        "event:navigator:revocation:001"
+      ],
+      "source_payload_sha256s": [
+        "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+      ]
+    },
+    {
+      "action": "schedule_appointments",
+      "approval_id": "approval:synthetic-001",
+      "audiences": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "currently_effective": false,
+      "delegate_ref": "account:synthetic-leilani",
+      "effect": "allow",
+      "grant_id": "grant:synthetic-001",
+      "grant_state": "revoked",
+      "patient_ref": "patient:synthetic-001",
+      "purpose_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "appointment_management"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "care_coordination"
+        }
+      ],
+      "purposes": [
+        "appointment_management",
+        "care_coordination"
+      ],
+      "relationship_claim_id": "relationship:synthetic-001",
+      "resource": "appointments",
+      "role_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "role",
+          "payload_path": "relationship_claim_id",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "relationship:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "relationship:synthetic-001"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "approval",
+          "payload_path": "approval_id",
+          "payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+          "source_event_id": "event:navigator:approval:001",
+          "source_id": "approval:synthetic-001",
+          "source_message_type": "PatientApprovalRecord",
+          "value": "approval:synthetic-001"
+        }
+      ],
+      "row_id": "navigator-permission:43a2c4c6701a32c69d24f93e",
+      "source_event_ids": [
+        "event:navigator:approval:001",
+        "event:navigator:relationship:001",
+        "event:navigator:grant:001",
+        "event:navigator:revocation:001"
+      ],
+      "source_payload_sha256s": [
+        "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+      ]
+    },
+    {
+      "action": "view_visit_instructions",
+      "approval_id": "approval:synthetic-001",
+      "audiences": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "currently_effective": false,
+      "delegate_ref": "account:synthetic-leilani",
+      "effect": "allow",
+      "grant_id": "grant:synthetic-001",
+      "grant_state": "revoked",
+      "patient_ref": "patient:synthetic-001",
+      "purpose_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "appointment_management"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "care_coordination"
+        }
+      ],
+      "purposes": [
+        "appointment_management",
+        "care_coordination"
+      ],
+      "relationship_claim_id": "relationship:synthetic-001",
+      "resource": "visit_instructions",
+      "role_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "role",
+          "payload_path": "relationship_claim_id",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "relationship:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "relationship:synthetic-001"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "approval",
+          "payload_path": "approval_id",
+          "payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+          "source_event_id": "event:navigator:approval:001",
+          "source_id": "approval:synthetic-001",
+          "source_message_type": "PatientApprovalRecord",
+          "value": "approval:synthetic-001"
+        }
+      ],
+      "row_id": "navigator-permission:834d15bf3234bf151a57aaa3",
+      "source_event_ids": [
+        "event:navigator:approval:001",
+        "event:navigator:relationship:001",
+        "event:navigator:grant:001",
+        "event:navigator:revocation:001"
+      ],
+      "source_payload_sha256s": [
+        "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+      ]
+    },
+    {
+      "action": null,
+      "approval_id": "approval:synthetic-001",
+      "audiences": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "currently_effective": false,
+      "delegate_ref": "account:synthetic-leilani",
+      "effect": "exclude",
+      "grant_id": "grant:synthetic-001",
+      "grant_state": "revoked",
+      "patient_ref": "patient:synthetic-001",
+      "purpose_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "appointment_management"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "purpose",
+          "payload_path": "allowed_purposes",
+          "payload_sha256": "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+          "source_event_id": "event:navigator:grant:001",
+          "source_id": "grant:synthetic-001",
+          "source_message_type": "DelegationGrant",
+          "value": "care_coordination"
+        }
+      ],
+      "purposes": [
+        "appointment_management",
+        "care_coordination"
+      ],
+      "relationship_claim_id": "relationship:synthetic-001",
+      "resource": "mental_health_records",
+      "role_evidence": [
+        {
+          "evidence_status": "executed_local",
+          "kind": "role",
+          "payload_path": "relationship_claim_id",
+          "payload_sha256": "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+          "source_event_id": "event:navigator:relationship:001",
+          "source_id": "relationship:synthetic-001",
+          "source_message_type": "CareRelationshipClaim",
+          "value": "relationship:synthetic-001"
+        },
+        {
+          "evidence_status": "executed_local",
+          "kind": "approval",
+          "payload_path": "approval_id",
+          "payload_sha256": "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+          "source_event_id": "event:navigator:approval:001",
+          "source_id": "approval:synthetic-001",
+          "source_message_type": "PatientApprovalRecord",
+          "value": "approval:synthetic-001"
+        }
+      ],
+      "row_id": "navigator-permission:95fb5bf5b6124aab3b261627",
+      "source_event_ids": [
+        "event:navigator:approval:001",
+        "event:navigator:relationship:001",
+        "event:navigator:grant:001",
+        "event:navigator:revocation:001"
+      ],
+      "source_payload_sha256s": [
+        "d58c7d0c40d6f0d7c31274e0c363fdf381c8471b364a7d260666055481574aa6",
+        "8927eba412cc1499b8d9c98e045c1047511fd11377d81e4133b3dcd2d19e1afd",
+        "e8a89ca5f1fd4e439e25a1ba3850277e8f105693592914df9dbba9faf2d8c096",
+        "59aa7d2052232e25e13b81805d3f23c34176132e9dfcc76d21d64f9f1f7e8d89"
+      ]
+    }
+  ],
+  "schema_version": "caretrust.patient-navigator-projection.v1"
+}

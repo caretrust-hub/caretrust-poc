@@ -1,0 +1,137 @@
+{
+  "decision": {
+    "authorized_user_ref": "user:synthetic-care-coordinator-001",
+    "caretrust_role": "delegation_and_trust_context_only",
+    "client_id": "https://care-app.synthetic.invalid",
+    "data_holder_id": "https://ehr.synthetic.invalid",
+    "decided_at": "2026-07-30T18:00:00Z",
+    "decision": "permit",
+    "decision_id": "decision:clinical:8296078dcecdb03f0bd7",
+    "disclosure_policy_authority": "data_holder",
+    "fhir_bundle_included": true,
+    "granted_fhir_resource_types": [
+      "CarePlan"
+    ],
+    "granted_scopes": [
+      "patient/CarePlan.rs"
+    ],
+    "participant_org_ref": "org:synthetic-participating-provider-001",
+    "patient_match_authority": "data_holder",
+    "patient_match_id": "match:clinical:permit-001",
+    "policy_version": "synthetic.data-holder.disclosure.v1",
+    "reason_codes": [
+      "DATA_HOLDER_POLICY_SATISFIED"
+    ],
+    "request_id": "request:clinical:permit-001",
+    "requesting_party_eligibility_authority": "data_holder",
+    "schema_version": "caretrust.clinical-data-authorization-decision.v1",
+    "supporting_caretrust_context_ids": [
+      "context:clinical:permit-001"
+    ],
+    "synthetic": true
+  },
+  "live_hie_or_ehr_connected": false,
+  "network_calls": false,
+  "patient_match": {
+    "authority": "data_holder",
+    "data_holder_id": "https://ehr.synthetic.invalid",
+    "local_patient_ref": "Patient/synthetic-local-001",
+    "match_id": "match:clinical:permit-001",
+    "match_inputs_disclosed_to_caretrust": false,
+    "method": "synthetic_data_holder_index",
+    "performed_at": "2026-07-30T18:00:00Z",
+    "request_id": "request:clinical:permit-001",
+    "schema_version": "caretrust.patient-match-result.v1",
+    "status": "matched",
+    "synthetic": true
+  },
+  "record_type": "caretrust.synthetic-clinical-data-edge.v1",
+  "request": {
+    "authorized_user_ref": "user:synthetic-care-coordinator-001",
+    "caregiver_is_requesting_actor": false,
+    "caregiver_ref": "caregiver:synthetic-001",
+    "caretrust_context": {
+      "allowed_data_holders": [
+        "https://ehr.synthetic.invalid"
+      ],
+      "allowed_fhir_resource_types": [
+        "CarePlan"
+      ],
+      "allowed_purposes": [
+        "care_coordination"
+      ],
+      "allowed_scopes": [
+        "patient/CarePlan.rs"
+      ],
+      "caregiver_ref": "caregiver:synthetic-001",
+      "caretrust_role": "delegation_and_trust_context_only",
+      "context_id": "context:clinical:permit-001",
+      "delegation_decision_id": "decision:delegation:permit-001",
+      "delegation_grant_id": "grant:delegation:permit-001",
+      "disclosure_policy_authority": "data_holder",
+      "legal_authority_status": "not_established",
+      "patient_match_authority": "data_holder",
+      "patient_ref": "patient:synthetic-001",
+      "relationship_claim_id": "claim:relationship:permit-001",
+      "revoked_at": null,
+      "schema_version": "caretrust.clinical-context.v1",
+      "status": "active",
+      "synthetic": true,
+      "valid_from": "2026-07-01",
+      "valid_until": "2026-12-31",
+      "verified_at": "2026-07-30T18:00:00Z"
+    },
+    "client_id": "https://care-app.synthetic.invalid",
+    "clinical_data_recipient": "authorized_participant_application",
+    "data_holder_id": "https://ehr.synthetic.invalid",
+    "final_disclosure_decision_requested": true,
+    "participant_org_ref": "org:synthetic-participating-provider-001",
+    "patient_match_hint": "patient:synthetic-001",
+    "patient_match_requested": true,
+    "prior_request_id": null,
+    "purpose": "care_coordination",
+    "request_id": "request:clinical:permit-001",
+    "requested_at": "2026-07-30T18:00:00Z",
+    "requested_fhir_resource_types": [
+      "CarePlan"
+    ],
+    "requested_scopes": [
+      "patient/CarePlan.rs"
+    ],
+    "requesting_actor_role": "authorized_participant_user",
+    "schema_version": "caretrust.clinical-data-authorization-request.v1",
+    "synthetic": true
+  },
+  "returned_fhir_bundle": {
+    "entry": [
+      {
+        "fullUrl": "https://ehr.synthetic.invalid/fhir/CarePlan/synthetic-care-plan-001",
+        "resource": {
+          "description": "Synthetic follow-up instructions for contract testing; not a real clinical record.",
+          "id": "synthetic-care-plan-001",
+          "intent": "plan",
+          "resourceType": "CarePlan",
+          "status": "active",
+          "subject": {
+            "reference": "Patient/synthetic-local-001"
+          },
+          "title": "Synthetic caregiver visit instructions"
+        }
+      }
+    ],
+    "id": "synthetic-care-plan-bundle-001",
+    "meta": {
+      "tag": [
+        {
+          "code": "synthetic",
+          "display": "Synthetic test data",
+          "system": "https://caretrust.example/fhir/CodeSystem/data-classification"
+        }
+      ]
+    },
+    "resourceType": "Bundle",
+    "timestamp": "2026-07-30T18:00:00Z",
+    "type": "collection"
+  },
+  "synthetic": true
+}

@@ -1,0 +1,134 @@
+{
+  "activation_permitted": false,
+  "allowed_actions": [
+    "schedule_appointments",
+    "view_visit_instructions"
+  ],
+  "allowed_audiences": [
+    "app:synthetic-scheduling",
+    "app:synthetic-care-portal"
+  ],
+  "allowed_purposes": [
+    "appointment_management",
+    "care_coordination"
+  ],
+  "allowed_resources": [
+    "appointments",
+    "visit_instructions"
+  ],
+  "authority_basis": "unverified_patient_intent",
+  "authorization_permitted": false,
+  "blocking_issues": [],
+  "delegate_ref": "account:synthetic-leilani",
+  "draft_id": "delegation-draft:synthetic-001:v2",
+  "draft_version": 2,
+  "evidence_bindings": [
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-delegate"
+      ],
+      "field_path": "delegate_ref",
+      "value": "account:synthetic-leilani"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-delegate"
+      ],
+      "field_path": "relationship_code",
+      "value": "child"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-scheduling"
+      ],
+      "field_path": "allowed_actions",
+      "value": "schedule_appointments"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-instructions"
+      ],
+      "field_path": "allowed_actions",
+      "value": "view_visit_instructions"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-scheduling"
+      ],
+      "field_path": "allowed_resources",
+      "value": "appointments"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-instructions"
+      ],
+      "field_path": "allowed_resources",
+      "value": "visit_instructions"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-exclusions"
+      ],
+      "field_path": "excluded_resources",
+      "value": "billing"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-exclusions"
+      ],
+      "field_path": "excluded_resources",
+      "value": "mental_health_records"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-scheduling"
+      ],
+      "field_path": "allowed_purposes",
+      "value": "appointment_management"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-instructions"
+      ],
+      "field_path": "allowed_purposes",
+      "value": "care_coordination"
+    },
+    {
+      "evidence_refs": [
+        "clarification-response:synthetic-001"
+      ],
+      "field_path": "allowed_audiences",
+      "value": "app:synthetic-scheduling"
+    },
+    {
+      "evidence_refs": [
+        "clarification-response:synthetic-001"
+      ],
+      "field_path": "allowed_audiences",
+      "value": "app:synthetic-care-portal"
+    },
+    {
+      "evidence_refs": [
+        "intent-span:synthetic-expiration"
+      ],
+      "field_path": "valid_until",
+      "value": "2026-12-31"
+    }
+  ],
+  "excluded_resources": [
+    "billing",
+    "mental_health_records"
+  ],
+  "intent_id": "intent:synthetic-delegation-001",
+  "intent_sha256": "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
+  "legal_authority_status": "not_established",
+  "patient_ref": "patient:synthetic-001",
+  "proposed_by": "ai_model",
+  "relationship_code": "child",
+  "schema_version": "caretrust.delegation-draft.v1",
+  "status": "draft",
+  "synthetic": true,
+  "uncertainties": [],
+  "valid_from": null,
+  "valid_until": "2026-12-31"
+}

@@ -1,0 +1,197 @@
+{
+  "$defs": {
+    "DelegationAction": {
+      "description": "Patient-delegable actions in the bounded v0.3 prototype.",
+      "enum": [
+        "schedule_appointments",
+        "view_appointments",
+        "view_visit_instructions",
+        "message_care_team"
+      ],
+      "title": "DelegationAction",
+      "type": "string"
+    },
+    "DelegationAudience": {
+      "description": "Application audiences included in the bounded synthetic workflow.",
+      "enum": [
+        "app:synthetic-scheduling",
+        "app:synthetic-care-portal"
+      ],
+      "title": "DelegationAudience",
+      "type": "string"
+    },
+    "DelegationPurpose": {
+      "description": "Purpose vocabulary used by local application policy.",
+      "enum": [
+        "care_coordination",
+        "appointment_management"
+      ],
+      "title": "DelegationPurpose",
+      "type": "string"
+    },
+    "DelegationResource": {
+      "description": "Resource categories understood by the bounded prototype.",
+      "enum": [
+        "appointments",
+        "visit_instructions",
+        "care_team_messages",
+        "billing",
+        "mental_health_records"
+      ],
+      "title": "DelegationResource",
+      "type": "string"
+    },
+    "GrantStatus": {
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "title": "GrantStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Patient-approved, least-privilege grant separate from relationship.",
+  "properties": {
+    "allowed_actions": {
+      "items": {
+        "$ref": "#/$defs/DelegationAction"
+      },
+      "title": "Allowed Actions",
+      "type": "array"
+    },
+    "allowed_audiences": {
+      "items": {
+        "$ref": "#/$defs/DelegationAudience"
+      },
+      "title": "Allowed Audiences",
+      "type": "array"
+    },
+    "allowed_purposes": {
+      "items": {
+        "$ref": "#/$defs/DelegationPurpose"
+      },
+      "title": "Allowed Purposes",
+      "type": "array"
+    },
+    "allowed_resources": {
+      "items": {
+        "$ref": "#/$defs/DelegationResource"
+      },
+      "title": "Allowed Resources",
+      "type": "array"
+    },
+    "application_decision_required": {
+      "const": true,
+      "title": "Application Decision Required",
+      "type": "boolean"
+    },
+    "approval_id": {
+      "title": "Approval Id",
+      "type": "string"
+    },
+    "authority_basis": {
+      "const": "patient_attestation",
+      "title": "Authority Basis",
+      "type": "string"
+    },
+    "delegate_ref": {
+      "title": "Delegate Ref",
+      "type": "string"
+    },
+    "excluded_resources": {
+      "items": {
+        "$ref": "#/$defs/DelegationResource"
+      },
+      "title": "Excluded Resources",
+      "type": "array"
+    },
+    "grant_id": {
+      "title": "Grant Id",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "title": "Issued At",
+      "type": "string"
+    },
+    "issuer_ref": {
+      "title": "Issuer Ref",
+      "type": "string"
+    },
+    "legal_authority_status": {
+      "const": "not_established",
+      "title": "Legal Authority Status",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "relationship_claim_id": {
+      "title": "Relationship Claim Id",
+      "type": "string"
+    },
+    "revoked_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revoked At"
+    },
+    "schema_version": {
+      "const": "caretrust.delegation-grant.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/GrantStatus"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "valid_from": {
+      "format": "date",
+      "title": "Valid From",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date",
+      "title": "Valid Until",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "grant_id",
+    "relationship_claim_id",
+    "approval_id",
+    "patient_ref",
+    "delegate_ref",
+    "issuer_ref",
+    "authority_basis",
+    "legal_authority_status",
+    "status",
+    "allowed_actions",
+    "allowed_resources",
+    "excluded_resources",
+    "allowed_purposes",
+    "allowed_audiences",
+    "application_decision_required",
+    "valid_from",
+    "valid_until",
+    "issued_at",
+    "synthetic"
+  ],
+  "title": "DelegationGrant",
+  "type": "object"
+}

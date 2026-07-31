@@ -30,17 +30,20 @@ def test_demo_has_accessible_structure_and_keyboard_treatment() -> None:
 
 def test_hero_is_truthful_and_platform_horizon_is_visible() -> None:
     for value in (
-        "Turn legacy caregiver evidence into",
-        "reusable, source-backed trust",
+        "Activate a trusted care workforce",
+        "across applications",
         "Phase 1 design prototype",
         "Synthetic data only",
-        "Retained cloud outputs",
-        "No live browser cloud call",
-        "Now · tested",
-        "Next · Phase 2",
-        "Network · planned",
-        "One accountable operator",
-        "Conformant trust domains",
+        "Exact-message local trace",
+        "No live HIE or EHR",
+        "Now · executable local",
+        "Secondary technical proof · retained AWS",
+        "Network path · local federation laboratory",
+        "Provider workforce activation",
+        "Credential evidence compiler",
+        "Independent organizations and applications",
+        "operational federation and live HIE/EHR access remain planned",
+        'href="network.html"',
     ):
         assert value in HTML
     overclaims = (
@@ -168,14 +171,16 @@ def test_evidence_limits_metrics_are_frozen_and_test_count_is_not_hardcoded() ->
 def test_standards_are_secondary_and_status_labeled() -> None:
     assert '<details class="technical-proof"' in HTML
     for value in (
-        "Tested",
-        "Mapped",
-        "Contract",
-        "Planned",
+        'data-evidence-status="executed_local"',
+        'data-evidence-status="contract_tested"',
+        'data-evidence-status="local_simulation"',
+        "Executed local",
+        "Contract tested",
+        "Local simulation",
         "FHIR R4 projection",
         "OID4VC exchange",
-        "Cross-domain federation",
-        "no deployed federation is shown",
+        "Federation-shaped trust resolution",
+        "no deployed federation or network call",
     ):
         assert value in HTML
     for url in (

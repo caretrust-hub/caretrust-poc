@@ -1,0 +1,439 @@
+{
+  "$defs": {
+    "CandidateDocumentItem": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Candidate Text",
+          "type": "string"
+        },
+        "category": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Category",
+          "type": "string"
+        },
+        "clinically_authoritative": {
+          "const": false,
+          "default": false,
+          "title": "Clinically Authoritative",
+          "type": "boolean"
+        },
+        "clinically_verified": {
+          "const": false,
+          "default": false,
+          "title": "Clinically Verified",
+          "type": "boolean"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "current_clinical_truth": {
+          "const": false,
+          "default": false,
+          "title": "Current Clinical Truth",
+          "type": "boolean"
+        },
+        "evidence_refs": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/CandidateItemKind"
+        },
+        "normalized_value": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Value"
+        },
+        "sensitivity": {
+          "$ref": "#/$defs/SensitivityLevel"
+        },
+        "shareable": {
+          "const": false,
+          "default": false,
+          "title": "Shareable",
+          "type": "boolean"
+        },
+        "status": {
+          "const": "draft",
+          "default": "draft",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "kind",
+        "category",
+        "candidate_text",
+        "evidence_refs",
+        "confidence",
+        "sensitivity"
+      ],
+      "title": "CandidateDocumentItem",
+      "type": "object"
+    },
+    "CandidateItemKind": {
+      "enum": [
+        "fact",
+        "instruction",
+        "action_item",
+        "medication_candidate"
+      ],
+      "title": "CandidateItemKind",
+      "type": "string"
+    },
+    "DocumentEvidenceSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Document Id",
+          "type": "string"
+        },
+        "end_offset": {
+          "exclusiveMinimum": 0,
+          "title": "End Offset",
+          "type": "integer"
+        },
+        "evidence_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "exact_text": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Exact Text",
+          "type": "string"
+        },
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "region": {
+          "$ref": "#/$defs/EvidenceRegion"
+        },
+        "start_offset": {
+          "minimum": 0,
+          "title": "Start Offset",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "document_id",
+        "page",
+        "region",
+        "start_offset",
+        "end_offset",
+        "exact_text"
+      ],
+      "title": "DocumentEvidenceSpan",
+      "type": "object"
+    },
+    "DocumentPageText": {
+      "additionalProperties": false,
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "text": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "text_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Text Sha256",
+          "type": "string"
+        }
+      },
+      "required": [
+        "page",
+        "text",
+        "text_sha256"
+      ],
+      "title": "DocumentPageText",
+      "type": "object"
+    },
+    "EvidenceRegion": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Height",
+          "type": "number"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Width",
+          "type": "number"
+        },
+        "x": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Y",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "title": "EvidenceRegion",
+      "type": "object"
+    },
+    "ExtractionUncertainty": {
+      "additionalProperties": false,
+      "properties": {
+        "blocking": {
+          "title": "Blocking",
+          "type": "boolean"
+        },
+        "code": {
+          "$ref": "#/$defs/ExtractionUncertaintyCode"
+        },
+        "detail": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Detail",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "item_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "uncertainty_id": {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "title": "Uncertainty Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uncertainty_id",
+        "item_id",
+        "code",
+        "detail",
+        "blocking",
+        "evidence_refs"
+      ],
+      "title": "ExtractionUncertainty",
+      "type": "object"
+    },
+    "ExtractionUncertaintyCode": {
+      "enum": [
+        "ambiguous_date",
+        "ambiguous_medication",
+        "missing_context",
+        "unreadable_text",
+        "contradictory_instruction",
+        "clinical_interpretation_required"
+      ],
+      "title": "ExtractionUncertaintyCode",
+      "type": "string"
+    },
+    "SensitivityLevel": {
+      "enum": [
+        "restricted_health_information",
+        "highly_sensitive_health_information"
+      ],
+      "title": "SensitivityLevel",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "blocking_issue_codes": {
+      "items": {
+        "$ref": "#/$defs/ExtractionUncertaintyCode"
+      },
+      "title": "Blocking Issue Codes",
+      "type": "array"
+    },
+    "candidate_items": {
+      "items": {
+        "$ref": "#/$defs/CandidateDocumentItem"
+      },
+      "minItems": 1,
+      "title": "Candidate Items",
+      "type": "array"
+    },
+    "clinically_authoritative": {
+      "const": false,
+      "default": false,
+      "title": "Clinically Authoritative",
+      "type": "boolean"
+    },
+    "clinically_verified": {
+      "const": false,
+      "default": false,
+      "title": "Clinically Verified",
+      "type": "boolean"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "current_clinical_truth": {
+      "const": false,
+      "default": false,
+      "title": "Current Clinical Truth",
+      "type": "boolean"
+    },
+    "document_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Document Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "evidence_spans": {
+      "items": {
+        "$ref": "#/$defs/DocumentEvidenceSpan"
+      },
+      "minItems": 1,
+      "title": "Evidence Spans",
+      "type": "array"
+    },
+    "extraction_run_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Extraction Run Id",
+      "type": "string"
+    },
+    "extractor_ref": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Extractor Ref",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.document-extraction-draft.v1",
+      "default": "caretrust.document-extraction-draft.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "shareable": {
+      "const": false,
+      "default": false,
+      "title": "Shareable",
+      "type": "boolean"
+    },
+    "source_pages": {
+      "items": {
+        "$ref": "#/$defs/DocumentPageText"
+      },
+      "minItems": 1,
+      "title": "Source Pages",
+      "type": "array"
+    },
+    "status": {
+      "const": "draft",
+      "default": "draft",
+      "title": "Status",
+      "type": "string"
+    },
+    "synthetic_only": {
+      "const": true,
+      "default": true,
+      "title": "Synthetic Only",
+      "type": "boolean"
+    },
+    "uncertainties": {
+      "items": {
+        "$ref": "#/$defs/ExtractionUncertainty"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    }
+  },
+  "required": [
+    "draft_id",
+    "document_id",
+    "extraction_run_id",
+    "extractor_ref",
+    "source_pages",
+    "evidence_spans",
+    "candidate_items",
+    "uncertainties",
+    "blocking_issue_codes",
+    "created_at"
+  ],
+  "title": "DocumentExtractionDraft",
+  "type": "object"
+}

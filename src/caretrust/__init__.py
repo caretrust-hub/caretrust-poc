@@ -1,5 +1,26 @@
 """CareTrust synthetic proof-of-concept domain package."""
 
+from caretrust.clinical_edge import (
+    CareTrustClinicalContext,
+    ClinicalDataAuthorizationDecision,
+    ClinicalDataAuthorizationRequest,
+    ClinicalDataExchangeRecord,
+    PatientMatchResult,
+)
+from caretrust.delegation import (
+    CareRelationshipClaim,
+    ClarificationRequest,
+    ClarificationResponse,
+    DelegationAuthorizationDecision,
+    DelegationAuthorizationRequest,
+    DelegationDraft,
+    DelegationGrant,
+    DelegationRevocationRecord,
+    IntentStatement,
+    InviteAcceptance,
+    PatientApprovalRecord,
+    PatientInvite,
+)
 from caretrust.models import (
     ActiveCredentialClaim,
     AuditEvent,
@@ -11,15 +32,35 @@ from caretrust.models import (
     RegistryResult,
     ReviewRecord,
 )
+from caretrust.navigator import PatientNavigatorProjection, project_patient_navigator
 
 __all__ = [
     "ActiveCredentialClaim",
     "AuditEvent",
     "AuthorizationDecision",
     "AuthorizationRequest",
+    "CareTrustClinicalContext",
+    "CareRelationshipClaim",
+    "ClinicalDataAuthorizationDecision",
+    "ClinicalDataAuthorizationRequest",
+    "ClinicalDataExchangeRecord",
+    "ClarificationRequest",
+    "ClarificationResponse",
+    "DelegationAuthorizationDecision",
+    "DelegationAuthorizationRequest",
+    "DelegationDraft",
+    "DelegationGrant",
+    "DelegationRevocationRecord",
     "DraftCredentialClaim",
     "EvidenceArtifact",
     "ExtractionRecord",
+    "IntentStatement",
+    "InviteAcceptance",
+    "PatientApprovalRecord",
+    "PatientMatchResult",
+    "PatientNavigatorProjection",
+    "PatientInvite",
     "RegistryResult",
     "ReviewRecord",
+    "project_patient_navigator",
 ]

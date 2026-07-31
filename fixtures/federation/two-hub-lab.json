@@ -1,0 +1,46 @@
+{
+  "profile": "caretrust.synthetic-two-hub-federation-lab.v1",
+  "synthetic_only": true,
+  "network_calls": false,
+  "hubs": [
+    {
+      "hub_id": "hub:synthetic-pacific-participant",
+      "trust_anchor_entity_id": "https://pacific-participant-anchor.synthetic.invalid",
+      "leaf_entity_id": "https://participant.synthetic.invalid",
+      "leaf_role": "participant_organization",
+      "leaf_metadata": {
+        "caretrust_participant": {
+          "organization_id": "org:synthetic-home-care-001",
+          "participant_kind": "direct-care-organization",
+          "synthetic": true
+        }
+      },
+      "metadata_policy": {
+        "caretrust_participant": {
+          "organization_id": {"one_of": ["org:synthetic-home-care-001"]},
+          "participant_kind": {"value": "direct-care-organization"}
+        }
+      }
+    },
+    {
+      "hub_id": "hub:synthetic-pacific-client",
+      "trust_anchor_entity_id": "https://pacific-client-anchor.synthetic.invalid",
+      "leaf_entity_id": "https://direct-care-client.synthetic.invalid",
+      "leaf_role": "care_application_client",
+      "leaf_metadata": {
+        "openid_relying_party": {
+          "client_id": "client:synthetic-direct-care",
+          "grant_types": ["authorization_code", "implicit"],
+          "redirect_uris": ["https://direct-care-client.synthetic.invalid/callback"],
+          "synthetic": true
+        }
+      },
+      "metadata_policy": {
+        "openid_relying_party": {
+          "grant_types": {"value": ["authorization_code"]},
+          "redirect_uris": {"one_of": ["https://direct-care-client.synthetic.invalid/callback"]}
+        }
+      }
+    }
+  ]
+}

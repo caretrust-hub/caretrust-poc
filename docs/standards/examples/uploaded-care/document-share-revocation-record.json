@@ -1,0 +1,11 @@
+{
+  "future_requests_require_fresh_denial": true,
+  "grant_id": "document-share-grant:synthetic-scheduling-001",
+  "historical_decisions_retained": true,
+  "patient_ref": "patient:synthetic-001",
+  "reason": "Synthetic patient withdrew future scheduling-app sharing.",
+  "revocation_id": "revocation:document-share-grant:synthetic-scheduling-001",
+  "revoked_at": "2026-07-30T18:00:10Z",
+  "revoked_by_account_ref": "patient:synthetic-001",
+  "schema_version": "caretrust.document-share-revocation-record.v1"
+}

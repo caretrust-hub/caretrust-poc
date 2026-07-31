@@ -1,0 +1,94 @@
+{
+  "additionalProperties": false,
+  "description": "Acceptance proves only control of a synthetic invited account.",
+  "properties": {
+    "acceptance_id": {
+      "title": "Acceptance Id",
+      "type": "string"
+    },
+    "accepted_at": {
+      "format": "date-time",
+      "title": "Accepted At",
+      "type": "string"
+    },
+    "caregiver_ref": {
+      "title": "Caregiver Ref",
+      "type": "string"
+    },
+    "delegation_activated": {
+      "const": false,
+      "title": "Delegation Activated",
+      "type": "boolean"
+    },
+    "identity_assurance": {
+      "const": "synthetic_account_only",
+      "title": "Identity Assurance",
+      "type": "string"
+    },
+    "invite_id": {
+      "title": "Invite Id",
+      "type": "string"
+    },
+    "invite_token_sha256": {
+      "title": "Invite Token Sha256",
+      "type": "string"
+    },
+    "legal_authority_status": {
+      "const": "not_established",
+      "title": "Legal Authority Status",
+      "type": "string"
+    },
+    "nonce_sha256": {
+      "title": "Nonce Sha256",
+      "type": "string"
+    },
+    "patient_consent_established": {
+      "const": false,
+      "title": "Patient Consent Established",
+      "type": "boolean"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "relationship_verified": {
+      "const": false,
+      "title": "Relationship Verified",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "caretrust.invite-acceptance.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "accepted",
+      "title": "Status",
+      "type": "string"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "acceptance_id",
+    "invite_id",
+    "patient_ref",
+    "caregiver_ref",
+    "invite_token_sha256",
+    "nonce_sha256",
+    "status",
+    "identity_assurance",
+    "relationship_verified",
+    "patient_consent_established",
+    "delegation_activated",
+    "legal_authority_status",
+    "accepted_at",
+    "synthetic"
+  ],
+  "title": "InviteAcceptance",
+  "type": "object"
+}

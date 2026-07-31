@@ -1,0 +1,18 @@
+{
+  "clarification_id": "clarification:synthetic-audience-001",
+  "code": "CHOOSE_AUDIENCE",
+  "draft_id": "delegation-draft:synthetic-001:v1",
+  "field_paths": [
+    "allowed_audiences"
+  ],
+  "intent_id": "intent:synthetic-delegation-001",
+  "options": [
+    "app:synthetic-scheduling",
+    "app:synthetic-care-portal"
+  ],
+  "question": "Which synthetic applications should Leilani be able to use?",
+  "requested_at": "2026-07-30T10:00:05Z",
+  "required": true,
+  "schema_version": "caretrust.clarification-request.v1",
+  "synthetic": true
+}

@@ -1,0 +1,18 @@
+{
+  "created_at": "2026-07-30T10:00:00Z",
+  "intent_id": "intent:compiler-fixture-001",
+  "patient_ref": "patient:synthetic-compiler-001",
+  "schema_version": "caretrust.intent-statement.v1",
+  "spans": [
+    {
+      "end_char": 139,
+      "intent_id": "intent:compiler-fixture-001",
+      "quote": "Let my daughter Leilani look at upcoming appointments through 2026-12-31 in the scheduling app for appointment management, but not billing.",
+      "span_id": "intent:compiler-fixture-001:full-text",
+      "start_char": 0
+    }
+  ],
+  "synthetic": true,
+  "utterance": "Let my daughter Leilani look at upcoming appointments through 2026-12-31 in the scheduling app for appointment management, but not billing.",
+  "utterance_sha256": "c3593120f3a219a14adf5f696d2fa3449b5134d0dc1868808cca5e63e68463d2"
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": "caretrust.provenance-lineages.v1",
+  "canonicalization_rule": "Matching identifier text is not proof that two artifacts came from the same execution. A same-trace claim requires an explicit relation plus retained hashes or runtime records.",
+  "trace_families": [
+    {
+      "evidence_status": "retained_aws",
+      "identifiers": {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "bedrock_request_id": "60e6c601-a07c-4275-abe5-c90746d4e01a",
+        "claim_id": null,
+        "draft_id": "draft:final-01-clean-standard",
+        "registry_id": "SYN-CNA-FINAL-2001",
+        "subject_ref": "person:synthetic-leilani-testperson",
+        "textract_request_id": "c4b6b1db-a80f-4383-8850-12504477798e"
+      },
+      "integrity": {
+        "input_content_sha256": "f400137cb2e8e895d637072c5f4c2858d11941f8dc6081b2cb474e52d6f74ceb",
+        "model_raw_response_sha256": "1c0f8aedcfaadd459862dc16b0f4cadfc5c17ddb0618bb0089008d9452014318",
+        "ocr_output_sha256": "4b26fdac411077ad42fa00c2b77725ed091d9dc8fd8a095f8bcd4c59740cedd5"
+      },
+      "source_artifacts": [
+        "artifacts/ocr/20260730T171807.004134Z/vertical-slice.json"
+      ],
+      "terminal_state": "unverified_draft_with_blocking_uncertainties",
+      "trace_id": "retained-aws-ocr-bedrock-20260730T171807"
+    },
+    {
+      "evidence_status": "executed_local",
+      "identifiers": {
+        "artifact_id": "artifact:final-01-clean-standard",
+        "claim_id": "claim:synthetic-hi-cna-1001",
+        "draft_id": "draft:final-01-clean-standard",
+        "registry_id": "SYN-CNA-FINAL-2001",
+        "request_id": "request:clean",
+        "subject_ref": "person:synthetic-leilani-testperson"
+      },
+      "integrity": {
+        "retained_model_raw_response_sha256": "78e28bfdf0e2faad76dc20710a69b8f692c5083f2dd9cf259ef8124572c37ffe"
+      },
+      "source_artifacts": [
+        "artifacts/evaluation/20260730T085655.959974Z/results.jsonl",
+        "artifacts/validation/connected-vertical-slice.json",
+        "scripts/demo_vertical_slice.py"
+      ],
+      "terminal_state": "fresh_request_denied_token_revoked",
+      "trace_id": "deterministic-lifecycle-retained-evaluation-clean"
+    },
+    {
+      "evidence_status": "contract_tested",
+      "identifiers": {
+        "artifact_id": "artifact:synthetic-smoke-clean",
+        "claim_id": "claim:synthetic-hi-cna-1001",
+        "registry_id": "HI-CNA-SYN-1001",
+        "subject_ref": "person:synthetic-001"
+      },
+      "source_artifacts": [
+        "docs/standards/examples/active-credential-claim.json",
+        "docs/standards/examples/authorization-request.json",
+        "docs/standards/examples/authorization-decision-permit.json",
+        "docs/standards/examples/revocation-record.json"
+      ],
+      "terminal_state": "standalone_contract_examples",
+      "trace_id": "standards-core-example-family"
+    },
+    {
+      "evidence_status": "executed_local",
+      "identifiers": {
+        "artifact_id": "artifact:synthetic-smoke-clean",
+        "claim_id": "claim:synthetic-hi-cna-1001",
+        "registry_id": "HI-CNA-SYN-1001",
+        "subject_ref": "person:synthetic-leilani-kealoha"
+      },
+      "source_artifacts": [
+        "docs/standards/examples/fhir/synthetic-hawaii-cna-bundle.json",
+        "tests/test_fhir_projection.py"
+      ],
+      "terminal_state": "local_fhir_bundle_projection",
+      "trace_id": "fhir-projection-example-family"
+    },
+    {
+      "evidence_status": "contract_tested",
+      "identifiers": {
+        "claim_id": "claim:synthetic-hi-cna-1001",
+        "presentation_request_id": "request:oid4vp:synthetic-001",
+        "state": "state:synthetic-caretrust-oid4vp-001"
+      },
+      "source_artifacts": [
+        "docs/standards/examples/oid4vc/presentation-request.json",
+        "docs/standards/examples/oid4vc/presentation-response.json",
+        "docs/standards/examples/oid4vc/response-decision-linkage.json"
+      ],
+      "terminal_state": "illustrative_placeholder_not_a_credential",
+      "trace_id": "oid4vc-contract-example-family"
+    },
+    {
+      "evidence_status": "local_simulation",
+      "identifiers": {
+        "care_application_entity_id": "https://care-b.synthetic.invalid",
+        "credential_issuer_entity_id": "https://care-a.synthetic.invalid",
+        "trust_anchor_entity_id": "https://trust.synthetic.invalid"
+      },
+      "source_artifacts": [
+        "docs/standards/examples/federation/two-care-organizations.json",
+        "tests/test_federation.py"
+      ],
+      "terminal_state": "two_locally_resolved_one_hop_chains",
+      "trace_id": "federation-local-simulation-family"
+    },
+    {
+      "evidence_status": "executed_local",
+      "identifiers": {
+        "authorized_user_ref": "user:synthetic-care-coordinator-001",
+        "caregiver_ref": "caregiver:synthetic-001",
+        "client_id": "https://care-app.synthetic.invalid",
+        "data_holder_id": "https://ehr.synthetic.invalid",
+        "patient_ref": "patient:synthetic-001",
+        "participant_org_ref": "org:synthetic-participating-provider-001",
+        "permit_request_id": "request:clinical:permit-001",
+        "revoked_fresh_request_id": "request:clinical:revoked-fresh-001"
+      },
+      "source_artifacts": [
+        "docs/standards/examples/clinical-edge/permit.json",
+        "docs/standards/examples/clinical-edge/deny-unregistered-client.json",
+        "docs/standards/examples/clinical-edge/deny-no-patient-match.json",
+        "docs/standards/examples/clinical-edge/deny-insufficient-scope.json",
+        "docs/standards/examples/clinical-edge/deny-revoked-fresh-request.json",
+        "tests/test_clinical_edge.py"
+      ],
+      "terminal_state": "five_synthetic_data_holder_policy_outcomes",
+      "trace_id": "synthetic-clinical-data-holder-edge-family"
+    }
+  ],
+  "relations": [
+    {
+      "from_trace_id": "retained-aws-ocr-bedrock-20260730T171807",
+      "relation": "shares_synthetic_fixture_identity_but_not_model_execution",
+      "to_trace_id": "deterministic-lifecycle-retained-evaluation-clean"
+    },
+    {
+      "from_trace_id": "deterministic-lifecycle-retained-evaluation-clean",
+      "relation": "reuses_claim_id_with_different_subject_registry_and_evidence_not_same_trace",
+      "to_trace_id": "standards-core-example-family"
+    },
+    {
+      "from_trace_id": "standards-core-example-family",
+      "relation": "reuses_claim_id_and_most_claim_facts_but_subject_differs_not_same_trace",
+      "to_trace_id": "fhir-projection-example-family"
+    },
+    {
+      "from_trace_id": "standards-core-example-family",
+      "relation": "claim_id_referenced_by_illustrative_protocol_linkage",
+      "to_trace_id": "oid4vc-contract-example-family"
+    },
+    {
+      "from_trace_id": "federation-local-simulation-family",
+      "relation": "no_executed_link_to_claim_authorization_fhir_or_oid4vc",
+      "to_trace_id": null
+    },
+    {
+      "from_trace_id": "synthetic-clinical-data-holder-edge-family",
+      "relation": "generated_local_fixture_not_a_live_hie_ehr_or_patient_match_trace",
+      "to_trace_id": null
+    }
+  ]
+}

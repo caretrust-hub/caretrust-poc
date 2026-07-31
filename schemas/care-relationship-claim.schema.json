@@ -1,0 +1,136 @@
+{
+  "$defs": {
+    "GrantStatus": {
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "title": "GrantStatus",
+      "type": "string"
+    },
+    "RelationshipCode": {
+      "description": "Personal relationships; none of these codes establish legal authority.",
+      "enum": [
+        "child",
+        "spouse_or_partner",
+        "parent",
+        "sibling",
+        "other_family",
+        "friend",
+        "neighbor",
+        "other_personal_relationship",
+        "unspecified"
+      ],
+      "title": "RelationshipCode",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Patient-attested relationship assertion without permission semantics.",
+  "properties": {
+    "approval_id": {
+      "title": "Approval Id",
+      "type": "string"
+    },
+    "caregiver_ref": {
+      "title": "Caregiver Ref",
+      "type": "string"
+    },
+    "invite_acceptance_id": {
+      "title": "Invite Acceptance Id",
+      "type": "string"
+    },
+    "issued_at": {
+      "format": "date-time",
+      "title": "Issued At",
+      "type": "string"
+    },
+    "issuer_ref": {
+      "title": "Issuer Ref",
+      "type": "string"
+    },
+    "legal_authority_status": {
+      "const": "not_established",
+      "title": "Legal Authority Status",
+      "type": "string"
+    },
+    "patient_ref": {
+      "title": "Patient Ref",
+      "type": "string"
+    },
+    "relationship_assertion_only": {
+      "const": true,
+      "title": "Relationship Assertion Only",
+      "type": "boolean"
+    },
+    "relationship_basis": {
+      "const": "patient_attestation",
+      "title": "Relationship Basis",
+      "type": "string"
+    },
+    "relationship_claim_id": {
+      "title": "Relationship Claim Id",
+      "type": "string"
+    },
+    "relationship_code": {
+      "$ref": "#/$defs/RelationshipCode"
+    },
+    "revoked_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Revoked At"
+    },
+    "schema_version": {
+      "const": "caretrust.care-relationship-claim.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "#/$defs/GrantStatus"
+    },
+    "synthetic": {
+      "const": true,
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "valid_from": {
+      "format": "date",
+      "title": "Valid From",
+      "type": "string"
+    },
+    "valid_until": {
+      "format": "date",
+      "title": "Valid Until",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "relationship_claim_id",
+    "patient_ref",
+    "caregiver_ref",
+    "relationship_code",
+    "relationship_basis",
+    "relationship_assertion_only",
+    "legal_authority_status",
+    "invite_acceptance_id",
+    "approval_id",
+    "issuer_ref",
+    "status",
+    "valid_from",
+    "valid_until",
+    "issued_at",
+    "synthetic"
+  ],
+  "title": "CareRelationshipClaim",
+  "type": "object"
+}

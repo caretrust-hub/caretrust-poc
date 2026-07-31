@@ -1,0 +1,108 @@
+{
+  "$defs": {
+    "DocumentShareReason": {
+      "enum": [
+        "policy_satisfied",
+        "raw_document_prohibited",
+        "grant_mismatch",
+        "patient_mismatch",
+        "grant_revoked",
+        "grant_expired",
+        "outside_validity_window",
+        "audience_not_allowed",
+        "purpose_not_allowed",
+        "item_not_approved",
+        "item_outside_grant",
+        "item_kind_not_allowed",
+        "sensitivity_exceeds_grant"
+      ],
+      "title": "DocumentShareReason",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "decided_at": {
+      "format": "date-time",
+      "title": "Decided At",
+      "type": "string"
+    },
+    "decision_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Decision Id",
+      "type": "string"
+    },
+    "granted_approved_item_ids": {
+      "items": {
+        "maxLength": 200,
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+        "type": "string"
+      },
+      "title": "Granted Approved Item Ids",
+      "type": "array"
+    },
+    "outcome": {
+      "enum": [
+        "permit",
+        "deny"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "policy_version": {
+      "const": "caretrust.document-share-policy.v1",
+      "default": "caretrust.document-share-policy.v1",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "reason_codes": {
+      "items": {
+        "$ref": "#/$defs/DocumentShareReason"
+      },
+      "minItems": 1,
+      "title": "Reason Codes",
+      "type": "array"
+    },
+    "request_id": {
+      "maxLength": 200,
+      "minLength": 3,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "caretrust.document-share-decision.v1",
+      "default": "caretrust.document-share-decision.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "supporting_grant_id": {
+      "anyOf": [
+        {
+          "maxLength": 200,
+          "minLength": 3,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]*$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Supporting Grant Id"
+    }
+  },
+  "required": [
+    "decision_id",
+    "request_id",
+    "outcome",
+    "reason_codes",
+    "granted_approved_item_ids",
+    "supporting_grant_id",
+    "decided_at"
+  ],
+  "title": "DocumentShareDecision",
+  "type": "object"
+}

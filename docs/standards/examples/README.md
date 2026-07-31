@@ -19,6 +19,17 @@ FHIR, or W3C Verifiable Credential conformance.
 - `revocation-record.json`: a machine-readable synthetic claim-revocation
   record shape.
 - `audit-event.json`: the corresponding synthetic revocation audit-event shape.
+- `clinical-edge/`: five executed-local synthetic participating-organization
+  and data-holder exchange records covering permit, unregistered client,
+  patient no-match, insufficient delegated scope, and a fresh request after
+  revocation. The caregiver is delegation context, not the HIE requester or
+  recipient. The data holder owns participant/client/user eligibility,
+  patient matching, and final disclosure policy; no live HIE or EHR is
+  connected.
+- `delegation/`: a linked patient-intent, clarification, hashed invite,
+  explicit approval, relationship, least-privilege grant, application decision,
+  and revocation example chain. These artifacts do not establish identity or
+  legal authority.
 
 No token is checked in because private signing keys are generated only in
 memory by tests and demos.

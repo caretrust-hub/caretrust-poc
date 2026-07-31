@@ -1,0 +1,8 @@
+SYNTHETIC TEST RECORD - NOT A REAL MEDICAL RECORD
+DISCHARGE INSTRUCTIONS
+Patient: Synthetic Patient 001
+Discharge date: 2026-07-29
+Instructions: Schedule a follow-up visit with primary care within 7 days.
+Action item: Bring this discharge sheet and current medication list.
+Medication note: Continue home medicines as previously directed. Exact medicines and doses are not listed.
+Warning: Seek urgent care for new chest pain or severe shortness of breath.

@@ -96,16 +96,13 @@ def test_status_matrix_uses_bounded_evidence_classes_and_non_claims() -> None:
         item["capability_id"]: item["status"]
         for item in manifest["implementation_status_matrix"]
     }
-    assert statuses["fhir-r4-qualification-projection"] == (
-        "executable_local_projection_with_deterministic_local_tests"
-    )
-    assert statuses["oid4vci-and-oid4vp-exchange-artifacts"] == (
-        "contract_and_artifact_tested_only"
-    )
-    assert statuses["openid-federation-trust-resolution"] == (
-        "local_synthetic_trust_resolution_simulation_only"
-    )
-    assert statuses["caretrust-openapi-surface"] == "contract_only"
+    assert statuses["aws-ocr-bedrock-intake"] == "retained_aws"
+    assert statuses["caretrust-core-claim-and-policy-contract"] == "executed_local"
+    assert statuses["fhir-r4-qualification-projection"] == "executed_local"
+    assert statuses["oid4vci-and-oid4vp-exchange-artifacts"] == "contract_tested"
+    assert statuses["openid-federation-trust-resolution"] == "local_simulation"
+    assert statuses["caretrust-openapi-surface"] == "contract_tested"
+    assert statuses["synthetic-clinical-data-holder-edge"] == "executed_local"
 
     non_claims = "\n".join(manifest["explicit_non_claims"]).lower()
     for boundary in (
@@ -219,8 +216,9 @@ def test_standards_profiles_publish_exact_local_boundaries() -> None:
     }
     assert "executable local projection with deterministic local tests" in profiles["fhir"]
     assert "No EHR or FHIR server is contacted" in profiles["fhir"]
-    assert "contract/artifact tested only" in profiles["oid4vc"]
+    assert "`contract_tested` — Contract tested" in profiles["oid4vc"]
     assert "No wallet is implemented or connected" in profiles["oid4vc"]
     federation = re.sub(r"\s+", " ", profiles["federation"])
+    assert "`local_simulation` — Local simulation" in federation
     assert "local synthetic trust-resolution simulation only" in federation
     assert "does not demonstrate cross-organization federation" in federation

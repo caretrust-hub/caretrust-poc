@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareTrust — Synthetic organization console</title>
+  <link rel="stylesheet" href="network.css">
+</head>
+<body>
+  <a class="skip-link" href="#case-workspace">Skip to case workspace</a>
+
+  <header class="product-bar">
+    <a class="brand" href="index.html" aria-label="CareTrust prototype home">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <span><strong>CareTrust</strong><small>Interoperable Care Trust Hub</small></span>
+    </a>
+    <div class="organization">
+      <span class="org-mark" aria-hidden="true">KC</span>
+      <span><strong>Ke Ola Care Collaborative</strong><small>Synthetic organization</small></span>
+    </div>
+    <div class="product-actions">
+      <span class="synthetic-pill">Synthetic data · no PHI</span>
+      <button class="icon-button" id="open-evidence" type="button" aria-label="Open implementation evidence">?</button>
+      <span class="user-avatar" aria-label="Signed in as synthetic program coordinator">MK</span>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="case-rail" aria-label="Case navigation">
+      <div class="rail-heading">
+        <div><p class="eyebrow">Provider operations</p><h1>Activation queue</h1></div>
+        <button class="new-button" type="button" disabled title="Disabled in this static prototype">+</button>
+      </div>
+      <label class="search-field"><span class="sr-only">Search synthetic cases</span><input type="search" placeholder="Search cases" disabled></label>
+      <div class="queue-tabs" aria-label="Case filters"><button class="active" type="button">Active <span>3</span></button><button type="button" disabled>Needs action <span>2</span></button></div>
+      <ol class="case-list">
+        <li>
+          <button class="case-card selected" type="button" aria-current="page">
+            <span class="avatar coral">MK</span>
+            <span><strong>Malia K.</strong><small>New service activation</small><em>2 reviews ready</em></span>
+            <time datetime="2026-07-30">Today</time>
+          </button>
+        </li>
+        <li>
+          <button class="case-card" type="button" disabled>
+            <span class="avatar gold">JW</span>
+            <span><strong>Jonah W.</strong><small>Worker reassignment</small><em class="warning-text">Credential review</em></span>
+            <time datetime="2026-07-29">1d</time>
+          </button>
+        </li>
+        <li>
+          <button class="case-card" type="button" disabled>
+            <span class="avatar blue">AK</span>
+            <span><strong>Ana K.</strong><small>Referral intake</small><em>Consent pending</em></span>
+            <time datetime="2026-07-28">2d</time>
+          </button>
+        </li>
+      </ol>
+      <div class="rail-note"><strong>Illustrative workflow</strong><p>The organization and every person shown here are synthetic. ALU LIKE and Hawaiʻi HIE are reference contexts only, not partners or endorsers.</p></div>
+    </aside>
+
+    <main id="case-workspace" class="case-workspace">
+      <section class="case-header" aria-labelledby="case-title">
+        <div class="patient-identity">
+          <span class="avatar large coral" aria-hidden="true">MK</span>
+          <div><p class="eyebrow">CASE CT-SYN-0042 · Care recipient</p><h2 id="case-title">Malia K.</h2><p>Oʻahu · Service coordination record · not a clinical chart</p></div>
+        </div>
+        <div class="case-state">
+          <span class="status active"><i aria-hidden="true"></i> Active delegation</span>
+          <button class="outline-button" id="revoke-grant" type="button">Revoke permission</button>
+        </div>
+      </section>
+
+      <dl class="case-context" aria-label="Current access context">
+        <div><dt>Operator role</dt><dd>Program coordinator</dd></div>
+        <div><dt>Purpose</dt><dd>Care coordination</dd></div>
+        <div><dt>Trace</dt><dd>trace:synthetic-delegation-001</dd></div>
+        <div><dt>Activation state</dt><dd>2 items ready · 2 blocked</dd></div>
+        <div><dt>Classification</dt><dd>Synthetic · no PHI</dd></div>
+        <div><dt>Clinical connection</dt><dd>None · local fixture only</dd></div>
+      </dl>
+
+      <section class="workforce-strip" aria-labelledby="workforce-strip-title">
+        <div class="workforce-strip-copy">
+          <p class="eyebrow">Track 2 provider workflow</p>
+          <h3 id="workforce-strip-title">One reviewed case package, reused across the care workforce and independent apps</h3>
+          <p>CareTrust helps a coordinator assemble trustworthy inputs once, preserve who approved what, and stop each worker or application from reconstructing the case independently.</p>
+        </div>
+        <dl class="proof-metrics" aria-label="Synthetic prototype evidence">
+          <div><dt>Care contexts</dt><dd id="care-context-count">3</dd><small>family · CNA · respite</small></div>
+          <div><dt>Independent apps</dt><dd id="application-count">3</dd><small>different policy inputs</small></div>
+          <div><dt>Fresh decisions</dt><dd id="decision-count">10</dd><small id="decision-split">3 permit · 7 fail-closed</small></div>
+          <div><dt>Field outcomes</dt><dd id="field-outcome-label">Not yet</dd><small id="field-outcome-next">Phase 2 measurement</small></div>
+        </dl>
+      </section>
+
+      <nav class="workspace-tabs" aria-label="Patient case views">
+        <button type="button" class="active" data-view="journey" aria-selected="true">Activate case</button>
+        <button type="button" data-view="team" aria-selected="false">Care workforce <span>4</span></button>
+        <button type="button" data-view="permissions" aria-selected="false">Access decisions <span>10</span></button>
+        <button type="button" data-view="applications" aria-selected="false">Application trust <span>3</span></button>
+        <button type="button" data-view="history" aria-selected="false">Case history <span id="history-count">10</span></button>
+        <button type="button" data-view="clinical" aria-selected="false">Shared care packet <span>1</span></button>
+      </nav>
+
+      <div class="view-stack">
+        <section class="workspace-view active" id="view-journey" data-panel="journey" aria-labelledby="journey-title">
+          <div class="view-heading">
+            <div><p class="eyebrow">Provider workforce activation</p><h3 id="journey-title">From a fragmented referral to an access-ready care team</h3><p>AI compiles the evidence and gaps. The coordinator, care recipient, and accountable reviewers take separate human actions. Deterministic policy gives each worker and app only the approved access.</p></div>
+            <span class="evidence-label executed">Executable local trace</span>
+          </div>
+
+          <article class="intent-card">
+            <div class="speaker"><span class="avatar coral" aria-hidden="true">MK</span><span><strong>Care-recipient input</strong><small>Captured inside the provider case</small></span></div>
+            <blockquote>“Let my daughter Leilani schedule appointments and see visit instructions through 2026-12-31, but not billing or mental health records.”</blockquote>
+            <button class="trace-link" type="button" data-message="intent">Inspect IntentStatement <span aria-hidden="true">→</span></button>
+          </article>
+
+          <div class="flow-line" aria-hidden="true"><span></span><b>AI-assisted case compilation · never an authority decision</b><span></span></div>
+
+          <div class="journey-grid">
+            <article class="step-card complete">
+              <div class="step-top"><span class="step-number">1</span><span class="status compact"><i></i> Complete</span></div>
+              <p class="eyebrow">1 · Compile</p><h4>Translate intent and evidence into reviewable candidates</h4>
+              <ul class="scope-chips"><li>Schedule appointments</li><li>View visit instructions</li><li class="excluded">No billing</li><li class="excluded">No mental health records</li></ul>
+              <p class="boundary-copy">Unverified draft · cannot activate or authorize</p>
+              <button class="trace-link" type="button" data-message="draft">Inspect DelegationDraft <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="step-card complete">
+              <div class="step-top"><span class="step-number">2</span><span class="status compact"><i></i> Complete</span></div>
+              <p class="eyebrow">2 · Resolve gaps</p><h4>Ask only what the case still needs</h4>
+              <div class="answer-box"><span>Missing operational input</span><strong>Which apps should this caregiver use?</strong></div>
+              <p class="boundary-copy">Patient response is retained and hash-bound; the coordinator does not infer it</p>
+              <button class="trace-link" type="button" data-message="clarification">Inspect question + response <span aria-hidden="true">→</span></button>
+            </article>
+
+            <article class="step-card complete">
+              <div class="step-top"><span class="step-number">3</span><span class="status compact"><i></i> Complete</span></div>
+              <p class="eyebrow">3 · Human gates</p><h4>Activate only after accountable actions</h4>
+              <dl class="mini-events"><div><dt>Caregiver</dt><dd>Invite accepted</dd></div><div><dt>Care recipient</dt><dd>Exact scope approved</dd></div><div><dt>Coordinator</dt><dd>Routing reviewed</dd></div></dl>
+              <p class="boundary-copy">Acceptance, patient choice, credential review, and organization assignment stay separate</p>
+              <button class="trace-link" type="button" data-message="approval">Inspect approval binding <span aria-hidden="true">→</span></button>
+            </article>
+          </div>
+
+          <section class="grant-card" aria-labelledby="grant-title">
+            <div class="grant-main"><span class="trust-mark" aria-hidden="true">✓</span><div><p class="eyebrow">Reusable case package</p><h4 id="grant-title">Relationship, workforce eligibility, assignment, and delegation remain distinct</h4><p>The organization assembles the package once. Every fresh request still checks the exact caregiver, app, purpose, action, evidence status, and revocation state.</p></div></div>
+            <dl><div><dt>Family lane</dt><dd>Relationship + delegation</dd></div><div><dt>Worker lane</dt><dd>Credential + assignment + grant</dd></div><div><dt>Legal authority</dt><dd>Not inferred</dd></div></dl>
+            <button class="trace-link light" type="button" data-message="grant">Inspect linked claims <span aria-hidden="true">→</span></button>
+          </section>
+
+          <section class="app-decisions" aria-labelledby="app-title">
+            <div class="section-row"><div><p class="eyebrow">Provider outcome</p><h4 id="app-title">One reviewed package, different worker and application decisions</h4></div><button class="text-button" type="button" data-switch="permissions">Compare access decisions →</button></div>
+            <div class="app-card-grid">
+              <article><span class="app-icon lavender" aria-hidden="true">S</span><div><strong>Kākou Scheduling</strong><small>appointment_management</small></div><span class="decision permit">PERMIT</span><button class="trace-link" type="button" data-message="schedule-decision">Exact request + receipt</button></article>
+              <article><span class="app-icon mint" aria-hidden="true">C</span><div><strong>Care Instructions</strong><small>care_coordination</small></div><span class="decision permit">PERMIT</span><button class="trace-link" type="button" data-message="portal-decision">Exact request + receipt</button></article>
+              <article><span class="app-icon peach" aria-hidden="true">M</span><div><strong>Medication Support</strong><small>care_coordination</small></div><span class="decision deny">DENY</span><button class="trace-link" type="button" data-message="medication-denial">ACTION_NOT_DELEGATED</button></article>
+            </div>
+          </section>
+        </section>
+
+        <section class="workspace-view" id="view-team" data-panel="team" aria-labelledby="team-title" hidden>
+          <div class="view-heading"><div><p class="eyebrow">Provider workforce view</p><h3 id="team-title">Who is ready to support this case—and why?</h3><p>The coordinator can inspect the distinct basis, validity, and latest access result for family, agency, and community caregivers without collapsing them into one generic “caregiver” role.</p></div><span class="evidence-label executed">Synthetic multi-caregiver case</span></div>
+          <div class="table-card"><table><thead><tr><th>Person</th><th>Care context</th><th>Required basis</th><th>Tested lifecycle</th><th>Application access</th><th>Evidence</th></tr></thead><tbody>
+            <tr><td><span class="person-cell"><span class="avatar coral">MK</span><span><strong>Malia K.</strong><small>patient:synthetic-001</small></span></span></td><td>Care recipient</td><td>Authenticated synthetic session</td><td>Intent → approval → revocation</td><td>Authority source, not worker access</td><td><button class="trace-link" type="button" data-message="intent">Intent</button></td></tr>
+            <tr><td><span class="person-cell"><span class="avatar blue">LK</span><span><strong>Leilani K.</strong><small>account:synthetic-leilani</small></span></span></td><td>Family caregiver</td><td>Patient relationship + bounded delegation</td><td>Permit → grant revoked</td><td><span class="decision permit">SCHEDULE</span> <span class="decision deny">FRESH DENY</span></td><td><button class="trace-link" type="button" data-message="family-lifecycle">Exact decisions</button></td></tr>
+            <tr><td><span class="person-cell"><span class="avatar gold">KT</span><span><strong>Kai T.</strong><small>person:synthetic-leilani-testperson</small></span></span></td><td>Agency CNA</td><td>Reviewed CNA claim + organization assignment + task grant</td><td>Permit → claim revoked</td><td><span class="decision permit">DIRECT CARE</span> <span class="decision deny">FRESH DENY</span></td><td><button class="trace-link" type="button" data-message="cna-lifecycle">Exact decisions</button></td></tr>
+            <tr><td><span class="person-cell"><span class="avatar mint">PR</span><span><strong>Pua R.</strong><small>caregiver:synthetic-respite-001</small></span></span></td><td>Community respite</td><td>Time-bounded assignment + service grant</td><td>Permit → expired → revoked</td><td><span class="decision permit">RESPITE</span> <span class="decision deny">CLINICAL BLOCK</span></td><td><button class="trace-link" type="button" data-message="respite-lifecycle">Exact decisions</button></td></tr>
+          </tbody></table></div>
+          <div class="operating-note"><strong>Coordinator operating rule</strong><p>Care-team membership is descriptive. A worker receives access only when the current request also satisfies the required credential or relationship, active assignment/grant, application audience, purpose, action, and status checks.</p><button class="trace-link" type="button" data-message="case-assignment">Inspect organization assignment boundary</button></div>
+        </section>
+
+        <section class="workspace-view" id="view-permissions" data-panel="permissions" aria-labelledby="permissions-title" hidden>
+          <div class="view-heading"><div><p class="eyebrow">Deterministic provider policy</p><h3 id="permissions-title">Different workers, different apps, revocable access</h3><p>These are retained decisions for one synthetic care recipient. The AI compiler proposes structured inputs; it never returns a permit. Every row below comes from fresh deterministic policy evaluation.</p></div><span class="evidence-label executed">10 retained decisions</span></div>
+          <div class="matrix-summary"><article><span>Policy</span><strong>case-access.v1</strong><small>Stable reason codes</small></article><article><span>Access model</span><strong>Request-specific</strong><small>Not a universal caregiver role</small></article><article><span>Clinical authority</span><strong>Never inferred</strong><small>Holder or accountable source retains control</small></article></div>
+          <div class="table-card"><table><thead><tr><th>Care context</th><th>Application</th><th>Action / purpose</th><th>Decision</th><th>Why</th><th>Exact evidence</th></tr></thead><tbody>
+            <tr><td>Family caregiver</td><td>Kākou Scheduling</td><td><code>schedule_appointments</code><br>appointment_management</td><td><span class="decision permit">PERMIT</span></td><td>Relationship + active patient grant</td><td><button class="trace-link" type="button" data-message="family-lifecycle">Decision pair</button></td></tr>
+            <tr class="denied-row"><td>Family caregiver</td><td>Kākou Scheduling</td><td><code>schedule_appointments</code><br>after revocation</td><td><span class="decision deny">DENY</span></td><td><code>GRANT_REVOKED</code></td><td><button class="trace-link" type="button" data-message="family-lifecycle">Fresh deny</button></td></tr>
+            <tr><td>Agency CNA</td><td>Direct Care Tasks</td><td><code>perform_assigned_direct_care</code><br>shift-assignment</td><td><span class="decision permit">PERMIT</span></td><td>Credential + assignment + grant</td><td><button class="trace-link" type="button" data-message="cna-lifecycle">Decision pair</button></td></tr>
+            <tr class="denied-row"><td>Agency CNA</td><td>Direct Care Tasks</td><td><code>perform_assigned_direct_care</code><br>after credential revocation</td><td><span class="decision deny">DENY</span></td><td><code>CLAIM_REVOKED</code></td><td><button class="trace-link" type="button" data-message="cna-lifecycle">Fresh deny</button></td></tr>
+            <tr><td>Community respite</td><td>Respite Connect</td><td><code>respite_visit_support</code><br>bounded service window</td><td><span class="decision permit">PERMIT</span></td><td>Assignment + service grant</td><td><button class="trace-link" type="button" data-message="respite-lifecycle">Lifecycle</button></td></tr>
+            <tr class="denied-row"><td>Community respite</td><td>Respite Connect</td><td><code>view_warning_instruction</code><br>unverified clinical content</td><td><span class="decision deny">DENY</span></td><td><code>CLINICAL_CLARIFICATION_REQUIRED</code></td><td><button class="trace-link" type="button" data-message="respite-lifecycle">Clinical block</button></td></tr>
+          </tbody></table></div>
+          <div class="exclusion-bar"><span>Never implied by a role</span><strong>Whole-chart access</strong><strong>Billing</strong><strong>Mental health records</strong><strong>Redelegation</strong><strong>Clinical decisions</strong></div>
+        </section>
+
+        <section class="workspace-view" id="view-applications" data-panel="applications" aria-labelledby="applications-title" hidden>
+          <div class="view-heading"><div><p class="eyebrow">Trust layer for many applications</p><h3 id="applications-title">Onboard an app once; evaluate every caregiver request freshly</h3><p>The organization governs which applications may participate. AI converts an OpenAPI description into a reviewable profile, RAR request shape, and minimum-data proposal; an administrator reviews it before any OAuth client can be trusted.</p></div><span class="evidence-label executed">Contract + auth harness</span></div>
+          <ol class="app-onboarding-flow" aria-label="Application trust workflow">
+            <li><span>1</span><div><strong>Import app requirements</strong><small>OpenAPI operations, data fields, redirect URIs, and requested purposes</small></div><button class="trace-link" type="button" data-message="app-compilation">Inspect source-linked AI draft</button></li>
+            <li><span>2</span><div><strong>Human review and registration</strong><small>Organization administrator confirms profile, keys, audiences, purpose, and minimum data</small></div><button class="trace-link" type="button" data-message="auth-flow">Inspect reviewed registration</button></li>
+            <li><span>3</span><div><strong>Caregiver authenticates</strong><small>Upstream OIDC identity is linked; its token terminates at CareTrust and is never forwarded</small></div><button class="trace-link" type="button" data-message="auth-flow">Inspect OIDC + PKCE</button></li>
+            <li><span>4</span><div><strong>App requests a specific transaction</strong><small>OAuth RAR carries caregiver, patient, action, purpose, profile, and data categories</small></div><button class="trace-link" type="button" data-message="auth-flow">Inspect authorization_details</button></li>
+            <li><span>5</span><div><strong>Fresh policy and bounded token</strong><small>CareTrust checks reviewed app metadata and current case evidence before issuing an API-specific receipt</small></div><button class="trace-link" type="button" data-message="fhir-scheduling">Inspect FHIR/SMART projection</button></li>
+          </ol>
+          <div class="app-registry-grid">
+            <article><span class="app-icon lavender">S</span><div><strong>Kākou Scheduling</strong><small>Appointment management · reviewed synthetic registration</small></div><span class="evidence-label executed">Executed local</span></article>
+            <article><span class="app-icon mint">D</span><div><strong>Direct Care Tasks</strong><small>Shift assignment · minimum task projection</small></div><span class="evidence-label executed">Executed local</span></article>
+            <article><span class="app-icon peach">R</span><div><strong>Respite Connect</strong><small>Time-bounded service support · contract tested</small></div><span class="evidence-label mapped">Contract tested</span></article>
+          </div>
+          <aside class="network-later"><div><p class="eyebrow">Open network horizon</p><h4>Organizations can operate or federate their own CareTrust-compatible hub</h4><p>Core contracts, profiles, conformance tests, and the two-hub laboratory are Apache-2.0. Federation exchanges signed metadata and trust status—not a centralized patient or caregiver database.</p></div><button class="trace-link" type="button" data-message="federation-lab">Inspect two-hub local laboratory</button></aside>
+        </section>
+
+        <section class="workspace-view" id="view-history" data-panel="history" aria-labelledby="history-title" hidden>
+          <div class="view-heading"><div><p class="eyebrow">Append-only trust record</p><h3 id="history-title">Case history</h3><p>Corrections append. Revocation changes fresh decisions but never erases prior events.</p></div><span class="evidence-label executed">Exact-message trace</span></div>
+          <ol class="history-list" id="case-history">
+            <li><time>10:00:00</time><span class="event-dot patient"></span><div><strong>Patient intent recorded</strong><p>Malia described the caregiver, tasks, exclusions, and end date.</p><button class="trace-link" type="button" data-message="intent">IntentStatement</button></div></li>
+            <li><time>10:00:02</time><span class="event-dot ai"></span><div><strong>AI draft created</strong><p>Allowed vocabulary only; source spans retained; no authority-bearing state.</p><button class="trace-link" type="button" data-message="draft">DelegationDraft</button></div></li>
+            <li><time>10:00:05</time><span class="event-dot system"></span><div><strong>Required clarification asked</strong><p>The initial intent did not name application audiences.</p><button class="trace-link" type="button" data-message="clarification">Question + answer</button></div></li>
+            <li><time>10:01:00</time><span class="event-dot system"></span><div><strong>Single-use invitation created</strong><p>Only hashes of the recipient hint, token, and nonce are retained.</p><button class="trace-link" type="button" data-message="invite">PatientInvite</button></div></li>
+            <li><time>10:02:00</time><span class="event-dot caregiver"></span><div><strong>Leilani accepted invitation</strong><p>Acceptance cannot establish identity, relationship, consent, delegation, or legal authority.</p><button class="trace-link" type="button" data-message="acceptance">InviteAcceptance</button></div></li>
+            <li><time>10:03:00</time><span class="event-dot patient"></span><div><strong>Malia approved exact final scope</strong><p>Approval is hash-bound to intent, clarification, draft, and acceptance.</p><button class="trace-link" type="button" data-message="approval">PatientApprovalRecord</button></div></li>
+            <li><time>10:03:01</time><span class="event-dot trust"></span><div><strong>Separate relationship and delegation records issued</strong><p>Relationship remains assertion-only; applications still decide locally.</p><button class="trace-link" type="button" data-message="grant">Linked claims</button></div></li>
+            <li><time>10:04:01</time><span class="event-dot app"></span><div><strong>Application decisions recorded</strong><p>Two bounded actions permitted; an undelegated medication action denied.</p><button class="trace-link" type="button" data-message="schedule-decision">Decision receipts</button></div></li>
+            <li><time>10:04:10</time><span class="event-dot caregiver"></span><div><strong>Patient-provided discharge packet uploaded</strong><p>Uploader, restricted artifact hash, classification, and file checks recorded; authorship remains unverified.</p><button class="trace-link" type="button" data-message="care-document">UploadedCareDocument</button></div></li>
+            <li><time>10:04:12</time><span class="event-dot ai"></span><div><strong>AI extraction draft created</strong><p>Two administrative candidates await patient review; medication and warning-sign content is blocked.</p><button class="trace-link" type="button" data-message="document-extraction">DocumentExtractionDraft</button></div></li>
+          </ol>
+          <p class="boundary-banner"><strong>Scope:</strong> This is CareTrust trust and service-coordination history. It is not a complete medical record or clinical timeline.</p>
+        </section>
+
+        <section class="workspace-view" id="view-clinical" data-panel="clinical" aria-labelledby="clinical-title" hidden>
+          <div class="view-heading"><div><p class="eyebrow">Patient-provided information on-ramp</p><h3 id="clinical-title">Turn a discharge scan into reviewed coordination items</h3><p>CareTrust is a document-to-governed-coordination compiler, not a document summarizer. AI locates candidate items; the patient and accountable staff apply distinct review gates before any app can receive them.</p></div><span class="evidence-label executed">Synthetic local workflow</span></div>
+
+          <div class="packet-grid">
+            <article class="packet-document">
+              <div class="packet-file"><span class="file-icon" aria-hidden="true">PDF</span><div><p class="eyebrow">Patient-provided care packet</p><h4>Synthetic discharge packet</h4><small>3 pages · 284 KB · uploaded by Leilani K.</small></div></div>
+              <div class="packet-provenance"><span>Uploader</span><strong>Invited family caregiver account</strong><span>Authorship</span><strong class="warning-text">Unverified · patient-provided copy</strong><span>Artifact SHA-256</span><code>8a21…4d9c</code><span>File checks</span><strong>Type valid · malware scan clear</strong></div>
+              <div class="discharge-page" aria-label="Synthetic discharge page excerpt">
+                <div class="scan-header"><span class="scan-seal">S</span><span>SYNTHETIC MEDICAL CENTER<br><strong>DISCHARGE INSTRUCTIONS</strong></span></div>
+                <p class="redacted">Patient: <b>MALIA TESTPERSON</b> <span>SYNTHETIC · NO PHI</span></p>
+                <p><mark data-evidence="follow-up">Schedule a follow-up visit with the cardiology clinic within 7 days.</mark></p>
+                <p><mark data-evidence="daily-weight">Record weight each morning and bring the log to the next visit.</mark></p>
+                <p><mark class="risk" data-evidence="medication">Your medication list changed. Use the attached list and contact the clinical team with questions.</mark></p>
+                <p><mark data-evidence="warning">Call the care team if the warning signs printed on page 2 occur.</mark></p>
+                <div class="scan-stamp">SYNTHETIC TEST DOCUMENT · NOT MEDICAL ADVICE</div>
+              </div>
+              <button class="trace-link" type="button" data-message="care-document">Inspect upload + artifact record →</button>
+            </article>
+
+            <section class="extraction-workspace" aria-labelledby="extraction-title">
+              <div class="section-row"><div><p class="eyebrow">AI-assisted extraction draft</p><h4 id="extraction-title">Four candidates · none clinically verified</h4></div><button class="trace-link" type="button" data-message="document-extraction">Exact draft JSON</button></div>
+              <ol class="extracted-items">
+                <li data-item-state="ready"><span class="item-icon">1</span><div><strong>Follow-up appointment</strong><p>Cardiology clinic · within 7 days</p><button class="evidence-button" type="button" data-highlight="follow-up">Page 1 · lines 14–16</button></div><span class="review-state">Ready to review</span></li>
+                <li data-item-state="ready"><span class="item-icon">2</span><div><strong>Daily weight log</strong><p>Coordination reminder · no clinical interpretation</p><button class="evidence-button" type="button" data-highlight="daily-weight">Page 1 · lines 18–19</button></div><span class="review-state">Ready to review</span></li>
+                <li data-item-state="blocked"><span class="item-icon">3</span><div><strong>Medication list changed</strong><p>No medication names or instructions promoted from this excerpt</p><button class="evidence-button" type="button" data-highlight="medication">Page 1 · lines 21–23</button></div><span class="review-state blocked">Clinical review required</span></li>
+                <li data-item-state="blocked"><span class="item-icon">4</span><div><strong>Warning-sign instruction</strong><p>Preserve verbatim · accountable clinical source confirmation required</p><button class="evidence-button" type="button" data-highlight="warning">Page 1 · lines 25–26</button></div><span class="review-state blocked">Clinical review required</span></li>
+              </ol>
+              <div class="review-callout"><strong>Separated authority</strong><p>The patient approves two administrative coordination items; the organization coordinator confirms routing. Medication and warning-sign content remain blocked for accountable clinical-source review.</p></div>
+              <button class="primary-button" id="review-document-items" type="button">Approve 2 administrative items</button>
+            </section>
+          </div>
+
+          <section class="packet-sharing" id="packet-sharing" hidden aria-labelledby="packet-sharing-title">
+            <div class="section-row"><div><p class="eyebrow">Minimum-disclosure app projections</p><h4 id="packet-sharing-title">Share approved items, not the whole packet</h4></div><button class="trace-link" type="button" data-message="document-review">Inspect review record</button></div>
+            <div class="app-card-grid">
+              <article><span class="app-icon lavender">S</span><div><strong>Kākou Scheduling</strong><small>Follow-up window only · no diagnosis</small></div><span class="decision pending-share">READY</span><button class="trace-link" type="button" data-message="document-share">Exact disclosure request</button></article>
+              <article><span class="app-icon mint">C</span><div><strong>Direct Care Tasks</strong><small>Weight-log reminder · no diagnosis or interpretation</small></div><span class="decision pending-share">READY</span><button class="trace-link" type="button" data-message="document-share">Exact disclosure request</button></article>
+              <article><span class="app-icon peach">M</span><div><strong>Medication Support</strong><small>Medication change remains blocked</small></div><span class="decision deny">DENY</span><button class="trace-link" type="button" data-message="document-denial">CLINICAL_REVIEW_REQUIRED</button></article>
+            </div>
+            <button class="primary-button share-button" id="run-document-sharing" type="button">Run approved app requests</button>
+            <div class="clinical-result" id="clinical-result" role="status" aria-live="polite"><span>Not evaluated</span><strong>No packet content disclosed</strong><small>Waiting for exact app requests.</small></div>
+          </section>
+
+          <aside class="network-later"><div><p class="eyebrow">Long-term network seam</p><h4>HIE / EHR connectivity comes later</h4><p>The repository retains a local authority-boundary adapter, but the realistic v0.3 workflow starts with a record the family already has.</p></div><span class="evidence-label planned">Planned · no live HHIE connection</span></aside>
+          <p class="boundary-banner"><strong>Boundary:</strong> Uploading establishes only which synthetic account supplied this copy. It does not establish document authorship, legal authority, clinical accuracy, or currentness. Raw packet access is restricted and every disclosure is purpose-bound and logged.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="inspector" id="message-inspector" aria-labelledby="inspector-title">
+    <div class="inspector-header"><div><p class="eyebrow" id="inspector-status">Executed local</p><h2 id="inspector-title">Exact message</h2></div><button class="icon-button" id="close-inspector" type="button" aria-label="Close message inspector">×</button></div>
+    <dl class="message-meta" id="message-meta"></dl>
+    <div class="json-heading"><strong>Retained JSON</strong><button class="copy-button" id="copy-message" type="button">Copy</button></div>
+    <pre><code id="message-json"></code></pre>
+    <p class="inspector-boundary" id="inspector-boundary"></p>
+  </dialog>
+
+  <dialog class="evidence-dialog" id="evidence-dialog" aria-labelledby="evidence-title">
+    <div class="inspector-header"><div><p class="eyebrow">Prototype boundaries</p><h2 id="evidence-title">What this surface demonstrates</h2></div><button class="icon-button" id="close-evidence" type="button" aria-label="Close evidence dialog">×</button></div>
+      <ul><li><strong>Executed local:</strong> strict contracts, synthetic multi-caregiver case, AI compiler fixtures, auth harness, independent policy decisions, fresh-request revocation, and a two-hub federation laboratory.</li><li><strong>Contract tested / mapped:</strong> candidate FHIR, SMART, VC, and OAuth authorization-detail messages with explicit semantic-loss notes.</li><li><strong>Planned:</strong> production identity proofing, legal-authority adjudication, live HIE/EHR exchange, operational federation, measured workforce outcomes, and organization deployment.</li></ul>
+    <p>No AI output approves, activates, widens, or grants access.</p>
+  </dialog>
+
+  <script src="network-data.js?v=0.4.0"></script>
+  <script src="network.js?v=0.4.0"></script>
+</body>
+</html>

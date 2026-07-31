@@ -1,0 +1,29 @@
+{
+  "allowed_audiences": [
+    "app:synthetic-scheduling"
+  ],
+  "allowed_item_kinds": [
+    "instruction"
+  ],
+  "allowed_purposes": [
+    "discharge_follow_up"
+  ],
+  "approved_item_ids": [
+    "approved:review:synthetic-discharge-001:candidate:follow-up"
+  ],
+  "fresh_decision_required": true,
+  "grant_id": "document-share-grant:synthetic-scheduling-001",
+  "issued_at": "2026-07-30T18:00:04Z",
+  "maximum_sensitivity": "restricted_health_information",
+  "overbroad_requests_allowed": false,
+  "patient_ref": "patient:synthetic-001",
+  "raw_document_sharing_allowed": false,
+  "review_id": "review:synthetic-discharge-001",
+  "revoked_at": "2026-07-30T18:00:10Z",
+  "schema_version": "caretrust.document-share-grant.v1",
+  "status": "revoked",
+  "synthetic_only": true,
+  "unapproved_items_allowed": false,
+  "valid_from": "2026-07-30T18:00:04Z",
+  "valid_until": "2026-08-06T18:00:00Z"
+}
