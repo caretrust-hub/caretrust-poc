@@ -62,6 +62,10 @@ def test_manifest_is_deterministic_and_has_stable_artifact_hashes() -> None:
     assert len({item["path"] for item in artifacts}) == len(artifacts)
     assert all(re.fullmatch(r"[0-9a-f]{64}", item["sha256"]) for item in artifacts)
     assert all(item["bytes"] > 0 for item in artifacts)
+    assert not any(
+        item["path"].startswith("artifacts/validation/poc-evidence-manifest-")
+        for item in artifacts
+    )
     assert {
         "scripts/build_poc_evidence_manifest.py",
         "src/caretrust/federation.py",

@@ -195,6 +195,10 @@ def collect_artifact_paths(
             if not path.is_file() or (excluded is not None and path.resolve() == excluded):
                 continue
             relative = _relative_path(root, path)
+            if relative.startswith(
+                "artifacts/validation/poc-evidence-manifest-"
+            ):
+                continue
             if relative not in tracked:
                 continue
             selected[relative] = path

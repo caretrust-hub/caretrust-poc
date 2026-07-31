@@ -177,9 +177,13 @@ into the same claim.
   revocation appends a status event, and a fresh App B request appends a
   `TOKEN_REVOKED` denial rather than overwriting history. **Evidence:**
   credential/delegation traces, case history, and revocation regression tests.
-- [ ] **T036 [Agent: evidence]** Generate a trace pack and integrity manifest.
+- [x] **T036 [Agent: evidence]** Generate a trace pack and integrity manifest.
   **Done when:** displayed/downloaded JSON, source artifacts, SHA-256 values,
   release commit, and screenshots cross-verify with no private key or secret.
+  **Evidence:** deterministic
+  `artifacts/validation/poc-evidence-manifest-v0.4.1.json` binds the v0.4.1
+  release, readiness record, frozen evaluation references, and 287 tracked
+  public artifacts with SHA-256 hashes.
 
 ### Epic 2 — Stage-linked technical walkthrough
 
@@ -321,22 +325,31 @@ into the same claim.
   readable, and there are no console/page errors. **Evidence:** browser-tested
   desktop and 390px console, keyboard skip link, native exact-message dialogs,
   color-independent status text, and repaired zero-error revocation path.
-- [ ] **T053 [Agent: security]** Complete a synthetic-data, secret, key-material,
+- [x] **T053 [Agent: security]** Complete a synthetic-data, secret, key-material,
   dependency, and static-host review. **Done when:** no PII/PHI, credential,
   plaintext invite target, or private signing material is publishable.
-- [ ] **T054 [Agent: release]** Run clean-clone unit/schema/referential/policy/
+  **Evidence:** v0.4.1 tracked-content scan found no applicant contact value,
+  AWS access-key identifier, private-key block, or likely literal secret; all
+  public demonstrations remain explicitly synthetic.
+- [x] **T054 [Agent: release]** Run clean-clone unit/schema/referential/policy/
   browser tests and build the evidence bundle. **Done when:** the exact release
   commit is clean and all commands, artifacts, hashes, screenshots, statuses,
-  and limitations are retained.
+  and limitations are retained. **Evidence:** POC `82c3d4f` plus standards
+  `cbef37a` passed 331 tests in a fresh paired clone; the standards repository
+  separately validated 113 JSON and 29 Markdown files.
 - [x] **T055 [Agent: submission]** Synchronize the 15-page submission and demo
   script with the v0.3 evidence. **Done when:** the north-star network,
   demonstrated lanes, AI value, partner path, standards gaps, measured results,
   and non-claims match the public artifacts. **Evidence:** 13-page application,
   10-page appendix, Smart 40 attachment, support letter, v0.4 README, and
   provider-first browser walkthrough.
-- [ ] **T056 [Codex]** Tag and deploy `trl3-poc-v0.3.0`. **Done when:** the tag
+- [x] **T056 [Codex]** Tag and deploy `trl3-poc-v0.3.0` or its superseding
+  release. **Done when:** the tag
   resolves to the tested commit, GitHub Pages serves the same files, release
-  assets are downloadable, and v0.2 remains recoverable.
+  assets are downloadable, and v0.2 remains recoverable. **Evidence:** the
+  superseding `trl3-poc-v0.4.1` tag resolves to tested commit `82c3d4f`;
+  successful Pages run `30601907087` deployed source `dc7981b`, and the landing,
+  provider-console, and reference-client URLs each returned HTTP 200.
 
 ### Epic 6 — Track 2 dashboard, Core 0.1, and public profile
 
@@ -519,9 +532,12 @@ Controlling execution design:
   synchronize submission, appendix, README, evidence manifest, and UI claims.
   **Evidence:** generated judge-walkthrough contract, provider-first console,
   application, appendix, README, and 331-test result.
-- [ ] **T083 [Gate 3: final audit]** Root performs architecture, security,
+- [x] **T083 [Gate 3: final audit]** Root performs architecture, security,
   accessibility, interoperability, judge, evidence-boundary, and requirement-
-  by-requirement completion audits before any completion claim.
+  by-requirement completion audits before any completion claim. **Evidence:**
+  v0.4.1 release-readiness record, browser walkthrough, public URL checks,
+  paired clean-clone suite, standards validation, security scan, and explicit
+  retained backlog for incomplete production/future work.
 
 ## Original v0.2 deadline rule
 
