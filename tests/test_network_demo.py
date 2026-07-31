@@ -7,6 +7,9 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "demo" / "network.html").read_text(encoding="utf-8")
 CSS = (ROOT / "demo" / "network.css").read_text(encoding="utf-8")
 JAVASCRIPT = (ROOT / "demo" / "network.js").read_text(encoding="utf-8")
+REFERENCE_HTML = (ROOT / "demo" / "reference-client.html").read_text(encoding="utf-8")
+REFERENCE_CSS = (ROOT / "demo" / "reference-client.css").read_text(encoding="utf-8")
+REFERENCE_JAVASCRIPT = (ROOT / "demo" / "reference-client.js").read_text(encoding="utf-8")
 
 
 def test_console_is_accessible_and_explicitly_synthetic() -> None:
@@ -46,6 +49,27 @@ def test_provider_case_has_linked_activation_workforce_apps_and_history() -> Non
     assert "document.querySelectorAll(\"#case-history li\").length" in JAVASCRIPT
     assert "Patient-provided discharge packet uploaded" in HTML
     assert "Two purpose-minimized items routed" in JAVASCRIPT
+    for value in (
+        "TEST / DEMO ONLY",
+        "One hub decision, rendered by a separate caregiver client",
+        "client stores presentation state only",
+        "Continue with synthetic identity provider",
+        "Accept invitation",
+        "Malia approved",
+        "Replay discharge-record upload",
+        "Replay Malia revoking permission",
+        "reference-client.js?v=0.4.1",
+        "prefers-reduced-motion",
+    ):
+        assert value in REFERENCE_HTML or value in REFERENCE_CSS
+    for value in (
+        "client_local_authority_state: false",
+        'showRecord("approval")',
+        'showRecord("upload")',
+        'reason_codes: ["GRANT_REVOKED"]',
+        "No decision cached in this client",
+    ):
+        assert value in REFERENCE_JAVASCRIPT or value in REFERENCE_HTML
 
 
 def test_relationship_permission_and_authority_remain_separate() -> None:

@@ -32,5 +32,14 @@ For local review:
 python -m http.server 8000 --directory demo
 ```
 
-The login-free published copy is available at
-https://caretrust-hub.github.io/caretrust-poc/.
+The companion `reference-client.html` is a deliberately separate, phone-sized
+test client. It reuses the same retained canonical records as the provider
+console, holds no independent authority state, and demonstrates invitation,
+synthetic OIDC/PKCE-shaped account binding, patient approval status, exact
+per-app decisions, document upload, and revocation.
+
+The login-free published copies are available at:
+
+- https://caretrust-hub.github.io/caretrust-poc/
+- https://caretrust-hub.github.io/caretrust-poc/network.html
+- https://caretrust-hub.github.io/caretrust-poc/reference-client.html

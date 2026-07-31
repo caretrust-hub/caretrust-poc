@@ -1,7 +1,8 @@
 # Claude Code brief: CareTrust organization console
 
-**Revision:** July 30, 2026 — provider-first workflow, independent-app
-authorization, Core 0.1 messaging, and federation-aware network story.
+**Revision:** July 31, 2026 — provider-first workflow, independent-app
+authorization, Core 0.1 messaging, a separate reference client, and a
+federation-aware network story.
 
 ## Your assignment
 
@@ -28,6 +29,9 @@ Work primarily in:
 - `demo/network.html`
 - `demo/network.css`
 - `demo/network.js`
+- `demo/reference-client.html`
+- `demo/reference-client.css`
+- `demo/reference-client.js`
 - `demo/network-data.js` is generated; do not hand-edit it.
 
 Preserve the existing Python contracts, generated JSON fixtures, and automated
@@ -594,6 +598,10 @@ landing page.
    history.
 9. Refresh existing automated tests and add tests for the new state transitions
    and critical text/controls.
+10. Keep `reference-client.html` visibly separate from the provider console.
+    It must replay the canonical invite, acceptance, patient approval, grant,
+    document-upload, decision, and revocation objects; hold presentation state
+    only; and remain labeled `TEST / DEMO ONLY`.
 
 ## Acceptance criteria
 
@@ -626,6 +634,10 @@ The work is complete when:
 - Support-team membership is not visually confused with access permission.
 - The long-term neutral/federated platform is understandable and visibly
   separated from current executable evidence.
+- The separate caregiver reference client demonstrates account binding, invite
+  acceptance, observed patient approval, bounded permissions, per-app
+  permit/deny, patient-provided upload provenance, and a fresh
+  `GRANT_REVOKED` denial without becoming a second authority store.
 - Federation metadata trust never bypasses local patient permission or policy.
 - Desktop and 390-pixel mobile layouts work with keyboard-only navigation.
 - There are no console errors.

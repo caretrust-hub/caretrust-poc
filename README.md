@@ -109,7 +109,7 @@ The repositories should remain siblings unless `CARETRUST_SPEC_ROOT` points to
 the `caretrust-spec` checkout. The POC validates its Core 0.1 mappings against
 the public draft schemas rather than maintaining a second private copy.
 
-Release `trl3-poc-v0.4.0` passes **331 tests** covering schemas, OCR
+Release `trl3-poc-v0.4.1` passes **331 tests** covering schemas, OCR
 normalization and failure isolation, evidence-linked AI drafts, human review,
 signed claims, multi-caregiver policy, app onboarding, OIDC/PKCE/RAR
 authentication and authorization, FHIR/SMART scheduling projections,

@@ -347,11 +347,13 @@ into the same claim.
   a clinical chart. **Evidence status:** browser-tested static provider console
   over generated `dashboard-contract.json`, multi-caregiver, compiler, auth,
   FHIR, and federation artifacts; no deployment or field-outcome claim.
-- [ ] **T058 [Surface: reference-client]** Define the synthetic mobile reference
+- [x] **T058 [Surface: reference-client]** Define the synthetic mobile reference
   client. **Acceptance:** it exercises invite, acceptance, patient approval,
   upload, status, and revocation against canonical APIs/messages, stores no
   independent authority state, and is labeled test/demo only. **Evidence
-  status:** `planned`; no production mobile product claim.
+  status:** `executed_local` as a browser-testable, phone-sized reference client
+  over the same retained canonical records as the provider console; no
+  production mobile product, identity proofing, or live API claim.
 - [x] **T059 [Case: multi-caregiver]** Add one-patient/multiple-caregiver fixtures
   and projections. **Acceptance:** at least two caregivers have independent
   relationship/grant IDs, scopes, exclusions, periods, statuses, and app
@@ -444,7 +446,7 @@ into the same claim.
 
 ## Track 2 architecture acceptance matrix
 
-- [ ] Dashboard is the primary surface and mobile is explicitly test/demo only.
+- [x] Dashboard is the primary surface and mobile is explicitly test/demo only.
 - [x] One patient/two-caregiver case derives all permissions from canonical
   claims, grants, status events, and fresh decisions.
 - [x] AI compiler outputs cannot create any authority-bearing mutation.
