@@ -41,6 +41,6 @@ def test_browser_bundle_is_synthetic_and_retains_authority_boundaries() -> None:
 
 def test_browser_page_loads_generated_bundle_before_behavior() -> None:
     html = (ROOT / "demo" / "network.html").read_text(encoding="utf-8")
-    assert '<script src="network-data.js?v=0.4.0"></script>' in html
-    assert '<script src="network.js?v=0.4.0"></script>' in html
+    assert '<script src="network-data.js?v=0.4.1"></script>' in html
+    assert '<script src="network.js?v=0.4.1"></script>' in html
     assert html.index('src="network-data.js') < html.index('src="network.js')
