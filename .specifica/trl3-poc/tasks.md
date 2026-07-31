@@ -539,6 +539,49 @@ Controlling execution design:
   paired clean-clone suite, standards validation, security scan, and explicit
   retained backlog for incomplete production/future work.
 
+## Epic 8 — v0.5 provider operations workflow
+
+- [x] **T084 [Product]** Recenter the executable story on Track 2 workforce
+  activation. **Acceptance:** one incomplete referral proceeds through cited AI
+  intake, coordinator review, separate patient approval, deterministic worker
+  eligibility, supervisor assignment, two app projections, revocation, and a
+  fresh deny. Document/OCR, federation, and HIE remain supporting paths.
+- [x] **T085 [Backend]** Implement a stateful provider-workflow service.
+  **Acceptance:** typed domain state, explicit stage guards, optimistic versions,
+  append-only events, workload counters, disjoint app projections, and
+  fail-closed revocation pass focused and regression tests.
+- [x] **T086 [HTTP adapter]** Serve the provider console and synthetic workflow
+  API from one origin. **Acceptance:** health, session creation, session read,
+  and versioned command endpoints pass loopback integration tests without a web
+  framework dependency.
+- [x] **T087 [Organization console]** Replace the evaluator slideshow with an
+  operational work queue and editable case flow. **Acceptance:** the next human
+  task dominates; AI evidence, uncertainty, patient scope, roster gates,
+  per-app disclosure, workload counters, care team, and history are interactive;
+  standards remain in a secondary evidence drawer.
+- [x] **T088 [Independent client]** Reduce the caregiver mobile surface to one
+  minimum-data test consumer. **Acceptance:** Care Tasks Mobile reads the same
+  synthetic session, shows only its permitted shift/task projection, and shows
+  no case fields on deny.
+- [x] **T089 [AI protocol correction]** Expose frozen canonical evidence-span
+  IDs, delegate identity mappings, and bounded vocabularies to the intent model;
+  require an ontology-complete output contract. Preserve the defective v1/v2
+  runs and publish the frozen v3 run with the exact executed request, candidate
+  acceptance, grounding, semantic accuracy, HITL routing, safety, and
+  deterministic fallback reported separately. **Evidence:** 40/40 schema-valid,
+  39/40 citation-valid, 22/40 accepted and semantically exact candidates, 18
+  fail-closed fallbacks, 40/40 HITL routing, and 40/40 no-authority enforcement.
+- [x] **T090 [Design/submission]** Rewrite the UI handoff and application’s
+  primary workflow around explicit provider workload reduction. **Acceptance:**
+  use case, actors, screen hierarchy, workload measures, AI boundaries,
+  standards path, architecture, truthfulness rules, and executable acceptance
+  criteria agree with the v0.5 implementation.
+- [ ] **T091 [User evidence]** Run and document at least three structured
+  prototype reviews: provider coordinator/supervisor, direct-care worker, and
+  care recipient/family caregiver. **Acceptance:** raw consented notes or
+  de-identified summaries, role and date, task results, direct quotations within
+  permission, issue severity, and requirement/change traceability are retained.
+
 ## Original v0.2 deadline rule
 
 If timing slips, omit optional OCR, general UI polish, full FHIR validation,

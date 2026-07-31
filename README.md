@@ -13,24 +13,18 @@ relationships, delegations, credentials, and coordination items inside one
 application. This repository demonstrates bounded pieces of that safety-critical
 core; it does not claim that the larger ecosystem already exists.
 
-The v0.4 judge release centers one synthetic provider activation:
+The v0.5 operations prototype centers one synthetic provider activation:
 
 ```text
-organization accepts a synthetic referral
-  -> patient states bounded caregiver intent
-  -> AI drafts permissions and clarification questions
-  -> patient invites caregiver and approves exact final scope
-  -> separate identity, relationship, credential, assignment, and delegation records
-  -> organization console projects support team, permissions, and case history
-  -> relative supplies a synthetic discharge scan
-  -> AI drafts source-linked coordination items
-  -> patient and accountable staff apply distinct review gates
-  -> AI drafts a minimum-data app profile from synthetic app requirements
-  -> human reviewer registers the bounded client
-  -> caregiver authenticates through a local OIDC + PKCE + RAR harness
-  -> independent apps receive disjoint, purpose-minimized items
-  -> revocation blocks fresh requests while preserving history
-  -> two synthetic hubs exercise federation metadata and local-policy failures
+organization receives an incomplete synthetic referral
+  -> AI proposes eight cited nonclinical facts and two focused gaps
+  -> coordinator corrects one uncertainty instead of re-keying the referral
+  -> patient separately approves three bounded sharing purposes
+  -> deterministic qualification and availability gates filter the worker roster
+  -> a supervisor assigns one eligible direct-care worker
+  -> a scheduler and worker app receive different minimum-data projections
+  -> workload counters show reviewed fields and app entries generated
+  -> one revocation blocks fresh requests with zero case-data disclosure
 ```
 
 CareTrust is a governed trust compiler, not a document summarizer or another
@@ -109,33 +103,36 @@ The repositories should remain siblings unless `CARETRUST_SPEC_ROOT` points to
 the `caretrust-spec` checkout. The POC validates its Core 0.1 mappings against
 the public draft schemas rather than maintaining a second private copy.
 
-Release `trl3-poc-v0.4.1` passes **331 tests** covering schemas, OCR
-normalization and failure isolation, evidence-linked AI drafts, human review,
-signed claims, multi-caregiver policy, app onboarding, OIDC/PKCE/RAR
-authentication and authorization, FHIR/SMART scheduling projections,
-minimum-disclosure document routing, MCP inspection, Core 0.1 bridges,
-two-hub federation, browser behavior, and revocation.
+The tagged `trl3-poc-v0.4.1` release passed 331 tests. The v0.5 branch adds an
+operational provider-workflow service and tests for stage ordering,
+optimistic-version conflicts, patient approval, worker eligibility, disjoint app
+projections, workload instrumentation, corrected AI citation protocols, and
+fail-closed revocation. The current v0.5 branch passes **344 tests**.
 
 ### Interactive browser demonstrations
 
 The dependency-free [landing and credential surface](demo/index.html) and
-[v0.4 organization console](demo/network.html) are keyboard accessible and do
-not call a live service. A login-free copy of the deployed release is available at
-**https://caretrust-hub.github.io/caretrust-poc/**.
+[v0.5 organization console](demo/network.html) are keyboard accessible. The
+organization console connects to the local Python workflow API when served by
+the command below and otherwise uses a browser-local reference adapter with the
+same synthetic workflow contract.
 
 ```powershell
-.\.venv\Scripts\python -m http.server 8000
+.\.venv\Scripts\python scripts\run_provider_console.py
 ```
 
-Then open `http://localhost:8000/demo/`. The v0.4 console makes the larger
-platform concrete: a synthetic operator can browse one patient's support team,
-permission matrix, append-only case history, and patient-provided care packet;
-every material row opens an inspectable local message view and its evidence
-boundary. It also exposes the AI-assisted application-registration draft,
-reviewed client profile, local OIDC/PKCE/RAR exchange, bounded FHIR/SMART
-scheduling projection, MCP contract, and two-hub federation laboratory. The
-generated `network-data.js` bundle is checked for drift against the retained
-machine-readable artifacts.
+Then open `http://127.0.0.1:8765/network.html`. A coordinator can compile an
+incomplete referral, review evidence-linked fields, obtain a separate synthetic
+patient approval, assign a policy-eligible worker, create different projections
+for a scheduler and worker task app, revoke the assignment, and verify a fresh
+deny. The console reports fields prefilled, exceptions, open follow-ups,
+app-specific entries generated, and human approvals remaining. These are
+prototype interaction measures, not validated time savings or field outcomes.
+
+The static GitHub Pages build continues to work without a server through the
+clearly labeled browser reference adapter. A login-free copy of the deployed
+tagged release is available at **https://caretrust-hub.github.io/caretrust-poc/**;
+the v0.5 branch is not a production deployment.
 
 The separate frozen credential path visibly replays retained Textract evidence
 and a retained Bedrock/Qwen draft, requires separate
@@ -226,6 +223,21 @@ hidden defects: the model output needs human correction and must not decide
 activation. The run's authorization figure is only a Boolean scenario proxy;
 separate deterministic tests provide the signed-token, tamper, and revocation
 evidence.
+
+### Intent-to-standards Smart40 v3
+
+The separate delegation-intent compiler evaluation freezes the exact executed
+prompt, ontology, evidence spans, output schema, temperature, and token limit.
+The retained v3 consecutive run produced 40/40 schema-valid responses and 39/40
+valid citation sets. Twenty-two model candidates passed every deterministic
+validator, and all 22 were semantically exact; 18 were rejected to deterministic
+fallback. Human-review routing and no-authority enforcement were 40/40. This is
+evidence for useful bounded drafting—not autonomous permission management.
+
+The v1 and v2 failures remain published. They exposed missing evidence-span and
+canonical-vocabulary inputs and led to the v3 request contract rather than being
+silently replaced. See the
+[v3 report](artifacts/validation/intent-compiler-bedrock-40-v3/REPORT.md).
 
 Independent post-run review found that the frozen activation code did not
 explicitly require the extracted credential status to be `active`. The affected

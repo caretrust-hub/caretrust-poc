@@ -3,167 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CareTrust — Synthetic caregiver reference client</title>
-  <link rel="stylesheet" href="reference-client.css">
+  <title>Care Tasks Mobile · CareTrust reference client</title>
+  <link rel="stylesheet" href="reference-client.css?v=0.5.0">
 </head>
 <body>
-  <a class="skip-link" href="#reference-workflow">Skip to caregiver workflow</a>
-
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="CareTrust prototype home">
-      <span class="brand-mark" aria-hidden="true">C</span>
-      <span><strong>CareTrust</strong><small>Interoperable Care Trust Hub</small></span>
-    </a>
-    <nav aria-label="Prototype surfaces">
-      <a href="network.html">Provider organization console</a>
-      <a aria-current="page" href="reference-client.html">Reference client</a>
-    </nav>
-    <span class="synthetic-label">Synthetic data · no PHI</span>
+  <a class="skip-link" href="#client-main">Skip to app</a>
+  <header class="demo-bar">
+    <span><strong>TEST / DEMO ONLY</strong> · synthetic data · independent reference consumer</span>
+    <a href="network.html">Return to organization console</a>
   </header>
 
-  <main id="reference-workflow" class="stage">
-    <section class="context-panel" aria-labelledby="context-title">
-      <p class="eyebrow">Independent application proof</p>
-      <h1 id="context-title">One hub decision, rendered by a separate caregiver client</h1>
-      <p class="lede">This phone-sized client is a test harness, not the CareTrust product. It consumes the same versioned records and fresh policy decisions as the provider console, showing how many apps can reuse a neutral trust layer without inventing their own caregiver role.</p>
-
-      <div class="architecture-strip" aria-label="Reference client architecture">
-        <div><span>1</span><strong>Caregiver signs in</strong><small>OIDC authorization code + PKCE-shaped replay</small></div>
-        <b aria-hidden="true">→</b>
-        <div><span>2</span><strong>App requests one action</strong><small>OAuth RAR care-data profile</small></div>
-        <b aria-hidden="true">→</b>
-        <div><span>3</span><strong>CareTrust decides freshly</strong><small>Current claims, app, purpose, action, evidence</small></div>
-      </div>
-
-      <aside class="truth-box">
-        <strong>What this proves</strong>
-        <ul>
-          <li>The client stores presentation state only; canonical authority remains in CareTrust.</li>
-          <li>Invite acceptance does not establish relationship, consent, delegation, or legal authority.</li>
-          <li>Patient approval and organization review are separate from caregiver interaction.</li>
-          <li>Revocation changes the next decision while retained history remains inspectable.</li>
-        </ul>
-      </aside>
-
-      <div class="surface-links">
-        <a class="primary-link" href="network.html">Open the provider organization console</a>
-        <button class="secondary-button" id="open-contract" type="button">Inspect client contract</button>
-      </div>
+  <main id="client-main">
+    <section class="explanation">
+      <p class="eyebrow">What this proves</p>
+      <h1>CareTrust is the trust layer—not the caregiver app.</h1>
+      <p>This small reference client represents one app a direct-care worker might already use. It receives only an approved shift projection and a decision receipt. Scheduling, billing, documents, family details, and clinical records stay elsewhere.</p>
+      <ol>
+        <li><strong>The app requests</strong> a bounded capability for one worker, patient, purpose, and audience.</li>
+        <li><strong>CareTrust authenticates</strong> the worker through an external OIDC provider and links that identity to a participant. This demo uses a synthetic local identity.</li>
+        <li><strong>Deterministic policy checks</strong> patient approval, qualification, assignment, app registration, purpose, validity, and revocation.</li>
+        <li><strong>The app receives</strong> a one-time authorization result, short-lived audience-bound token, minimum-data projection, and receipt.</li>
+      </ol>
+      <details>
+        <summary>Standards-shaped authorization request</summary>
+        <pre>{
+  "client_id": "app:synthetic-field-client",
+  "code_challenge_method": "S256",
+  "resource": "urn:caretrust:case:synthetic-malia-k",
+  "authorization_details": [{
+    "type": "caretrust_case_access",
+    "actions": ["read-approved-visit-task"],
+    "purpose": "direct-care-service-delivery"
+  }]
+}</pre>
+      </details>
     </section>
 
-    <section class="phone-column" aria-label="Synthetic mobile reference client">
+    <section class="phone-stage" aria-label="Reference mobile client">
       <div class="phone">
-        <div class="phone-top" aria-hidden="true"><span>9:41</span><i></i><span>● ◒</span></div>
-        <div class="phone-appbar">
-          <span class="mini-mark" aria-hidden="true">C</span>
-          <span><strong>Kākou Care</strong><small>CareTrust reference client</small></span>
-          <button id="open-session" type="button" aria-label="Inspect authentication session">•••</button>
-        </div>
-
-        <div class="demo-banner"><strong>TEST / DEMO ONLY</strong><span>No production identity, authority, or care delivery</span></div>
-
-        <section class="phone-screen" id="screen-invite" aria-labelledby="invite-title">
-          <span class="illustration" aria-hidden="true">👋</span>
-          <p class="eyebrow">Care invitation</p>
-          <h2 id="invite-title">Malia invited you to help</h2>
-          <p>Review the request before accepting. Accepting connects your synthetic account; it does not activate permission.</p>
-          <dl class="request-summary">
-            <div><dt>Care recipient</dt><dd>Malia K.</dd></div>
-            <div><dt>Requested relationship</dt><dd>Daughter / family caregiver</dd></div>
-            <div><dt>Valid through</dt><dd>Dec 31, 2026</dd></div>
-          </dl>
-          <button class="phone-primary" id="sign-in" type="button">Continue with synthetic identity provider</button>
-          <button class="phone-link" data-inspect="invite" type="button">Inspect PatientInvite JSON</button>
+        <header class="phone-header">
+          <div class="app-mark" aria-hidden="true">CT</div>
+          <div><strong>Care Tasks</strong><small>Reference client</small></div>
+          <span class="test-pill">TEST</span>
+        </header>
+        <section class="identity">
+          <span class="avatar">KN</span>
+          <span><small>Signed in as</small><strong>Kai N. · synthetic worker</strong></span>
         </section>
-
-        <section class="phone-screen" id="screen-accept" aria-labelledby="accept-title" hidden>
-          <span class="state-icon authenticated" aria-hidden="true">✓</span>
-          <p class="eyebrow">Synthetic account authenticated</p>
-          <h2 id="accept-title">Review invitation boundaries</h2>
-          <p>The app imported the authenticated subject <code>account:synthetic-leilani</code>. CareTrust still requires Malia’s explicit approval before any app request can be permitted.</p>
-          <div class="boundary-card">
-            <strong>Acceptance alone does not prove</strong>
-            <span>relationship · patient consent · delegation · legal authority</span>
-          </div>
-          <button class="phone-primary" id="accept-invite" type="button">Accept invitation</button>
-          <button class="phone-link" data-inspect="acceptance" type="button">Inspect InviteAcceptance JSON</button>
+        <div id="client-status" class="client-status" role="status" aria-live="polite">Looking for a CareTrust decision…</div>
+        <section id="shift-card" class="shift-card" hidden></section>
+        <section id="empty-state" class="empty-state">
+          <span aria-hidden="true">↗</span>
+          <h2>No approved task yet</h2>
+          <p>Complete Malia’s assignment and route Care Tasks Mobile in the organization console.</p>
+          <a class="primary-link" href="network.html">Open organization console</a>
         </section>
-
-        <section class="phone-screen" id="screen-home" aria-labelledby="home-title" hidden>
-          <div class="care-header">
-            <span class="avatar" aria-hidden="true">MK</span>
-            <div><p class="eyebrow">Supporting</p><h2 id="home-title">Malia K.</h2><span id="grant-state" class="status active"><i aria-hidden="true"></i> Active patient delegation</span></div>
-          </div>
-
-          <div class="approval-chain" aria-label="Separate approval chain">
-            <div class="done"><span>1</span><strong>You accepted</strong><small>synthetic account</small></div>
-            <div class="done"><span>2</span><strong>Malia approved</strong><small>exact bounded scope</small></div>
-            <div class="done"><span>3</span><strong>Hub evaluates</strong><small>every app request</small></div>
-          </div>
-
-          <article class="permission-card">
-            <div class="card-heading"><span><small>Your current access</small><strong>2 delegated actions</strong></span><button data-inspect="grant" type="button">JSON</button></div>
-            <ul>
-              <li class="allowed"><span aria-hidden="true">✓</span> Schedule appointments</li>
-              <li class="allowed"><span aria-hidden="true">✓</span> View visit instructions</li>
-              <li class="excluded"><span aria-hidden="true">×</span> Billing excluded</li>
-              <li class="excluded"><span aria-hidden="true">×</span> Mental health records excluded</li>
-            </ul>
-          </article>
-
-          <h3>Connected app requests</h3>
-          <div class="app-list">
-            <article>
-              <span class="app-icon purple" aria-hidden="true">S</span>
-              <span><strong>Kākou Scheduling</strong><small>schedule_appointments</small></span>
-              <button class="decision permit" data-request="schedule" type="button">Check</button>
-            </article>
-            <article>
-              <span class="app-icon green" aria-hidden="true">C</span>
-              <span><strong>Care Instructions</strong><small>view_visit_instructions</small></span>
-              <button class="decision permit" data-request="instructions" type="button">Check</button>
-            </article>
-            <article>
-              <span class="app-icon orange" aria-hidden="true">M</span>
-              <span><strong>Medication Support</strong><small>manage_medications</small></span>
-              <button class="decision deny" data-request="medication" type="button">Check</button>
-            </article>
-          </div>
-
-          <button class="upload-card" id="upload-record" type="button">
-            <span aria-hidden="true">⌁</span>
-            <span><strong>Replay discharge-record upload</strong><small>Patient-provided copy · clinical truth not established</small></span>
-          </button>
-
-          <div class="latest-decision" id="latest-decision" role="status" aria-live="polite">
-            <span>Waiting for an exact app request</span>
-            <strong>No decision cached in this client</strong>
-          </div>
-
-          <button class="patient-revoke" id="replay-revocation" type="button">Replay Malia revoking permission</button>
-        </section>
-
-        <nav class="phone-nav" aria-label="Reference client navigation">
-          <span class="selected"><b aria-hidden="true">⌂</b>Home</span>
-          <span><b aria-hidden="true">◫</b>Documents</span>
-          <span><b aria-hidden="true">◎</b>Activity</span>
-        </nav>
+        <button id="refresh-decision" class="refresh" type="button">Refresh CareTrust decision</button>
+        <footer>
+          <span>Today</span><span>Tasks</span><span>Profile</span>
+        </footer>
       </div>
-      <p class="phone-caption">A separate static client over retained synthetic records. It makes no live identity-provider, API, EHR, HIE, or federation call.</p>
     </section>
   </main>
-
-  <dialog id="inspector" aria-labelledby="inspector-title">
-    <div class="dialog-heading">
-      <div><p class="eyebrow" id="inspector-kind">Canonical CareTrust record</p><h2 id="inspector-title">Message</h2></div>
-      <button id="close-inspector" type="button" aria-label="Close inspector">×</button>
-    </div>
-    <dl id="inspector-meta"></dl>
-    <p id="inspector-boundary" class="inspector-boundary"></p>
-    <pre><code id="inspector-json"></code></pre>
-  </dialog>
-
-  <script src="network-data.js?v=0.4.1"></script>
-  <script src="reference-client.js?v=0.4.1"></script>
+  <script src="reference-client.js?v=0.5.0" defer></script>
 </body>
 </html>

@@ -1,646 +1,593 @@
-"use strict";
+const API_ROOT = "./api/v1";
+const STORAGE_KEY = "caretrust.provider-session.v1";
 
-const messages = {
-  intent: {
-    title: "IntentStatement",
-    status: "Executed local",
-    sender: "Authenticated synthetic patient session",
-    receiver: "CareTrust intent service",
-    contract: "caretrust.intent-statement.v1",
-    standard: "CareTrust native contract",
-    boundary: "The utterance is patient-supplied input. It is not consent, proof of relationship, legal authority, or permission.",
-    json: {
-      schema_version: "caretrust.intent-statement.v1",
-      intent_id: "intent:synthetic-delegation-001",
-      patient_ref: "patient:synthetic-001",
-      utterance: "Let my daughter Leilani schedule appointments and see visit instructions through 2026-12-31, but not billing or mental health records.",
-      utterance_sha256: "686fd43d9a47107538b81c1f7b2a848445ca8d4d2d624d207afaf141e8446fc4",
-      created_at: "2026-07-30T10:00:00Z",
-      synthetic: true
-    }
+const stageOrder = [
+  "intake",
+  "review_draft",
+  "patient_approval",
+  "worker_assignment",
+  "app_routing",
+];
+
+const stageCopy = {
+  intake: {
+    title: "Compile the referral",
+    description: "AI can locate coordination facts and gaps. It cannot approve, assign, or grant app access.",
+    badge: "New referral",
+    queue: "New referral",
   },
-  draft: {
-    title: "DelegationDraft",
-    status: "Executed local",
-    sender: "AI intent adapter",
-    receiver: "Deterministic safety gate",
-    contract: "caretrust.delegation-draft.v1",
-    standard: "CareTrust native contract",
-    boundary: "AI may emit only draft or clarification state. activation_permitted and authorization_permitted are structurally false.",
-    json: {
-      schema_version: "caretrust.delegation-draft.v1",
-      draft_id: "delegation-draft:synthetic-001:v2",
-      intent_id: "intent:synthetic-delegation-001",
-      status: "draft",
-      proposed_by: "ai_model",
-      authority_basis: "unverified_patient_intent",
-      relationship_code: "child",
-      allowed_actions: ["schedule_appointments", "view_visit_instructions"],
-      allowed_resources: ["appointments", "visit_instructions"],
-      excluded_resources: ["billing", "mental_health_records"],
-      allowed_audiences: ["app:synthetic-scheduling", "app:synthetic-care-portal"],
-      valid_until: "2026-12-31",
-      activation_permitted: false,
-      authorization_permitted: false,
-      legal_authority_status: "not_established",
-      synthetic: true
-    }
+  review_draft: {
+    title: "Review one exception and one missing detail",
+    description: "Confirm the cited draft and correct only what the source could not establish.",
+    badge: "Coordinator review",
+    queue: "1 exception · 1 follow-up",
   },
-  clarification: {
-    title: "ClarificationRequest + Response",
-    status: "Executed local",
-    sender: "CareTrust clarification service",
-    receiver: "Authenticated synthetic patient session",
-    contract: "caretrust.clarification-request.v1",
-    standard: "CareTrust native contracts",
-    boundary: "The patient response narrows the proposed audiences and is hash-bound into approval; it does not authorize access by itself.",
-    json: {
-      request: {
-        clarification_id: "clarification:synthetic-audience-001",
-        draft_id: "delegation-draft:synthetic-001:v1",
-        code: "CHOOSE_AUDIENCE",
-        question: "Which synthetic applications should Leilani be able to use?",
-        options: ["app:synthetic-scheduling", "app:synthetic-care-portal"],
-        required: true
-      },
-      response: {
-        response_id: "clarification-response:synthetic-001",
-        patient_ref: "patient:synthetic-001",
-        selected_values: ["app:synthetic-scheduling", "app:synthetic-care-portal"],
-        response_sha256: "ad65b0cec76088dbd75579c157acf0bd753d1a904bb2a41c753663483c1fc83d"
-      }
-    }
+  patient_approval: {
+    title: "Wait for Malia’s explicit sharing approval",
+    description: "The coordinator has prepared the scope. The patient decides in a separate confirmation flow.",
+    badge: "Patient action",
+    queue: "Waiting for patient",
   },
-  invite: {
-    title: "PatientInvite",
-    status: "Executed local",
-    sender: "CareTrust invitation service",
-    receiver: "Synthetic out-of-band channel",
-    contract: "caretrust.patient-invite.v1",
-    standard: "CareTrust native contract",
-    boundary: "No recipient contact, invite token, or nonce is retained in plaintext. The invite is synthetic, expiring, and single use.",
-    json: {
-      schema_version: "caretrust.patient-invite.v1",
-      invite_id: "invite:synthetic-001",
-      patient_ref: "patient:synthetic-001",
-      draft_id: "delegation-draft:synthetic-001:v2",
-      delivery_channel: "synthetic_out_of_band",
-      recipient_hint_sha256: "fcd4304af64f47429d3faf287ee7594ac92f6dfb8b614bfecd901bca3b5d62f2",
-      invite_token_sha256: "667eff78639bb145217c5a625ec85cc03d90d9e0181504c5c220c1b948ebeb2a",
-      nonce_sha256: "a279b165334303a3f576eb0e583db2bc4b830060ec2b9fae256acbfdbab5e049",
-      status: "pending",
-      single_use: true,
-      expires_at: "2026-07-30T11:01:00Z",
-      synthetic: true
-    }
+  worker_assignment: {
+    title: "Assign an eligible direct-care worker",
+    description: "Deterministic gates narrow the roster. AI explains fit; a supervisor makes the assignment.",
+    badge: "Supervisor action",
+    queue: "Ready to assign",
   },
-  acceptance: {
-    title: "InviteAcceptance",
-    status: "Executed local",
-    sender: "Synthetic invited account",
-    receiver: "CareTrust invitation service",
-    contract: "caretrust.invite-acceptance.v1",
-    standard: "CareTrust native contract",
-    boundary: "Acceptance shows control of a synthetic invited account only. It establishes neither identity, relationship, patient consent, delegation, nor legal authority.",
-    json: {
-      schema_version: "caretrust.invite-acceptance.v1",
-      acceptance_id: "invite-acceptance:synthetic-001",
-      invite_id: "invite:synthetic-001",
-      caregiver_ref: "account:synthetic-leilani",
-      patient_ref: "patient:synthetic-001",
-      status: "accepted",
-      identity_assurance: "synthetic_account_only",
-      relationship_verified: false,
-      patient_consent_established: false,
-      delegation_activated: false,
-      legal_authority_status: "not_established",
-      synthetic: true
-    }
+  app_routing: {
+    title: "Route minimum data to each independent app",
+    description: "Each fresh request is evaluated against the approved purpose, active assignment, and app policy.",
+    badge: "App routing",
+    queue: "Ready for apps",
   },
-  approval: {
-    title: "PatientApprovalRecord",
-    status: "Executed local",
-    sender: "Authenticated synthetic patient session",
-    receiver: "CareTrust approval service",
-    contract: "caretrust.patient-approval-record.v1",
-    standard: "CareTrust native contract",
-    boundary: "Approval is bound to the exact intent, clarification bundle, final draft, and invite acceptance. Approval is necessary but not sufficient for application access.",
-    json: {
-      schema_version: "caretrust.patient-approval-record.v1",
-      approval_id: "approval:synthetic-001",
-      patient_ref: "patient:synthetic-001",
-      final_draft_id: "delegation-draft:synthetic-001:v2",
-      invite_acceptance_id: "invite-acceptance:synthetic-001",
-      decision: "approved",
-      explicit_patient_action: true,
-      approval_basis: "patient_attestation",
-      activation_permitted: false,
-      authorization_permitted: false,
-      legal_authority_status: "not_established",
-      approved_at: "2026-07-30T10:03:00Z",
-      synthetic: true
-    }
+  active: {
+    title: "Case is access-ready",
+    description: "Both apps received different, purpose-limited projections. Fresh requests remain revocable.",
+    badge: "Active",
+    queue: "Active · no action",
   },
-  relationship: {
-    title: "CareRelationshipClaim",
-    status: "Executed local",
-    sender: "CareTrust claim service",
-    receiver: "Organization case projection",
-    contract: "caretrust.care-relationship-claim.v1",
-    standard: "RelatedPerson candidate projection",
-    boundary: "This is a patient-asserted relationship only. It contains no permission scope and does not establish formal responsibility or legal authority.",
-    json: {
-      relationship_claim_id: "relationship:synthetic-001",
-      patient_ref: "patient:synthetic-001",
-      caregiver_ref: "account:synthetic-leilani",
-      relationship_code: "child",
-      relationship_basis: "patient_attestation",
-      relationship_assertion_only: true,
-      status: "active",
-      legal_authority_status: "not_established",
-      valid_until: "2026-12-31",
-      synthetic: true
-    }
+  revoked: {
+    title: "Verify denial after revocation",
+    description: "History remains, but every fresh app request must fail closed without disclosing case data.",
+    badge: "Revoked",
+    queue: "Revocation follow-up",
   },
-  grant: {
-    title: "Linked relationship + delegation",
-    status: "Executed local",
-    sender: "CareTrust claim service",
-    receiver: "Registered synthetic applications",
-    contract: "caretrust.delegation-grant.v1",
-    standard: "FHIR Consent + OAuth RAR candidate projections",
-    boundary: "The relationship and delegation are separate artifacts. The active grant supports a request but every application must apply its own current policy.",
-    json: {
-      grant_id: "grant:synthetic-001",
-      relationship_claim_id: "relationship:synthetic-001",
-      patient_ref: "patient:synthetic-001",
-      delegate_ref: "account:synthetic-leilani",
-      allowed_actions: ["schedule_appointments", "view_visit_instructions"],
-      allowed_resources: ["appointments", "visit_instructions"],
-      excluded_resources: ["billing", "mental_health_records"],
-      allowed_audiences: ["app:synthetic-scheduling", "app:synthetic-care-portal"],
-      allowed_purposes: ["appointment_management", "care_coordination"],
-      status: "active",
-      application_decision_required: true,
-      legal_authority_status: "not_established",
-      valid_until: "2026-12-31",
-      synthetic: true
-    }
-  },
-  "schedule-decision": {
-    title: "Scheduling authorization decision",
-    status: "Executed local",
-    sender: "Kākou Scheduling",
-    receiver: "CareTrust authorization service",
-    contract: "caretrust.delegation-authorization.v1",
-    standard: "OAuth RAR candidate projection",
-    boundary: "The scheduling application makes an independent, current decision for one audience, purpose, action, and resource.",
-    json: {
-      request: { request_id: "delegation-request:synthetic-001", grant_id: "grant:synthetic-001", audience: "app:synthetic-scheduling", purpose: "appointment_management", action: "schedule_appointments", resource: "appointments", requested_at: "2026-07-30T10:04:00Z" },
-      decision: { decision_id: "delegation-decision:synthetic-001", policy_version: "caretrust.delegation-authorization.v1", decision: "permit", reason_codes: ["POLICY_REQUIREMENTS_SATISFIED"], supporting_grant_ids: ["grant:synthetic-001"], decided_at: "2026-07-30T10:04:01Z" }
-    }
-  },
-  "portal-decision": {
-    title: "Care-portal authorization decision",
-    status: "Executable scenario",
-    sender: "Care Instructions app",
-    receiver: "CareTrust authorization service",
-    contract: "caretrust.delegation-authorization.v1",
-    standard: "OAuth RAR candidate projection",
-    boundary: "A second application evaluates the same grant independently and receives no billing, mental-health, or underlying eligibility evidence.",
-    json: {
-      request: { request_id: "delegation-request:synthetic-portal-001", grant_id: "grant:synthetic-001", audience: "app:synthetic-care-portal", purpose: "care_coordination", action: "view_visit_instructions", resource: "visit_instructions" },
-      decision: { decision_id: "delegation-decision:synthetic-portal-001", policy_version: "caretrust.delegation-authorization.v1", decision: "permit", reason_codes: ["POLICY_REQUIREMENTS_SATISFIED"], supporting_grant_ids: ["grant:synthetic-001"] },
-      disclosure_summary: { claim_ids: ["grant:synthetic-001"], raw_evidence_shared: false }
-    }
-  },
-  "medication-denial": {
-    title: "Unknown-action denial",
-    status: "Fail-closed scenario",
-    sender: "Unregistered medication action",
-    receiver: "CareTrust request validator",
-    contract: "caretrust.delegation-authorization.v1",
-    standard: "CareTrust governed vocabulary",
-    boundary: "Medication refill is outside the governed action vocabulary and outside this grant. The request fails before any clinical-data processing.",
-    json: {
-      attempted_request: { audience: "app:synthetic-medication", purpose: "care_coordination", action: "medication_refill", resource: "medication_request" },
-      decision: { decision: "deny", policy_version: "caretrust.delegation-authorization.v1", reason_codes: ["ACTION_NOT_IN_VOCABULARY", "ACTION_NOT_DELEGATED"], supporting_grant_ids: [], data_released: false }
-    }
-  },
-  "case-assignment": {
-    title: "CaseAssignmentEvent",
-    status: "UI fixture",
-    sender: "Synthetic organization console",
-    receiver: "Case projection",
-    contract: "caretrust.case-event.candidate.v1",
-    standard: "No standards claim",
-    boundary: "The coordinator assignment is illustrative organization workflow state, not part of the executed delegation contract family.",
-    json: { case_id: "case:synthetic-0042", coordinator_ref: "staff:synthetic-nohea", organization_ref: "org:synthetic-ke-ola", status: "assigned", synthetic: true }
-  },
-  "care-document": {
-    title: "UploadedCareDocument",
-    status: "Executable contract in progress",
-    sender: "Invited synthetic caregiver account",
-    receiver: "CareTrust restricted document store",
-    contract: "caretrust.uploaded-care-document.v1",
-    standard: "FHIR DocumentReference candidate projection",
-    boundary: "Uploader provenance identifies who supplied this copy. It does not prove clinical authorship, authenticity, accuracy, currentness, or legal authority.",
-    json: {
-      document_id: "care-document:synthetic-discharge-001",
-      patient_ref: "patient:synthetic-001",
-      uploader_ref: "account:synthetic-leilani",
-      uploader_capacity: "patient_invited_coordinator",
-      source_assertion: "patient_provided_unverified_copy",
-      artifact_sha256: "8a21f39d73e98b7ba6e0db2d818a75db8ead76c3912e7d540d3fb62207a24d9c",
-      content_type: "application/pdf",
-      page_count: 3,
-      data_classification: "synthetic_health_information",
-      file_validation: "passed",
-      malware_scan: "passed",
-      document_authorship_verified: false,
-      clinically_current_verified: false,
-      synthetic: true
-    }
-  },
-  "document-extraction": {
-    title: "DocumentExtractionDraft",
-    status: "AI draft · unverified",
-    sender: "CareTrust document AI adapter",
-    receiver: "Document safety and review gate",
-    contract: "caretrust.document-extraction-draft.v1",
-    standard: "CareTrust native evidence model",
-    boundary: "The model locates and classifies candidate coordination items. It cannot create clinical facts, medication orders, approved Tasks, or sharing permission.",
-    json: {
-      extraction_id: "document-extraction:synthetic-001",
-      document_id: "care-document:synthetic-discharge-001",
-      status: "draft",
-      clinical_authority_established: false,
-      candidates: [
-        { item_id: "coordination-item:followup-001", category: "administrative_follow_up", proposed_action: "schedule_follow_up", source: { page: 1, lines: [14, 16], quote: "Schedule a follow-up visit with the cardiology clinic within 7 days.", region: [82, 430, 1180, 512] }, status: "human_review_required" },
-        { item_id: "coordination-item:weight-log-001", category: "caregiver_reminder", proposed_action: "record_weight_log", source: { page: 1, lines: [18, 19], quote: "Record weight each morning and bring the log to the next visit.", region: [82, 530, 1180, 612] }, status: "human_review_required" },
-        { item_id: "coordination-item:medication-001", category: "medication_evidence", proposed_action: null, source: { page: 1, lines: [21, 23] }, status: "clinical_review_required", blocking_code: "CLINICAL_SOURCE_CLARIFICATION_REQUIRED" },
-        { item_id: "coordination-item:warning-001", category: "warning_sign_evidence", proposed_action: null, source: { page: 1, lines: [25, 26] }, status: "clinical_review_required", blocking_code: "CLINICAL_SOURCE_CLARIFICATION_REQUIRED" }
-      ],
-      forbidden_outputs: ["MedicationRequest", "MedicationStatement", "active CarePlan"],
-      synthetic: true
-    }
-  },
-  "document-review": {
-    title: "DocumentItemReviewRecord",
-    status: "Executable contract in progress",
-    sender: "Patient + organization coordinator",
-    receiver: "CareTrust coordination router",
-    contract: "caretrust.document-item-review.v1",
-    standard: "FHIR Task candidate projection",
-    boundary: "Patient approval selects administrative coordination intent; organization review confirms routing. Neither action clinically validates medication or warning-sign content.",
-    json: {
-      review_id: "document-review:synthetic-001",
-      document_id: "care-document:synthetic-discharge-001",
-      patient_approved_item_ids: ["coordination-item:followup-001", "coordination-item:weight-log-001"],
-      coordinator_routing_confirmed: true,
-      clinical_items_blocked: ["coordination-item:medication-001", "coordination-item:warning-001"],
-      reviewed_extraction_id: "document-extraction:synthetic-001",
-      decision: "approved_for_bounded_routing",
-      synthetic: true
-    }
-  },
-  "document-share": {
-    title: "Purpose-minimized route requests",
-    status: "Executable contract in progress",
-    sender: "CareTrust coordination router",
-    receiver: "Independent synthetic applications",
-    contract: "caretrust.document-item-route-request.v1",
-    standard: "FHIR Task candidate projection",
-    boundary: "Each app receives a disjoint projection. The raw packet, medications, warning signs, diagnosis, and unrelated case history are excluded.",
-    json: {
-      requests: [
-        { route_id: "route:followup-001", item_id: "coordination-item:followup-001", audience: "app:synthetic-scheduling", purpose: "coordinate_approved_follow_up", included_fields: ["subject", "requested_window", "provider_role", "source_reference"], excluded_fields: ["raw_document", "medications", "warning_signs", "diagnosis"] },
-        { route_id: "route:weight-log-001", item_id: "coordination-item:weight-log-001", audience: "app:synthetic-direct-care-tasks", purpose: "caregiver_reminder", included_fields: ["subject", "reminder_text", "source_reference"], excluded_fields: ["raw_document", "diagnosis", "medications", "warning_signs"] }
-      ],
-      raw_document_shared: false,
-      synthetic: true
-    }
-  },
-  "document-denial": {
-    title: "Clinical-item routing denial",
-    status: "Fail-closed scenario",
-    sender: "Medication Support app",
-    receiver: "CareTrust coordination router",
-    contract: "caretrust.document-item-route-decision.v1",
-    standard: "CareTrust native policy",
-    boundary: "A patient-provided discharge excerpt cannot create or modify a medication order or a structured statement of what the patient is taking.",
-    json: { item_id: "coordination-item:medication-001", decision: "deny", reason_codes: ["CLINICAL_REVIEW_REQUIRED", "NO_MEDICATION_ORDER_AUTHORITY"], data_released: false, generated_resources: [], synthetic: true }
-  },
-  "clinical-permit": {
-    title: "Synthetic clinical-data holder receipt",
-    status: "Local simulation",
-    sender: "Authorized synthetic organization application",
-    receiver: "Synthetic clinical-data holder",
-    contract: "caretrust.clinical-data-handoff.candidate.v1",
-    standard: "FHIR R4-shaped local Bundle + CarePlan fixture",
-    boundary: "No HIE or EHR was contacted. The holder independently established synthetic participant/user trust, patient match, and disclosure policy before returning one bounded fixture.",
-    json: {
-      request: { participant_org_ref: "org:synthetic-ke-ola", authorized_user_ref: "staff:synthetic-nohea", caretrust_role: "delegation_and_trust_context_only", patient_match_hint: "patient:synthetic-001", purpose: "care_coordination", requested_fhir_resource_types: ["CarePlan"], requested_scopes: ["patient/CarePlan.rs"], caretrust_context_id: "context:clinical:permit-001" },
-      holder_decision: { decision: "permit", patient_match_authority: "data_holder", disclosure_policy_authority: "data_holder", policy_version: "synthetic.data-holder.disclosure.v1", reason_codes: ["DATA_HOLDER_POLICY_SATISFIED"], fhir_bundle_included: true },
-      returned_fhir_bundle: { resourceType: "Bundle", type: "collection", entry: [{ resource: { resourceType: "CarePlan", id: "synthetic-care-plan-001", status: "active", intent: "plan", title: "Synthetic caregiver visit instructions" } }] },
-      live_hie_or_ehr_connected: false,
-      network_calls: false
-    }
-  },
-  revocation: {
-    title: "DelegationRevocationRecord",
-    status: "Executed local",
-    sender: "Authenticated synthetic patient session",
-    receiver: "CareTrust status service",
-    contract: "caretrust.delegation-revocation-record.v1",
-    standard: "FHIR Consent inactive projection candidate",
-    boundary: "The relationship may remain current. Revocation makes fresh local authorization requests deny; no existing-session termination is claimed.",
-    json: { schema_version: "caretrust.delegation-revocation-record.v1", revocation_id: "delegation-revocation:synthetic-001", grant_id: "grant:synthetic-001", actor_ref: "patient:synthetic-001", reason_code: "PATIENT_REVOKED_DELEGATION", revoked_at: "2026-07-30T10:05:00Z", synthetic: true }
-  },
-  "post-revocation-denial": {
-    title: "Revocation + fresh authorization denial",
-    status: "Executed local trace",
-    sender: "Synthetic patient, caregiver, and scheduling policy",
-    receiver: "CareTrust status seam and requesting account",
-    contract: "CareTrust revocation, request, and decision v1 messages",
-    standard: "FHIR Consent inactive projection candidate + CareTrust policy",
-    boundary: "The fresh request is evaluated after revocation and denied with GRANT_REVOKED. Earlier receipts remain historical; termination of an existing application session is not claimed.",
-    json: {
-      revocation: {
-        schema_version: "caretrust.delegation-revocation-record.v1",
-        revocation_id: "delegation-revocation:synthetic-001",
-        grant_id: "grant:synthetic-001",
-        actor_ref: "patient:synthetic-001",
-        reason_code: "PATIENT_REVOKED_DELEGATION",
-        revoked_at: "2026-07-30T10:05:00Z",
-        synthetic: true
-      },
-      fresh_request: {
-        schema_version: "caretrust.delegation-authorization-request.v1",
-        request_id: "delegation-request:synthetic-002",
-        grant_id: "grant:synthetic-001",
-        patient_ref: "patient:synthetic-001",
-        delegate_ref: "account:synthetic-leilani",
-        audience: "app:synthetic-scheduling",
-        action: "schedule_appointments",
-        resource: "appointments",
-        purpose: "appointment_management",
-        requested_at: "2026-07-30T10:05:01Z",
-        synthetic: true
-      },
-      fresh_decision: {
-        schema_version: "caretrust.delegation-authorization-decision.v1",
-        decision_id: "delegation-decision:synthetic-002",
-        request_id: "delegation-request:synthetic-002",
-        decision: "deny",
-        reason_codes: ["GRANT_REVOKED"],
-        supporting_grant_ids: [],
-        policy_version: "caretrust.delegation-authorization.v1",
-        decided_at: "2026-07-30T10:05:02Z",
-        synthetic: true
-      }
-    }
-  }
 };
 
-const retained = window.CARETRUST_DEMO_DATA;
-const caseDecision = (requestId) => retained.case_bundle.decisions.find((item) => item.request_id === requestId);
-const providerProof = retained.provider_operations;
+const aiFacts = [
+  ["patient.display_name", "Care recipient", "Malia K.", 0.99, "Malia K.", false],
+  ["service.type", "Requested service", "In-home respite support", 0.97, "in-home respite support", false],
+  ["service.start_date", "Requested start", "2026-08-05", 0.93, "beginning August 5, 2026", false],
+  ["service.schedule", "Preferred schedule", "Wednesday afternoons", 0.74, "preferably Wednesday afternoons", true],
+  ["service.area", "Service area", "East Honolulu", 0.98, "in East Honolulu", false],
+  ["care_team.coordinator", "Family coordinator", "Leilani · daughter", 0.95, "Her daughter Leilani is helping coordinate", false],
+  ["preferences.cultural", "Caregiver preference", "Local cultural knowledge preferred", 0.91, "a caregiver with local cultural knowledge is preferred", false],
+  ["visit.preparation", "First-visit preparation", "Bring printed transition packet", 0.98, "bring the printed transition packet to the first visit", false],
+].map(([field_path, label, proposed_value, confidence, quote, needs_review]) => ({
+  field_path,
+  label,
+  proposed_value,
+  confidence,
+  quote,
+  needs_review,
+  source_ref: "referral:synthetic-transition-note",
+  reviewed_value: null,
+  reviewed_by: null,
+}));
 
-document.querySelector("#care-context-count").textContent = String(providerProof.care_context_count);
-document.querySelector("#application-count").textContent = String(providerProof.application_count);
-document.querySelector("#decision-count").textContent = String(providerProof.decision_count);
-document.querySelector("#decision-split").textContent = `${providerProof.permit_count} permit · ${providerProof.deny_count} fail-closed`;
-document.querySelector("#field-outcome-label").textContent = providerProof.field_outcome_label;
-document.querySelector("#field-outcome-next").textContent = providerProof.field_outcome_next_step;
+const workerCandidates = [
+  {
+    worker_id: "worker:synthetic-kai-n",
+    display_name: "Kai N.",
+    role: "Certified nurse aide",
+    qualifications: ["Hawaiʻi CNA active (simulated)", "CPR current (simulated)"],
+    availability: "Wednesday 1:00–5:00 PM",
+    eligible: true,
+    deterministic_checks: ["required role satisfied", "simulated registry status active", "requested window available", "service area covered"],
+    ai_explanation: "Strongest reviewed fit because the requested window, service area, and cultural preference align. A supervisor still decides.",
+  },
+  {
+    worker_id: "worker:synthetic-noa-p",
+    display_name: "Noa P.",
+    role: "Home care aide",
+    qualifications: ["Home care aide profile (simulated)"],
+    availability: "Wednesday 1:00–3:00 PM",
+    eligible: false,
+    deterministic_checks: ["required role not satisfied", "requested four-hour window not covered"],
+    ai_explanation: "Potential relationship fit, but deterministic qualification and availability gates exclude this worker.",
+  },
+  {
+    worker_id: "worker:synthetic-liko-r",
+    display_name: "Liko R.",
+    role: "Certified nurse aide",
+    qualifications: ["Hawaiʻi CNA active (simulated)", "CPR current (simulated)"],
+    availability: "Friday mornings",
+    eligible: false,
+    deterministic_checks: ["required role satisfied", "simulated registry status active", "requested window unavailable"],
+    ai_explanation: "Qualified, but the authoritative availability check does not match the approved schedule.",
+  },
+];
 
-Object.assign(messages, {
-  "family-lifecycle": {
-    title: "Family caregiver decision lifecycle",
-    status: "Executed local",
-    sender: "Kākou Scheduling reference client",
-    receiver: "CareTrust case-access.v1 policy",
-    contract: "CareTrust Core case decision",
-    standard: "OAuth RAR care-data profile candidate",
-    boundary: "The relationship and grant support only the requested scheduling transaction. A fresh request after patient revocation denies; historical receipts remain.",
-    json: {
-      permit: caseDecision("request:case:family-permit-001"),
-      wrong_purpose_deny: caseDecision("request:case:family-wrong-purpose-001"),
-      post_revocation_fresh_deny: caseDecision("request:case:family-revoked-001")
-    }
-  },
-  "cna-lifecycle": {
-    title: "Agency CNA decision lifecycle",
-    status: "Executed local",
-    sender: "Direct Care Tasks reference client",
-    receiver: "CareTrust case-access.v1 policy",
-    contract: "CareTrust Core case decision",
-    standard: "W3C VC / FHIR Practitioner qualification mappings + OAuth RAR candidate",
-    boundary: "An organization role alone is insufficient. The permit requires a current reviewed credential claim, active organization assignment, patient-specific task grant, app audience, purpose, and action. Revoking the claim produces a fresh deny.",
-    json: {
-      permit: caseDecision("request:case:cna-permit-001"),
-      missing_claim_deny: caseDecision("request:case:cna-missing-claim-001"),
-      post_revocation_fresh_deny: caseDecision("request:case:cna-revoked-001")
-    }
-  },
-  "respite-lifecycle": {
-    title: "Community respite decision lifecycle",
-    status: "Contract tested",
-    sender: "Respite Connect reference client",
-    receiver: "CareTrust case-access.v1 policy",
-    contract: "CareTrust Core case decision",
-    standard: "CareTrust time-bounded service grant + OAuth RAR candidate",
-    boundary: "The service assignment is time bounded. Unverified clinical content remains blocked even during the valid service window; expiry and revocation each fail closed.",
-    json: {
-      historical_permit: caseDecision("request:case:respite-historical-001"),
-      clinical_content_deny: caseDecision("request:case:respite-clinical-block-001"),
-      expired_assignment_deny: caseDecision("request:case:respite-expired-001"),
-      post_revocation_fresh_deny: caseDecision("request:case:respite-revoked-001")
-    }
-  },
-  "app-compilation": {
-    title: "AI-assisted application onboarding draft",
-    status: retained.application_compilation.evidence_status,
-    sender: "Retained OpenAPI requirements",
-    receiver: "Human application reviewer",
-    contract: retained.application_compilation.schema_version,
-    standard: "OpenAPI input → OAuth RAR + CareTrust app profile candidates",
-    boundary: "AI proposes capabilities, actions, locations, and a minimum-data plan. It cannot register, activate, trust, or authorize the application.",
-    json: retained.application_compilation
-  },
-  "auth-flow": {
-    title: "Synthetic app authentication and authorization trace",
-    status: retained.auth_harness.evidence_status,
-    sender: "Synthetic caregiver + reviewed application",
-    receiver: "CareTrust authorization harness",
-    contract: retained.auth_harness.record_type,
-    standard: "OIDC identity link + OAuth Authorization Code, PKCE, RAR",
-    boundary: retained.auth_harness.non_claims.join(" "),
-    json: {
-      identity_link: retained.auth_harness.upstream_identity_link,
-      reviewed_registration: retained.auth_harness.human_reviewed_registration,
-      authorization_request: retained.auth_harness.authorization_code_request,
-      fresh_case_decision: retained.auth_harness.fresh_case_decision,
-      downstream_token_receipt: retained.auth_harness.downstream_token_receipt
-    }
-  },
-  "fhir-scheduling": {
-    title: "FHIR/SMART scheduling projection",
-    status: retained.fhir_scheduling.evidence_status,
-    sender: "CareTrust case decision",
-    receiver: "Synthetic scheduling reference client",
-    contract: retained.fhir_scheduling.schema_version,
-    standard: "FHIR R4 Appointment/AppointmentResponse + SMART App Launch resource scopes",
-    boundary: retained.fhir_scheduling.non_claims.join(" "),
-    json: {
-      action_mapping: retained.fhir_scheduling.business_action_mapping,
-      capability_matrix: retained.fhir_scheduling.capability_matrix,
-      appointment_workflow: retained.fhir_scheduling.proposed_appointment_workflow,
-      fresh_revocation_check: retained.fhir_scheduling.fresh_revocation_check
-    }
-  },
-  "federation-lab": {
-    title: "Two-hub federation laboratory",
-    status: retained.federation_lab.evidence_status,
-    sender: "Two independently keyed synthetic CareTrust hubs",
-    receiver: "Locally pinned federation trust anchors",
-    contract: retained.federation_lab.artifact_type,
-    standard: "OpenID Federation 1.0 local profile laboratory",
-    boundary: retained.federation_lab.claim_boundary.join(" "),
-    json: {
-      hubs: retained.federation_lab.two_independent_hubs,
-      resolved_trust: retained.federation_lab.participant_and_client_entity_trust,
-      negative_exercises: retained.federation_lab.negative_exercises,
-      key_rollover: retained.federation_lab.key_rollover,
-      fresh_local_decision_after_trust: retained.federation_lab.fresh_local_caregiver_decision_after_trust,
-      network_calls: retained.federation_lab.network_calls
-    }
+function now() {
+  return new Date().toISOString();
+}
+
+function event(actor_type, action, summary, stage) {
+  return {
+    event_id: `event:${crypto.randomUUID()}`,
+    occurred_at: now(),
+    actor_type,
+    actor_ref: actor_type === "ai" ? "caretrust-intake-compiler" : `synthetic:${actor_type}`,
+    action,
+    summary,
+    stage,
+  };
+}
+
+function createBrowserSession() {
+  const timestamp = now();
+  return {
+    session_id: `provider-session:${crypto.randomUUID()}`,
+    version: 1,
+    stage: "intake",
+    case_id: "case:synthetic-malia-k",
+    case_display: "Malia K. · respite support referral",
+    organization: "Kūpuna Care Coordination Network (synthetic)",
+    referral_source: "Synthetic hospital transition note",
+    referral_text: "Malia K. needs in-home respite support beginning August 5, 2026, preferably Wednesday afternoons in East Honolulu. Her daughter Leilani is helping coordinate. English is spoken; a caregiver with local cultural knowledge is preferred. Please bring the printed transition packet to the first visit. The note does not state the visit end time or include Malia's approval to share.",
+    facts: [],
+    missing_items: [],
+    patient_approval: "not_requested",
+    patient_approval_scope: [],
+    worker_candidates: [],
+    assignment: null,
+    app_projections: [
+      { app_id: "app:synthetic-scheduler", app_name: "OpenShift Scheduler", purpose: "Schedule the approved respite visit", decision: "not_requested", reason: "Awaiting a fresh access request.", data: {}, excluded: [] },
+      { app_id: "app:synthetic-field-client", app_name: "Care Tasks Mobile", purpose: "Show the assigned worker approved visit preparation", decision: "not_requested", reason: "Awaiting a fresh access request.", data: {}, excluded: [] },
+    ],
+    events: [event("system", "referral_received", "Synthetic referral entered the provider work queue.", "intake")],
+    metrics: { source_fields_detected: 0, fields_prefilled: 0, fields_requiring_correction: 0, fields_corrected: 0, follow_up_items_open: 0, duplicate_app_entries_avoided: 0, app_packages_generated: 0, human_approvals_remaining: 3 },
+    created_at: timestamp,
+    updated_at: timestamp,
+  };
+}
+
+class ApiBackend {
+  async health() {
+    const response = await fetch(`${API_ROOT}/health`, { headers: { Accept: "application/json" } });
+    if (!response.ok || !(response.headers.get("content-type") || "").includes("application/json")) throw new Error("API unavailable");
+    return response.json();
   }
-});
 
-const tabs = [...document.querySelectorAll(".workspace-tabs [data-view]")];
-const panels = [...document.querySelectorAll(".workspace-view[data-panel]")];
-const inspector = document.querySelector("#message-inspector");
-const inspectorTitle = document.querySelector("#inspector-title");
-const inspectorStatus = document.querySelector("#inspector-status");
-const messageMeta = document.querySelector("#message-meta");
-const messageJson = document.querySelector("#message-json");
-const inspectorBoundary = document.querySelector("#inspector-boundary");
-const evidenceDialog = document.querySelector("#evidence-dialog");
-let revoked = false;
-let reviewHistoryRecorded = false;
-let routeHistoryRecorded = false;
+  async create() {
+    return this.request(`${API_ROOT}/provider-sessions`, {});
+  }
 
-function switchView(name) {
-  tabs.forEach((tab) => {
-    const selected = tab.dataset.view === name;
-    tab.classList.toggle("active", selected);
-    tab.setAttribute("aria-selected", String(selected));
-  });
-  panels.forEach((panel) => {
-    const selected = panel.dataset.panel === name;
-    panel.hidden = !selected;
-    panel.classList.toggle("active", selected);
+  async command(session, command, fields = {}) {
+    return this.request(`${API_ROOT}/provider-sessions/${session.session_id}/commands`, {
+      command,
+      expected_version: session.version,
+      ...fields,
+    });
+  }
+
+  async request(url, body) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+    });
+    const value = await response.json();
+    if (!response.ok) throw new Error(value.detail || "Workflow request failed");
+    return value;
+  }
+}
+
+class BrowserReferenceBackend {
+  async health() {
+    return { status: "ok", mode: "browser-reference" };
+  }
+
+  async create() {
+    return createBrowserSession();
+  }
+
+  async command(session, command, fields = {}) {
+    const next = structuredClone(session);
+    next.version += 1;
+    next.updated_at = now();
+    if (command === "compile_referral") {
+      next.stage = "review_draft";
+      next.facts = structuredClone(aiFacts);
+      next.missing_items = [
+        { item_id: "visit_end", label: "Confirm requested visit end time", resolution: null, resolved_by: null },
+        { item_id: "patient_approval", label: "Obtain Malia's approval for the proposed sharing scope", resolution: null, resolved_by: null },
+      ];
+      Object.assign(next.metrics, { source_fields_detected: 8, fields_prefilled: 8, fields_requiring_correction: 1, follow_up_items_open: 2 });
+      next.events.push(event("ai", "draft_compiled", "Proposed 8 cited fields and routed 2 exceptions to a person.", next.stage));
+    } else if (command === "review_draft") {
+      const corrections = fields.corrections || {};
+      if (!fields.resolved_items?.visit_end) throw new Error("Confirm a visit end time before continuing.");
+      next.stage = "patient_approval";
+      next.patient_approval = "pending";
+      next.facts = next.facts.map((fact) => ({ ...fact, reviewed_value: corrections[fact.field_path] || fact.proposed_value, reviewed_by: "user:demo-coordinator" }));
+      next.missing_items[0] = { ...next.missing_items[0], resolution: fields.resolved_items.visit_end, resolved_by: "user:demo-coordinator" };
+      next.metrics.fields_corrected = next.facts.filter((fact) => corrections[fact.field_path] && corrections[fact.field_path] !== fact.proposed_value).length;
+      next.metrics.follow_up_items_open = 1;
+      next.metrics.human_approvals_remaining = 2;
+      next.events.push(event("human", "draft_reviewed", `Coordinator reviewed 8 fields, changed ${next.metrics.fields_corrected}, and requested patient approval.`, next.stage));
+    } else if (command === "record_patient_approval") {
+      if (!fields.approved) {
+        next.patient_approval = "declined";
+        next.events.push(event("patient", "sharing_declined", "Patient declined the proposed sharing scope.", next.stage));
+      } else {
+        next.stage = "worker_assignment";
+        next.patient_approval = "approved";
+        next.patient_approval_scope = ["coordinate-respite-visit", "share-schedule-with-assigned-worker", "share-approved-preparation-tasks"];
+        next.worker_candidates = structuredClone(workerCandidates);
+        next.missing_items[1] = { ...next.missing_items[1], resolution: "Approved in patient confirmation flow", resolved_by: "patient:synthetic-malia" };
+        next.metrics.follow_up_items_open = 0;
+        next.metrics.human_approvals_remaining = 1;
+        next.events.push(event("patient", "sharing_approved", "Patient approved three bounded purposes; policy generated an eligible worker shortlist.", next.stage));
+      }
+    } else if (command === "assign_worker") {
+      const candidate = next.worker_candidates.find((item) => item.worker_id === fields.worker_id);
+      if (!candidate?.eligible) throw new Error("Worker failed deterministic eligibility checks.");
+      next.stage = "app_routing";
+      next.assignment = { worker_id: candidate.worker_id, worker_name: candidate.display_name, assigned_by: "user:demo-supervisor", assigned_at: now(), status: "active" };
+      next.metrics.human_approvals_remaining = 0;
+      next.events.push(event("human", "worker_assigned", `Supervisor assigned ${candidate.display_name}; AI explanation did not control eligibility or assignment.`, next.stage));
+    } else if (command === "request_app_access") {
+      const app = next.app_projections.find((item) => item.app_id === fields.app_id);
+      if (!app) throw new Error("Unknown application.");
+      if (next.stage === "revoked") {
+        Object.assign(app, { decision: "deny", reason: "Fresh request denied: the assignment is revoked.", data: {}, decided_at: now() });
+        next.events.push(event("policy", "app_access_denied", `${app.app_name} received deny after revocation.`, next.stage));
+      } else {
+        const fact = (path) => next.facts.find((item) => item.field_path === path)?.reviewed_value || next.facts.find((item) => item.field_path === path)?.proposed_value;
+        const common = { case_id: next.case_id, care_recipient: fact("patient.display_name"), assigned_worker: next.assignment.worker_name };
+        if (app.app_id === "app:synthetic-scheduler") {
+          app.data = { ...common, service: fact("service.type"), start_date: fact("service.start_date"), visit_window: fact("service.schedule"), service_area: fact("service.area") };
+          app.excluded = ["source document", "family relationship details", "clinical record", "credential evidence"];
+        } else {
+          app.data = { ...common, visit_window: fact("service.schedule"), first_visit_task: fact("visit.preparation") };
+          app.excluded = ["source document", "family relationship details", "exact home address", "clinical record", "credential evidence"];
+        }
+        Object.assign(app, { decision: "allow", reason: "Allowed by approved purpose, active assignment, and app policy.", decided_at: now() });
+        next.events.push(event("policy", "app_access_allowed", `${app.app_name} received ${Object.keys(app.data).length} purpose-limited fields; ${app.excluded.length} sensitive categories were excluded.`, next.stage));
+        if (next.app_projections.every((item) => item.decision === "allow")) next.stage = "active";
+      }
+      next.metrics.app_packages_generated = next.app_projections.filter((item) => item.decision === "allow").length;
+      next.metrics.duplicate_app_entries_avoided = next.app_projections.filter((item) => item.decision === "allow").reduce((sum, item) => sum + Object.keys(item.data).length, 0);
+    } else if (command === "revoke_assignment") {
+      next.stage = "revoked";
+      next.assignment.status = "revoked";
+      next.app_projections = next.app_projections.map((app) => ({ ...app, decision: "not_requested", reason: "Assignment revoked; a fresh request will be denied.", data: {}, decided_at: null }));
+      next.metrics.app_packages_generated = 0;
+      next.metrics.duplicate_app_entries_avoided = 0;
+      next.events.push(event("human", "assignment_revoked", `Assignment revoked once for all apps: ${fields.reason}`, next.stage));
+    } else {
+      throw new Error(`Unknown command: ${command}`);
+    }
+    return next;
+  }
+}
+
+let backend;
+let session;
+
+const workflowPanel = document.querySelector("#workflow-panel");
+const messageInspector = document.querySelector("#message-inspector");
+const alertRegion = document.querySelector("#alert-region");
+const statusRegion = document.querySelector("#action-status");
+
+async function initialize(reset = false) {
+  setBusy(true);
+  try {
+    const api = new ApiBackend();
+    try {
+      await api.health();
+      backend = api;
+      document.querySelector("#backend-status").textContent = "Python API · local";
+      document.querySelector("#backend-status").classList.add("connected");
+    } catch {
+      backend = new BrowserReferenceBackend();
+      document.querySelector("#backend-status").textContent = "Browser reference adapter";
+      document.querySelector("#backend-status").classList.add("connected");
+    }
+    if (!reset && backend instanceof BrowserReferenceBackend) {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) session = JSON.parse(stored);
+    }
+    if (!session || reset) session = await backend.create();
+    persist();
+    render();
+    announce("Synthetic provider case ready.");
+  } catch (error) {
+    showError(error);
+  } finally {
+    setBusy(false);
+  }
+}
+
+async function runCommand(command, fields = {}) {
+  setBusy(true);
+  clearError();
+  try {
+    session = await backend.command(session, command, fields);
+    persist();
+    render();
+    messageInspector.textContent = JSON.stringify({ command, expected_version: session.version - 1, result: session.events.at(-1), metrics: session.metrics }, null, 2);
+    announce(session.events.at(-1).summary);
+  } catch (error) {
+    showError(error);
+  } finally {
+    setBusy(false);
+  }
+}
+
+function persist() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+}
+
+function render() {
+  const copy = stageCopy[session.stage];
+  document.querySelector("#next-action-title").textContent = copy.title;
+  document.querySelector("#next-action-description").textContent = copy.description;
+  document.querySelector("#stage-badge").textContent = copy.badge;
+  document.querySelector("#queue-stage").textContent = copy.queue;
+  document.querySelector("#metric-prefilled").textContent = session.metrics.fields_prefilled;
+  document.querySelector("#metric-exceptions").textContent = session.metrics.fields_requiring_correction;
+  document.querySelector("#metric-followups").textContent = session.metrics.follow_up_items_open;
+  document.querySelector("#metric-duplicates").textContent = session.metrics.duplicate_app_entries_avoided;
+  document.querySelector("#metric-approvals").textContent = session.metrics.human_approvals_remaining;
+  renderProgress();
+  renderWorkflow();
+  renderTeam();
+  renderApplications();
+  renderHistory();
+}
+
+function renderProgress() {
+  const currentIndex = session.stage === "active" || session.stage === "revoked" ? stageOrder.length : stageOrder.indexOf(session.stage);
+  document.querySelectorAll("#progress li").forEach((item, index) => {
+    item.classList.toggle("complete", index < currentIndex);
+    item.classList.toggle("current", index === currentIndex);
   });
 }
 
-function showMessage(key) {
-  const message = messages[key];
-  if (!message) return;
-  inspectorTitle.textContent = message.title;
-  inspectorStatus.textContent = message.status;
-  messageMeta.innerHTML = [
-    ["Sender", message.sender],
-    ["Receiver", message.receiver],
-    ["Contract", message.contract],
-    ["Standard / profile", message.standard]
-  ].map(([term, value]) => `<div><dt>${term}</dt><dd>${value}</dd></div>`).join("");
-  messageJson.textContent = JSON.stringify(message.json, null, 2);
-  inspectorBoundary.textContent = message.boundary;
-  inspector.showModal();
-}
-
-tabs.forEach((tab) => tab.addEventListener("click", () => switchView(tab.dataset.view)));
-document.querySelectorAll("[data-switch]").forEach((button) => button.addEventListener("click", () => switchView(button.dataset.switch)));
-document.querySelectorAll("[data-message]").forEach((button) => button.addEventListener("click", () => showMessage(button.dataset.message)));
-document.querySelector("#close-inspector").addEventListener("click", () => inspector.close());
-document.querySelector("#open-evidence").addEventListener("click", () => evidenceDialog.showModal());
-document.querySelector("#close-evidence").addEventListener("click", () => evidenceDialog.close());
-document.querySelector("#copy-message").addEventListener("click", async (event) => {
-  await navigator.clipboard.writeText(messageJson.textContent);
-  event.currentTarget.textContent = "Copied";
-  setTimeout(() => { event.currentTarget.textContent = "Copy"; }, 1200);
-});
-
-document.querySelectorAll(".evidence-button[data-highlight]").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".discharge-page mark").forEach((mark) => mark.classList.remove("focused"));
-    const evidence = document.querySelector(`.discharge-page mark[data-evidence="${button.dataset.highlight}"]`);
-    if (evidence) {
-      evidence.classList.add("focused");
-      evidence.scrollIntoView({ block: "center", behavior: "smooth" });
-    }
-  });
-});
-
-document.querySelector("#review-document-items").addEventListener("click", (event) => {
-  document.querySelector("#packet-sharing").hidden = false;
-  document.querySelectorAll('.extracted-items li[data-item-state="ready"] .review-state').forEach((state) => {
-    state.textContent = "Patient approved · routing ready";
-  });
-  event.currentTarget.textContent = "2 administrative items approved";
-  event.currentTarget.disabled = true;
-  if (!reviewHistoryRecorded) {
-    const historyItem = document.createElement("li");
-    historyItem.innerHTML = "<time>10:04:30</time><span class=\"event-dot patient\"></span><div><strong>Patient approved two administrative items</strong><p>Organization coordinator confirmed routing; two clinical items remain blocked.</p><button class=\"trace-link\" type=\"button\">DocumentItemReviewRecord</button></div>";
-    historyItem.querySelector("button").addEventListener("click", () => showMessage("document-review"));
-    document.querySelector("#case-history").append(historyItem);
-    reviewHistoryRecorded = true;
-    document.querySelector("#history-count").textContent = String(document.querySelectorAll("#case-history li").length);
-  }
-  document.querySelector("#packet-sharing").scrollIntoView({ block: "nearest", behavior: "smooth" });
-});
-
-document.querySelector("#run-document-sharing").addEventListener("click", () => {
-  const result = document.querySelector("#clinical-result");
-  if (revoked) {
-    result.className = "clinical-result deny";
-    result.innerHTML = "<span>Deny</span><strong>DELEGATION_REVOKED · no new items disclosed</strong><small>Historical receipts remain</small>";
+function renderWorkflow() {
+  if (session.stage === "intake") {
+    workflowPanel.replaceChildren(document.querySelector("#intake-template").content.cloneNode(true));
+    document.querySelector("#referral-text").textContent = session.referral_text;
+    document.querySelector("#compile-action").addEventListener("click", () => runCommand("compile_referral"));
     return;
   }
-  result.className = "clinical-result permit";
-  result.innerHTML = "<span>Routed</span><strong>2 disjoint coordination items · raw packet withheld</strong><button class=\"trace-link\" type=\"button\" id=\"document-receipt\">Inspect disclosure receipts</button>";
-  document.querySelectorAll(".pending-share").forEach((state) => {
-    state.className = "decision permit";
-    state.textContent = "PERMIT";
-  });
-  document.querySelector("#document-receipt").addEventListener("click", () => showMessage("document-share"));
-  if (!routeHistoryRecorded) {
-    const historyItem = document.createElement("li");
-    historyItem.innerHTML = "<time>10:04:40</time><span class=\"event-dot app\"></span><div><strong>Two purpose-minimized items routed</strong><p>Scheduling and direct-care apps received disjoint projections; raw packet and clinical items were withheld.</p><button class=\"trace-link\" type=\"button\">Route requests + receipts</button></div>";
-    historyItem.querySelector("button").addEventListener("click", () => showMessage("document-share"));
-    document.querySelector("#case-history").append(historyItem);
-    routeHistoryRecorded = true;
-    document.querySelector("#history-count").textContent = String(document.querySelectorAll("#case-history li").length);
+  if (session.stage === "review_draft") {
+    workflowPanel.innerHTML = reviewMarkup();
+    workflowPanel.querySelectorAll("[data-evidence]").forEach((button) => button.addEventListener("click", () => {
+      const fact = session.facts.find((item) => item.field_path === button.dataset.evidence);
+      messageInspector.textContent = JSON.stringify({ type: "caretrust.evidence-binding.v0.1", field_path: fact.field_path, source_ref: fact.source_ref, exact_quote: fact.quote, confidence: fact.confidence, authority_effect: "none" }, null, 2);
+      document.querySelector(".evidence-drawer").open = true;
+    }));
+    document.querySelector("#review-action").addEventListener("click", () => {
+      const corrections = {};
+      document.querySelectorAll("[data-fact-input]").forEach((input) => { corrections[input.dataset.factInput] = input.value.trim(); });
+      runCommand("review_draft", { reviewer_ref: "user:demo-coordinator", corrections, resolved_items: { visit_end: document.querySelector("#visit-end").value.trim() } });
+    });
+    return;
   }
+  if (session.stage === "patient_approval") {
+    workflowPanel.innerHTML = approvalMarkup();
+    document.querySelector("#patient-approve").addEventListener("click", () => runCommand("record_patient_approval", { patient_ref: "patient:synthetic-malia", approved: true }));
+    document.querySelector("#patient-decline").addEventListener("click", () => runCommand("record_patient_approval", { patient_ref: "patient:synthetic-malia", approved: false }));
+    return;
+  }
+  if (session.stage === "worker_assignment") {
+    workflowPanel.innerHTML = assignmentMarkup();
+    workflowPanel.querySelectorAll("[data-assign-worker]").forEach((button) => button.addEventListener("click", () => runCommand("assign_worker", { worker_id: button.dataset.assignWorker, supervisor_ref: "user:demo-supervisor" })));
+    return;
+  }
+  workflowPanel.innerHTML = routingMarkup();
+  bindAppActions(workflowPanel);
+}
+
+function reviewMarkup() {
+  const facts = session.facts.map((fact) => `
+    <div class="fact-row ${fact.needs_review ? "needs-review" : ""}">
+      <label for="fact-${cssSafe(fact.field_path)}">${escapeHtml(fact.label)}${fact.needs_review ? " · example correction" : ""}</label>
+      <input id="fact-${cssSafe(fact.field_path)}" data-fact-input="${escapeHtml(fact.field_path)}" value="${escapeHtml(fact.needs_review && fact.field_path === "service.schedule" ? "Wednesdays, 1:00–5:00 PM" : fact.proposed_value)}">
+      <span class="confidence">${Math.round(fact.confidence * 100)}% <button class="evidence-button" type="button" data-evidence="${escapeHtml(fact.field_path)}">source</button></span>
+    </div>`).join("");
+  return `
+    <div class="review-layout">
+      <article class="card">
+        <div class="card-heading"><div><p class="eyebrow">8 fields prefilled</p><h3>Review the cited intake draft</h3></div><span class="file-pill">AI draft · not authority</span></div>
+        <div class="ai-proof-strip" role="note">
+          <strong>What AI contributes</strong>
+          <span>ordinary-language referral → eight structured candidates + exact source quotes + two focused exceptions</span>
+          <small>This screen is the deterministic reference workflow. Separate retained AWS evidence: 40/40 schema-valid, 22 accepted semantically exact drafts, 18 safe fallbacks, 40/40 correct human-review routing, and zero authority effects.</small>
+        </div>
+        <div class="fact-list">${facts}</div>
+        <div class="review-footer"><p>Green fields were copied with strong evidence. Amber needs judgment.</p><button id="review-action" class="primary-action" type="button">Complete coordinator review →</button></div>
+      </article>
+      <aside class="card">
+        <p class="eyebrow">Exception queue</p><h3>Ask only what is missing</h3>
+        <div class="exception-list">
+          <div class="exception"><label for="visit-end">Confirm requested visit end time</label><input id="visit-end" value="5:00 PM" required></div>
+          <div class="exception"><strong>Patient approval</strong><p>Not in the referral. CareTrust will create a separate patient confirmation, not infer consent.</p></div>
+        </div>
+        <blockquote class="evidence-quote">“The note does not state the visit end time or include Malia’s approval to share.”</blockquote>
+      </aside>
+    </div>`;
+}
+
+function approvalMarkup() {
+  return `
+    <div class="approval-shell">
+      <article class="card">
+        <p class="eyebrow">Coordinator work complete</p><h3>Proposed sharing scope</h3>
+        <p>The staff member has reviewed the referral. This is still not consent.</p>
+        <ul class="scope-list">
+          <li>Coordinate one in-home respite service</li>
+          <li>Share the approved schedule with the assigned worker</li>
+          <li>Share first-visit preparation with the worker task app</li>
+        </ul>
+        <div class="not-shared"><strong>Never included:</strong> source document, clinical record, credential evidence, billing, mental-health information, or unrelated case history.</div>
+      </article>
+      <article class="card patient-preview">
+        <p class="eyebrow">Separate patient-facing gate · simulated</p>
+        <div class="phone">
+          <small>CareTrust confirmation</small><h4>Malia, share this plan?</h4>
+          <p>Your care organization wants to schedule respite support with an assigned, qualified worker. You can change or stop future sharing.</p>
+          <button id="patient-approve" class="primary-action" type="button">Approve this scope</button>
+          <button id="patient-decline" class="text-button" type="button">Not now</button>
+        </div>
+      </article>
+    </div>`;
+}
+
+function assignmentMarkup() {
+  const candidates = session.worker_candidates.map((worker) => `
+    <article class="candidate ${worker.eligible ? "eligible" : ""}">
+      <div>
+        <span class="eligibility">${worker.eligible ? "Eligible" : "Not eligible"}</span>
+        <h4>${escapeHtml(worker.display_name)} · ${escapeHtml(worker.role)}</h4>
+        <p>${escapeHtml(worker.availability)} · ${escapeHtml(worker.qualifications.join(" · "))}</p>
+        <div class="checks">${worker.deterministic_checks.map((check) => `<span>${escapeHtml(check)}</span>`).join("")}</div>
+        <p><strong>AI explanation:</strong> ${escapeHtml(worker.ai_explanation)}</p>
+      </div>
+      <button class="${worker.eligible ? "primary-action" : "secondary-action"}" type="button" data-assign-worker="${escapeHtml(worker.worker_id)}" ${worker.eligible ? "" : "disabled"}>${worker.eligible ? "Assign worker" : "Blocked"}</button>
+    </article>`).join("");
+  return `
+    <article class="card">
+      <div class="card-heading"><div><p class="eyebrow">Workforce activation</p><h3>Choose from the policy-filtered roster</h3></div><span class="file-pill">Human assignment required</span></div>
+      <p>Eligibility uses reviewed credentials, active status, service requirements, area, and availability. The model may explain the fit but cannot change a failed gate.</p>
+      <div class="candidate-list">${candidates}</div>
+    </article>`;
+}
+
+function routingMarkup() {
+  const complete = session.stage === "active";
+  const revoked = session.stage === "revoked";
+  return `
+    <div class="section-heading"><div><p class="eyebrow">${revoked ? "Fail-closed proof" : "App routing"}</p><h3>${revoked ? "Request again after revocation" : complete ? "Two apps are ready" : "Generate each minimum-data package"}</h3></div><p>${revoked ? "Use either fresh-request button to prove no case fields are released." : "This replaces repeated app-by-app setup. It does not make CareTrust a scheduler or task manager."}</p></div>
+    <div class="application-grid">${session.app_projections.map(appMarkup).join("")}</div>
+    ${complete ? `<div class="review-footer"><p>Earlier permit receipts remain historical after revocation; existing-session termination is not claimed.</p><button id="revoke-action" class="danger-action" type="button">Revoke assignment across apps</button></div>` : ""}`;
+}
+
+function appMarkup(app) {
+  const rows = Object.entries(app.data || {}).map(([key, value]) => `<tr><th>${escapeHtml(key.replaceAll("_", " "))}</th><td>${escapeHtml(String(value))}</td></tr>`).join("");
+  return `
+    <article class="app-card">
+      <header><div><p class="eyebrow">Independent test consumer</p><h4>${escapeHtml(app.app_name)}</h4></div><span class="decision ${app.decision}">${escapeHtml(app.decision.replaceAll("_", " "))}</span></header>
+      <p>${escapeHtml(app.purpose)}</p>
+      ${rows ? `<table class="projection"><tbody>${rows}</tbody></table>` : `<p class="excluded">${escapeHtml(app.reason)}</p>`}
+      ${app.excluded?.length ? `<p class="excluded"><strong>Excluded:</strong> ${escapeHtml(app.excluded.join(", "))}</p>` : ""}
+      <div class="app-actions">
+        <button class="secondary-action" type="button" data-app-request="${escapeHtml(app.app_id)}">${session.stage === "revoked" ? "Make fresh request" : app.decision === "allow" ? "Refresh decision" : "Request access"}</button>
+        <button class="text-button" type="button" data-inspect-app="${escapeHtml(app.app_id)}">Inspect message</button>
+      </div>
+    </article>`;
+}
+
+function bindAppActions(root) {
+  root.querySelectorAll("[data-app-request]").forEach((button) => button.addEventListener("click", () => runCommand("request_app_access", { app_id: button.dataset.appRequest })));
+  root.querySelectorAll("[data-inspect-app]").forEach((button) => button.addEventListener("click", () => {
+    const app = session.app_projections.find((item) => item.app_id === button.dataset.inspectApp);
+    messageInspector.textContent = JSON.stringify({ type: "caretrust.authorization-decision.v0.1", subject: session.assignment?.worker_id, audience: app.app_id, purpose: app.purpose, decision: app.decision, disclosed: app.data, excluded: app.excluded, reason: app.reason }, null, 2);
+    document.querySelector(".evidence-drawer").open = true;
+  }));
+  root.querySelector("#revoke-action")?.addEventListener("click", () => runCommand("revoke_assignment", { actor_ref: "user:demo-supervisor", reason: "Worker removed from this service assignment" }));
+}
+
+function renderApplications() {
+  const root = document.querySelector("#application-grid");
+  root.innerHTML = session.app_projections.map(appMarkup).join("");
+  bindAppActions(root);
+}
+
+function renderTeam() {
+  const assignmentStatus = session.assignment ? `${session.assignment.status} assignment` : "not assigned";
+  const approval = session.patient_approval;
+  document.querySelector("#team-grid").innerHTML = `
+    <article class="team-card"><header><div><p class="eyebrow">Care recipient</p><h4>Malia K.</h4></div><span class="decision ${approval === "approved" ? "allow" : ""}">${escapeHtml(approval.replaceAll("_", " "))}</span></header><p>Controls the patient sharing scope in this synthetic flow.</p><ul class="authority-list"><li><strong>Relationship:</strong> self</li><li><strong>Authority:</strong> patient approval record</li><li><strong>Apps:</strong> purpose-limited projections only</li></ul></article>
+    <article class="team-card"><header><div><p class="eyebrow">Family coordinator</p><h4>Leilani · daughter</h4></div><span class="decision">relationship only</span></header><p>Named in the referral as helping coordinate. That fact alone creates no permission.</p><ul class="authority-list"><li><strong>Relationship:</strong> asserted daughter</li><li><strong>Delegation:</strong> not established in this workforce flow</li><li><strong>App access:</strong> none</li></ul></article>
+    <article class="team-card"><header><div><p class="eyebrow">Direct-care worker</p><h4>${escapeHtml(session.assignment?.worker_name || "Not assigned")}</h4></div><span class="decision ${session.assignment?.status === "active" ? "allow" : session.assignment?.status === "revoked" ? "deny" : ""}">${escapeHtml(assignmentStatus)}</span></header><p>Workforce relationship is separate from patient approval and application access.</p><ul class="authority-list"><li><strong>Qualification:</strong> reviewed simulated evidence</li><li><strong>Assignment:</strong> supervisor-controlled</li><li><strong>Access:</strong> re-evaluated for each app and purpose</li></ul></article>
+    <article class="team-card"><header><div><p class="eyebrow">Community respite worker</p><h4>Pua · future pathway</h4></div><span class="decision">not assigned</span></header><p>Illustrates that a second caregiver can have a distinct role, validity window, and app scope without inheriting the CNA’s access.</p><ul class="authority-list"><li><strong>Relationship:</strong> program participant</li><li><strong>Assignment:</strong> none for this case</li><li><strong>App access:</strong> none</li></ul></article>`;
+}
+
+function renderHistory() {
+  document.querySelector("#case-history").innerHTML = [...session.events].reverse().map((item) => `
+    <li><time>${new Date(item.occurred_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}</time><span class="actor-pill">${escapeHtml(item.actor_type)}</span><strong>${escapeHtml(item.action.replaceAll("_", " "))}</strong><p>${escapeHtml(item.summary)}</p></li>`).join("");
+}
+
+function setBusy(busy) {
+  document.body.setAttribute("aria-busy", String(busy));
+  document.querySelectorAll("button").forEach((button) => {
+    if (busy) {
+      button.dataset.wasDisabled = String(button.disabled);
+      button.disabled = true;
+    } else if (button.dataset.wasDisabled !== undefined) {
+      button.disabled = button.dataset.wasDisabled === "true";
+      delete button.dataset.wasDisabled;
+    }
+  });
+}
+
+function announce(message) {
+  statusRegion.textContent = message;
+}
+
+function showError(error) {
+  alertRegion.textContent = error instanceof Error ? error.message : String(error);
+  alertRegion.classList.remove("hidden");
+  announce(alertRegion.textContent);
+}
+
+function clearError() {
+  alertRegion.classList.add("hidden");
+  alertRegion.textContent = "";
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[character]);
+}
+
+function cssSafe(value) {
+  return value.replaceAll(".", "-");
+}
+
+document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach((item) => {
+    const selected = item === tab;
+    item.classList.toggle("active", selected);
+    item.setAttribute("aria-selected", String(selected));
+  });
+  document.querySelectorAll("[data-view-panel]").forEach((panel) => {
+    const selected = panel.dataset.viewPanel === tab.dataset.view;
+    panel.classList.toggle("active", selected);
+    panel.hidden = !selected;
+  });
+}));
+
+document.querySelector("#new-demo").addEventListener("click", () => {
+  session = null;
+  localStorage.removeItem(STORAGE_KEY);
+  initialize(true);
 });
 
-document.querySelector("#revoke-grant").addEventListener("click", (event) => {
-  if (revoked) return;
-  revoked = true;
-  event.currentTarget.textContent = "Permission revoked";
-  event.currentTarget.disabled = true;
-  document.querySelector(".case-state .status").className = "status neutral";
-  document.querySelector(".case-state .status").innerHTML = "<i aria-hidden=\"true\"></i> Delegation revoked";
-  const grantSummary = document.querySelector("#grant-summary");
-  if (grantSummary) grantSummary.textContent = "Revoked · history retained";
-  const clinicalGrantState = document.querySelector("#clinical-grant-state");
-  if (clinicalGrantState) clinicalGrantState.textContent = "Revoked";
-  const history = document.querySelector("#case-history");
-  const eventItem = document.createElement("li");
-  eventItem.innerHTML = "<time>10:05:00</time><span class=\"event-dot patient\"></span><div><strong>Malia revoked the delegation</strong><p>The relationship remains; a fresh scheduling request is denied with GRANT_REVOKED.</p><button class=\"trace-link\" type=\"button\" data-message=\"post-revocation-denial\">Inspect revocation + fresh denial</button></div>";
-  history.append(eventItem);
-  eventItem.querySelector("button").addEventListener("click", () => showMessage("post-revocation-denial"));
-  document.querySelector("#history-count").textContent = String(document.querySelectorAll("#case-history li").length);
-  switchView("history");
+document.querySelector("#case-search").addEventListener("input", (event) => {
+  const query = event.target.value.toLowerCase();
+  document.querySelectorAll("#case-list li").forEach((item) => {
+    item.hidden = !item.textContent.toLowerCase().includes(query);
+  });
 });
+
+document.querySelectorAll(".case-row:not(.selected)").forEach((row) => row.addEventListener("click", () => {
+  showError(`${row.querySelector("strong").textContent} is an illustrative queue row. Malia’s synthetic workflow is the executable case.`);
+}));
+
+document.querySelectorAll("[data-open-dialog]").forEach((button) => button.addEventListener("click", () => document.querySelector(`#${button.dataset.openDialog}`).showModal()));
+
+initialize();

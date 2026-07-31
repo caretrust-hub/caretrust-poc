@@ -39,7 +39,7 @@ from caretrust.trace import canonical_json
 COMPILER_VERSION = "caretrust.intent-compiler.v1"
 LOCAL_REPLAY_MODEL_ID = "caretrust-deterministic-replay-v1"
 _FORBIDDEN_ASSERTIONS = re.compile(
-    r"\b(?:approval|approved?|permits?|activation|activated?|revocation|revoked?|authori[sz](?:e|ed|ation))\b",
+    r"\b(?:approval|approved?|permission|permit(?:s|ted|ting)?|activation|activated?|revocation|revoked?|authori[sz](?:e|ed|ation))\b",
     re.IGNORECASE,
 )
 _INJECTION_PATTERNS = (
@@ -50,6 +50,35 @@ _INJECTION_PATTERNS = (
     "set status",
     "grant access",
 )
+
+INTENT_MODEL_SYSTEM_PROMPT = (
+    "The input is JSON containing a synthetic utterance, retained_spans, a "
+    "delegate_directory, and allowed_vocabulary. Return one strict, evidence-cited "
+    "delegation candidate using only supplied identifiers and vocabulary. Emit every "
+    "required_output_key. Use null for unsupported scalar fields and [] for unsupported "
+    "array fields; never guess. Every non-null value must cite a span_id copied exactly "
+    "from retained_spans and an exact quote contained in that span. For delegate_ref, "
+    "return either the cited directory label or its mapped identifier. Describe only "
+    "the user's requested draft; never state that approval, permission, activation, "
+    "authorization, revocation, or any status change has occurred."
+)
+
+INTENT_MODEL_REQUIRED_OUTPUT_KEYS = (
+    "delegate_ref",
+    "relationship_code",
+    "actions",
+    "resources",
+    "excluded_resources",
+    "audience",
+    "purpose",
+    "valid_until",
+)
+INTENT_MODEL_SCHEMA_NAME = "caretrust_intent_model_candidate"
+INTENT_MODEL_SCHEMA_DESCRIPTION = (
+    "Non-authoritative, exact-citation candidate over synthetic intent only"
+)
+INTENT_MODEL_MAX_TOKENS = 1_200
+INTENT_MODEL_TEMPERATURE = 0.0
 
 
 class CompilerSafetyError(ValueError):
@@ -138,14 +167,17 @@ class IntentModelCandidate(StrictModel):
     vocabulary only after source/citation validation by ``CompilerService``.
     """
 
-    delegate_ref: CandidateValue | None = None
-    relationship_code: CandidateValue | None = None
-    actions: tuple[CandidateValue, ...] = ()
-    resources: tuple[CandidateValue, ...] = ()
-    excluded_resources: tuple[CandidateValue, ...] = ()
-    audience: CandidateValue | None = None
-    purpose: CandidateValue | None = None
-    valid_until: CandidateValue | None = None
+    # Every key is required in provider output.  Unknown or unsupported values
+    # are represented explicitly as null/[], which lets deterministic policy
+    # distinguish omission from a deliberate request for human clarification.
+    delegate_ref: CandidateValue | None
+    relationship_code: CandidateValue | None
+    actions: tuple[CandidateValue, ...]
+    resources: tuple[CandidateValue, ...]
+    excluded_resources: tuple[CandidateValue, ...]
+    audience: CandidateValue | None
+    purpose: CandidateValue | None
+    valid_until: CandidateValue | None
 
 
 class IntentCompilation(StrictModel):
@@ -225,6 +257,81 @@ def make_intent_statement(
     )
 
 
+def build_intent_model_payload(
+    intent: IntentStatement,
+    *,
+    delegate_directory: Mapping[str, str],
+) -> dict[str, object]:
+    """Build the exact provider-neutral model input used for compilation.
+
+    Keeping this public and deterministic allows evaluation harnesses to freeze
+    the request before inference and then verify that the executed request did
+    not drift from the evaluated protocol.
+    """
+
+    return {
+        "utterance": intent.utterance,
+        "retained_spans": [
+            {
+                "span_id": span.span_id,
+                "quote": span.quote,
+                "start_char": span.start_char,
+                "end_char": span.end_char,
+            }
+            for span in intent.spans
+        ],
+        "delegate_directory": dict(sorted(delegate_directory.items())),
+        "allowed_vocabulary": {
+            "relationship_code": [item.value for item in RelationshipCode],
+            "actions": [item.value for item in DelegationAction],
+            "resources": [item.value for item in DelegationResource],
+            "audience": [item.value for item in DelegationAudience],
+            "purpose": [item.value for item in DelegationPurpose],
+        },
+        "required_output_keys": list(INTENT_MODEL_REQUIRED_OUTPUT_KEYS),
+    }
+
+
+def intent_model_user_text(
+    intent: IntentStatement,
+    *,
+    delegate_directory: Mapping[str, str],
+) -> str:
+    """Serialize the exact model input canonically for hashing and execution."""
+
+    return canonical_json(
+        build_intent_model_payload(
+            intent,
+            delegate_directory=delegate_directory,
+        )
+    )
+
+
+def _authority_assertion_parts(value: object) -> list[str]:
+    """Return model-authored assertion text while excluding source citations."""
+
+    if isinstance(value, Mapping):
+        parts: list[str] = []
+        for key, child in value.items():
+            # A citation is evidence copied from untrusted patient input.  It is
+            # not a model assertion and may legitimately contain words such as
+            # "approve" that the model must not claim on its own behalf.
+            if str(key) == "citation":
+                continue
+            parts.append(str(key))
+            parts.extend(_authority_assertion_parts(child))
+        return parts
+    if isinstance(value, (list, tuple)):
+        return [
+            part
+            for child in value
+            for part in _authority_assertion_parts(child)
+        ]
+    if isinstance(value, str):
+        return [value]
+    return []
+
+
 def reject_authority_assertions(value: object) -> None:
     """Reject provider output that says it approved or changed authority.
 
@@ -233,7 +340,7 @@ def reject_authority_assertions(value: object) -> None:
     treated as an instruction.
     """
 
-    rendered = value if isinstance(value, str) else canonical_json(value)
+    rendered = " ".join(_authority_assertion_parts(value))
     match = _FORBIDDEN_ASSERTIONS.search(rendered)
     if match:
         raise CompilerSafetyError(
@@ -317,16 +424,18 @@ class CompilerService:
 
         if self.model is None:
             raise RuntimeError("no structured model was configured")
+        model_user_text = intent_model_user_text(
+            intent,
+            delegate_directory=self.delegate_directory,
+        )
         response = self.model.extract(
-            system_prompt=(
-                "Return one strict, evidence-cited candidate for a synthetic delegation draft. "
-                "Every value needs an exact retained span_id and quote. Do not state approval, "
-                "permission, activation, authorization, revocation, or status changes."
-            ),
-            user_text=intent.utterance,
+            system_prompt=INTENT_MODEL_SYSTEM_PROMPT,
+            user_text=model_user_text,
             json_schema=IntentModelCandidate.model_json_schema(),
-            schema_name="caretrust_intent_model_candidate",
-            schema_description="Non-authoritative, exact-citation candidate over synthetic intent only",
+            schema_name=INTENT_MODEL_SCHEMA_NAME,
+            schema_description=INTENT_MODEL_SCHEMA_DESCRIPTION,
+            max_tokens=INTENT_MODEL_MAX_TOKENS,
+            temperature=INTENT_MODEL_TEMPERATURE,
             request_metadata={"caretrust_component": "intent_compiler"},
         )
         parsed = getattr(response, "parsed_json", response)
@@ -355,8 +464,10 @@ class CompilerService:
                 run=CompilationRun(
                     run_id=run_id or f"compiler-run:{intent.intent_id}:candidate",
                     compiler_version=COMPILER_VERSION, provider="candidate_pending_metadata",
-                    model_id="candidate-pending-metadata", prompt_sha256=sha256_text(_intent_prompt()),
-                    input_sha256=intent.utterance_sha256, response_sha256=sha256_text(canonical_json(parsed)),
+                    model_id="candidate-pending-metadata",
+                    prompt_sha256=sha256_text(INTENT_MODEL_SYSTEM_PROMPT),
+                    input_sha256=sha256_text(model_user_text),
+                    response_sha256=sha256_text(canonical_json(parsed)),
                     started_at=when, completed_at=when, latency_ms=0, estimated_cost_usd=None,
                 ),
             )
@@ -389,8 +500,8 @@ class CompilerService:
                     compiler_version=COMPILER_VERSION,
                     provider=str(getattr(response, "provider", "bedrock_optional")),
                     model_id=str(getattr(response, "model_id", "bedrock-unknown")),
-                    prompt_sha256=sha256_text(_intent_prompt()),
-                    input_sha256=intent.utterance_sha256,
+                    prompt_sha256=sha256_text(INTENT_MODEL_SYSTEM_PROMPT),
+                    input_sha256=sha256_text(model_user_text),
                     response_sha256=sha256_text(raw_text),
                     started_at=started,
                     completed_at=completed,
@@ -579,14 +690,19 @@ class CompilerService:
             value, span_id = verified(candidate.delegate_ref, ())
             cited_delegate = candidate.delegate_ref.citation.quote.casefold()
             found = [
-                ref
+                (name, ref)
                 for name, ref in self.delegate_directory.items()
                 if re.search(rf"\b{re.escape(name)}\b", cited_delegate)
             ]
-            if value not in found:
+            matched_refs = {
+                ref
+                for name, ref in found
+                if value == ref or value.casefold() == name
+            }
+            if len(matched_refs) != 1:
                 raise ValueError("model candidate delegate is not bound to a cited directory identity")
-            delegate_ref = value
-            bindings.append(DraftEvidenceBinding(field_path=DraftEvidenceField.DELEGATE_REF, value=value, evidence_refs=(span_id,)))
+            delegate_ref = matched_refs.pop()
+            bindings.append(DraftEvidenceBinding(field_path=DraftEvidenceField.DELEGATE_REF, value=delegate_ref, evidence_refs=(span_id,)))
         else:
             blocking.append(DelegationBlockingCode.MISSING_DELEGATE)
             self._uncertain(uncertainties, DelegationUncertaintyCode.AMBIGUOUS_DELEGATE, "delegate_ref", "The model did not propose a cited bounded delegate.", intent)
